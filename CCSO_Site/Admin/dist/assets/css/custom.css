@@ -26,6 +26,3 @@
 .footer {
     background-color: rgba(242, 230, 9, 0.28) !important;
 }
-.modal-backdrop {
-    z-index: -1;
-  }

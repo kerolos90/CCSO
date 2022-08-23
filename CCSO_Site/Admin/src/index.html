@@ -27,11 +27,15 @@
 
                 <div class="page-content">
                     <div class="container-fluid">
-                        
+                      <div class="card">
+                        <div class="card-body">
+                          <h3 class="text-center">Patrol Schedule</h3>
+                        </div>
+                      </div>  
                         <div class="row">
                             <div class="col-12">
                                 <div class="row">
-                                    <div class="col-xl-7 col-lg-8">
+                                    <div class="col-xl-6 col-lg-8">
                                         <div class="card">
                                             <div class="card-body">
                                                 <div id="calendar"></div>
@@ -39,208 +43,213 @@
                                         </div>
                                     </div> <!-- end col -->
 
-                                    <div class="col-xl-5 col-lg-4">
+                                    <div class="col-xl-6 col-lg-4">
                                         <div class="card">
                                             <div class="card-body ">
-
-                                                <div id="external-events" class="">                                                 
-                                                <h1 class="text-center">Date</h1>
-                                                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                                    <li class="nav-item" role="presentation">
-                                                      <button class="nav-link active" id="day-tab" data-bs-toggle="tab" data-bs-target="#day" type="button" role="tab" aria-controls="day-tab" aria-selected="true">Day Shift</button>
-                                                    </li>
-                                                    <li class="nav-item" role="presentation">
-                                                      <button class="nav-link" id="night-tab" data-bs-toggle="tab" data-bs-target="#night" type="button" role="tab" aria-controls="night-tab" aria-selected="false">Night Shift</button>
-                                                    </li>
+                                                <div id="external-events" class="">
+                                                  <div>
+                                                    <button type="submit" class="btn btn-danger" id="">Time Off Request</button>
+                                                  </div> 
+                                                  <h1 class="text-center">Date</h1>
+                                                  <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                                  <li class="nav-item" role="presentation">
+                                                  <button class="nav-link active" id="day-tab" data-bs-toggle="tab" data-bs-target="#day" type="button" role="tab" aria-controls="day-tab" aria-selected="true">Day Shift</button>
+                                                  </li>
+                                                  <li class="nav-item" role="presentation">
+                                                  <button class="nav-link" id="night-tab" data-bs-toggle="tab" data-bs-target="#night" type="button" role="tab" aria-controls="night-tab" aria-selected="false">Night Shift</button>
+                                                  </li>
                                                   </ul>
+                                                  
                                                   <div class="tab-content" id="myTabContent">
-                                                    <div class="tab-pane fade show active" id="day" role="tabpanel" aria-labelledby="day-tab">
-                                                        <table class="table table-bordered">
-                                                            <thead>
-                                                              <tr>
-                                                                <th scope="col">Beat:</th>
-                                                                <th scope="col">0600-1000</th>
-                                                                <th scope="col">1000-1400</th>
-                                                                <th scope="col">1400-1800</th>
-                                                              </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th scope="row">Shift Command</th>
-                                                                    <td>Sgt. Good #550</td>
-                                                                    <td>Sgt. Good #550</td>
-                                                                </tr>  
-                                                                <tr>
-                                                                    <th scope="row">Shift Command</th>
-                                                                    <td>Sgt. Darr #537</td>
-                                                                    <td>Sgt. Darr #537</td>
-                                                                    <td>Sgt. Darr #537</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">1/2</th>
-                                                                    <td>Dep. Gabra #503</td>
-                                                                    <td>Dep. Gabra #503</td>
-                                                                    <td>Dep. Gabra #503</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">3/4</th>
-                                                                    <td>Dep. Keyes #542</td>
-                                                                    <td>Dep. Keyes #542</td>
-                                                                    <td>Dep. Keyes #542</td>
-        
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">4/5</th>
-                                                                    <td>None</td>
-                                                                    <td>None</td>
-                                                                    <td>None</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">5/6</th>
-                                                                    <td>Dep. Hubbard #538</td>
-                                                                    <td>Dep. Hubbard #538</td>
-                                                                    <td>Dep. Hubbard #538</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">7/8</th>
-                                                                    <td>Dep. Plotner #539</td>
-                                                                    <td>Dep. Plotner #539</td>
-                                                                    <td>Dep. Plotner #539</td>
-                                                                </tr>
-                                                            </tbody>
-                                                          </table>
-                                                            
+                                                      <div class="tab-pane fade show active" id="day" role="tabpanel" aria-labelledby="day-tab">
                                                           <table class="table table-bordered">
-                                                            <thead>
+                                                          <thead>
                                                               <tr>
-                                                                <th scope="col">Beat:</th>
-                                                                <th scope="col">0700-1100</th>
-                                                                <th scope="col" >1100-1500 </th>
-                                                                <th scope="col">1500-1900</th>
+                                                              <th scope="col">Beat:</th>
+                                                              <th scope="col">0600-1000</th>
+                                                              <th scope="col">1000-1400</th>
+                                                              <th scope="col">1400-1800</th>
                                                               </tr>
-                                                            </thead>
-                                                            <tbody>
+                                                          </thead>
+                                                          <tbody>
                                                               <tr>
-                                                                <th scope="row">Savoy</th>
-                                                                <td>Dep. Pryor #521</td>
-                                                                <td>None None None ee</td>
-                                                                <td>None</td>
+                                                                  <th scope="row">Shift Command</th>
+                                                                  <td>Sgt. Good #550</td>
+                                                                  <td>Sgt. Good #550</td>
+                                                              </tr>  
+                                                              <tr>
+                                                                  <th scope="row">Shift Command</th>
+                                                                  <td>Sgt. Darr #537</td>
+                                                                  <td>Sgt. Darr #537</td>
+                                                                  <td>Sgt. Darr #537</td>
                                                               </tr>
                                                               <tr>
-                                                                <th scope="row">St. Joseph</th>
-                                                                <td>None</td>
-                                                                <td>None</td>
-                                                                <td>Dep. Metlzer #519</td>
+                                                                  <th scope="row">1/2</th>
+                                                                  <td>Dep. Gabra #503</td>
+                                                                  <td>Dep. Gabra #503</td>
+                                                                  <td>Dep. Gabra #503</td>
                                                               </tr>
-                                                            </tbody>
+                                                              <tr>
+                                                                  <th scope="row">3/4</th>
+                                                                  <td>Dep. Keyes #542</td>
+                                                                  <td>Dep. Keyes #542</td>
+                                                                  <td>Dep. Keyes #542</td>
+                                                  
+                                                              </tr>
+                                                              <tr>
+                                                                  <th scope="row">4/5</th>
+                                                                  <td>None</td>
+                                                                  <td>None</td>
+                                                                  <td>None</td>
+                                                              </tr>
+                                                              <tr>
+                                                                  <th scope="row">5/6</th>
+                                                                  <td>Dep. Hubbard #538</td>
+                                                                  <td>Dep. Hubbard #538</td>
+                                                                  <td>Dep. Hubbard #538</td>
+                                                              </tr>
+                                                              <tr>
+                                                                  <th scope="row">7/8</th>
+                                                                  <td>Dep. Plotner #539</td>
+                                                                  <td>Dep. Plotner #539</td>
+                                                                  <td>Dep. Plotner #539</td>
+                                                              </tr>
+                                                          </tbody>
+                                                          </table>
+                                                          
+                                                          <table class="table table-bordered">
+                                                          <thead>
+                                                              <tr>
+                                                              <th scope="col">Beat:</th>
+                                                              <th scope="col">0700-1100</th>
+                                                              <th scope="col" >1100-1500 </th>
+                                                              <th scope="col">1500-1900</th>
+                                                              </tr>
+                                                          </thead>
+                                                          <tbody>
+                                                              <tr>
+                                                              <th scope="row">Savoy</th>
+                                                              <td>Dep. Pryor #521</td>
+                                                              <td>None None None ee</td>
+                                                              <td>None</td>
+                                                              </tr>
+                                                              <tr>
+                                                              <th scope="row">St. Joseph</th>
+                                                              <td>None</td>
+                                                              <td>None</td>
+                                                              <td>Dep. Metlzer #519</td>
+                                                              </tr>
+                                                          </tbody>
                                                           </table>
                                                           <table class="table table-bordered">
-                                                            <thead>
+                                                          <thead>
                                                               <tr>
-                                                                <th scope="col">Beat:</th>
-                                                                <th scope="col">0600-1100</th>
-                                                                <th scope="col">1100-1600</th>
+                                                              <th scope="col">Beat:</th>
+                                                              <th scope="col">0600-1100</th>
+                                                              <th scope="col">1100-1600</th>
                                                               </tr>
-                                                            </thead>
-                                                            <tbody>
+                                                          </thead>
+                                                          <tbody>
                                                               <tr>
-                                                                <th scope="row">Civil Service</th>
-                                                                <td>Dep. Bialescki #510</td>
-                                                                <td>Dep. Bialescki #510</td>
+                                                              <th scope="row">Civil Service</th>
+                                                              <td>Dep. Bialescki #510</td>
+                                                              <td>Dep. Bialescki #510</td>
                                                               </tr>
                                                               <tr>
-                                                                <th scope="row">Civil Service</th>
-                                                                <td>Dep. Atwood #507</td>
-                                                                <td>Dep. Atwood #507</td>
+                                                              <th scope="row">Civil Service</th>
+                                                              <td>Dep. Atwood #507</td>
+                                                              <td>Dep. Atwood #507</td>
                                                               </tr>
-                                                            </tbody>
+                                                          </tbody>
                                                           </table>
-                                                    </div>
-                                                    <div class="tab-pane fade" id="night" role="tabpanel" aria-labelledby="night-tab">
-                                                        <table class="table table-bordered table-dark">
-                                                            <thead>
+                                                      </div>
+                                                      
+                                                      <div class="tab-pane fade" id="night" role="tabpanel" aria-labelledby="night-tab">
+                                                      <table class="table table-bordered table-dark">
+                                                          <thead>
                                                               <tr>
-                                                                <th scope="col">Beat:</th>
-                                                                <th scope="col">1800-2200</th>
-                                                                <th scope="col">2200-0200</th>
-                                                                <th scope="col">0200-0600</th>
+                                                              <th scope="col">Beat:</th>
+                                                              <th scope="col">1800-2200</th>
+                                                              <th scope="col">2200-0200</th>
+                                                              <th scope="col">0200-0600</th>
                                                               </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th scope="row">Shift Command</th>
-                                                                    <td>Sgt. Good #550</td>
-                                                                    <td>Sgt. Good #550</td>
-                                                                </tr>  
-                                                                <tr>
-                                                                    <th scope="row">Shift Command</th>
-                                                                    <td>Sgt. Darr #537</td>
-                                                                    <td>Sgt. Darr #537</td>
-                                                                    <td>Sgt. Darr #537</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">1/2</th>
-                                                                    <td>Dep. Gabra #503</td>
-                                                                    <td>Dep. Gabra #503</td>
-                                                                    <td>Dep. Gabra #503</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">3/4</th>
-                                                                    <td>Dep. Keyes #542</td>
-                                                                    <td>Dep. Keyes #542</td>
-                                                                    <td>Dep. Keyes #542</td>
-        
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">4/5</th>
-                                                                    <td>None</td>
-                                                                    <td>None</td>
-                                                                    <td>None</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">5/6</th>
-                                                                    <td>Dep. Hubbard #538</td>
-                                                                    <td>Dep. Hubbard #538</td>
-                                                                    <td>Dep. Hubbard #538</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">7/8</th>
-                                                                    <td>Dep. Plotner #539</td>
-                                                                    <td>Dep. Plotner #539</td>
-                                                                    <td>Dep. Plotner #539</td>
-        
-                                                                </tr>
-                                                            </tbody>
+                                                          </thead>
+                                                          <tbody>
+                                                              <tr>
+                                                                  <th scope="row">Shift Command</th>
+                                                                  <td>Sgt. Good #550</td>
+                                                                  <td>Sgt. Good #550</td>
+                                                              </tr>  
+                                                              <tr>
+                                                                  <th scope="row">Shift Command</th>
+                                                                  <td>Sgt. Darr #537</td>
+                                                                  <td>Sgt. Darr #537</td>
+                                                                  <td>Sgt. Darr #537</td>
+                                                              </tr>
+                                                              <tr>
+                                                                  <th scope="row">1/2</th>
+                                                                  <td>Dep. Gabra #503</td>
+                                                                  <td>Dep. Gabra #503</td>
+                                                                  <td>Dep. Gabra #503</td>
+                                                              </tr>
+                                                              <tr>
+                                                                  <th scope="row">3/4</th>
+                                                                  <td>Dep. Keyes #542</td>
+                                                                  <td>Dep. Keyes #542</td>
+                                                                  <td>Dep. Keyes #542</td>
+                                                  
+                                                              </tr>
+                                                              <tr>
+                                                                  <th scope="row">4/5</th>
+                                                                  <td>None</td>
+                                                                  <td>None</td>
+                                                                  <td>None</td>
+                                                              </tr>
+                                                              <tr>
+                                                                  <th scope="row">5/6</th>
+                                                                  <td>Dep. Hubbard #538</td>
+                                                                  <td>Dep. Hubbard #538</td>
+                                                                  <td>Dep. Hubbard #538</td>
+                                                              </tr>
+                                                              <tr>
+                                                                  <th scope="row">7/8</th>
+                                                                  <td>Dep. Plotner #539</td>
+                                                                  <td>Dep. Plotner #539</td>
+                                                                  <td>Dep. Plotner #539</td>
+                                                  
+                                                              </tr>
+                                                          </tbody>
                                                           </table>
-                                                            
+                                                          
                                                           <table class="table table-bordered table-dark">
-                                                            <thead>
+                                                          <thead>
                                                               <tr>
-                                                                <th scope="col">Beat:</th>
-                                                                <th scope="col">1500-1900</th>
-                                                                <th scope="col" >1900-2300 </th>
-                                                                <th scope="col">2300-0300</th>
+                                                              <th scope="col">Beat:</th>
+                                                              <th scope="col">1500-1900</th>
+                                                              <th scope="col" >1900-2300 </th>
+                                                              <th scope="col">2300-0300</th>
                                                               </tr>
-                                                            </thead>
-                                                            <tbody>
+                                                          </thead>
+                                                          <tbody>
                                                               <tr>
-                                                                <th scope="row">Savoy</th>
-                                                                <td>Dep. Pryor #521</td>
-                                                                <td>None None None ee</td>
-                                                                <td>None</td>
+                                                              <th scope="row">Savoy</th>
+                                                              <td>Dep. Pryor #521</td>
+                                                              <td>None None None ee</td>
+                                                              <td>None</td>
                                                               </tr>
                                                               <tr>
-                                                                <th scope="row">St. Joseph</th>
-                                                                <td>None</td>
-                                                                <td>None</td>
-                                                                <td>Dep. Metlzer #519</td>
+                                                              <th scope="row">St. Joseph</th>
+                                                              <td>None</td>
+                                                              <td>None</td>
+                                                              <td>Dep. Metlzer #519</td>
                                                               </tr>
-                                                            </tbody>
+                                                          </tbody>
                                                           </table>
-                                                         
-                                                    </div>
-                                                  </div>                                                                                                  
-                                            
+                                                      </div>
+                                                  </div>
+                                                                                     
+                                                </div>                                                                                                  
+                                             
 
                                                 
                                             </div>
@@ -264,23 +273,72 @@
                                             <h5 class="text-center" id="">Time Off Request</h5>
 
                                             <div class="modal-body p-4">
-                                                <select class="form-select" aria-label="Default select example">
-                                                    <option selected>Open this select menu</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
-                                                  </select>                                         
-                                                    <div class="">
-                                                        <div class="text-end">
-                                                            <button type="button" class="btn btn-light me-1" data-bs-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-                                                
+                                              <div>
+                                                  <label for="example-datetime-local-input" class="form-label">Start Date:</label>
+                                                  <input class="form-control" type="datetime-local" value="2019-08-19T13:45:00" id="example-datetime-local-input">
+                                              </div>
+                                              <br>
+                                              <div>
+                                                <label for="example-datetime-local-input" class="form-label">End Date:</label>
+                                                <input class="form-control" type="datetime-local" value="2019-08-19T13:45:00" id="example-datetime-local-input">
+                                              </div>
+                                              <br>
+                                              <div class="text-center">Benefit Time Used (check all that apply)</div>
+                                            
+                                              <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <label class="form-check-label" for="flexCheckDefault">
+                                                  Vacation Time
+                                                </label>
+                                              </div>
+
+                                              <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                                <label class="form-check-label" for="flexCheckChecked">
+                                                  Comp. Time
+                                                </label>
+                                              </div>
+
+                                              <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
+                                                <label class="form-check-label" for="flexCheckChecked">
+                                                  Personal Time
+                                                </label>
+                                              </div>
+
+                                              <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
+                                                <label class="form-check-label" for="flexCheckChecked">
+                                                  Holiday Time
+                                                </label>
+                                              </div>
+
+                                              <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
+                                                <label class="form-check-label" for="flexCheckChecked">
+                                                  Sick Time
+                                                </label>
+                                              </div>
+                                            <br>
+                                              <div class="mb-3">
+                                                <label for="exampleFormControlTextarea1" class="form-label">Comments (Optional):</label>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                              </div>
+
+                                              <div class="row mt-2">
+                                                <div class="col-6">
+                                                    <button type="button" class="btn btn-danger" id="btn-delete-event">Cancel</button>
+                                                </div>
+                                                <div class="col-6 text-end">
+                                                    <button type="submit" class="btn btn-success" id="btn-save-event">Submit</button>
+                                                </div>
                                             </div>
+                                            </div>
+                                            
                                         </div> <!-- end modal-content-->
                                     </div> <!-- end modal dialog-->
                                 </div>
-                                <!-- end modal-->
+                                <!-- end modal
 
                             </div>
                         </div>

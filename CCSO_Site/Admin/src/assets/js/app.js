@@ -1,12 +1,3 @@
-/*
-Template Name: Minia - Bootstrap 5 Admin & Dashboard Template
-Author: Themesbrand
-Version: 1.5.0.
-Website: https://themesbrand.com/
-Contact: themesbrand@gmail.com
-File: Main Js File
-*/
-
 
 (function ($) {
 
@@ -15,7 +6,7 @@ File: Main Js File
     var language = localStorage.getItem('minia-language');
     // Default Language
     var default_lang = 'en';
-
+    
     function setLanguage(lang) {
         if (document.getElementById("header-lang-img")) {
             if (lang == 'en') {

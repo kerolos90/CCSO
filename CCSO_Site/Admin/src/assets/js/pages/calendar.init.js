@@ -1,10 +1,3 @@
-/*
-Template Name: Minia - Admin & Dashboard Template
-Author: Themesbrand
-Website: https://themesbrand.com/
-Contact: themesbrand@gmail.com
-File: Calendar init js
-*/
 
 !function($) {
     "use strict";
@@ -68,9 +61,9 @@ File: Calendar init js
                 defaultView: 'dayGridMonth',
                 themeSystem: 'bootstrap',
                 header: {
-                    left : " ",
+                    left : "today ",
                     center: 'title',
-                    right: 'prev,next today'
+                    right: 'prev,next'
                 },
                 eventClick: function(info) {
                     addEvent.modal('show');
