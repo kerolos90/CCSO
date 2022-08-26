@@ -4,7 +4,7 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>Dashboard | Minia - Minimal Admin & Dashboard Template</title>
+        <title>Champaign County Sheriff's Office</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
@@ -32,22 +32,20 @@
     <body>
 
     <!-- <body data-layout="horizontal"> -->
-
-        <!-- Begin page -->
         <div id="layout-wrapper">
 
             
             <header id="page-topbar">
-                <div class="navbar-header">
+                <div class="navbar-header shadow  ">
                     <div class="d-flex">
                         <!-- LOGO -->
                         <div class="navbar-brand-box">
                             <a href="index.html" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo-sm.svg" alt="" height="24">
+                                    <img src="assets/images/small-badge.png" alt="" style="border-radius: 50%;" height="24">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Minia</span>
+                                    <img src="assets/images/small-badge.png" alt="" style="border-radius: 50%;" height=""> 
                                 </span>
                             </a>
 
@@ -231,9 +229,6 @@
 
             
 
-            <!-- ============================================================== -->
-            <!-- Start right Content here -->
-            <!-- ============================================================== -->
             <div class="main-content">
 
                 <div class="page-content">
@@ -259,7 +254,7 @@
                                             <div class="card-body ">
                                                 <div id="external-events" class="">
                                                   <div>
-                                                    <button type="submit" class="btn btn-danger" id="">Time Off Request</button>
+                                                    <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#timeOffModal">Time Off Request</button>
                                                   </div> 
                                                   <h1 class="text-center">Date</h1>
                                                   <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -287,6 +282,7 @@
                                                                   <th scope="row">Shift Command</th>
                                                                   <td>Sgt. Good #550</td>
                                                                   <td>Sgt. Good #550</td>
+                                                                  <td>None</td>
                                                               </tr>  
                                                               <tr>
                                                                   <th scope="row">Shift Command</th>
@@ -390,6 +386,7 @@
                                                                   <th scope="row">Shift Command</th>
                                                                   <td>Sgt. Good #550</td>
                                                                   <td>Sgt. Good #550</td>
+                                                                  <td>None</td>
                                                               </tr>  
                                                               <tr>
                                                                   <th scope="row">Shift Command</th>
@@ -475,7 +472,7 @@
                                 <div style='clear:both'></div>
 
                                 <!-- Add New Event MODAL -->
-                                <div class="modal fade" id="event-modal" tabindex="-1">
+                                <div class="modal fade" id="timeOffModal" tabindex="-1">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header py-3 px-4 border-bottom-0">

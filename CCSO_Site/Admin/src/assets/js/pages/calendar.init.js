@@ -75,9 +75,19 @@
                     modalTitle.text('Edit Event');
                     newEventData = null;
                 },
-                dateClick: function(info) {
-                    addNewEvent(info);
+                dayRender: function(date, cell) {
+                    var today = new Date();
+                    var end = new Date();
+                    end.setDate(today.getDate()+7);
+
+                   
+                    
                 },
+                dateClick: function(day) {
+                    addNewEvent(info);
+
+                },                
+                
                 events : defaultEvents
             });
             calendar.render();
@@ -124,6 +134,8 @@
             $("#btn-new-event").on('click', function(e) {
                 addNewEvent({date: new Date(), allDay: true});
             });
+
+            
 
     },
     //init

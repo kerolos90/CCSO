@@ -5,24 +5,9 @@
     box-shadow: 0 2px 6px 0 rgb(200 162 80 / 50%) !important;
 }
 
-.navbar-header {
-    background-color: rgba(242, 230, 9, 0.28) !important;
-    box-shadow: 0 2px 6px 0 rgb(200 162 80 / 50%) !important;
 
-}
 
-.navbar-brand-box{
-    background-color: rgb(251 246 152 / 28%) !important;
-    -webkit-box-shadow: none !important;
-
-}
-
-.simplebar-content-wrapper {
-    background-color: rgba(242, 230, 9, 0.28) !important;
-    box-shadow: 0 2px 6px 0 rgb(200 162 80 / 50%) !important;
-
-}
-
-.footer {
-    background-color: rgba(242, 230, 9, 0.28) !important;
-}
+.day-highlight {
+    background-color: yellow !important;
+    color: red !important;
+  }
