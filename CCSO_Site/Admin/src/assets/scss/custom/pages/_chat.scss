@@ -1,10 +1,10 @@
-// 
+//
 // Chat.scss
 //
 
 // chat left sidebar
 
-.chat-leftsidebar{
+.chat-leftsidebar {
   @media (min-width: 992px) {
     min-width: 260px;
   }
@@ -13,10 +13,10 @@
     min-width: 380px;
   }
 
-  .chat-leftsidebar-nav{
-    .nav{
-      .nav-link{
-        &.active{
+  .chat-leftsidebar-nav {
+    .nav {
+      .nav-link {
+        &.active {
           background-color: $card-bg;
           color: $primary;
         }
@@ -27,25 +27,24 @@
 
 // search-box
 
-.search-box{
-  .form-control{
-      padding-left: 40px;
+.search-box {
+  .form-control {
+    padding-left: 40px;
   }
-  .search-icon{
-      font-size: 16px;    
-      position: absolute;
-      left: 13px;
-      top: 0;
-      height: 100%;
-      display: flex;
-      align-items: center;
+  .search-icon {
+    font-size: 16px;
+    position: absolute;
+    left: 13px;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
   }
 }
 
-
-.chat-noti-dropdown{
-  &.active{
-    &:before{
+.chat-noti-dropdown {
+  &.active {
+    &:before {
       content: "";
       position: absolute;
       width: 8px;
@@ -56,7 +55,7 @@
     }
   }
 
-  .btn{
+  .btn {
     padding: 6px;
     box-shadow: none;
     font-size: 20px;
@@ -64,41 +63,39 @@
   }
 }
 
-.chat-message-list{
+.chat-message-list {
   height: calc(100vh - 346px);
-  @media (min-width: 992px){
+  @media (min-width: 992px) {
     height: calc(100vh - 406px);
   }
 }
 
-
-
-.chat-list{
+.chat-list {
   margin: 0;
-  li{
-    &.active{
-      a{
+  li {
+    &.active {
+      a {
         background-color: rgba($primary, 0.075);
         border-color: transparent;
       }
     }
-    a{
+    a {
       display: block;
       padding: 14px 16px;
       color: $text-muted;
       transition: all 0.4s;
       border-top: 1px solid $border-color;
       position: relative;
-      &:hover{
+      &:hover {
         background-color: rgba($primary, 0.075);
         border-color: transparent;
       }
     }
 
-    .user-img{
+    .user-img {
       position: relative;
 
-      .user-status{
+      .user-status {
         width: 10px;
         height: 10px;
         background-color: $gray-500;
@@ -109,21 +106,21 @@
         bottom: 0;
       }
 
-      &.online{
-        .user-status{
+      &.online {
+        .user-status {
           background-color: $success;
         }
       }
 
-      &.away{
-        .user-status{
+      &.away {
+        .user-status {
           background-color: $warning;
         }
       }
     }
 
-    &.unread{
-      a{
+    &.unread {
+      a {
         font-weight: $font-weight-semibold;
         color: var(--#{$variable-prefix}dark);
       }
@@ -138,7 +135,7 @@
   }
 }
 
-.contact-list{
+.contact-list {
   font-size: 12px;
   text-transform: uppercase;
   color: $text-muted;
@@ -148,9 +145,9 @@
 
 // user chat nav
 
-.user-chat-nav{
-  .dropdown{
-    .nav-btn{
+.user-chat-nav {
+  .dropdown {
+    .nav-btn {
       height: 36px;
       width: 36px;
       line-height: 36px;
@@ -164,29 +161,29 @@
 
 // chat conversation
 
-.chat-conversation{
+.chat-conversation {
   height: calc(100vh - 300px);
-  @media (min-width: 992px){
+  @media (min-width: 992px) {
     height: calc(100vh - 360px);
   }
-  li{
+  li {
     clear: both;
   }
 
-  .chat-day-title{
+  .chat-day-title {
     position: relative;
     text-align: center;
     margin-bottom: 24px;
     border: none;
 
-    .title{
+    .title {
       background-color: $card-bg;
       position: relative;
       z-index: 1;
       padding: 6px 24px;
     }
 
-    &:before{
+    &:before {
       content: "";
       position: absolute;
       width: 100%;
@@ -196,12 +193,12 @@
       background-color: $border-color;
       top: 10px;
     }
-    .badge{
+    .badge {
       font-size: 12px;
     }
   }
 
-  .conversation-list{
+  .conversation-list {
     margin-bottom: 24px;
     position: relative;
 
@@ -219,127 +216,124 @@
       margin-left: 16px;
 
       &:before {
-          content: "";
-          position: absolute;
-          border: 5px solid transparent;
-          border-right-color: $primary;
-          border-top-color: $primary;
-          left: -10px;
-          top: 0;
+        content: "";
+        position: absolute;
+        border: 5px solid transparent;
+        border-right-color: $primary;
+        border-top-color: $primary;
+        left: -10px;
+        top: 0;
       }
     }
 
-  .conversation-name {
-    margin-bottom: 4px;
-    display: flex;
-    font-size: 13px;
-      .time{
+    .conversation-name {
+      margin-bottom: 4px;
+      display: flex;
+      font-size: 13px;
+      .time {
         font-size: 12px;
-        color: rgba($white, 0.5); 
+        color: rgba($white, 0.5);
         margin-left: 8px;
         font-weight: $font-weight-normal;
       }
 
-      .user-name{
-        color: rgba($white, 0.5); 
+      .user-name {
+        color: rgba($white, 0.5);
       }
-  }
+    }
 
-
-  .dropdown {
+    .dropdown {
       .dropdown-toggle {
-          font-size: 18px;
-          padding: 4px;
-          color: $gray-600;
+        font-size: 18px;
+        padding: 4px;
+        color: $gray-600;
 
-          @media (max-width: 575.98px) {
-              display: none;
-          }
+        @media (max-width: 575.98px) {
+          display: none;
+        }
       }
+    }
 
-  }
-
-
-  .message-img {
-    border-radius: .2rem;
-    position: relative;
+    .message-img {
+      border-radius: 0.2rem;
+      position: relative;
 
       .message-img-list {
-          position: relative;
+        position: relative;
       }
 
       img {
-          max-width: 140px;
+        max-width: 140px;
       }
     }
   }
 
   .right {
     .conversation-list {
-        float: right;
-        text-align: right;
+      float: right;
+      text-align: right;
 
-        .ctext-wrap {
+      .ctext-wrap {
+        .ctext-wrap-content {
+          order: 2;
+          background-color: var(--#{$variable-prefix}light);
+          text-align: right;
+          border-radius: 8px 0px 8px 8px;
+          margin-left: 0;
+          margin-right: 16px;
+          color: var(--#{$variable-prefix}dark);
 
-            .ctext-wrap-content {
-                order: 2;
-                background-color:  var(--#{$variable-prefix}light);
-                text-align: right;
-                border-radius: 8px 0px 8px 8px;
-                margin-left: 0;
-                margin-right: 16px;
-                color: var(--#{$variable-prefix}dark);
-
-                &:before {
-                    border: 5px solid transparent;
-                    border-top-color: var(--#{$variable-prefix}light);
-                    border-left-color: var(--#{$variable-prefix}light);
-                    left: auto;
-                    right: -10px;
-                }
-            }
-
-            .conversation-name {
-              justify-content: flex-end;
-              .user-name, .time{
-                color: $text-muted; 
-              }
-              .time{
-                order: 1;
-                margin-left: 0;
-                margin-right: 8px;
-              }
-
-              .user-name{
-                  order: 2;
-                }
-            }
+          &:before {
+            border: 5px solid transparent;
+            border-top-color: var(--#{$variable-prefix}light);
+            border-left-color: var(--#{$variable-prefix}light);
+            left: auto;
+            right: -10px;
+          }
         }
 
-        .dropdown {
+        .conversation-name {
+          justify-content: flex-end;
+          .user-name,
+          .time {
+            color: $text-muted;
+          }
+          .time {
             order: 1;
+            margin-left: 0;
+            margin-right: 8px;
+          }
+
+          .user-name {
+            order: 2;
+          }
         }
       }
+
+      .dropdown {
+        order: 1;
+      }
+    }
   }
 }
 
-.chat-send{
+.chat-send {
   @media (max-width: 575.98px) {
     min-width: auto;
   }
- }
+}
 
-body[data-layout="horizontal"]{
-  .chat-message-list{
+body[data-layout="horizontal"] {
+  .chat-message-list {
     height: calc(100vh - 346px);
-    @media (min-width: 992px){
+    @media (min-width: 992px) {
       height: calc(100vh - 476px);
     }
   }
 
-  .chat-conversation{
+  .chat-conversation {
     height: calc(100vh - 300px);
-    @media (min-width: 992px){
+    @media (min-width: 992px) {
       height: calc(100vh - 420px);
     }
   }

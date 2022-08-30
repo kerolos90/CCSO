@@ -1,149 +1,132 @@
+!(function ($) {
+  "use strict";
 
-!function($) {
-    "use strict";
+  var CalendarPage = function () {};
 
-    var CalendarPage = function() {};
+  (CalendarPage.prototype.init = function () {
+    var addEvent = $("#event-modal");
+    var modalTitle = $("#modal-title");
+    var formEvent = $("#form-event");
+    var selectedEvent = null;
+    var newEventData = null;
+    var forms = document.getElementsByClassName("needs-validation");
+    var selectedEvent = null;
+    var newEventData = null;
+    var eventObject = null;
+    /* initialize the calendar */
 
-    CalendarPage.prototype.init = function() {
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+    var Draggable = FullCalendarInteraction.Draggable;
+    var externalEventContainerEl = document.getElementById("external-events");
+    // init dragable
+    new Draggable(externalEventContainerEl, {
+      itemSelector: ".external-event",
+      eventData: function (eventEl) {
+        return {
+          title: eventEl.innerText,
+          className: $(eventEl).data("class"),
+        };
+      },
+    });
+    var defaultEvents = [];
 
-            var addEvent=$("#event-modal");
-            var modalTitle = $("#modal-title");
-            var formEvent = $("#form-event");
-            var selectedEvent = null;
-            var newEventData = null;
-            var forms = document.getElementsByClassName('needs-validation');
-            var selectedEvent = null;
-            var newEventData = null;
-            var eventObject = null;
-            /* initialize the calendar */
+    var draggableEl = document.getElementById("external-events");
+    var calendarEl = document.getElementById("calendar");
 
-            var date = new Date();
-            var d = date.getDate();
-            var m = date.getMonth();
-            var y = date.getFullYear();
-            var Draggable = FullCalendarInteraction.Draggable;
-            var externalEventContainerEl = document.getElementById('external-events');
-            // init dragable
-            new Draggable(externalEventContainerEl, {
-                itemSelector: '.external-event',
-                eventData: function (eventEl) {
-                    return {
-                        title: eventEl.innerText,
-                        className: $(eventEl).data('class')
-                    };
-                }
-            });
-            var defaultEvents = [
-                
-                
-                ];
+    function addNewEvent(info) {
+      addEvent.modal("show");
+      formEvent.removeClass("was-validated");
+      formEvent[0].reset();
 
-            var draggableEl = document.getElementById('external-events');
-            var calendarEl = document.getElementById('calendar');
+      $("#event-title").val();
+      $("#event-category").val();
+      modalTitle.text("Add Event");
+      newEventData = info;
+    }
 
-            function addNewEvent(info) {
-                addEvent.modal('show');
-                formEvent.removeClass("was-validated");
-                formEvent[0].reset();
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      plugins: ["bootstrap", "interaction", "dayGrid", "timeGrid"],
+      editable: true,
+      droppable: true,
+      selectable: true,
+      defaultView: "dayGridMonth",
+      themeSystem: "bootstrap",
+      header: {
+        left: "today ",
+        center: "title",
+        right: "prev,next",
+      },
+      eventClick: function (info) {
+        addEvent.modal("show");
+        formEvent[0].reset();
+        selectedEvent = info.event;
+        $("#event-title").val(selectedEvent.title);
+        $("#event-category").val(selectedEvent.classNames[0]);
+        newEventData = null;
+        modalTitle.text("Edit Event");
+        newEventData = null;
+      },
 
-                $("#event-title").val();
-                $('#event-category').val();
-                modalTitle.text('Add Event');
-                newEventData = info;
-            }
-            
+      dateClick: function (info) {
+        addNewEvent(info);
+      },
 
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                plugins: [ 'bootstrap', 'interaction', 'dayGrid', 'timeGrid'],
-                editable: true,
-                droppable: true,
-                selectable: true,
-                defaultView: 'dayGridMonth',
-                themeSystem: 'bootstrap',
-                header: {
-                    left : "today ",
-                    center: 'title',
-                    right: 'prev,next'
-                },
-                eventClick: function(info) {
-                    addEvent.modal('show');
-                    formEvent[0].reset();
-                    selectedEvent = info.event;
-                    $("#event-title").val(selectedEvent.title);
-                    $('#event-category').val(selectedEvent.classNames[0]);
-                    newEventData = null;
-                    modalTitle.text('Edit Event');
-                    newEventData = null;
-                },
-                dayRender: function(date, cell) {
-                    var today = new Date();
-                    var end = new Date();
-                    end.setDate(today.getDate()+7);
+      events: defaultEvents,
+    });
+    calendar.render();
 
-                   
-                    
-                },
-                dateClick: function(day) {
-                    addNewEvent(info);
+    /*Add new event*/
+    // Form to add new event
 
-                },                
-                
-                events : defaultEvents
-            });
-            calendar.render();
-            
-             /*Add new event*/
-            // Form to add new event
+    $(formEvent).on("submit", function (ev) {
+      ev.preventDefault();
+      var inputs = $("#form-event :input");
+      var updatedTitle = $("#event-title").val();
+      var updatedCategory = $("#event-category").val();
 
-            $(formEvent).on('submit', function(ev) {
-                ev.preventDefault();
-                var inputs = $('#form-event :input');
-                var updatedTitle = $("#event-title").val();
-                var updatedCategory =  $('#event-category').val();
-                
-                // validation
-                if (forms[0].checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                        forms[0].classList.add('was-validated');
-                } else {
-                    if(selectedEvent){
-                        selectedEvent.setProp("title", updatedTitle);
-                        selectedEvent.setProp("classNames", [updatedCategory]);
-                    } else {
-                        var newEvent = {
-                            title: updatedTitle,
-                            start: newEventData.date,
-                            allDay: newEventData.allDay,
-                            className: updatedCategory
-                        }
-                        calendar.addEvent(newEvent);
-                    }
-                    addEvent.modal('hide');
-                }
-            });
+      // validation
+      if (forms[0].checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+        forms[0].classList.add("was-validated");
+      } else {
+        if (selectedEvent) {
+          selectedEvent.setProp("title", updatedTitle);
+          selectedEvent.setProp("classNames", [updatedCategory]);
+        } else {
+          var newEvent = {
+            title: updatedTitle,
+            start: newEventData.date,
+            allDay: newEventData.allDay,
+            className: updatedCategory,
+          };
+          calendar.addEvent(newEvent);
+        }
+        addEvent.modal("hide");
+      }
+    });
 
-            $("#btn-delete-event").on('click', function(e) {
-                if (selectedEvent) {
-                    selectedEvent.remove();
-                    selectedEvent = null;
-                    addEvent.modal('hide');
-                }
-            });
+    $("#btn-delete-event").on("click", function (e) {
+      if (selectedEvent) {
+        selectedEvent.remove();
+        selectedEvent = null;
+        addEvent.modal("hide");
+      }
+    });
 
-            $("#btn-new-event").on('click', function(e) {
-                addNewEvent({date: new Date(), allDay: true});
-            });
-
-            
-
-    },
+    $("#btn-new-event").on("click", function (e) {
+      addNewEvent({ date: new Date(), allDay: true });
+    });
+  }),
     //init
-    $.CalendarPage = new CalendarPage, $.CalendarPage.Constructor = CalendarPage
-}(window.jQuery),
-
-//initializing 
-function($) {
+    ($.CalendarPage = new CalendarPage()),
+    ($.CalendarPage.Constructor = CalendarPage);
+})(window.jQuery),
+  //initializing
+  (function ($) {
     "use strict";
-    $.CalendarPage.init()
-}(window.jQuery);
+    $.CalendarPage.init();
+  })(window.jQuery);

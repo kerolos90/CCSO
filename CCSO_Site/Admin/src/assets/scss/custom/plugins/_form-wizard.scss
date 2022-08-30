@@ -4,10 +4,9 @@
 
 // twitter-bs-wizard
 
-.twitter-bs-wizard{
-  .twitter-bs-wizard-nav{
-
-    .step-icon{
+.twitter-bs-wizard {
+  .twitter-bs-wizard-nav {
+    .step-icon {
       display: inline-block;
       width: 56px;
       height: 56px;
@@ -27,27 +26,27 @@
       }
     }
 
-    .step-title{
+    .step-title {
       margin-left: 6px;
     }
 
-    .nav-item{
-      &:last-child{
-        .nav-link{
-          &::after{
+    .nav-item {
+      &:last-child {
+        .nav-link {
+          &::after {
             display: none;
           }
         }
       }
 
-      .nav-link{
-        &.done{
-          .step-icon{
+      .nav-link {
+        &.done {
+          .step-icon {
             background-color: $primary;
             color: $white;
           }
-          .uil{
-            &:before{
+          .uil {
+            &:before {
               content: "\e9c3";
             }
           }
@@ -55,13 +54,13 @@
       }
     }
 
-    .nav-link{
+    .nav-link {
       font-size: 14px;
       position: relative;
       @media (max-width: 575.98px) {
         padding: 0.5rem;
       }
-      &::after{
+      &::after {
         content: "";
         position: absolute;
         width: 75%;
@@ -74,11 +73,11 @@
           display: none;
         }
       }
-      &.active{
+      &.active {
         color: $gray-700;
         background-color: transparent;
 
-        .step-icon{
+        .step-icon {
           background-color: rgba($primary, 0.2);
           color: $primary;
           border-color: rgba($primary, 0.2);
@@ -86,24 +85,23 @@
       }
     }
   }
-  
-  .twitter-bs-wizard-pager-link{
-    padding-top: 24px;
-      padding-left: 0;
-      list-style: none;
-      margin-bottom: 0;
-      li{
-        display: inline-block;
 
-        &.next{
-          float: right;
-        }
+  .twitter-bs-wizard-pager-link {
+    padding-top: 24px;
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 0;
+    li {
+      display: inline-block;
+
+      &.next {
+        float: right;
       }
     }
+  }
 }
 
-.twitter-bs-wizard-tab-content{
+.twitter-bs-wizard-tab-content {
   padding-top: 24px;
   min-height: 262px;
 }
-

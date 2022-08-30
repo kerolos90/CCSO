@@ -4,7 +4,8 @@
 
 .choices__inner {
   background-color: var(--#{$variable-prefix}input-bg);
-  padding: 0.25rem ($form-select-padding-x + $form-select-indicator-padding) 0.25rem 0.5rem;
+  padding: 0.25rem ($form-select-padding-x + $form-select-indicator-padding)
+    0.25rem 0.5rem;
   background-color: $form-select-bg;
   vertical-align: middle;
   border-radius: $form-select-border-radius;
@@ -13,35 +14,34 @@
   border: 1px solid var(--#{$variable-prefix}input-border);
 }
 
-.choices__heading{
+.choices__heading {
   border-bottom: 1px solid var(--#{$variable-prefix}input-border);
 }
 
-.is-focused .choices__inner, .is-open .choices__inner{
+.is-focused .choices__inner,
+.is-open .choices__inner {
   border-color: var(--#{$variable-prefix}input-border);
 }
 
 // .choices__inner {
 //   color: $gray-dark-500;
- 
-//   
+
+//
 // }
 
-.choices__list--dropdown{
+.choices__list--dropdown {
   border-color: var(--#{$variable-prefix}input-border) !important;
 }
 
-
-
-.choices[data-type*=select-one] .choices__input{
-  background-color:  var(--#{$variable-prefix}input-bg) !important;
+.choices[data-type*="select-one"] .choices__input {
+  background-color: var(--#{$variable-prefix}input-bg) !important;
   border-color: var(--#{$variable-prefix}input-border);
 }
 
 .choices[data-type*="select-one"] {
   .choices__inner {
     padding-bottom: 0.25rem;
-    background-color:  var(--#{$variable-prefix}input-bg) !important;
+    background-color: var(--#{$variable-prefix}input-bg) !important;
   }
   .choices__button {
     right: 0;
@@ -49,9 +49,6 @@
     margin-right: 25px;
     margin-left: 0;
   }
-
-
-  
 
   &:after {
     border-color: var(--#{$variable-prefix}dark) transparent transparent;
@@ -65,7 +62,7 @@
 }
 
 .choices__input {
-  background-color: var(--#{$variable-prefix}input-bg) ;
+  background-color: var(--#{$variable-prefix}input-bg);
   margin-bottom: 0;
   color: var(--#{$variable-prefix}gray-600);
 }
@@ -89,7 +86,7 @@
 .choices.is-disabled {
   .choices__inner,
   .choices__input {
-    background-color: var(--#{$variable-prefix}light) ;
+    background-color: var(--#{$variable-prefix}light);
   }
 }
 
@@ -110,13 +107,12 @@
 }
 
 .choices__list--dropdown {
-  background-color: var(--#{$variable-prefix}card-bg) ;
+  background-color: var(--#{$variable-prefix}card-bg);
   border: 1px solid var(--#{$variable-prefix}input-border);
 
   .choices__item--selectable {
     &.is-highlighted {
-      background-color: var(--#{$variable-prefix}gray-300) ;
+      background-color: var(--#{$variable-prefix}gray-300);
     }
   }
 }
-

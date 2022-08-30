@@ -1,0 +1,104 @@
+<html>
+  @@include("partials/main.html")
+
+  <head>
+    @@include("partials/title-meta.html", {"title": "Ivesdale"})
+
+    <!-- plugin css -->
+    <link
+      href="assets/libs/@fullcalendar/core/main.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="assets/libs/@fullcalendar/daygrid/main.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="assets/libs/@fullcalendar/bootstrap/main.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="assets/libs/@fullcalendar/timegrid/main.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    @@include("partials/head-css.html")
+  </head>
+
+  @@include("partials/body.html")
+  <body>
+    <div id="layout-wrapper">
+      @@include("partials/menu.html")
+
+      <div class="main-content">
+        <div class="page-content">
+          <div class="container-fluid">
+            <div class="card shadow">
+              <div class="card-body">
+                <h3 class="text-center " id="village_title">Ivesdale</h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-xl-9 col-lg-8">
+                    <div class="card">
+                      <div class="card-body shadow-lg">
+                        <div id="calendar"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end col -->
+
+                  <div class="col-xl-3 col-lg-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body" id="monthly_totals">
+                            <div id="external-events" class=""></div>
+                        </div>
+                    </div>
+                  </div>
+                  <!-- end col-->
+                </div>
+                <!-- end row -->
+
+                <div style="clear: both"></div>
+
+                <!-- Contract Sheet Modal -->
+                <div class="modal fade" id="event-modal" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content" id="contract_sheet_modal"></div>
+                    </div>
+                </div>
+                <!-- end modal -->
+              </div>
+            </div>
+          </div>
+          <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+
+        @@include("partials/footer.html")
+      </div>
+      <!-- end main content-->
+    </div>
+    <!-- END layout-wrapper -->
+
+    @@include("partials/right-sidebar.html")
+    @@include("partials/vendor-scripts.html")
+
+    <script src="assets/libs/@fullcalendar/core/main.min.js"></script>
+    <script src="assets/libs/@fullcalendar/bootstrap/main.min.js"></script>
+    <script src="assets/libs/@fullcalendar/daygrid/main.min.js"></script>
+    <script src="assets/libs/@fullcalendar/timegrid/main.min.js"></script>
+    <script src="assets/libs/@fullcalendar/interaction/main.min.js"></script>
+
+    <!-- Calendar init -->
+    <script src="assets/js/pages/calendar.init.js"></script>
+
+    <script src="assets/js/pages/contract_sheet.init.js"></script>
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>

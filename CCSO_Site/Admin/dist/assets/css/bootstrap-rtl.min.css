@@ -13418,13 +13418,33 @@ html {
   min-height: 100%;
 }
 
-.h1, .h2, .h3, .h4, .h5, .h6,
-h1, h2, h3, h4, h5, h6 {
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #495057;
 }
 
-[data-layout-mode=dark] .h1, [data-layout-mode=dark] .h2, [data-layout-mode=dark] .h3, [data-layout-mode=dark] .h4, [data-layout-mode=dark] .h5, [data-layout-mode=dark] .h6,
-[data-layout-mode=dark] h1, [data-layout-mode=dark] h2, [data-layout-mode=dark] h3, [data-layout-mode=dark] h4, [data-layout-mode=dark] h5, [data-layout-mode=dark] h6 {
+[data-layout-mode=dark] .h1,
+[data-layout-mode=dark] .h2,
+[data-layout-mode=dark] .h3,
+[data-layout-mode=dark] .h4,
+[data-layout-mode=dark] .h5,
+[data-layout-mode=dark] .h6,
+[data-layout-mode=dark] h1,
+[data-layout-mode=dark] h2,
+[data-layout-mode=dark] h3,
+[data-layout-mode=dark] h4,
+[data-layout-mode=dark] h5,
+[data-layout-mode=dark] h6 {
   color: var(--bs-gray-600);
 }
 
@@ -13449,7 +13469,12 @@ label {
 }
 
 @media (min-width: 1200px) {
-  .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+  .container,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
     max-width: 1140px;
   }
 }
@@ -14249,9 +14274,12 @@ a {
 [data-layout-mode=dark] .btn-check:checked + .btn-light,
 [data-layout-mode=dark] .btn-check:checked + .btn-outline-light,
 [data-layout-mode=dark] .btn-check:checked + .btn-soft-light,
-[data-layout-mode=dark] .btn-light.active, [data-layout-mode=dark] .btn-light:active,
-[data-layout-mode=dark] .btn-outline-light.active, [data-layout-mode=dark] .btn-outline-light:active,
-[data-layout-mode=dark] .btn-soft-light.active, [data-layout-mode=dark] .btn-soft-light:active,
+[data-layout-mode=dark] .btn-light.active,
+[data-layout-mode=dark] .btn-light:active,
+[data-layout-mode=dark] .btn-outline-light.active,
+[data-layout-mode=dark] .btn-outline-light:active,
+[data-layout-mode=dark] .btn-soft-light.active,
+[data-layout-mode=dark] .btn-soft-light:active,
 [data-layout-mode=dark] .show > .btn-light.dropdown-toggle,
 [data-layout-mode=dark] .show > .btn-outline-light.dropdown-toggle,
 [data-layout-mode=dark] .show > .btn-soft-light.dropdown-toggle {
@@ -14285,9 +14313,12 @@ a {
 [data-layout-mode=dark] .btn-check:checked + .btn-dark,
 [data-layout-mode=dark] .btn-check:checked + .btn-outline-dark,
 [data-layout-mode=dark] .btn-check:checked + .btn-soft-dark,
-[data-layout-mode=dark] .btn-dark.active, [data-layout-mode=dark] .btn-dark:active,
-[data-layout-mode=dark] .btn-outline-dark.active, [data-layout-mode=dark] .btn-outline-dark:active,
-[data-layout-mode=dark] .btn-soft-dark.active, [data-layout-mode=dark] .btn-soft-dark:active,
+[data-layout-mode=dark] .btn-dark.active,
+[data-layout-mode=dark] .btn-dark:active,
+[data-layout-mode=dark] .btn-outline-dark.active,
+[data-layout-mode=dark] .btn-outline-dark:active,
+[data-layout-mode=dark] .btn-soft-dark.active,
+[data-layout-mode=dark] .btn-soft-dark:active,
 [data-layout-mode=dark] .show > .btn-dark.dropdown-toggle,
 [data-layout-mode=dark] .show > .btn-outline-dark.dropdown-toggle,
 [data-layout-mode=dark] .show > .btn-soft-dark.dropdown-toggle {
@@ -14607,7 +14638,8 @@ body[data-layout-mode=dark] .breadcrumb-item.active {
   background-color: var(--bs-light);
   color: var(--bs-gray-400);
 }
-[data-layout-mode=dark] .table-light th, [data-layout-mode=dark] .table-light td {
+[data-layout-mode=dark] .table-light th,
+[data-layout-mode=dark] .table-light td {
   background-color: var(--bs-light);
 }
 

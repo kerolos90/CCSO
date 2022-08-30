@@ -8,6 +8,6 @@
 // Shadows
 @each $color, $value in $theme-colors {
   .shadow-#{$color} {
-      @include componets-shadow($value);
+    @include componets-shadow($value);
   }
 }
