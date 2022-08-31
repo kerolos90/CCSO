@@ -12,6 +12,9 @@
         <link rel="shortcut icon" href="assets/images/favicon.ico" />
 
 
+        <!-- jquery.vectormap css -->
+        <link href="assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+
         <!-- preloader css -->
         <link rel="stylesheet" href="assets/css/preloader.min.css" type="text/css" />
         <link rel="stylesheet" href="assets/css/custom.css" type="text/css" />
@@ -247,189 +250,236 @@
             
 
 
-            <!-- ============================================================== -->
-            <!-- Start right Content here -->
-            <!-- ============================================================== -->
             <div class="main-content">
 
                 <div class="page-content">
                     <div class="container-fluid">
-
-                        <!-- start page title -->
-                        <div class="row">
-                          <div class="col-12">
-                            <div
-                              class="page-title-box d-sm-flex align-items-center justify-content-between"
-                            >
-                              <h4 class="mb-sm-0 font-size-18">FAQs</h4>
-
-                              <div class="page-title-right">
-                                <ol class="breadcrumb m-0">
-                                  <li class="breadcrumb-item">
-                                    <a href="javascript: void(0);">Pages</a>
-                                  </li>
-                                  <li class="breadcrumb-item active">FAQs</li>
-                                </ol>
-                              </div>
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <h3 class="text-center">Field Training</h3>
                             </div>
-                          </div>
                         </div>
-                        <!-- end page title -->
+                        <div class="">
+                            <button class="btn btn-light shadow" type="button">Recruit Resources</button>                            
+                            <div class="d-md-flex justify-content-md-end">
+                                <button class="btn btn-success" type="button">Add New</button>
+                            </div>
 
-                        
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row justify-content-center mt-3">
-                                            <div class="col-xl-5 col-lg-8">
-                                                <div class="text-center">
-                                                    <h5>Can't find what you are looking for?</h5>
-                                                    <p class="text-muted">If several languages coalesce, the grammar of the resulting language
-                                                        is more simple and regular than that of the individual</p>
-                                                    <div>
-                                                        <button type="button" class="btn btn-primary mt-2 me-2 waves-effect waves-light">Email
-                                                            Us</button>
-                                                        <button type="button" class="btn btn-success mt-2 waves-effect waves-light">Send us a
-                                                            tweet</button>
+                        </div>
+                        <br>
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <div class="accordion accordion-flush" id="accordionFlushExample">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                                Deputy Test
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                                            data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <nav>
+                                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                        <button class="nav-link active" id="nav-phase-one" data-bs-toggle="tab" data-bs-target="#phase-one" type="button"
+                                                            role="tab" aria-controls="phase-one" aria-selected="true">Phase #1</button>
+                                                        <button class="nav-link" id="nav-phase-two" data-bs-toggle="tab" data-bs-target="#phase-two" type="button"
+                                                            role="tab" aria-controls="phase-two" aria-selected="true">Phase #2</button>
+                                                        <button class="nav-link" id="nav-phase-three" data-bs-toggle="tab" data-bs-target="#phase-three" type="button" role="tab"
+                                                            aria-controls="phase-three" aria-selected="true">Phase #3</button>
+                                                        <button class="nav-link" id="nav-phase-four" data-bs-toggle="tab" data-bs-target="#phase-four" type="button" role="tab"
+                                                            aria-controls="phase-four" aria-selected="true">Phase #4</button>
                                                     </div>
-
-                                                    <div class="row justify-content-center">
-                                                        <div class="col-xl-10">
-                                                            <form class="app-search d-none d-lg-block mt-4">
-                                                                <div class="position-relative">
-                                                                    <input type="text" class="form-control" placeholder="Search...">
-                                                                    <button class="btn btn-primary" type="button"><i class="bx bx-search-alt align-middle"></i></button>
+                                                </nav>
+                                                <div class="tab-content" id="nav-tabContent">
+                                                    <div class="tab-pane fade show active" id="phase-one" role="tabpanel" aria-labelledby="nav-phase-one">
+                                                        <div class="accordion" id="training-days">
+                                                            <div class="accordion-item">
+                                                                <h2 class="accordion-header" id="day-1">
+                                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#day-1-collapse"
+                                                                        aria-controls="collapseOne">
+                                                                        Day #1 
+                                                                    </button>
+                                                                </h2>
+                                                                <div id="day-1-collapse" class="accordion-collapse collapse " aria-labelledby="day-1"
+                                                                    data-bs-parent="#training-days">
+                                                                    <div class="accordion-body">
+                                                                        <ul>
+                                                                            <li>Daily Observation Report (DOR)</li>
+                                                                            <li>Patrol Log</li>
+                                                                            <li>Report Cover</li>
+                                                                        </ul>
+                                                                    </div>
                                                                 </div>
-                                                            </form>
+                                                                <div class="accordion-item">
+                                                                    <h2 class="accordion-header" id="headingOne">
+                                                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                                                             aria-controls="collapseOne">
+                                                                            Day #2
+                                                                        </button>
+                                                                    </h2>
+                                                                    <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne"
+                                                                        data-bs-parent="#accordionExample">
+                                                                        <div class="accordion-body">
+                                                                            <ul>
+                                                                                <li>Daily Observation Report (DOR)</li>
+                                                                                <li>Patrol Log</li>
+                                                                                <li>Report Cover</li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                            </div>
+                                                            
+                                                            <div class="accordion" id="accordionExample">
+                                                                <div class="accordion-item">
+                                                                    <h2 class="accordion-header" id="headingOne">
+                                                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                                                            aria-expanded="true" aria-controls="collapseOne">
+                                                                            Weekly 
+                                                                        </button>
+                                                                    </h2>
+                                                                    <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne"
+                                                                        data-bs-parent="#accordionExample">
+                                                                        <div class="accordion-body">
+                                                                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse
+                                                                            plugin adds the appropriate classes that we use to style each element. These classes control the overall
+                                                                            appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with
+                                                                            custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go
+                                                                            within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+                                                            
                                                         </div>
                                                     </div>
+                                                    <div class="tab-pane fade" id="phase-two" role="tabpanel" aria-labelledby="nav-phase-two">Phase 2...</div>
+                                                    <div class="tab-pane fade" id="phase-three" role="tabpanel" aria-labelledby="nav-phase-three">Phase 3...</div>
+                                                    <div class="tab-pane fade" id="phase-four" role="tabpanel" aria-labelledby="nav-phase-four">Phase 4...</div>
+                                                    
                                                 </div>
-                                            </div>
-                                            <!-- end col -->
-                                        </div>
-                                        <!-- end row -->
 
-                                        <div class="row mt-5">
-                                            <div class="col-xl-4 col-sm-6">
-                                                <div class="card">
-                                                    <div class="card-body overflow-hidden position-relative">
-                                                        <div>
-                                                            <i class="bx bx-help-circle widget-box-1-icon text-primary"></i>
-                                                        </div>
-                                                         <div class="faq-count">
-                                                            <h5 class="text-primary">01.</h5>
-                                                         </div>
-                                                        <h5 class="mt-3">What is Lorem Ipsum?</h5>
-                                                        <p class="text-muted mt-3 mb-0">New common language will be more simple and regular than the existing European languages. It will be as simple as occidental.</p>
-                                                    </div>
-                                                    <!-- end card body -->
-                                                </div>
-                                                <!-- end card -->
                                             </div>
-                                            <!-- end col -->
-                                            <div class="col-xl-4 col-sm-6">
-                                                <div class="card">
-                                                    <div class="card-body overflow-hidden position-relative">
-                                                        <div>
-                                                            <i class="bx bx-help-circle widget-box-1-icon text-primary"></i>
-                                                        </div>
-                                                        <div class="faq-count">
-                                                            <h5 class="text-primary">02.</h5>
-                                                         </div>
-                                                        <h5 class="mt-3">Where does it come from?</h5>
-                                                        <p class="text-muted mt-3 mb-0">Everyone realizes why a new common language would be desirable one could refuse to pay expensive translators.</p>
-                                                    </div>
-                                                    <!-- end card body -->
-                                                </div>
-                                                <!-- end card -->
-                                            </div>
-                                            <!-- end col -->
-                            
-                                            <div class="col-xl-4 col-sm-6">
-                                                <div class="card">
-                                                    <div class="card-body overflow-hidden position-relative">
-                                                        <div>
-                                                            <i class="bx bx-help-circle widget-box-1-icon text-primary"></i>
-                                                        </div>
-                                                        <div class="faq-count">
-                                                            <h5 class="text-primary">03.</h5>
-                                                         </div>
-                                                        <h5 class="mt-3">Where can I get some?</h5>
-                                                        <p class="text-muted mt-3 mb-0">If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages.</p>
-                                                    </div>
-                                                    <!-- end card body -->
-                                                </div>
-                                                <!-- end card -->
-                                            </div>
-                                            <!-- end col -->
-
-                                            <div class="col-xl-4 col-sm-6">
-                                                <div class="card">
-                                                    <div class="card-body overflow-hidden position-relative">
-                                                        <div>
-                                                            <i class="bx bx-help-circle widget-box-1-icon text-primary"></i>
-                                                        </div>
-                                                        <div class="faq-count">
-                                                            <h5 class="text-primary">04.</h5>
-                                                         </div>
-                                                        <h5 class="mt-3">Why do we use it?</h5>
-                                                        <p class="text-muted mt-3 mb-0">Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary.</p>
-                                                    </div>
-                                                    <!-- end card body -->
-                                                </div>
-                                                <!-- end card -->
-                                            </div>
-                                            <!-- end col -->
-                            
-                                            <div class="col-xl-4 col-sm-6">
-                                                <div class="card">
-                                                    <div class="card-body overflow-hidden position-relative">
-                                                        <div>
-                                                            <i class="bx bx-help-circle widget-box-1-icon text-primary"></i>
-                                                        </div>
-                                                        <div class="faq-count">
-                                                            <h5 class="text-primary">05.</h5>
-                                                         </div>
-                                                        <h5 class="mt-3">
-                                                            Where can I get some?</h5>
-                                                        <p class="text-muted mt-3 mb-0">The point of using Lorem Ipsum is that it has a 
-                                                            more-or-less normal they distribution of letters opposed to using content here.</p>
-                                                    </div>
-                                                    <!-- end card body -->
-                                                </div>
-                                                <!-- end card -->
-                                            </div>
-                                            <!-- end col -->
-                            
-                                            <div class="col-xl-4 col-sm-6">
-                                                <div class="card">
-                                                    <div class="card-body overflow-hidden position-relative">
-                                                        <div>
-                                                            <i class="bx bx-help-circle widget-box-1-icon text-primary"></i>
-                                                        </div>
-                                                        <div class="faq-count">
-                                                            <h5 class="text-primary">06.</h5>
-                                                         </div>
-                                                        <h5 class="mt-3">What is Lorem Ipsum?</h5>
-                                                        <p class="text-muted mt-3 mb-0">To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental</p>
-                                                    </div>
-                                                    <!-- end card body -->
-                                                </div>
-                                                <!-- end card -->
-                                            </div>
-                                            <!-- end col -->
                                         </div>
-                                        <!-- end row -->
                                     </div>
-                                    <!-- end  card body -->
+                                    
+                                    
                                 </div>
-                                <!-- end card -->
+                                
                             </div>
-                            <!-- end col -->
+                            
                         </div>
-                        <!-- end row -->
+                        </div>
 
+                        <div class="card shadow">
+                            <div class="card-body">
+                            <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                    aria-expanded="false" aria-controls="collapseOne">
+                                    Deputy Test
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <nav>
+                                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                            <button class="nav-link active" id="nav-phase-one" data-bs-toggle="tab" data-bs-target="#phase-one"
+                                                type="button" role="tab" aria-controls="phase-one" aria-selected="true">Phase #1</button>
+                                            <button class="nav-link" id="nav-phase-two" data-bs-toggle="tab" data-bs-target="#phase-two"
+                                                type="button" role="tab" aria-controls="phase-two" aria-selected="true">Phase #2</button>
+                                            <button class="nav-link" id="nav-phase-three" data-bs-toggle="tab" data-bs-target="#phase-three"
+                                                type="button" role="tab" aria-controls="phase-three" aria-selected="true">Phase #3</button>
+                                            <button class="nav-link" id="nav-phase-four" data-bs-toggle="tab" data-bs-target="#phase-four"
+                                                type="button" role="tab" aria-controls="phase-four" aria-selected="true">Phase #4</button>
+                                        </div>
+                                    </nav>
+                                    <div class="tab-content" id="nav-tabContent">
+                                        <div class="tab-pane fade show active" id="phase-one" role="tabpanel" aria-labelledby="nav-phase-one">
+                                            <div class="accordion" id="training-days">
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="day-1">
+                                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                            data-bs-target="#day-1-collapse" aria-controls="collapseOne">
+                                                            Day #1
+                                                        </button>
+                                                    </h2>
+                                                    <div id="day-1-collapse" class="accordion-collapse collapse " aria-labelledby="day-1"
+                                                        data-bs-parent="#training-days">
+                                                        <div class="accordion-body">
+                                                            <ul>
+                                                                <li>Daily Observation Report (DOR)</li>
+                                                                <li>Patrol Log</li>
+                                                                <li>Report Cover</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="headingOne">
+                                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                                data-bs-target="#collapseOne" aria-controls="collapseOne">
+                                                                Day #2
+                                                            </button>
+                                                        </h2>
+                                                        <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne"
+                                                            data-bs-parent="#accordionExample">
+                                                            <div class="accordion-body">
+                                                                <ul>
+                                                                    <li>Daily Observation Report (DOR)</li>
+                                                                    <li>Patrol Log</li>
+                                                                    <li>Report Cover</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="accordion" id="accordionExample">
+                                                        <div class="accordion-item">
+                                                            <h2 class="accordion-header" id="headingOne">
+                                                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                                    data-bs-target="#collapseOne" aria-expanded="true"
+                                                                    aria-controls="collapseOne">
+                                                                    Weekly
+                                                                </button>
+                                                            </h2>
+                                                            <div id="collapseOne" class="accordion-collapse collapse "
+                                                                aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                                <div class="accordion-body">
+                                                                    <strong>This is the first item's accordion body.</strong> It is shown by
+                                                                    default, until the collapse
+                                                                    plugin adds the appropriate classes that we use to style each element. These
+                                                                    classes control the overall
+                                                                    appearance, as well as the showing and hiding via CSS transitions. You can
+                                                                    modify any of this with
+                                                                    custom CSS or overriding our default variables. It's also worth noting that
+                                                                    just about any HTML can go
+                                                                    within the <code>.accordion-body</code>, though the transition does limit
+                                                                    overflow.
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                        
+                                                    </div>
+                        
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="phase-two" role="tabpanel" aria-labelledby="nav-phase-two">Phase 2...
+                                            </div>
+                                            <div class="tab-pane fade" id="phase-three" role="tabpanel" aria-labelledby="nav-phase-three">Phase
+                                                3...</div>
+                                            <div class="tab-pane fade" id="phase-four" role="tabpanel" aria-labelledby="nav-phase-four">Phase
+                                                4...</div>
+                        
+                                        </div>
+                        
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                     </div> <!-- container-fluid -->
                 </div>
                 <!-- End Page-content -->
@@ -713,6 +763,9 @@
         <!-- pace js -->
         <script src="assets/libs/pace-js/pace.min.js"></script>
 
+
+
+        <!-- Init js-->
 
         <script src="assets/js/app.js"></script>
 
