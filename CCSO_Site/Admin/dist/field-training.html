@@ -2,52 +2,52 @@
 <html lang="en"></html>
 
 
-    <head>
-        
-        <meta charset="utf-8" />
-        <title>Champaign County Sheriff's Office</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="utf-8" />
+  <title>Champaign County Sheriff's Office</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico" />
+  <!-- App favicon -->
+  <link rel="shortcut icon" href="assets/images/favicon.ico" />
 
+        <link href="assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
 
-        <!-- jquery.vectormap css -->
-        <link href="assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+  <!-- jquery.vectormap css -->
+  <link
+    href="assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css"
+    rel="stylesheet"
+    type="text/css"
+  />
 
-        <!-- preloader css -->
-        <link rel="stylesheet" href="assets/css/preloader.min.css" type="text/css" />
-        <link rel="stylesheet" href="assets/css/custom.css" type="text/css" />
+  <!-- preloader css -->
+  <link rel="stylesheet" href="assets/css/preloader.min.css" type="text/css" />
+  <link rel="stylesheet" href="assets/css/custom.css" type="text/css" />
 
-        <!-- Bootstrap Css -->
-        <link
-          href="assets/css/bootstrap.min.css"
-          id="bootstrap-style"
-          rel="stylesheet"
-          type="text/css"
-        />
-        <!-- Icons Css -->
-        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-        <!-- App Css-->
-        <link
-          href="assets/css/app.min.css"
-          id="app-style"
-          rel="stylesheet"
-          type="text/css"
-        />
+  <!-- Bootstrap Css -->
+  <link
+    href="assets/css/bootstrap.min.css"
+    id="bootstrap-style"
+    rel="stylesheet"
+    type="text/css"
+  />
+  <!-- Icons Css -->
+  <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+  <!-- App Css-->
+  <link
+    href="assets/css/app.min.css"
+    id="app-style"
+    rel="stylesheet"
+    type="text/css"
+  />
 
+</head>
+<body>
+  <!-- <body data-layout="horizontal"> -->
+</body>
 
-    </head>
-
-    <body>
-      <!-- <body data-layout="horizontal"> -->
-    </body>
-
-
-        <!-- Begin page -->
-        <div id="layout-wrapper">
-
-            <header id="page-topbar">
+<!-- Begin page -->
+<div id="layout-wrapper">
+  <header id="page-topbar">
   <div class="navbar-header shadow">
     <div class="d-flex">
       <!-- LOGO -->
@@ -247,527 +247,462 @@
 <!-- Left Sidebar End -->
 
 
-            
+  
 
 
-            <div class="main-content">
+  <div class="main-content">
+    <div class="page-content">
+      <div class="container-fluid" id="field-training-container">
+        <div class="card shadow">
+          <div class="card-body">
+            <h3 class="text-center">Field Training</h3>
+          </div>
+        </div>
+        <div class="">
+          <button class="btn btn-light shadow" type="button">
+            Recruit Resources
+          </button>
+          <div class="d-md-flex justify-content-md-end">
+            <button class="btn btn-success" type="button">Add New</button>
+          </div>
+        </div>
 
-                <div class="page-content">
-                    <div class="container-fluid">
-                        <div class="card shadow">
-                            <div class="card-body">
-                                <h3 class="text-center">Field Training</h3>
-                            </div>
-                        </div>
-                        <div class="">
-                            <button class="btn btn-light shadow" type="button">Recruit Resources</button>                            
-                            <div class="d-md-flex justify-content-md-end">
-                                <button class="btn btn-success" type="button">Add New</button>
-                            </div>
+        <br />
 
-                        </div>
-                        <br>
-                        <div class="card shadow">
-                            <div class="card-body">
-                                <div class="accordion accordion-flush" id="accordionFlushExample">
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="flush-headingOne">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                                data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                                Deputy Test
-                                            </button>
-                                        </h2>
-                                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-                                            data-bs-parent="#accordionFlushExample">
-                                            <div class="accordion-body">
-                                                <nav>
-                                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                        <button class="nav-link active" id="nav-phase-one" data-bs-toggle="tab" data-bs-target="#phase-one" type="button"
-                                                            role="tab" aria-controls="phase-one" aria-selected="true">Phase #1</button>
-                                                        <button class="nav-link" id="nav-phase-two" data-bs-toggle="tab" data-bs-target="#phase-two" type="button"
-                                                            role="tab" aria-controls="phase-two" aria-selected="true">Phase #2</button>
-                                                        <button class="nav-link" id="nav-phase-three" data-bs-toggle="tab" data-bs-target="#phase-three" type="button" role="tab"
-                                                            aria-controls="phase-three" aria-selected="true">Phase #3</button>
-                                                        <button class="nav-link" id="nav-phase-four" data-bs-toggle="tab" data-bs-target="#phase-four" type="button" role="tab"
-                                                            aria-controls="phase-four" aria-selected="true">Phase #4</button>
-                                                    </div>
-                                                </nav>
-                                                <div class="tab-content" id="nav-tabContent">
-                                                    <div class="tab-pane fade show active" id="phase-one" role="tabpanel" aria-labelledby="nav-phase-one">
-                                                        <div class="accordion" id="training-days">
-                                                            <div class="accordion-item">
-                                                                <h2 class="accordion-header" id="day-1">
-                                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#day-1-collapse"
-                                                                        aria-controls="collapseOne">
-                                                                        Day #1 
-                                                                    </button>
-                                                                </h2>
-                                                                <div id="day-1-collapse" class="accordion-collapse collapse " aria-labelledby="day-1"
-                                                                    data-bs-parent="#training-days">
-                                                                    <div class="accordion-body">
-                                                                        <ul>
-                                                                            <li>Daily Observation Report (DOR)</li>
-                                                                            <li>Patrol Log</li>
-                                                                            <li>Report Cover</li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="accordion-item">
-                                                                    <h2 class="accordion-header" id="headingOne">
-                                                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                                                             aria-controls="collapseOne">
-                                                                            Day #2
-                                                                        </button>
-                                                                    </h2>
-                                                                    <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne"
-                                                                        data-bs-parent="#accordionExample">
-                                                                        <div class="accordion-body">
-                                                                            <ul>
-                                                                                <li>Daily Observation Report (DOR)</li>
-                                                                                <li>Patrol Log</li>
-                                                                                <li>Report Cover</li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                            </div>
-                                                            
-                                                            <div class="accordion" id="accordionExample">
-                                                                <div class="accordion-item">
-                                                                    <h2 class="accordion-header" id="headingOne">
-                                                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                                                            aria-expanded="true" aria-controls="collapseOne">
-                                                                            Weekly 
-                                                                        </button>
-                                                                    </h2>
-                                                                    <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne"
-                                                                        data-bs-parent="#accordionExample">
-                                                                        <div class="accordion-body">
-                                                                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse
-                                                                            plugin adds the appropriate classes that we use to style each element. These classes control the overall
-                                                                            appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with
-                                                                            custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go
-                                                                            within the <code>.accordion-body</code>, though the transition does limit overflow.
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                
-                                                            </div>
-                                                            
-                                                        </div>
-                                                    </div>
-                                                    <div class="tab-pane fade" id="phase-two" role="tabpanel" aria-labelledby="nav-phase-two">Phase 2...</div>
-                                                    <div class="tab-pane fade" id="phase-three" role="tabpanel" aria-labelledby="nav-phase-three">Phase 3...</div>
-                                                    <div class="tab-pane fade" id="phase-four" role="tabpanel" aria-labelledby="nav-phase-four">Phase 4...</div>
-                                                    
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    
-                                </div>
-                                
-                            </div>
-                            
-                        </div>
-                        </div>
-
-                        <div class="card shadow">
-                            <div class="card-body">
-                            <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                    aria-expanded="false" aria-controls="collapseOne">
-                                    Deputy Test
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                                data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                    <nav>
-                                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                            <button class="nav-link active" id="nav-phase-one" data-bs-toggle="tab" data-bs-target="#phase-one"
-                                                type="button" role="tab" aria-controls="phase-one" aria-selected="true">Phase #1</button>
-                                            <button class="nav-link" id="nav-phase-two" data-bs-toggle="tab" data-bs-target="#phase-two"
-                                                type="button" role="tab" aria-controls="phase-two" aria-selected="true">Phase #2</button>
-                                            <button class="nav-link" id="nav-phase-three" data-bs-toggle="tab" data-bs-target="#phase-three"
-                                                type="button" role="tab" aria-controls="phase-three" aria-selected="true">Phase #3</button>
-                                            <button class="nav-link" id="nav-phase-four" data-bs-toggle="tab" data-bs-target="#phase-four"
-                                                type="button" role="tab" aria-controls="phase-four" aria-selected="true">Phase #4</button>
-                                        </div>
-                                    </nav>
-                                    <div class="tab-content" id="nav-tabContent">
-                                        <div class="tab-pane fade show active" id="phase-one" role="tabpanel" aria-labelledby="nav-phase-one">
-                                            <div class="accordion" id="training-days">
-                                                <div class="accordion-item">
-                                                    <h2 class="accordion-header" id="day-1">
-                                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                                            data-bs-target="#day-1-collapse" aria-controls="collapseOne">
-                                                            Day #1
-                                                        </button>
-                                                    </h2>
-                                                    <div id="day-1-collapse" class="accordion-collapse collapse " aria-labelledby="day-1"
-                                                        data-bs-parent="#training-days">
-                                                        <div class="accordion-body">
-                                                            <ul>
-                                                                <li>Daily Observation Report (DOR)</li>
-                                                                <li>Patrol Log</li>
-                                                                <li>Report Cover</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="accordion-item">
-                                                        <h2 class="accordion-header" id="headingOne">
-                                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                                                data-bs-target="#collapseOne" aria-controls="collapseOne">
-                                                                Day #2
-                                                            </button>
-                                                        </h2>
-                                                        <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne"
-                                                            data-bs-parent="#accordionExample">
-                                                            <div class="accordion-body">
-                                                                <ul>
-                                                                    <li>Daily Observation Report (DOR)</li>
-                                                                    <li>Patrol Log</li>
-                                                                    <li>Report Cover</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div class="accordion" id="accordionExample">
-                                                        <div class="accordion-item">
-                                                            <h2 class="accordion-header" id="headingOne">
-                                                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                                                    data-bs-target="#collapseOne" aria-expanded="true"
-                                                                    aria-controls="collapseOne">
-                                                                    Weekly
-                                                                </button>
-                                                            </h2>
-                                                            <div id="collapseOne" class="accordion-collapse collapse "
-                                                                aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                                                <div class="accordion-body">
-                                                                    <strong>This is the first item's accordion body.</strong> It is shown by
-                                                                    default, until the collapse
-                                                                    plugin adds the appropriate classes that we use to style each element. These
-                                                                    classes control the overall
-                                                                    appearance, as well as the showing and hiding via CSS transitions. You can
-                                                                    modify any of this with
-                                                                    custom CSS or overriding our default variables. It's also worth noting that
-                                                                    just about any HTML can go
-                                                                    within the <code>.accordion-body</code>, though the transition does limit
-                                                                    overflow.
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                        
-                                                    </div>
-                        
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="phase-two" role="tabpanel" aria-labelledby="nav-phase-two">Phase 2...
-                                            </div>
-                                            <div class="tab-pane fade" id="phase-three" role="tabpanel" aria-labelledby="nav-phase-three">Phase
-                                                3...</div>
-                                            <div class="tab-pane fade" id="phase-four" role="tabpanel" aria-labelledby="nav-phase-four">Phase
-                                                4...</div>
-                        
-                                        </div>
-                        
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div> <!-- container-fluid -->
-                </div>
-                <!-- End Page-content -->
-
-                
-                <footer class="footer ">
-                  <div class="container-fluid">
-                    <div class="row">
-                      <div class="col-sm-6"></div>
-                      <div class="col-sm-6">
-                        <div class="text-sm-end d-none d-sm-block"></div>
+        <div class="card shadow">
+          <div class="card-body">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                  aria-expanded="false"
+                  aria-controls="collapseOne"
+                >
+                  Deputy Test
+                </button>
+              </h2>
+              <div
+                id="collapseOne"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingOne"
+                data-bs-parent="#accordionFlushExample"
+              >
+                <div class="accordion-body">
+                  <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                      <button
+                        class="nav-link active"
+                        id="nav-phase-one"
+                        data-bs-toggle="tab"
+                        data-bs-target="#phase-one"
+                        type="button"
+                        role="tab"
+                        aria-controls="phase-one"
+                        aria-selected="true"
+                      >
+                        Phase #1
+                      </button>
+                      <button
+                        class="nav-link"
+                        id="nav-phase-two"
+                        data-bs-toggle="tab"
+                        data-bs-target="#phase-two"
+                        type="button"
+                        role="tab"
+                        aria-controls="phase-two"
+                        aria-selected="true"
+                      >
+                        Phase #2
+                      </button>
+                      <button
+                        class="nav-link"
+                        id="nav-phase-three"
+                        data-bs-toggle="tab"
+                        data-bs-target="#phase-three"
+                        type="button"
+                        role="tab"
+                        aria-controls="phase-three"
+                        aria-selected="true"
+                      >
+                        Phase #3
+                      </button>
+                      <button
+                        class="nav-link"
+                        id="nav-phase-four"
+                        data-bs-toggle="tab"
+                        data-bs-target="#phase-four"
+                        type="button"
+                        role="tab"
+                        aria-controls="phase-four"
+                        aria-selected="true"
+                      >
+                        Phase #4
+                      </button>
+                    </div>
+                  </nav>
+                  <div class="tab-content" id="nav-tabContent">
+                    <div
+                      class="tab-pane fade show active"
+                      id="phase-one"
+                      role="tabpanel"
+                      aria-labelledby="nav-phase-one"
+                    >
+                      <div class="pt-3">
+                        <button
+                          type="button"
+                          class="btn btn-primary waves-effect waves-light"
+                          data-bs-toggle="modal"
+                          data-bs-target="#day-1"
+                        >
+                          Day #1
+                        </button>
                       </div>
                     </div>
+                    <div
+                      class="tab-pane fade"
+                      id="phase-two"
+                      role="tabpanel"
+                      aria-labelledby="nav-phase-two"
+                    >
+                      Phase 2...
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="phase-three"
+                      role="tabpanel"
+                      aria-labelledby="nav-phase-three"
+                    >
+                      Phase 3...
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="phase-four"
+                      role="tabpanel"
+                      aria-labelledby="nav-phase-four"
+                    >
+                      Phase 4...
+                    </div>
                   </div>
-                </footer>
-
-            </div>
-            <!-- end main content-->
-
-        </div>
-        <!-- END layout-wrapper -->
-
-        <!-- Right Sidebar -->
-        <div class="right-bar">
-          <div data-simplebar class="h-100">
-            <div class="rightbar-title d-flex align-items-center p-3">
-              <h5 class="m-0 me-2">Theme Customizer</h5>
-
-              <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
-                <i class="mdi mdi-close noti-icon"></i>
-              </a>
-            </div>
-
-            <!-- Settings -->
-            <hr class="m-0" />
-
-            <div class="p-4">
-              <h6 class="mb-3">Layout</h6>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="layout"
-                  id="layout-vertical"
-                  value="vertical"
-                />
-                <label class="form-check-label" for="layout-vertical">Vertical</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="layout"
-                  id="layout-horizontal"
-                  value="horizontal"
-                />
-                <label class="form-check-label" for="layout-horizontal"
-                  >Horizontal</label
-                >
-              </div>
-
-              <h6 class="mt-4 mb-3 pt-2">Layout Mode</h6>
-
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="layout-mode"
-                  id="layout-mode-light"
-                  value="light"
-                />
-                <label class="form-check-label" for="layout-mode-light">Light</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="layout-mode"
-                  id="layout-mode-dark"
-                  value="dark"
-                />
-                <label class="form-check-label" for="layout-mode-dark">Dark</label>
-              </div>
-
-              <h6 class="mt-4 mb-3 pt-2">Layout Width</h6>
-
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="layout-width"
-                  id="layout-width-fuild"
-                  value="fuild"
-                  onchange="document.body.setAttribute('data-layout-size', 'fluid')"
-                />
-                <label class="form-check-label" for="layout-width-fuild">Fluid</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="layout-width"
-                  id="layout-width-boxed"
-                  value="boxed"
-                  onchange="document.body.setAttribute('data-layout-size', 'boxed')"
-                />
-                <label class="form-check-label" for="layout-width-boxed">Boxed</label>
-              </div>
-
-              <h6 class="mt-4 mb-3 pt-2">Layout Position</h6>
-
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="layout-position"
-                  id="layout-position-fixed"
-                  value="fixed"
-                  onchange="document.body.setAttribute('data-layout-scrollable', 'false')"
-                />
-                <label class="form-check-label" for="layout-position-fixed"
-                  >Fixed</label
-                >
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="layout-position"
-                  id="layout-position-scrollable"
-                  value="scrollable"
-                  onchange="document.body.setAttribute('data-layout-scrollable', 'true')"
-                />
-                <label class="form-check-label" for="layout-position-scrollable"
-                  >Scrollable</label
-                >
-              </div>
-
-              <h6 class="mt-4 mb-3 pt-2">Topbar Color</h6>
-
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="topbar-color"
-                  id="topbar-color-light"
-                  value="light"
-                  onchange="document.body.setAttribute('data-topbar', 'light')"
-                />
-                <label class="form-check-label" for="topbar-color-light">Light</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="topbar-color"
-                  id="topbar-color-dark"
-                  value="dark"
-                  onchange="document.body.setAttribute('data-topbar', 'dark')"
-                />
-                <label class="form-check-label" for="topbar-color-dark">Dark</label>
-              </div>
-
-              <h6 class="mt-4 mb-3 pt-2 sidebar-setting">Sidebar Size</h6>
-
-              <div class="form-check sidebar-setting">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="sidebar-size"
-                  id="sidebar-size-default"
-                  value="default"
-                  onchange="document.body.setAttribute('data-sidebar-size', 'lg')"
-                />
-                <label class="form-check-label" for="sidebar-size-default"
-                  >Default</label
-                >
-              </div>
-              <div class="form-check sidebar-setting">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="sidebar-size"
-                  id="sidebar-size-compact"
-                  value="compact"
-                  onchange="document.body.setAttribute('data-sidebar-size', 'md')"
-                />
-                <label class="form-check-label" for="sidebar-size-compact"
-                  >Compact</label
-                >
-              </div>
-              <div class="form-check sidebar-setting">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="sidebar-size"
-                  id="sidebar-size-small"
-                  value="small"
-                  onchange="document.body.setAttribute('data-sidebar-size', 'sm')"
-                />
-                <label class="form-check-label" for="sidebar-size-small"
-                  >Small (Icon View)</label
-                >
-              </div>
-
-              <h6 class="mt-4 mb-3 pt-2 sidebar-setting">Sidebar Color</h6>
-
-              <div class="form-check sidebar-setting">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="sidebar-color"
-                  id="sidebar-color-light"
-                  value="light"
-                  onchange="document.body.setAttribute('data-sidebar', 'light')"
-                />
-                <label class="form-check-label" for="sidebar-color-light">Light</label>
-              </div>
-              <div class="form-check sidebar-setting">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="sidebar-color"
-                  id="sidebar-color-dark"
-                  value="dark"
-                  onchange="document.body.setAttribute('data-sidebar', 'dark')"
-                />
-                <label class="form-check-label" for="sidebar-color-dark">Dark</label>
-              </div>
-              <div class="form-check sidebar-setting">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="sidebar-color"
-                  id="sidebar-color-brand"
-                  value="brand"
-                  onchange="document.body.setAttribute('data-sidebar', 'brand')"
-                />
-                <label class="form-check-label" for="sidebar-color-brand">Brand</label>
-              </div>
-
-              <h6 class="mt-4 mb-3 pt-2">Direction</h6>
-
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="layout-direction"
-                  id="layout-direction-ltr"
-                  value="ltr"
-                />
-                <label class="form-check-label" for="layout-direction-ltr">LTR</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="layout-direction"
-                  id="layout-direction-rtl"
-                  value="rtl"
-                />
-                <label class="form-check-label" for="layout-direction-rtl">RTL</label>
+                </div>
               </div>
             </div>
           </div>
-          <!-- end slimscroll-menu-->
         </div>
-        <!-- /Right-bar -->
 
-        <!-- Right bar overlay-->
-        <div class="rightbar-overlay"></div>
+        <div>
+            <div id="day-1" class="modal fade" tabindex="-1" aria-labelledby="day-1-ModalLabel" aria-hidden="true"
+                data-bs-scroll="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                           <h3 class="text-center">Day #1</h3>                           
+                        </div>
+                        <div class="modal-body"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">
+                                Close
+                            </button>
+                            <button type="button" class="btn btn-primary waves-effect waves-light">
+                                Save changes
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+        </div>
+        <div class="card" id="day-1-modal">
 
+        </div>
+      </div>
+      <!-- container-fluid -->
+      <!-- End Page-content -->
 
-        <!-- JAVASCRIPT -->
-        <script src="assets/libs/jquery/jquery.min.js"></script>
-        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/libs/metismenu/metisMenu.min.js"></script>
-        <script src="assets/libs/simplebar/simplebar.min.js"></script>
-        <script src="assets/libs/node-waves/waves.min.js"></script>
-        <script src="assets/libs/feather-icons/feather.min.js"></script>
-        <!-- pace js -->
-        <script src="assets/libs/pace-js/pace.min.js"></script>
+      <footer class="footer ">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6">
+              <div class="text-sm-end d-none d-sm-block"></div>
+            </div>
+          </div>
+        </div>
+      </footer>
 
+    </div>
+  </div>
+  <!-- end main content-->
+  <!-- END layout-wrapper -->
+  <!-- Right Sidebar -->
+  <div class="right-bar">
+    <div data-simplebar class="h-100">
+      <div class="rightbar-title d-flex align-items-center p-3">
+        <h5 class="m-0 me-2">Theme Customizer</h5>
 
+        <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
+          <i class="mdi mdi-close noti-icon"></i>
+        </a>
+      </div>
 
-        <!-- Init js-->
+      <!-- Settings -->
+      <hr class="m-0" />
 
-        <script src="assets/js/app.js"></script>
+      <div class="p-4">
+        <h6 class="mb-3">Layout</h6>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="layout"
+            id="layout-vertical"
+            value="vertical"
+          />
+          <label class="form-check-label" for="layout-vertical">Vertical</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="layout"
+            id="layout-horizontal"
+            value="horizontal"
+          />
+          <label class="form-check-label" for="layout-horizontal"
+            >Horizontal</label
+          >
+        </div>
 
-    </body>
-</html>
+        <h6 class="mt-4 mb-3 pt-2">Layout Mode</h6>
+
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="layout-mode"
+            id="layout-mode-light"
+            value="light"
+          />
+          <label class="form-check-label" for="layout-mode-light">Light</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="layout-mode"
+            id="layout-mode-dark"
+            value="dark"
+          />
+          <label class="form-check-label" for="layout-mode-dark">Dark</label>
+        </div>
+
+        <h6 class="mt-4 mb-3 pt-2">Layout Width</h6>
+
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="layout-width"
+            id="layout-width-fuild"
+            value="fuild"
+            onchange="document.body.setAttribute('data-layout-size', 'fluid')"
+          />
+          <label class="form-check-label" for="layout-width-fuild">Fluid</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="layout-width"
+            id="layout-width-boxed"
+            value="boxed"
+            onchange="document.body.setAttribute('data-layout-size', 'boxed')"
+          />
+          <label class="form-check-label" for="layout-width-boxed">Boxed</label>
+        </div>
+
+        <h6 class="mt-4 mb-3 pt-2">Layout Position</h6>
+
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="layout-position"
+            id="layout-position-fixed"
+            value="fixed"
+            onchange="document.body.setAttribute('data-layout-scrollable', 'false')"
+          />
+          <label class="form-check-label" for="layout-position-fixed"
+            >Fixed</label
+          >
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="layout-position"
+            id="layout-position-scrollable"
+            value="scrollable"
+            onchange="document.body.setAttribute('data-layout-scrollable', 'true')"
+          />
+          <label class="form-check-label" for="layout-position-scrollable"
+            >Scrollable</label
+          >
+        </div>
+
+        <h6 class="mt-4 mb-3 pt-2">Topbar Color</h6>
+
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="topbar-color"
+            id="topbar-color-light"
+            value="light"
+            onchange="document.body.setAttribute('data-topbar', 'light')"
+          />
+          <label class="form-check-label" for="topbar-color-light">Light</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="topbar-color"
+            id="topbar-color-dark"
+            value="dark"
+            onchange="document.body.setAttribute('data-topbar', 'dark')"
+          />
+          <label class="form-check-label" for="topbar-color-dark">Dark</label>
+        </div>
+
+        <h6 class="mt-4 mb-3 pt-2 sidebar-setting">Sidebar Size</h6>
+
+        <div class="form-check sidebar-setting">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="sidebar-size"
+            id="sidebar-size-default"
+            value="default"
+            onchange="document.body.setAttribute('data-sidebar-size', 'lg')"
+          />
+          <label class="form-check-label" for="sidebar-size-default"
+            >Default</label
+          >
+        </div>
+        <div class="form-check sidebar-setting">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="sidebar-size"
+            id="sidebar-size-compact"
+            value="compact"
+            onchange="document.body.setAttribute('data-sidebar-size', 'md')"
+          />
+          <label class="form-check-label" for="sidebar-size-compact"
+            >Compact</label
+          >
+        </div>
+        <div class="form-check sidebar-setting">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="sidebar-size"
+            id="sidebar-size-small"
+            value="small"
+            onchange="document.body.setAttribute('data-sidebar-size', 'sm')"
+          />
+          <label class="form-check-label" for="sidebar-size-small"
+            >Small (Icon View)</label
+          >
+        </div>
+
+        <h6 class="mt-4 mb-3 pt-2 sidebar-setting">Sidebar Color</h6>
+
+        <div class="form-check sidebar-setting">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="sidebar-color"
+            id="sidebar-color-light"
+            value="light"
+            onchange="document.body.setAttribute('data-sidebar', 'light')"
+          />
+          <label class="form-check-label" for="sidebar-color-light">Light</label>
+        </div>
+        <div class="form-check sidebar-setting">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="sidebar-color"
+            id="sidebar-color-dark"
+            value="dark"
+            onchange="document.body.setAttribute('data-sidebar', 'dark')"
+          />
+          <label class="form-check-label" for="sidebar-color-dark">Dark</label>
+        </div>
+        <div class="form-check sidebar-setting">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="sidebar-color"
+            id="sidebar-color-brand"
+            value="brand"
+            onchange="document.body.setAttribute('data-sidebar', 'brand')"
+          />
+          <label class="form-check-label" for="sidebar-color-brand">Brand</label>
+        </div>
+
+        <h6 class="mt-4 mb-3 pt-2">Direction</h6>
+
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="layout-direction"
+            id="layout-direction-ltr"
+            value="ltr"
+          />
+          <label class="form-check-label" for="layout-direction-ltr">LTR</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="layout-direction"
+            id="layout-direction-rtl"
+            value="rtl"
+          />
+          <label class="form-check-label" for="layout-direction-rtl">RTL</label>
+        </div>
+      </div>
+    </div>
+    <!-- end slimscroll-menu-->
+  </div>
+  <!-- /Right-bar -->
+
+  <!-- Right bar overlay-->
+  <div class="rightbar-overlay"></div>
+
+  <!-- JAVASCRIPT -->
+  <script src="assets/libs/jquery/jquery.min.js"></script>
+  <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+  <script src="assets/libs/simplebar/simplebar.min.js"></script>
+  <script src="assets/libs/node-waves/waves.min.js"></script>
+  <script src="assets/libs/feather-icons/feather.min.js"></script>
+  <!-- pace js -->
+  <script src="assets/libs/pace-js/pace.min.js"></script>
+
+</div>
+<!-- </body> -->
+
+<script src="assets/js/app.js"></script>
+<script src="assets/js/pages/field-training.init.js"></script>
+<script src="assets/libs/dropzone/min/dropzone.min.js"></script>
+
+<!--</html> -->
