@@ -27,7 +27,7 @@
           </div>
         </div>
         <div id="r-resources">
-          <button class="btn btn-light shadow" data-bs-toggle="modal" data-bs-target="#resources">
+          <button class="btn btn-light shadow" data-bs-toggle="modal" data-bs-target="#recruit-resources">
             Recruit Resources
           </button>
           <div class="d-md-flex justify-content-md-end">
@@ -39,6 +39,8 @@
 
         <div class="card shadow">
           <div class="card-body">
+
+
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingOne">
                 <button
@@ -59,6 +61,18 @@
                 data-bs-parent="#accordionFlushExample"
               >
                 <div class="accordion-body">
+                  
+                  <!-- Chart -->
+                  <div class="card shadow">
+                    <div class="card-body">
+                      <div class="row">
+                      <div id="line_chart_dashed-1" class="apex-charts col" dir="ltr"></div>
+                      <div id="line_chart_dashed-2" class="apex-charts col" dir="ltr"></div>
+                      <div id="line_chart_dashed-3" class="apex-charts col" dir="ltr"></div>
+                      </div>
+                    </div>
+                  </div>
+
                   <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                       <button
@@ -139,7 +153,7 @@
                           </div>
                         </div>
                       <br>
-                      <h3><a href="#" class="link-primary" data-bs-toggle="modal" data-bs-target="#day-1">Policies</a></h3>
+                      <h3><a href="#" class="link-primary" data-bs-toggle="modal" data-bs-target="#policies-list">Policies</a></h3>
                       <br>
                       <h3><a href="#" class="link-primary" data-bs-toggle="modal" data-bs-target="#step-eval">Step Evaluation</a></h3>
 
@@ -253,11 +267,57 @@
           <!-- /.modal -->
         </div>
 
-        <div class="card" >
-          <div class="card-body">
-
+<!-- Policies -->
+        <div>
+          <div id="policies-list" class="modal fade" tabindex="-1" aria-labelledby="policies-list-ModalLabel" aria-hidden="true"
+            data-bs-scroll="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content ">
+                <div class="modal-header text-center">
+                  <h3 class="modal-title w-100">Policies</h3>
+                </div>
+                <div class="modal-body "  id="policies-modal-body"></div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">
+                    Close
+                  </button>
+                  <button type="button" class="btn btn-primary waves-effect waves-light">
+                    Save changes
+                  </button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
           </div>
+          <!-- /.modal -->
+        </div>
+
+<!-- Resources -->
+      <div>
+        <div id="recruit-resources" class="modal fade" tabindex="-1" aria-labelledby="recruit-resources-ModalLabel" aria-hidden="true"
+          data-bs-scroll="true">
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content ">
+              <div class="modal-header text-center">
+                <h3 class="modal-title w-100">Resources</h3>
+              </div>
+              <div class="modal-body " id="recruit-resources-modal-body"></div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">
+                  Close
+                </button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
       </div>
+
+      </div>
+      <!--end card-->
       <!-- container-fluid -->
       <!-- End Page-content -->
 
@@ -266,14 +326,19 @@
   </div>
   <!-- end main content-->
   <!-- END layout-wrapper -->
+
+</div>
+
   @@include("partials/right-sidebar.html")
   @@include("partials/vendor-scripts.html")
-</div>
-<!-- </body> -->
+<script src="assets/libs/apexcharts/apexcharts.min.js"></script>
 
+<!-- apexcharts init -->
+<script src="assets/js/pages/apexcharts.init.js"></script>
 <script src="assets/js/app.js"></script>
 <script src="assets/js/pages/field-training.init.js"></script>
 <script src="assets/libs/dropzone/min/dropzone.min.js"></script>
-<script src="assets/js/pages/recruit_resources.init.js"></script>
+<!-- <script src="assets/js/pages/recruit_resources.init.js"></script> -->
 
+<!-- </body> -->
 <!--</html> -->
