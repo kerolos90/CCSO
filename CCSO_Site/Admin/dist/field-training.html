@@ -258,12 +258,12 @@
             <h3 class="text-center">Field Training</h3>
           </div>
         </div>
-        <div class="">
-          <button class="btn btn-light shadow" type="button">
+        <div id="r-resources">
+          <button class="btn btn-light shadow" data-bs-toggle="modal" data-bs-target="#resources">
             Recruit Resources
           </button>
           <div class="d-md-flex justify-content-md-end">
-            <button class="btn btn-success" type="button">Add New</button>
+            <button class="btn btn-success" type="button">Add New Deputy</button>
           </div>
         </div>
 
@@ -350,17 +350,33 @@
                       role="tabpanel"
                       aria-labelledby="nav-phase-one"
                     >
-                      <div class="pt-3">
-                        <button
-                          type="button"
-                          class="btn btn-primary waves-effect waves-light"
-                          data-bs-toggle="modal"
-                          data-bs-target="#day-1"
-                        >
-                          Day #1
-                        </button>
-                      </div>
+                      <br>
+                      <h3><a href="#" class="link-primary" data-bs-toggle="collapse" data-bs-target="#working-days">Working Days</a></h3>
+                        <div id="working-days" class="collapse pt-3">
+                          <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#day-1">
+                            Day #1
+                          </button>
+                          <div class="d-md-flex justify-content-md-end">
+                            <button class="btn btn-success" type="button">Add New Day</button>
+                          </div>
+                        </div>
+                      <br>
+                      <h3><a href="#" class="link-primary" data-bs-toggle="collapse" data-bs-target="#weekly-evals">Weekly Evaluations</a></h3>
+                        <div id="weekly-evals" class="collapse pt-3">
+                          <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#week-1">
+                            Week #1
+                          </button>
+                          <div class="d-md-flex justify-content-md-end">
+                            <button class="btn btn-success" type="button">Add New Weekly</button>
+                          </div>
+                        </div>
+                      <br>
+                      <h3><a href="#" class="link-primary" data-bs-toggle="modal" data-bs-target="#day-1">Policies</a></h3>
+                      <br>
+                      <h3><a href="#" class="link-primary" data-bs-toggle="modal" data-bs-target="#step-eval">Step Evaluation</a></h3>
+
                     </div>
+
                     <div
                       class="tab-pane fade"
                       id="phase-two"
@@ -392,15 +408,17 @@
           </div>
         </div>
 
+
+<!-- Daily Modal -->
         <div>
             <div id="day-1" class="modal fade" tabindex="-1" aria-labelledby="day-1-ModalLabel" aria-hidden="true"
                 data-bs-scroll="true">
-                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
                            <h3 class="text-center">Day #1</h3>                           
                         </div>
-                        <div class="modal-body"></div>
+                        <div class="modal-body" id="day-modal-body"></div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">
                                 Close
@@ -416,9 +434,61 @@
             </div>
             <!-- /.modal -->
         </div>
-        <div class="card" id="day-1-modal">
-
+<!-- Weekly Modal -->
+        <div>
+          <div id="week-1" class="modal fade" tabindex="-1" aria-labelledby="eval-ModalLabel" aria-hidden="true"
+            data-bs-scroll="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="text-center">Week #1</h3>
+                </div>
+                <div class="modal-body" id="week-modal-body"></div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">
+                    Close
+                  </button>
+                  <button type="button" class="btn btn-primary waves-effect waves-light">
+                    Save changes
+                  </button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- /.modal -->
         </div>
+<!-- Step Evaluation -->
+        <div>
+          <div id="step-eval" class="modal fade" tabindex="-1" aria-labelledby="step-eval-ModalLabel" aria-hidden="true"
+            data-bs-scroll="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                <div class="modal-header text-center">
+                  <h3 class="modal-title w-100">Probationary Officer Step Evaluation</h3>
+                </div>
+                <div class="modal-body" id="step-eval-modal-body"></div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">
+                    Close
+                  </button>
+                  <button type="button" class="btn btn-primary waves-effect waves-light">
+                    Save changes
+                  </button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- /.modal -->
+        </div>
+
+        <div class="card" >
+          <div class="card-body">
+
+          </div>
       </div>
       <!-- container-fluid -->
       <!-- End Page-content -->
@@ -704,5 +774,6 @@
 <script src="assets/js/app.js"></script>
 <script src="assets/js/pages/field-training.init.js"></script>
 <script src="assets/libs/dropzone/min/dropzone.min.js"></script>
+<script src="assets/js/pages/recruit_resources.init.js"></script>
 
 <!--</html> -->

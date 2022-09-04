@@ -23,8 +23,9 @@ const eval_questions = ["The information in this report is factual and organized
                         "This report is concisely written", "This report is clear and understandable",
                         "This report is complete for this set of facts", "The writing in this report is legible", "This report was completed in appropriate time",
                         "This report is grammatically and structurally correct", "This report is acceptable"];
-                        
-$("#day-1-modal").append(
+
+//Daily Forms                        
+$("#day-modal-body").append(
        `                           <nav>
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <button class="nav-link active" id="nav-day-1-dor" data-bs-toggle="tab" data-bs-target="#day-1-dor"
@@ -384,3 +385,277 @@ eval_questions.forEach(element => {
         </tr>`
     )
 });
+
+//Weekly Forms
+$('#week-modal-body').append(
+                 `<nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                      <button
+                        class="nav-link active"
+                        id="nav-sgt-eval"
+                        data-bs-toggle="tab"
+                        data-bs-target="#sgt-eval"
+                        type="button"
+                        role="tab"
+                        aria-controls="sgt-eval"
+                        aria-selected="true"
+                      >
+                        Sgt. Evaluation
+                      </button>
+                      <button
+                        class="nav-link"
+                        id="nav-self-eval"
+                        data-bs-toggle="tab"
+                        data-bs-target="#self-eval"
+                        type="button"
+                        role="tab"
+                        aria-controls="self-eval"
+                        aria-selected="true"
+                      >
+                        Self Evaluation
+                      </button>
+
+                    </div>
+                  </nav>
+                  <div class="tab-content" id="nav-tabContent">
+                    <div
+                      class="tab-pane fade show active"
+                      id="sgt-eval"
+                      role="tabpanel"
+                      aria-labelledby="nav-sgt-eval"
+                    >
+                      <br>
+                      <div class="card shadow">
+                        <div class="card-body">
+                          <div class="d-flex justify-content-center">
+                            <table class="table table-borderless" style="width: 80%">
+                              <tbody>
+                                <tr>
+                                  <th>Probationary Deputy</th>
+                                  <td>Test</td>
+                                  <th>Supervisor</th>
+                                  <td>
+                                    <select class="form-select">
+                                      <option>Select</option>
+                                    </select>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <th>Field Training Officer</th>
+                                  <td>
+                                    <select class="form-select">
+                                      <option>Select</option>
+                                    </select>
+                                  </td>
+                                  <th>Date: </th>
+                                  <td>
+                                    <input class="form-control" type="date" value="2019-08-19" id="example-date-input">
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <th>DOR #: </th>
+                                  <td>
+                                    <div class="form-check form-check-inline">
+                                      <input class="form-control" type="number" value="1" id="example-number-input">
+                                    </div>
+                                    to
+                                    <div class="form-check form-check-inline"><input class="form-control" type="number" value="1"
+                                        id="example-number-input">
+                                    </div>
+                                  </td>
+                                  <th>Phase</th>
+                                  <td>
+                                    <select class="form-select">
+                                      <option>Select</option>
+                                    </select>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <br>
+                          <div>
+                            <h5>Performance and Behavior Observed:</h5>
+                            <textarea class="form-control" id="" placeholder="Type to enter text..." rows="2"></textarea>
+                            <br>
+                            <h5>Training (Current or Suggested):</h5>
+                            <textarea class="form-control" id="" placeholder="Type to enter text..." rows="2"></textarea>
+                            <br>
+                            <h5>Response to PIP or NRT:</h5>
+                            <textarea class="form-control" id="" placeholder="Type to enter text..." rows="2"></textarea>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div
+                      class="tab-pane fade"
+                      id="self-eval"
+                      role="tabpanel"
+                      aria-labelledby="nav-self-eval"
+                    >
+                      <br>
+                      <div class="card shadow">
+                        <div class="card-body">
+                          <div class="d-flex justify-content-center">
+                            <table class="table table-borderless" style="width: 80%">
+                              <tbody>
+                                <tr>
+                                  <th>Probationary Deputy</th>
+                                  <td>Test</td>
+                                  <th>Supervisor</th>
+                                  <td>
+                                    <select class="form-select">
+                                      <option>Select</option>
+                                    </select>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <th>Field Training Officer</th>
+                                  <td>
+                                    <select class="form-select">
+                                      <option>Select</option>
+                                    </select>
+                                  </td>
+                                  <th>Date: </th>
+                                  <td>
+                                    <input class="form-control" type="date" value="2019-08-19" id="example-date-input">
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <th>DOR #: </th>
+                                  <td>
+                                    <div class="form-check form-check-inline">
+                                      <input class="form-control" type="number" value="1" id="example-number-input">
+                                    </div>
+                                    to
+                                    <div class="form-check form-check-inline"><input class="form-control" type="number" value="1"
+                                        id="example-number-input">
+                                    </div>
+                                  </td>
+                                  <th>Phase</th>
+                                  <td>
+                                    <select class="form-select">
+                                      <option>Select</option>
+                                    </select>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <br>
+                          <div>
+                            <h6>Instructions:
+                              The trainee is to fill out this self-evaluation each week and give to their Supervisor. At the beginning
+                              of the next
+                              phase they are to fill one out give it to their new FTO
+                            </h6>
+                            <br>
+                            <h5>Trainee Significant Strengths:</h5>
+                            <ol>
+                              <li><input class="form-control" type="text" placeholder="Enter text..." id=""></li>
+                              <li><input class="form-control" type="text" placeholder="Enter text..." id=""></li>
+                              <li><input class="form-control" type="text" placeholder="Enter text..." id=""></li>
+                            </ol>
+                            <br>
+                            <h5>Trainee Significant Weaknesses:</h5>
+                            <ol>
+                              <li><input class="form-control" type="text" placeholder="Enter text..." id=""></li>
+                              <li><input class="form-control" type="text" placeholder="Enter text..." id=""></li>
+                              <li><input class="form-control" type="text" placeholder="Enter text..." id=""></li>
+                            </ol>
+                            <br>
+                            <h5>Other:</h5>
+                            <textarea class="form-control" id="" placeholder="Type to enter text..." rows="2"></textarea>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>`
+)
+
+//Step Evaulation
+$("#step-eval-modal-body").append(
+    `         <div class="d-flex justify-content-center">
+              <table class="table table-borderless" style="width: 80%">
+                <tbody>
+                  <tr>
+                    <th>Probationary Deputy</th>
+                    <td>Test</td>
+                    <th>Supervisor</th>
+                    <td>
+                      <select class="form-select">
+                        <option>Select</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Field Training Officer</th>
+                    <td>
+                      <select class="form-select">
+                        <option>Select</option>
+                      </select>
+                    </td>
+                    <th>Date: </th>
+                    <td>
+                      <input class="form-control" type="date" value="2019-08-19" id="example-date-input">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Phase</th>
+                    <td>
+                      <select class="form-select">
+                        <option>Select</option>
+                      </select>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <br>
+            <h6>The Probationary Deputy:</h6>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="option-1" id="option-1" value="option1" >
+              <label class="form-check-label" for="option-1">
+                is progressing satisfactorily
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="option-1" id="option-1" value="option1">
+              <label class="form-check-label" for="option-1">
+                should advance to the next step/phase
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="option-1" id="option-1" value="option1">
+              <label class="form-check-label" for="option-1">
+                is experiencing difficulty
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="option-1" id="option-1" value="option1">
+              <label class="form-check-label" for="option-1">
+                should receive an extension of training
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="option-1" id="option-1" value="option1">
+              <label class="form-check-label" for="option-1">
+                should be recommended for a Board of Review Hearing
+              </label>
+            </div>
+            <br>
+            <h6>Area(s) of strength:</h6>
+            <textarea class="form-control" id="" placeholder="Type to enter text..." rows="2"></textarea>
+            <br>
+            <h6>Area(s) most in need of improvement:</h6>
+            <textarea class="form-control" id="" placeholder="Type to enter text..." rows="2"></textarea>
+            <br>
+            <h6>Additional Comments:</h6>
+            <textarea class="form-control" id="" placeholder="Type to enter text..." rows="2"></textarea>
+
+          </div>`
+)
