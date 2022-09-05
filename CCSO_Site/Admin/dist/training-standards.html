@@ -3,7 +3,7 @@
 
 
     <head>
-
+        
         <meta charset="utf-8" />
         <title>Champaign County Sheriff's Office</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,6 +11,13 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="assets/images/favicon.ico" />
 
+
+        <!-- DataTables -->
+        <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- Responsive datatable examples -->
+        <link href="assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" /> 
 
         <!-- preloader css -->
         <link rel="stylesheet" href="assets/css/preloader.min.css" type="text/css" />
@@ -201,104 +208,32 @@
 
                 <div class="page-content">
                     <div class="container-fluid">
-
-                        <!-- start page title -->
-                        <div class="row">
-                          <div class="col-12">
-                            <div
-                              class="page-title-box d-sm-flex align-items-center justify-content-between"
-                            >
-                              <h4 class="mb-sm-0 font-size-18">Video</h4>
-
-                              <div class="page-title-right">
-                                <ol class="breadcrumb m-0">
-                                  <li class="breadcrumb-item">
-                                    <a href="javascript: void(0);">Components</a>
-                                  </li>
-                                  <li class="breadcrumb-item active">Video</li>
-                                </ol>
-                              </div>
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <h3 class="text-center " id="">Training Standards</h3>
                             </div>
-                          </div>
                         </div>
-                        <!-- end page title -->
-
-
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4 class="card-title">Ratio video 16:9</h4>
-                                        <p class="card-title-desc">Aspect ratios can be customized with modifier classes.</p>
-                                    </div><!-- end card header -->
-
-                                    <div class="card-body">
-                                        <!-- 16:9 aspect ratio -->
-                                        <div class="ratio ratio-16x9">
-                                            <iframe src="https://www.youtube.com/embed/1y_kfWUCFDQ" title="YouTube video" allowfullscreen></iframe>
-                                        </div>
-                                    </div><!-- end card-body -->
-                                </div><!-- end card -->
-                            </div><!-- end col -->
-
-                            <div class="col-xl-6">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4 class="card-title">Ratio video 21:9</h4>
-                                        <p class="card-title-desc">Aspect ratios can be customized with modifier classes.</p>
-                                    </div><!-- end card header -->
-
-                                    <div class="card-body">
-                                        <!-- 21:9 aspect ratio -->
-                                        <div class="ratio ratio-21x9">
-                                            <iframe src="https://www.youtube.com/embed/1y_kfWUCFDQ" title="YouTube video" allowfullscreen></iframe>
-                                        </div>
-
-                                    </div><!-- end card-body -->
-                                </div><!-- end card -->
-                            </div><!-- end col -->
-
-                        </div> <!-- end row -->
-
-                        <div class="row">
-
-                            <div class="col-xl-6">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4 class="card-title">Ratio video 4:3</h4>
-                                        <p class="card-title-desc">Aspect ratios can be customized with modifier classes.</p>
-                                    </div><!-- end card header -->
-
-                                    <div class="card-body">
-                                        <!-- 4:3 aspect ratio -->
-                                        <div class="ratio ratio-4x3">
-                                            <iframe src="https://www.youtube.com/embed/1y_kfWUCFDQ" title="YouTube video" allowfullscreen></iframe>
-                                        </div>
-                                    </div><!-- end card-body -->
-                                </div><!-- end card -->
-                            </div><!-- end col -->
-
-                            <div class="col-xl-6">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4 class="card-title">Ratio video 1:1</h4>
-                                        <p class="card-title-desc">Aspect ratios can be customized with modifier classes.</p>
-                                    </div><!-- end card header -->
-
-                                    <div class="card-body">
-                                        <!-- 1:1 aspect ratio -->
-                                        <div class="ratio ratio-1x1">
-                                            <iframe src="https://www.youtube.com/embed/1y_kfWUCFDQ" title="YouTube video" allowfullscreen></iframe>
-                                        </div>
-                                    </div><!-- end card-body -->
-                                </div><!-- end card -->
-                            </div><!-- end col -->
-                        </div> <!-- end row -->
-
+                        <div class="card">
+                            <div class="card-body shadow table-responsive ">
+                                <table id="" class="table table-bordered " style="white-space: nowrap;">
+                                    <thead>
+                                    <tr class="training-standards-table-head" >
+                                        <th>Employee</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="training-standards-table-body">
+                                        <td>Deputy Test </td>
+                                    </tr>
+                                   
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div> <!-- container-fluid -->
                 </div>
                 <!-- End Page-content -->
-
+                
                 <footer class="footer ">
                   <div class="container-fluid">
                     <div class="row">
@@ -310,10 +245,8 @@
                   </div>
                 </footer>
 
-
             </div>
             <!-- end main content-->
-
         </div>
         <!-- END layout-wrapper -->
 
@@ -578,6 +511,26 @@
         <!-- pace js -->
         <script src="assets/libs/pace-js/pace.min.js"></script>
 
+
+        <!-- Required datatable js -->
+        <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <!-- Buttons examples -->
+        <script src="assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+        <script src="assets/libs/jszip/jszip.min.js"></script>
+        <script src="assets/libs/pdfmake/build/pdfmake.min.js"></script>
+        <script src="assets/libs/pdfmake/build/vfs_fonts.js"></script>
+        <script src="assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
+        <script src="assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
+        <script src="assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+
+        <!-- Responsive examples -->
+        <script src="assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+        <!-- Datatable init js -->
+        <script src="assets/js/pages/datatables.init.js"></script>    
 
         <script src="assets/js/app.js"></script>
 

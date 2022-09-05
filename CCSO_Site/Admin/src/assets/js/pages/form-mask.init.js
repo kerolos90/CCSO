@@ -7,14 +7,10 @@ File: Form mask Js File
 */
 
 document.addEventListener("DOMContentLoaded", function () {
-  // RegExp (Russian postal code)
-  var regExpMask = IMask(document.getElementById("regexp-mask"), {
-    mask: /^[1-6]\d{0,5}$/,
-  });
 
   // Pattern (Phone)
   var phoneMask = IMask(document.getElementById("phone-mask"), {
-    mask: "+{7}(000)000-00-00",
+    mask: "+1(000)000-0000",
   });
 
   // Number mask
@@ -37,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var dynamicMask = IMask(document.getElementById("dynamic-mask"), {
     mask: [
       {
-        mask: "+{7}(000)000-00-00",
+        mask: "+1(000)000-0000",
       },
       {
         mask: /^\S*@?\S*$/,
