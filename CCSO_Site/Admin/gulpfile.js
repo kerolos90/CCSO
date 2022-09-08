@@ -250,7 +250,7 @@ gulp.task(
   gulp.series(
     gulp.parallel(
       "clean:packageLock",
-      "clean:dist",
+      // "clean:dist",
       "copy:all",
       "copy:libs",
       "fileinclude",
