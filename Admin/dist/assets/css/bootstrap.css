@@ -14236,16 +14236,4 @@ a {
 .shadow-dark {
   -webkit-box-shadow: 0 2px 8px 0 rgba(52, 58, 64, 0.3);
           box-shadow: 0 2px 8px 0 rgba(52, 58, 64, 0.3);
-}0 2px 8px 0 rgba(232, 62, 140, 0.3);
-          box-shadow: 0 2px 8px 0 rgba(232, 62, 140, 0.3);
-}
-
-.shadow-light {
-  -webkit-box-shadow: 0 2px 8px 0 rgba(233, 233, 239, 0.3);
-          box-shadow: 0 2px 8px 0 rgba(233, 233, 239, 0.3);
-}
-
-.shadow-dark {
-  -webkit-box-shadow: 0 2px 8px 0 rgba(52, 58, 64, 0.3);
-          box-shadow: 0 2px 8px 0 rgba(52, 58, 64, 0.3);
 }

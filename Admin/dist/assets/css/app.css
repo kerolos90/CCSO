@@ -562,6 +562,7 @@ body[data-layout=horizontal] .footer {
 
 .metismenu {
   margin: 0;
+  padding-top: inherit;
 }
 .metismenu li {
   display: block;
