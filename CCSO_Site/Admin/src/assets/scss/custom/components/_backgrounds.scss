@@ -1,6 +1,6 @@
-//
+
 // backgrounds.scss
-//
+
 
 @each $color, $value in $theme-colors {
   .bg-soft-#{$color} {

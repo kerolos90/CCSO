@@ -1,9 +1,4 @@
 /*
-Template Name: Minia - Admin & Dashboard Template
-Author: Themesbrand
-Version: 1.5.0.
-Website: https://themesbrand.com/
-Contact: themesbrand@gmail.com
 File: Custom Bootstrap Css File
 */
 
