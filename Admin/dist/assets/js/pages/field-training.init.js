@@ -670,18 +670,18 @@ const policies = {
         "2) Mission, Goals & Objectives of CCSO": [
                             "Mission Statement – Lexipol Page 2"
         ],
-        "3)	Organizational Structure – Policy 200": [
+        "3)	Organizational Structure": [ "Organizational Structure – Policy 200",
                             "Field Training Program – Policy 406"
         ],
-        "4)	Conduct – Policy 320": ["Conduct – Policy 320"    
+        "4)	Conduct": ["Conduct – Policy 320"    
         ],
         "5)	Police Operations": ["Sick Leave – Policy 1009", "OT Compensation Request – Policy 1017", "Payroll Record Procedure – Policy 1016", "Shift Scheduling", "Hours of Work",
-            "Regular Days Off (RDO’s)", "Outside Employment – Policy 1018", "•	Uniform Regulations – Policy 1021", "•	Personal Appearance Standard – Policy 1020",
+            "Regular Days Off (RDO’s)", "Outside Employment – Policy 1018", "Uniform Regulations – Policy 1021", "Personal Appearance Standard – Policy 1020",
             "Department Badges – Policy 1023", "Body Armor – Policy 1004", "Communicable Diseases – Policy 1011", "Occupational Diseases & Work Related Injuries – Policy 1019"         
         ],
-        "6)	Use of Force – Policy 300": [ "Use of Force – Policy 300"   
+        "6)	Use of Force": [ "Use of Force – Policy 300"   
         ],
-        "7)	Service Weapons – Policy 303": ["720 ILCS 5/7-5 (Peace Officer’s Use of Force in Making Arrest)", "720 ILCS 5/7-8 (Force Causing Death of Great Bodily Harm)", "720 ILCS 5/7-9 (Use of Force to Prevent Escape)",
+        "7)	Service Weapons": ["Service Weapons – Policy 303","720 ILCS 5/7-5 (Peace Officer’s Use of Force in Making Arrest)", "720 ILCS 5/7-8 (Force Causing Death of Great Bodily Harm)", "720 ILCS 5/7-9 (Use of Force to Prevent Escape)",
             "725 ILCS 5/107-2 (Arrest by Peace Officer) – Requirements by law in regards to dependent children – Defines arrest by Peace Officer including “Good Faith Arrest” and Arrest Warrant",
             "725 ILCS 5/107-5 (Method of Arrest)", "725 ILCS 5/107-6 (Released by Officer of Person Arrested)", "725 ILCS 5/107-12 (Notice to Appear)",
             "725 ILCS 5/107-14 (Temporary Questioning without Arrest)", "725 ILCS 5/108-1(Search Without Warrant)", "725 ILCS 5/108-1.01 (Search During Temporary Questioning)",
@@ -689,17 +689,13 @@ const policies = {
         ],
         "8)	Search & Seizures – Policy 323": ["Search & Seizures – Policy 323"
         ],
-        "9)	Handcuffing/Restraint – Policy 301": [ "Handcuffing/Restraint – Policy 301"
-            
+        "9)	Handcuffing/Restraint – Policy 301": [ "Handcuffing/Restraint – Policy 301"            
         ],
-        "10) Custodial Searches – Policy 900": ["Custodial Searches – Policy 900"
-            
+        "10) Custodial Searches – Policy 900": ["Custodial Searches – Policy 900"            
         ],
-        "11) Portable Audio/Video Recorders – Policy 408": ["Portable Audio/Video Recorders – Policy 408"
-            
+        "11) Portable Audio/Video Recorders – Policy 408": ["Portable Audio/Video Recorders – Policy 408"            
         ],
-        "12) Conduct & Responsibilities On Duty & Off Duty – Policy 320": ["Conduct & Responsibilities On Duty & Off Duty – Policy 320"
-            
+        "12) Conduct & Responsibilities On Duty & Off Duty – Policy 320": ["Conduct & Responsibilities On Duty & Off Duty – Policy 320"            
         ],
         "13) Familiarization with County Facilities & Services": ["Sheriff’s Office/Satellite Jail", "Courthouse (SAO, Probation, Public Defender, Central)", "Juvenile Detention Center", "Coroner’s Office",
             "Brookens Administrative Center", "County Highway", "Sheriff’s Garage/Impound Lot", "METCAD", "Champaign County Nursing Home"
@@ -812,7 +808,8 @@ for (var category in policies["week-1-policies"]) {
 //Resources
 
 $("#recruit-resources-modal-body").append(
-          `<a href="#" data-bs-toggle="collapse" data-bs-target="#beats-location">City/Village Beats</a>
+        `<ul>
+          <li><a href="#" data-bs-toggle="collapse" data-bs-target="#beats-location">City/Village Beats</a></li>
             <div id="beats-location" class="collapse">
               <pre>
                 City/Village Beats                  Township Beats - Location
@@ -848,7 +845,7 @@ $("#recruit-resources-modal-body").append(
               </pre>
             </div>
             <br><br>
-            <a href="#" data-bs-toggle="collapse" data-bs-target="#ten-codes">10-Codes</a>
+            <li><a href="#" data-bs-toggle="collapse" data-bs-target="#ten-codes">10-Codes</a></li>
             <div id="ten-codes" class="collapse">
               <pre>
                 10-0 – Caution                              10-40 – Silent Run-no light/siren       10-86 – Officer/Operator on Duty
@@ -894,7 +891,7 @@ $("#recruit-resources-modal-body").append(
               </pre>
             </div>
             <br><br>
-            <a href="#" data-bs-toggle="collapse" data-bs-target="#activity-codes">Activity Codes</a>
+            <li><a href="#" data-bs-toggle="collapse" data-bs-target="#activity-codes">Activity Codes</a></li>
             <div id="activity-codes" class="collapse">
               <pre>
                 Code 1 – Officer Needs Help (EMERGENCY)     Code 38 – Traffic Stop
@@ -915,5 +912,6 @@ $("#recruit-resources-modal-body").append(
                 Code 200 – Fuel Conservation
 
               </pre>
-            </div>`
+            </div>
+        </ul>`
 )
