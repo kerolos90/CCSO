@@ -1,0 +1,13 @@
+{% extends "layout.html" %} 
+
+{% block content%}
+<h1>This is a patrol schedule</h1>
+<ul>
+  {% for i in range %} {% if i != 3%}
+  <li>
+    <h2>{{ text|title }}</h2>
+    <h2>{{ forloop.counter }}</h2>
+  </li>
+  {% endif %} {% endfor %}
+</ul>
+{% endblock%}
