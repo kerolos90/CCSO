@@ -2264,6 +2264,6 @@ div.dataTables_wrapper div.dataTables_info {
     -webkit-transform: translateY(-1000px) rotate(600deg);
             transform: translateY(-1000px) rotate(600deg);
   }
- } translateY(-1000px) rotate(-600deg);
+} translateY(-1000px) rotate(-600deg);
   }
 }

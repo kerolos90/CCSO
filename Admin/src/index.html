@@ -1,954 +1,988 @@
 @@include("partials/main.html")
 
-    <head>
+<head>
 
-        @@include("partials/title-meta.html", {"title": "Patrol Schedule"})
+    @@include("partials/title-meta.html", {"title": "Patrol Schedule"})
 
-        <!-- plugin css -->
-        <link href="assets/libs/@fullcalendar/core/main.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/libs/@fullcalendar/daygrid/main.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/libs/@fullcalendar/bootstrap/main.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/libs/@fullcalendar/timegrid/main.min.css" rel="stylesheet" type="text/css" />
-        @@include("partials/head-css.html")
+    <!-- plugin css -->
+    <link href="assets/libs/@fullcalendar/core/main.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/libs/@fullcalendar/daygrid/main.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/libs/@fullcalendar/bootstrap/main.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/libs/@fullcalendar/timegrid/main.min.css" rel="stylesheet" type="text/css" />
+    @@include("partials/head-css.html")
 
-    </head>
+</head>
 
-    @@include("partials/body.html")
-        <div id="layout-wrapper">
+@@include("partials/body.html")
+<div id="layout-wrapper">
 
-            @@include("partials/menu.html")
+    @@include("partials/menu.html")
 
-            <div class="main-content">
-                <div class="page-content">
-                    <div class="container-fluid">
-                      <div class="card shadow">
-                        <div class="card-body">
-                          <h3 class="text-center">Patrol Schedule</h3>
-                        </div>
-                      </div>  
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h3 class="text-center">Patrol Schedule</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
                         <div class="row">
-                            <div class="col-12">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-8">
-                                        <div class="card shadow">
-                                            <div class="card-body">
-                                                <div id="calendar"></div>
-                                            </div>
-                                        </div>
-                                    </div> <!-- end col -->
-
-                                    <div class="col-xl-6 col-lg-4">
-                                        <div class="card shadow">
-                                            <div class="card-body ">
-                                                <div id="external-events" class="">
-                                                  <div class="d-flex justify-content-between">
-                                                    <button type="submit" class="btn btn-danger shadow" data-bs-toggle="modal" data-bs-target="#timeOffModal">Time Off Request</button>
-                                                    <button type="submit" class="btn btn-light " data-bs-toggle="modal" data-bs-target="#editScheduleModal">Edit Schedule</button>
-
-                                                  </div> 
-                                                  <h1 class="text-center">Date</h1>
-                                                  <ul class="nav nav-tabs " id="myTab" role="tablist">
-                                                  <li class="nav-item" role="presentation">
-                                                  <button class="nav-link active" id="day-tab" data-bs-toggle="tab" data-bs-target="#day" type="button" role="tab" aria-controls="day-tab" aria-selected="true">Day Shift</button>
-                                                  </li>
-                                                  <li class="nav-item" role="presentation">
-                                                  <button class="nav-link" id="night-tab" data-bs-toggle="tab" data-bs-target="#night" type="button" role="tab" aria-controls="night-tab" aria-selected="false">Night Shift</button>
-                                                  </li>
-                                                  </ul>
-                                                  
-                                                  <div class="tab-content" id="myTabContent">
-                                                      <div class="tab-pane fade show active" id="day" role="tabpanel" aria-labelledby="day-tab">
-                                                        <br>                                                        
-                                                        <table class="table table-bordered shadow">
-                                                          <thead>
-                                                              <tr>
-                                                              <th scope="col">Beat:</th>
-                                                              <th scope="col">0600-1000</th>
-                                                              <th scope="col">1000-1400</th>
-                                                              <th scope="col">1400-1800</th>
-                                                              </tr>
-                                                          </thead>
-                                                          <tbody>
-                                                              <tr>
-                                                                  <th scope="row">Shift Command</th>
-                                                                  <td>Sgt. Good #550</td>
-                                                                  <td>Sgt. Good #550</td>
-                                                                  <td>None</td>
-                                                              </tr>  
-                                                              <tr>
-                                                                  <th scope="row">Shift Command</th>
-                                                                  <td>Sgt. Darr #537</td>
-                                                                  <td>Sgt. Darr #537</td>
-                                                                  <td>Sgt. Darr #537</td>
-                                                              </tr>
-                                                              <tr>
-                                                                  <th scope="row">1/2</th>
-                                                                  <td>Dep. Gabra #503</td>
-                                                                  <td>Dep. Gabra #503</td>
-                                                                  <td>Dep. Gabra #503</td>
-                                                              </tr>
-                                                              <tr>
-                                                                  <th scope="row">3/4</th>
-                                                                  <td>Dep. Keyes #542</td>
-                                                                  <td>Dep. Keyes #542</td>
-                                                                  <td>Dep. Keyes #542</td>
-                                                  
-                                                              </tr>
-                                                              <tr>
-                                                                  <th scope="row">4/5</th>
-                                                                  <td>None</td>
-                                                                  <td>None</td>
-                                                                  <td>None</td>
-                                                              </tr>
-                                                              <tr>
-                                                                  <th scope="row">5/6</th>
-                                                                  <td>Dep. Hubbard #538</td>
-                                                                  <td>Dep. Hubbard #538</td>
-                                                                  <td>Dep. Hubbard #538</td>
-                                                              </tr>
-                                                              <tr>
-                                                                  <th scope="row">7/8</th>
-                                                                  <td>Dep. Plotner #539</td>
-                                                                  <td>Dep. Plotner #539</td>
-                                                                  <td>Dep. Plotner #539</td>
-                                                              </tr>
-                                                          </tbody>
-                                                          </table>
-                                                          
-                                                          <table class="table table-bordered shadow">
-                                                          <thead>
-                                                              <tr>
-                                                              <th scope="col">Beat:</th>
-                                                              <th scope="col">0700-1100</th>
-                                                              <th scope="col" >1100-1500 </th>
-                                                              <th scope="col">1500-1900</th>
-                                                              </tr>
-                                                          </thead>
-                                                          <tbody>
-                                                              <tr>
-                                                              <th scope="row">Savoy</th>
-                                                              <td>Dep. Pryor #521</td>
-                                                              <td>None </td>
-                                                              <td>None</td>
-                                                              </tr>
-                                                              <tr>
-                                                              <th scope="row">St. Joseph</th>
-                                                              <td>None</td>
-                                                              <td>None</td>
-                                                              <td>Dep. Metlzer #519</td>
-                                                              </tr>
-                                                          </tbody>
-                                                          </table>
-                                                          <table class="table table-bordered shadow">
-                                                          <thead>
-                                                              <tr>
-                                                              <th scope="col">Beat:</th>
-                                                              <th scope="col">0600-1100</th>
-                                                              <th scope="col">1100-1600</th>
-                                                              </tr>
-                                                          </thead>
-                                                          <tbody>
-                                                              <tr>
-                                                              <th scope="row">Civil Service</th>
-                                                              <td>Dep. Bialescki #510</td>
-                                                              <td>Dep. Bialescki #510</td>
-                                                              </tr>
-                                                              <tr>
-                                                              <th scope="row">Civil Service</th>
-                                                              <td>Dep. Atwood #507</td>
-                                                              <td>Dep. Atwood #507</td>
-                                                              </tr>
-                                                          </tbody>
-                                                          </table>
-                                                      </div>
-                                                      
-                                                      <div class="tab-pane fade" id="night" role="tabpanel" aria-labelledby="night-tab">
-                                                        <br>
-                                                        <table class="table table-bordered table-dark shadow">
-                                                          <thead>
-                                                              <tr>
-                                                              <th scope="col">Beat:</th>
-                                                              <th scope="col">1800-2200</th>
-                                                              <th scope="col">2200-0200</th>
-                                                              <th scope="col">0200-0600</th>
-                                                              </tr>
-                                                          </thead>
-                                                          <tbody>
-                                                              <tr>
-                                                                  <th scope="row">Shift Command</th>
-                                                                  <td>Sgt. Good #550</td>
-                                                                  <td>Sgt. Good #550</td>
-                                                                  <td>None</td>
-                                                              </tr>  
-                                                              <tr>
-                                                                  <th scope="row">Shift Command</th>
-                                                                  <td>Sgt. Darr #537</td>
-                                                                  <td>Sgt. Darr #537</td>
-                                                                  <td>Sgt. Darr #537</td>
-                                                              </tr>
-                                                              <tr>
-                                                                  <th scope="row">1/2</th>
-                                                                  <td>Dep. Gabra #503</td>
-                                                                  <td>Dep. Gabra #503</td>
-                                                                  <td>Dep. Gabra #503</td>
-                                                              </tr>
-                                                              <tr>
-                                                                  <th scope="row">3/4</th>
-                                                                  <td>Dep. Keyes #542</td>
-                                                                  <td>Dep. Keyes #542</td>
-                                                                  <td>Dep. Keyes #542</td>
-                                                  
-                                                              </tr>
-                                                              <tr>
-                                                                  <th scope="row">4/5</th>
-                                                                  <td>None</td>
-                                                                  <td>None</td>
-                                                                  <td>None</td>
-                                                              </tr>
-                                                              <tr>
-                                                                  <th scope="row">5/6</th>
-                                                                  <td>Dep. Hubbard #538</td>
-                                                                  <td>Dep. Hubbard #538</td>
-                                                                  <td>Dep. Hubbard #538</td>
-                                                              </tr>
-                                                              <tr>
-                                                                  <th scope="row">7/8</th>
-                                                                  <td>Dep. Plotner #539</td>
-                                                                  <td>Dep. Plotner #539</td>
-                                                                  <td>Dep. Plotner #539</td>
-                                                  
-                                                              </tr>
-                                                          </tbody>
-                                                          </table>
-                                                          
-                                                          <table class="table table-bordered table-dark shadow">
-                                                          <thead>
-                                                              <tr>
-                                                              <th scope="col">Beat:</th>
-                                                              <th scope="col">1500-1900</th>
-                                                              <th scope="col" >1900-2300 </th>
-                                                              <th scope="col">2300-0300</th>
-                                                              </tr>
-                                                          </thead>
-                                                          <tbody>
-                                                              <tr>
-                                                              <th scope="row">Savoy</th>
-                                                              <td>Dep. Pryor #521</td>
-                                                              <td>None</td>
-                                                              <td>None</td>
-                                                              </tr>
-                                                              <tr>
-                                                              <th scope="row">St. Joseph</th>
-                                                              <td>None</td>
-                                                              <td>None</td>
-                                                              <td>Dep. Metlzer #519</td>
-                                                              </tr>
-                                                          </tbody>
-                                                          </table>
-                                                      </div>
-                                                  </div>
-                                                                                     
-                                                </div>                                                                                                  
-                                                                                           
-                                            </div>
-                                        </div>
-                                    </div> <!-- end col-->
-
-                                    
+                            <div class="col-xl-6 col-lg-8">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <div id="calendar"></div>
+                                    </div>
                                 </div>
-                                <!-- end row -->
+                            </div> <!-- end col -->
 
-                                <div style='clear:both'></div>
+                            <div class="col-xl-6 col-lg-4">
+                                <div class="card shadow">
+                                    <div class="card-body ">
+                                        <div id="external-events" class="">
+                                            <div class="d-flex justify-content-between">
+                                                <button type="submit" class="btn btn-danger shadow"
+                                                    data-bs-toggle="modal" data-bs-target="#timeOffModal">Time Off
+                                                    Request</button>
+                                                <button type="submit" class="btn btn-light " data-bs-toggle="modal"
+                                                    data-bs-target="#editScheduleModal">Edit Schedule</button>
 
-                                <!-- Time off Request Modal -->
-                                <div class="modal fade" id="timeOffModal" tabindex="-1">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header py-3 px-4 border-bottom-0">
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                                             </div>
-                                            <h5 class="text-center" id="">Time Off Request</h5>
+                                            <h1 class="text-center">Date</h1>
+                                            <ul class="nav nav-tabs " id="myTab" role="tablist">
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link active" id="day-tab" data-bs-toggle="tab"
+                                                        data-bs-target="#day" type="button" role="tab"
+                                                        aria-controls="day-tab" aria-selected="true">Day Shift</button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link" id="night-tab" data-bs-toggle="tab"
+                                                        data-bs-target="#night" type="button" role="tab"
+                                                        aria-controls="night-tab" aria-selected="false">Night
+                                                        Shift</button>
+                                                </li>
+                                            </ul>
 
-                                            <div class="modal-body p-4">
-                                              <div>
-                                                  <label for="example-datetime-local-input" class="form-label">Start Date:</label>
-                                                  <input class="form-control" type="datetime-local" value="2019-08-19T13:45:00" id="example-datetime-local-input">
-                                              </div>
-                                              <br>
-                                              <div>
-                                                <label for="example-datetime-local-input" class="form-label">End Date:</label>
-                                                <input class="form-control" type="datetime-local" value="2019-08-19T13:45:00" id="example-datetime-local-input">
-                                              </div>
-                                              <br>
-                                              <div class="text-center">Benefit Time Used (check all that apply)</div>
-                                            
-                                              <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                  Vacation Time
-                                                </label>
-                                              </div>
-
-                                              <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                                <label class="form-check-label" for="flexCheckChecked">
-                                                  Comp. Time
-                                                </label>
-                                              </div>
-
-                                              <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-                                                <label class="form-check-label" for="flexCheckChecked">
-                                                  Personal Time
-                                                </label>
-                                              </div>
-
-                                              <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-                                                <label class="form-check-label" for="flexCheckChecked">
-                                                  Holiday Time
-                                                </label>
-                                              </div>
-
-                                              <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-                                                <label class="form-check-label" for="flexCheckChecked">
-                                                  Sick Time
-                                                </label>
-                                              </div>
-                                            <br>
-                                              <div class="mb-3">
-                                                <label for="exampleFormControlTextarea1" class="form-label">Comments (Optional):</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                              </div>
-                                            <!--Submit and Cancel buttons  -->
-                                            <div class="row mt-2">
-                                                <div class="col-6">
-                                                    <button type="button" class="btn btn-danger" id="btn-delete-event">Cancel</button>
-                                                </div>
-                                                <div class="col-6 text-end">
-                                                    <button type="submit" class="btn btn-success" id="btn-save-event">Submit</button>
-                                                </div>
-                                            </div>
-                                            </div>
-                                            
-                                        </div> <!-- end modal-content-->
-                                    </div> <!-- end modal dialog-->
-                                </div>
-                                <!-- end modal -->
-
-                                <!-- Edit Schedule Modal -->
-                                <div class="modal fade" id="editScheduleModal" tabindex="-1">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header py-3 px-4 border-bottom-0">
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
-                                            </div>
-                                            <h5 class="text-center" id="">
-                                                Date
-                                                <br>
-                                                Edit Schedule
-                                            </h5>
-
-                                            <div class="modal-body p-4">
-                                                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                                    <li class="nav-item" role="presentation">
-                                                    <button class="nav-link active" id="edit_day-tab" data-bs-toggle="tab" data-bs-target="#edit_day" type="button" role="tab" aria-controls="edit_day-tab" aria-selected="true">Day Shift</button>
-                                                    </li>
-                                                    <li class="nav-item" role="presentation">
-                                                    <button class="nav-link" id="edit_night-tab" data-bs-toggle="tab" data-bs-target="#edit_night" type="button" role="tab" aria-controls="edit_night-tab" aria-selected="false">Night Shift</button>
-                                                    </li>
-                                                    </ul>
-                                                    
-                                                    <div class="tab-content" id="myTabContent">
-                                                        <div class="tab-pane fade show active" id="edit_day" role="tabpanel" aria-labelledby="edit_day-tab">
-                                                          <br>                                                        
-                                                          <table class="table table-bordered shadow">
-                                                            <thead>
-                                                                <tr>
+                                            <div class="tab-content" id="myTabContent">
+                                                <div class="tab-pane fade show active" id="day" role="tabpanel"
+                                                    aria-labelledby="day-tab">
+                                                    <br>
+                                                    <table class="table table-bordered shadow">
+                                                        <thead>
+                                                            <tr>
                                                                 <th scope="col">Beat:</th>
                                                                 <th scope="col">0600-1000</th>
                                                                 <th scope="col">1000-1400</th>
                                                                 <th scope="col">1400-1800</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th scope="row">Shift Command</th>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                </tr>  
-                                                                <tr>
-                                                                    <th scope="row">Shift Command</th>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">1/2</th>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">3/4</th>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                    
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">4/5</th>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">5/6</th>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">7/8</th>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                            </table>
-                                                            
-                                                            <table class="table table-bordered shadow">
-                                                            <thead>
-                                                                <tr>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th scope="row">Shift Command</th>
+                                                                <td>Sgt. Good #550</td>
+                                                                <td>Sgt. Good #550</td>
+                                                                <td>None</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Shift Command</th>
+                                                                <td>Sgt. Darr #537</td>
+                                                                <td>Sgt. Darr #537</td>
+                                                                <td>Sgt. Darr #537</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">1/2</th>
+                                                                <td>Dep. Gabra #503</td>
+                                                                <td>Dep. Gabra #503</td>
+                                                                <td>Dep. Gabra #503</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">3/4</th>
+                                                                <td>Dep. Keyes #542</td>
+                                                                <td>Dep. Keyes #542</td>
+                                                                <td>Dep. Keyes #542</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">4/5</th>
+                                                                <td>None</td>
+                                                                <td>None</td>
+                                                                <td>None</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">5/6</th>
+                                                                <td>Dep. Hubbard #538</td>
+                                                                <td>Dep. Hubbard #538</td>
+                                                                <td>Dep. Hubbard #538</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">7/8</th>
+                                                                <td>Dep. Plotner #539</td>
+                                                                <td>Dep. Plotner #539</td>
+                                                                <td>Dep. Plotner #539</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <table class="table table-bordered shadow">
+                                                        <thead>
+                                                            <tr>
                                                                 <th scope="col">Beat:</th>
                                                                 <th scope="col">0700-1100</th>
-                                                                <th scope="col" >1100-1500 </th>
+                                                                <th scope="col">1100-1500 </th>
                                                                 <th scope="col">1500-1900</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
                                                                 <th scope="row">Savoy</th>
-                                                                <td>
-                                                                    <select class="form-select">
-                                                                        <option>Select</option>
-                                                                        <option>#503 </option>
-                                                                        <option>#550</option>
-                                                                    </select>
-                                                                </td>
-                                                                <td>
-                                                                    <select class="form-select">
-                                                                        <option>Select</option>
-                                                                        <option>#503 </option>
-                                                                        <option>#550</option>
-                                                                    </select>
-                                                                </td>
-                                                                <td>
-                                                                    <select class="form-select">
-                                                                        <option>Select</option>
-                                                                        <option>#503 </option>
-                                                                        <option>#550</option>
-                                                                    </select>
-                                                                </td>
-                                                                </tr>
-                                                                <tr>
+                                                                <td>Dep. Pryor #521</td>
+                                                                <td>None </td>
+                                                                <td>None</td>
+                                                            </tr>
+                                                            <tr>
                                                                 <th scope="row">St. Joseph</th>
-                                                                <td>
-                                                                    <select class="form-select">
-                                                                        <option>Select</option>
-                                                                        <option>#503 </option>
-                                                                        <option>#550</option>
-                                                                    </select>
-                                                                </td>
-                                                                <td>
-                                                                    <select class="form-select">
-                                                                        <option>Select</option>
-                                                                        <option>#503 </option>
-                                                                        <option>#550</option>
-                                                                    </select>
-                                                                </td>
-                                                                <td>
-                                                                    <select class="form-select">
-                                                                        <option>Select</option>
-                                                                        <option>#503 </option>
-                                                                        <option>#550</option>
-                                                                    </select>
-                                                                </td>
-                                                                </tr>
-                                                            </tbody>
-                                                            </table>
-                                                            <table class="table table-bordered shadow">
-                                                            <thead>
-                                                                <tr>
+                                                                <td>None</td>
+                                                                <td>None</td>
+                                                                <td>Dep. Metlzer #519</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <table class="table table-bordered shadow">
+                                                        <thead>
+                                                            <tr>
                                                                 <th scope="col">Beat:</th>
                                                                 <th scope="col">0600-1100</th>
                                                                 <th scope="col">1100-1600</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
                                                                 <th scope="row">Civil Service</th>
-                                                                <td>
-                                                                    <select class="form-select">
-                                                                        <option>Select</option>
-                                                                        <option>#503 </option>
-                                                                        <option>#550</option>
-                                                                    </select>
-                                                                </td>
-                                                                <td>
-                                                                    <select class="form-select">
-                                                                        <option>Select</option>
-                                                                        <option>#503 </option>
-                                                                        <option>#550</option>
-                                                                    </select>
-                                                                </td>
+                                                                <td>Dep. Bialescki #510</td>
+                                                                <td>Dep. Bialescki #510</td>
                                                             </tr>
                                                             <tr>
                                                                 <th scope="row">Civil Service</th>
-                                                                <td>
-                                                                    <select class="form-select">
-                                                                        <option>Select</option>
-                                                                        <option>#503 </option>
-                                                                        <option>#550</option>
-                                                                    </select>
-                                                                </td>
-                                                                <td>
-                                                                    <select class="form-select">
-                                                                        <option>Select</option>
-                                                                        <option>#503 </option>
-                                                                        <option>#550</option>
-                                                                    </select>
-                                                                </td>
+                                                                <td>Dep. Atwood #507</td>
+                                                                <td>Dep. Atwood #507</td>
                                                             </tr>
-                                                            </tbody>
-                                                            </table>
-                                                        </div>
-                                                        
-                                                        <div class="tab-pane fade" id="edit_night" role="tabpanel" aria-labelledby="edit_night-tab">
-                                                          <br>
-                                                          <table class="table table-bordered table-dark shadow">
-                                                            <thead>
-                                                                <tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                                <div class="tab-pane fade" id="night" role="tabpanel"
+                                                    aria-labelledby="night-tab">
+                                                    <br>
+                                                    <table class="table table-bordered table-dark shadow">
+                                                        <thead>
+                                                            <tr>
                                                                 <th scope="col">Beat:</th>
-                                                                <th scope="col">0600-1000</th>
-                                                                <th scope="col">1000-1400</th>
-                                                                <th scope="col">1400-1800</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th scope="row">Shift Command</th>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                </tr>  
-                                                                <tr>
-                                                                    <th scope="row">Shift Command</th>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">1/2</th>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">3/4</th>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                    
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">4/5</th>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">5/6</th>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">7/8</th>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select class="form-select">
-                                                                            <option>Select</option>
-                                                                            <option>#503 </option>
-                                                                            <option>#550</option>
-                                                                        </select>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                            </table>
-                                                            
-                                                            <table class="table table-bordered table-dark shadow">
-                                                            <thead>
-                                                                <tr>
+                                                                <th scope="col">1800-2200</th>
+                                                                <th scope="col">2200-0200</th>
+                                                                <th scope="col">0200-0600</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th scope="row">Shift Command</th>
+                                                                <td>Sgt. Good #550</td>
+                                                                <td>Sgt. Good #550</td>
+                                                                <td>None</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Shift Command</th>
+                                                                <td>Sgt. Darr #537</td>
+                                                                <td>Sgt. Darr #537</td>
+                                                                <td>Sgt. Darr #537</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">1/2</th>
+                                                                <td>Dep. Gabra #503</td>
+                                                                <td>Dep. Gabra #503</td>
+                                                                <td>Dep. Gabra #503</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">3/4</th>
+                                                                <td>Dep. Keyes #542</td>
+                                                                <td>Dep. Keyes #542</td>
+                                                                <td>Dep. Keyes #542</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">4/5</th>
+                                                                <td>None</td>
+                                                                <td>None</td>
+                                                                <td>None</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">5/6</th>
+                                                                <td>Dep. Hubbard #538</td>
+                                                                <td>Dep. Hubbard #538</td>
+                                                                <td>Dep. Hubbard #538</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">7/8</th>
+                                                                <td>Dep. Plotner #539</td>
+                                                                <td>Dep. Plotner #539</td>
+                                                                <td>Dep. Plotner #539</td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <table class="table table-bordered table-dark shadow">
+                                                        <thead>
+                                                            <tr>
                                                                 <th scope="col">Beat:</th>
                                                                 <th scope="col">1500-1900</th>
-                                                                <th scope="col" >1900-2300 </th>
+                                                                <th scope="col">1900-2300 </th>
                                                                 <th scope="col">2300-0300</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
                                                                 <th scope="row">Savoy</th>
-                                                                <td>
-                                                                    <select class="form-select">
-                                                                        <option>Select</option>
-                                                                        <option>#503 </option>
-                                                                        <option>#550</option>
-                                                                    </select>
-                                                                </td>
-                                                                <td>
-                                                                    <select class="form-select">
-                                                                        <option>Select</option>
-                                                                        <option>#503 </option>
-                                                                        <option>#550</option>
-                                                                    </select>
-                                                                </td>
-                                                                <td>
-                                                                    <select class="form-select">
-                                                                        <option>Select</option>
-                                                                        <option>#503 </option>
-                                                                        <option>#550</option>
-                                                                    </select>
-                                                                </td>
-                                                                </tr>
-                                                                <tr>
+                                                                <td>Dep. Pryor #521</td>
+                                                                <td>None</td>
+                                                                <td>None</td>
+                                                            </tr>
+                                                            <tr>
                                                                 <th scope="row">St. Joseph</th>
-                                                                <td>
-                                                                    <select class="form-select">
-                                                                        <option>Select</option>
-                                                                        <option>#503 </option>
-                                                                        <option>#550</option>
-                                                                    </select>
-                                                                </td>
-                                                                <td>
-                                                                    <select class="form-select">
-                                                                        <option>Select</option>
-                                                                        <option>#503 </option>
-                                                                        <option>#550</option>
-                                                                    </select>
-                                                                </td>
-                                                                <td>
-                                                                    <select class="form-select">
-                                                                        <option>Select</option>
-                                                                        <option>#503 </option>
-                                                                        <option>#550</option>
-                                                                    </select>
-                                                                </td>
-                                                                </tr>
-                                                            </tbody>
-                                                            </table>
-                                                                                                                    
-                                                        </div>
-                                                        <div class="row mt-2">
-                                                            <div class="col-6">
-                                                                <button type="button" class="btn btn-danger" id="btn-delete-event">Cancel</button>
-                                                            </div>
-                                                            <div class="col-6 text-end">
-                                                                <button type="submit" class="btn btn-success" id="btn-save-event">Submit</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                                                       
-                                                  </div>
+                                                                <td>None</td>
+                                                                <td>None</td>
+                                                                <td>Dep. Metlzer #519</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
-                                            
-                                        </div> <!-- end modal-content-->
-                                    </div> <!-- end modal dialog-->
+
+                                        </div>
+
+                                    </div>
                                 </div>
-                                
+                            </div> <!-- end col-->
 
-                            </div>
+
                         </div>
-                       
-                                    
+                        <!-- end row -->
+
+                        <div style='clear:both'></div>
+
+                        <!-- Time off Request Modal -->
+                        <div class="modal fade" id="timeOffModal" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header py-3 px-4 border-bottom-0">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-hidden="true"></button>
+                                    </div>
+                                    <h5 class="text-center" id="">Time Off Request</h5>
+
+                                    <div class="modal-body p-4">
+                                        <div>
+                                            <label for="example-datetime-local-input" class="form-label">Start
+                                                Date:</label>
+                                            <input class="form-control" type="datetime-local"
+                                                value="2019-08-19T13:45:00" id="example-datetime-local-input">
+                                        </div>
+                                        <br>
+                                        <div>
+                                            <label for="example-datetime-local-input" class="form-label">End
+                                                Date:</label>
+                                            <input class="form-control" type="datetime-local"
+                                                value="2019-08-19T13:45:00" id="example-datetime-local-input">
+                                        </div>
+                                        <br>
+                                        <div class="text-center">Benefit Time Used (check all that apply)</div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                Vacation Time
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckChecked">
+                                            <label class="form-check-label" for="flexCheckChecked">
+                                                Comp. Time
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckChecked">
+                                            <label class="form-check-label" for="flexCheckChecked">
+                                                Personal Time
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckChecked">
+                                            <label class="form-check-label" for="flexCheckChecked">
+                                                Holiday Time
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckChecked">
+                                            <label class="form-check-label" for="flexCheckChecked">
+                                                Sick Time
+                                            </label>
+                                        </div>
+                                        <br>
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlTextarea1" class="form-label">Comments
+                                                (Optional):</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <!--Submit and Cancel buttons  -->
+                                        <div class="row mt-2">
+                                            <div class="col-6">
+                                                <button type="button" class="btn btn-danger"
+                                                    id="btn-delete-event">Cancel</button>
+                                            </div>
+                                            <div class="col-6 text-end">
+                                                <button type="submit" class="btn btn-success"
+                                                    id="btn-save-event">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div> <!-- end modal-content-->
+                            </div> <!-- end modal dialog-->
+                        </div>
+                        <!-- end modal -->
+
+                        <!-- Edit Schedule Modal -->
+                        <div class="modal fade" id="editScheduleModal" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header py-3 px-4 border-bottom-0">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-hidden="true"></button>
+                                    </div>
+                                    <h5 class="text-center" id="">
+                                        Date
+                                        <br>
+                                        Edit Schedule
+                                    </h5>
+
+                                    <div class="modal-body p-4">
+                                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="edit_day-tab" data-bs-toggle="tab"
+                                                    data-bs-target="#edit_day" type="button" role="tab"
+                                                    aria-controls="edit_day-tab" aria-selected="true">Day Shift</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="edit_night-tab" data-bs-toggle="tab"
+                                                    data-bs-target="#edit_night" type="button" role="tab"
+                                                    aria-controls="edit_night-tab" aria-selected="false">Night
+                                                    Shift</button>
+                                            </li>
+                                        </ul>
+
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-pane fade show active" id="edit_day" role="tabpanel"
+                                                aria-labelledby="edit_day-tab">
+                                                <br>
+                                                <table class="table table-bordered shadow">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Beat:</th>
+                                                            <th scope="col">0600-1000</th>
+                                                            <th scope="col">1000-1400</th>
+                                                            <th scope="col">1400-1800</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">Shift Command</th>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Shift Command</th>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">1/2</th>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">3/4</th>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">4/5</th>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">5/6</th>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">7/8</th>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <table class="table table-bordered shadow">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Beat:</th>
+                                                            <th scope="col">0700-1100</th>
+                                                            <th scope="col">1100-1500 </th>
+                                                            <th scope="col">1500-1900</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">Savoy</th>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">St. Joseph</th>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table class="table table-bordered shadow">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Beat:</th>
+                                                            <th scope="col">0600-1100</th>
+                                                            <th scope="col">1100-1600</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">Civil Service</th>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Civil Service</th>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <div class="tab-pane fade" id="edit_night" role="tabpanel"
+                                                aria-labelledby="edit_night-tab">
+                                                <br>
+                                                <table class="table table-bordered table-dark shadow">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Beat:</th>
+                                                            <th scope="col">0600-1000</th>
+                                                            <th scope="col">1000-1400</th>
+                                                            <th scope="col">1400-1800</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">Shift Command</th>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Shift Command</th>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">1/2</th>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">3/4</th>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">4/5</th>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">5/6</th>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">7/8</th>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <table class="table table-bordered table-dark shadow">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Beat:</th>
+                                                            <th scope="col">1500-1900</th>
+                                                            <th scope="col">1900-2300 </th>
+                                                            <th scope="col">2300-0300</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">Savoy</th>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">St. Joseph</th>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>#503 </option>
+                                                                    <option>#550</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                            <div class="row mt-2">
+                                                <div class="col-6">
+                                                    <button type="button" class="btn btn-danger"
+                                                        id="btn-delete-event">Cancel</button>
+                                                </div>
+                                                <div class="col-6 text-end">
+                                                    <button type="submit" class="btn btn-success"
+                                                        id="btn-save-event">Submit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div> <!-- end modal-content-->
+                        </div> <!-- end modal dialog-->
                     </div>
-                    <!-- container-fluid -->
+
+
                 </div>
-                <!-- End Page-content -->
-
-
-                @@include("partials/footer.html")
             </div>
-            <!-- end main content-->
+
 
         </div>
-        <!-- END layout-wrapper -->
+        <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
 
 
-        @@include("partials/vendor-scripts.html")
+    @@include("partials/footer.html")
+</div>
+<!-- end main content-->
 
-        
-        <script src="assets/libs/@fullcalendar/core/main.min.js"></script>
-        <script src="assets/libs/@fullcalendar/bootstrap/main.min.js"></script>
-        <script src="assets/libs/@fullcalendar/daygrid/main.min.js"></script>
-        <script src="assets/libs/@fullcalendar/timegrid/main.min.js"></script>
-        <script src="assets/libs/@fullcalendar/interaction/main.min.js"></script>
-
-        <!-- Calendar init -->
-        <script src="assets/js/pages/calendar.init.js"></script>
+</div>
+<!-- END layout-wrapper -->
 
 
-        <script src="assets/js/app.js"></script>
+@@include("partials/vendor-scripts.html")
 
-    </body>
+
+<script src="assets/libs/@fullcalendar/core/main.min.js"></script>
+<script src="assets/libs/@fullcalendar/bootstrap/main.min.js"></script>
+<script src="assets/libs/@fullcalendar/daygrid/main.min.js"></script>
+<script src="assets/libs/@fullcalendar/timegrid/main.min.js"></script>
+<script src="assets/libs/@fullcalendar/interaction/main.min.js"></script>
+
+<!-- Calendar init -->
+<script src="assets/js/pages/calendar.init.js"></script>
+
+
+<script src="assets/js/app.js"></script>
+
+</body>
 
 </html>

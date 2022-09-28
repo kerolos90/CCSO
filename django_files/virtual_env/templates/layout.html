@@ -1,5 +1,6 @@
 {% load static %}
 
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,14 +10,34 @@
 
     <!--Global CSS-->
     <link rel="stylesheet" href="{% static "css/app.css"%}" type="text/css" />
+    <!-- preloader css -->
+    <link rel="stylesheet" href="{% static "css/preloader.css"%}" type="text/css" />
+    <link rel="stylesheet" href="{% static "css/custom.css"%}" type="text/css" />
+    <link rel="stylesheet" href="{% static "css/icons.css"%}" type="text/css" />
+    <link rel="stylesheet" href="{% static "css/bootstrap.css"%}" type="text/css" />
+    {% block head %}{% endblock head %}
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="{% static "images/favicon.ico"%}" />
   </head>
 
   <body>
-    {% block content %} {% endblock%}
+    {% include "sidebar.html" %}
+    {% include "topbar.html" %}
+    {% include "footer.html" %}
+    
+    {% block content %}{% endblock content %}
+    <!-- JAVASCRIPT -->
 
+    <script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'libs/metismenu/metisMenu.min.js' %}"></script>
+    <script src="{% static 'libs/simplebar/simplebar.min.js' %}"></script>
+    <script src="{% static 'libs/node-waves/waves.min.js' %}"></script>
+    <script src="{% static 'libs/feather-icons/feather.min.js' %}"></script>
+    <script src="{% static 'libs/pace-js/pace.min.js' %}"></script>
     <script src="{% static "js/app.js"%}"></script>
+
   </body>
+  
 </html>

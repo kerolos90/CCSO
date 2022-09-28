@@ -1,0 +1,306 @@
+var options = {
+  chart: {
+    height: 380,
+    type: "line",
+    zoom: {
+      enabled: true,
+    },
+    toolbar: {
+      show: true,
+    },
+  },
+  dataLabels: {
+    enabled: false,
+  },
+  stroke: {
+    width: [3, 4, 3],
+    curve: "straight",
+    dashArray: [0, 8, 5],
+  },
+  series: [
+    {
+      name: "Appearance",
+      data: [1, 1, 3, 4, 3, 6, 1, 2, 6, 2, 5, 1],
+    },
+    {
+      name: "Attitude",
+      data: [3, 2, 6, 4, 1, 1, 2, 7, 6, 5, 2, 3],
+    },
+    {
+      name: "Motor Vehicle Operations",
+      data: [3, 5, 7, 4, 2, 3, 6, 6, 7, 5, 4, 4],
+    },
+    {
+      name: "Orientation",
+      data: [1, 2, 4, 5, 2, 3, 4, 6, 2, 5, 6, 4],
+    },
+    {
+      name: "Field Performance: Non-Stress",
+      data: [1, 2, 4, 5, 2, 3, 4, 6, 2, 5, 6, 4],
+    },
+    {
+      name: "Field Performance: Stress",
+      data: [1, 2, 4, 5, 2, 3, 4, 6, 2, 5, 6, 4],
+    }
+  ],
+  title: {
+    text: "DOR Categories",
+    align: "left",
+    style: {
+      fontWeight: "500",
+    },
+  },
+  markers: {
+    size: 0,
+
+    hover: {
+      sizeOffset: 6,
+    },
+  },
+  xaxis: {
+    categories: [],
+  },
+  tooltip: {
+    y: [
+      {
+        title: {
+          formatter: function (val) {
+            return val + " (mins)";
+          },
+        },
+      },
+      {
+        title: {
+          formatter: function (val) {
+            return val + " per session";
+          },
+        },
+      },
+      {
+        title: {
+          formatter: function (val) {
+            return val;
+          },
+        },
+      },
+    ],
+  },
+  grid: {
+    borderColor: "#f1f1f1",
+  },
+};
+
+var chart = new ApexCharts(
+  document.querySelector("#line_chart_dashed-1"),
+  options
+  
+);
+for (let i = 0; i < 57; i++) {
+      options.xaxis.categories.push(`Day ${(i+1)}`)
+    }
+chart.render();
+
+var options = {
+  chart: {
+    height: 380,
+    type: "line",
+    zoom: {
+      enabled: true,
+    },
+    toolbar: {
+      show: true,
+    },
+  },
+  dataLabels: {
+    enabled: false,
+  },
+  stroke: {
+    width: [3, 4, 3],
+    curve: "straight",
+    dashArray: [0, 8, 5],
+  },
+  series: [
+    {
+      name: "Written Comm. (Report Writing)",
+      data: [1, 1, 3, 4, 3, 6, 1, 2, 6, 2, 5, 1],
+    },
+    {
+      name: "Investigative Skill/ Case Building",
+      data: [3, 2, 6, 4, 1, 1, 2, 7, 6, 5, 2, 3],
+    },
+    {
+      name: "Directed Patrol/SIFA",
+      data: [3, 5, 7, 4, 2, 3, 6, 6, 7, 5, 4, 4],
+    },
+    {
+      name: "Officer Safety",
+      data: [1, 2, 4, 5, 2, 3, 4, 6, 2, 5, 6, 4],
+    },
+    {
+      name: "Radio/ Telecommunications",
+      data: [1, 2, 4, 5, 2, 3, 4, 6, 2, 5, 6, 4],
+    },
+    {
+      name: "Technology/ MDC",
+      data: [1, 2, 4, 5, 2, 3, 4, 6, 2, 5, 6, 4],
+    }
+  ],
+  title: {
+    text: "DOR Categories",
+    align: "left",
+    style: {
+      fontWeight: "500",
+    },
+  },
+  markers: {
+    size: 0,
+
+    hover: {
+      sizeOffset: 6,
+    },
+  },
+  xaxis: {
+    categories: [],
+  },
+  tooltip: {
+    y: [
+      {
+        title: {
+          formatter: function (val) {
+            return val + " (mins)";
+          },
+        },
+      },
+      {
+        title: {
+          formatter: function (val) {
+            return val + " per session";
+          },
+        },
+      },
+      {
+        title: {
+          formatter: function (val) {
+            return val;
+          },
+        },
+      },
+    ],
+  },
+  grid: {
+    borderColor: "#f1f1f1",
+  },
+};
+
+var chart = new ApexCharts(
+  document.querySelector("#line_chart_dashed-2"),
+  options
+  
+);
+for (let i = 0; i < 57; i++) {
+      options.xaxis.categories.push(`Day ${(i+1)}`)
+    }
+chart.render();
+
+
+var options = {
+  chart: {
+    height: 380,
+    type: "line",
+    zoom: {
+      enabled: true,
+    },
+    toolbar: {
+      show: true,
+    },
+  },
+  dataLabels: {
+    enabled: false,
+  },
+  stroke: {
+    width: [3, 4, 3],
+    curve: "straight",
+    dashArray: [0, 8, 5],
+  },
+  series: [
+    {
+      name: "Knowledge/Application of Criminal Law",
+      data: [1, 1, 3, 4, 3, 6, 1, 2, 6, 2, 5, 1],
+    },
+    {
+      name: "Traffic Laws",
+      data: [3, 2, 6, 4, 1, 1, 2, 7, 6, 5, 2, 3],
+    },
+    {
+      name: "Department Policies/ Procedures",
+      data: [3, 5, 7, 4, 2, 3, 6, 6, 7, 5, 4, 4],
+    },
+    {
+      name: "Relationships",
+      data: [1, 2, 4, 5, 2, 3, 4, 6, 2, 5, 6, 4],
+    },
+    {
+      name: "Field Performance: Non-Stress",
+      data: [1, 2, 4, 5, 2, 3, 4, 6, 2, 5, 6, 4],
+    },
+    {
+      name: "Field Performance: Stress",
+      data: [1, 2, 4, 5, 2, 3, 4, 6, 2, 5, 6, 4],
+    }
+  ],
+  title: {
+    text: "DOR Categories",
+    align: "left",
+    style: {
+      fontWeight: "500",
+    },
+  },
+  markers: {
+    size: 0,
+
+    hover: {
+      sizeOffset: 6,
+    },
+  },
+  xaxis: {
+    categories: [],
+  },
+  tooltip: {
+    y: [
+      {
+        title: {
+          formatter: function (val) {
+            return val + " (mins)";
+          },
+        },
+      },
+      {
+        title: {
+          formatter: function (val) {
+            return val + " per session";
+          },
+        },
+      },
+      {
+        title: {
+          formatter: function (val) {
+            return val;
+          },
+        },
+      },
+    ],
+  },
+  grid: {
+    borderColor: "#f1f1f1",
+  },
+};
+
+var chart = new ApexCharts(
+  document.querySelector("#line_chart_dashed-3"),
+  options
+  
+);
+for (let i = 0; i < 57; i++) {
+      options.xaxis.categories.push(`Day ${(i+1)}`)
+    }
+chart.render();
