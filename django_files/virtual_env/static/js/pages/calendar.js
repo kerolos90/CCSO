@@ -122,11 +122,13 @@
     });
   }),
     //init
-    ($.CalendarPage = new CalendarPage()),
-    ($.CalendarPage.Constructor = CalendarPage);
+     ($.CalendarPage = new CalendarPage()),
+     ($.CalendarPage.Constructor = CalendarPage);
 })(window.jQuery),
   //initializing
   (function ($) {
-    "use strict";
-    $.CalendarPage.init();
+  "use strict";
+    alert("Hi")
+     $.CalendarPage.init();
   })(window.jQuery);
+
