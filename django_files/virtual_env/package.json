@@ -66,6 +66,7 @@
     "echarts": "^4.7.0",
     "feather-icons": "^4.28.0",
     "flatpickr": "^4.6.9",
+    "fullcalendar": "^5.11.3",
     "glightbox": "^3.0.9",
     "gmaps": "^0.4.24",
     "gulp-rtlcss": "^1.4.1",

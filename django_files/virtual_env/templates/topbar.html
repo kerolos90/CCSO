@@ -5,7 +5,7 @@
     <div class="d-flex">
       <!-- LOGO -->
       <div class="navbar-brand-box">
-        <a href="index.html" class="logo logo-dark">
+        <a href="{% url "patrol_schedule"%}" class="logo logo-dark">
           <span class="logo-sm">
             <img
               src="{% static 'images/small-badge.png' %}"
@@ -24,7 +24,7 @@
           </span>
         </a>
 
-        <a href="index.html" class="logo logo-light">
+        <a href="{% url "patrol_schedule"%}" class="logo logo-light">
           <span class="logo-sm">
             <img src="{% static 'images/small-badge.png' %}" alt="" style="border-radius: 50%" height="24"/>
           </span>
@@ -50,8 +50,6 @@
           <i data-feather="sun" class="icon-lg layout-mode-light"></i>
         </button>
       </div>
-
-        
     </div>
   </div>
 </header>

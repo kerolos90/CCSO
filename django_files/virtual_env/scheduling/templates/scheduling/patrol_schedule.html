@@ -14,7 +14,14 @@
     <div class="container-fluid">
       <div class="card shadow">
         <div class="card-body">
-          <h3 class="text-center">Patrol Schedule</h3>
+          <h3 class="text-center">Patrol Schedule
+                  <div>
+                    {% for test in test_dic  %}
+                    <p>{{test_dic.date|date:"D d M Y" }}</p>
+                    {% endfor %}
+                  </div>
+
+          </h3>
         </div>
       </div>
       <div class="row">
@@ -24,6 +31,7 @@
               <div class="card shadow">
                 <div class="card-body">
                   <div id="calendar"></div>
+
                 </div>
               </div>
             </div>
@@ -1061,6 +1069,10 @@
   </div>
   <!-- container-fluid -->
 </div>
+
+  {% endblock%}
+
+  {% block scripts %}
     <script src="{% static 'libs/@fullcalendar/core/main.min.js' %}"></script>
     <script src="{% static 'libs/@fullcalendar/bootstrap/main.min.js' %}"></script>
     <script src="{% static 'libs/@fullcalendar/daygrid/main.min.js' %}"></script>
@@ -1068,7 +1080,5 @@
     <script src="{% static 'libs/@fullcalendar/interaction/main.min.js' %}"></script>
 
     <script src="{% static 'js/pages/calendar.init.js' %}"></script>
-
-
-  {% endblock%}
-
+  
+  {% endblock scripts %}

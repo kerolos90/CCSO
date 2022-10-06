@@ -1,93 +1,133 @@
-!(function (s) {
+!(function ($) {
   "use strict";
-  function e() { }
-  (e.prototype.init = function () {
-    var n = s("#event-modal"),
-      t = s("#modal-title"),
-      a = s("#form-event"),
-      l = null,
-      i = null,
-      o = document.getElementsByClassName("needs-validation"),
-      l = null,
-      i = null,
-      e = new Date();
-    e.getDate(), e.getMonth(), e.getFullYear();
-    new FullCalendarInteraction.Draggable(
-      document.getElementById("external-events"),
-      {
-        itemSelector: ".external-event",
-        eventData: function (e) {
-          return { title: e.innerText, className: s(e).data("class") };
-        },
-      }
-    );
-    document.getElementById("external-events");
-    e = document.getElementById("calendar");
-    function r(e) {
-      n.modal("show"),
-        a.removeClass("was-validated"),
-        a[0].reset(),
-        s("#event-title").val(),
-        s("#event-category").val(),
-        t.text("Add Event"),
-        (i = e);
+
+  var CalendarPage = function () {};
+
+  (CalendarPage.prototype.init = function () {
+    var addEvent = $("#event-modal");
+    var modalTitle = $("#modal-title");
+    var formEvent = $("#form-event");
+    var selectedEvent = null;
+    var newEventData = null;
+    var forms = document.getElementsByClassName("needs-validation");
+    var selectedEvent = null;
+    var newEventData = null;
+    var eventObject = null;
+    /* initialize the calendar */
+
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+    var Draggable = FullCalendarInteraction.Draggable;
+    var externalEventContainerEl = document.getElementById("external-events");
+    // init dragable
+    new Draggable(externalEventContainerEl, {
+      itemSelector: ".external-event",
+      eventData: function (eventEl) {
+        return {
+          title: eventEl.innerText,
+          className: $(eventEl).data("class"),
+        };
+      },
+    });
+    var defaultEvents = [];
+
+    var draggableEl = document.getElementById("external-events");
+    var calendarEl = document.getElementById("calendar");
+
+    function addNewEvent(info) {
+      addEvent.modal("show");
+      formEvent.removeClass("was-validated");
+      formEvent[0].reset();
+
+      $("#event-title").val();
+      $("#event-category").val();
+      modalTitle.text("Add Event");
+      newEventData = info;
     }
-    var d = new FullCalendar.Calendar(e, {
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
       plugins: ["bootstrap", "interaction", "dayGrid", "timeGrid"],
-      editable: !0,
-      droppable: !0,
-      selectable: !0,
+      editable: true,
+      droppable: true,
+      selectable: true,
       defaultView: "dayGridMonth",
       themeSystem: "bootstrap",
-      header: { left: "today ", center: "title", right: "prev,next" },
-      eventClick: function (e) {
-        n.modal("show"),
-          a[0].reset(),
-          (l = e.event),
-          s("#event-title").val(l.title),
-          s("#event-category").val(l.classNames[0]),
-          (i = null),
-          t.text("Edit Event"),
-          (i = null);
+      header: {
+        left: "today ",
+        center: "title",
+        right: "prev,next",
       },
-      dateClick: function (e) {
-        r(e);
+      eventClick: function (info) {
+        addEvent.modal("show");
+        formEvent[0].reset();
+        selectedEvent = info.event;
+        $("#event-title").val(selectedEvent.title);
+        $("#event-category").val(selectedEvent.classNames[0]);
+        newEventData = null;
+        modalTitle.text("Edit Event");
+        newEventData = null;
       },
-      events: [],
-    });
-    d.render(),
-      s(a).on("submit", function (e) {
-        e.preventDefault();
-        s("#form-event :input");
-        var t = s("#event-title").val(),
-          e = s("#event-category").val();
-        !1 === o[0].checkValidity()
-          ? (event.preventDefault(),
-            event.stopPropagation(),
-            o[0].classList.add("was-validated"))
-          : (l
-            ? (l.setProp("title", t), l.setProp("classNames", [e]))
-            : ((e = {
-              title: t,
-              start: i.date,
-              allDay: i.allDay,
-              className: e,
-            }),
-              d.addEvent(e)),
-            n.modal("hide"));
-      }),
-      s("#btn-delete-event").on("click", function (e) {
-        l && (l.remove(), (l = null), n.modal("hide"));
-      }),
-      s("#btn-new-event").on("click", function (e) {
-        r({ date: new Date(), allDay: !0 });
-      });
-  }),
-    (s.CalendarPage = new e()),
-    (s.CalendarPage.Constructor = e);
 
+      dateClick: function (info) {
+        addNewEvent(info);
+      },
+
+      events: defaultEvents,
+    });
+    calendar.render();
+
+    /*Add new event*/
+    // Form to add new event
+
+    $(formEvent).on("submit", function (ev) {
+      ev.preventDefault();
+      var inputs = $("#form-event :input");
+      var updatedTitle = $("#event-title").val();
+      var updatedCategory = $("#event-category").val();
+
+      // validation
+      if (forms[0].checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+        forms[0].classList.add("was-validated");
+      } else {
+        if (selectedEvent) {
+          selectedEvent.setProp("title", updatedTitle);
+          selectedEvent.setProp("classNames", [updatedCategory]);
+        } else {
+          var newEvent = {
+            title: updatedTitle,
+            start: newEventData.date,
+            allDay: newEventData.allDay,
+            className: updatedCategory,
+          };
+          calendar.addEvent(newEvent);
+        }
+        addEvent.modal("hide");
+      }
+    });
+
+    $("#btn-delete-event").on("click", function (e) {
+      if (selectedEvent) {
+        selectedEvent.remove();
+        selectedEvent = null;
+        addEvent.modal("hide");
+      }
+    });
+
+    $("#btn-new-event").on("click", function (e) {
+      addNewEvent({ date: new Date(), allDay: true });
+    });
+  }),
+    //init
+     ($.CalendarPage = new CalendarPage()),
+     ($.CalendarPage.Constructor = CalendarPage);
 })(window.jQuery),
-  (function () {
-    "use strict";
-    window.jQuery.CalendarPage.init();
-  })();
+  //initializing
+  (function ($) {
+  "use strict";
+     $.CalendarPage.init();
+  })(window.jQuery);
+
