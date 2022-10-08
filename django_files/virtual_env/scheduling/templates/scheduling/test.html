@@ -13,9 +13,9 @@
           <div class="card-body">
             <h3 class="text-center">Field Training</h3>
             <div>
-              {% comment %} {% for emp in data  %}
-              <li>{{emp}}</li>
-              {% endfor %} {% endcomment %}
+              {% for emp in data  %}
+              <li>{{emp.id}}</li>
+              {% endfor %} 
             </div>
           </div>
         </div>
