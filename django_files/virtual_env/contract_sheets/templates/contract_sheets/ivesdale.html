@@ -1,0 +1,233 @@
+{% comment %} {% extends "layout.html" %} {% load static %} {% block head %}
+{% block head %}
+    <link href= {% static 'libs/@fullcalendar/core/main.min.css' %} rel="stylesheet" type="text/css" />
+    <link href= {% static 'libs/@fullcalendar/daygrid/main.min.css' %} rel="stylesheet" type="text/css" />
+    <link href= {% static 'libs/@fullcalendar/bootstrap/main.min.css' %} rel="stylesheet" type="text/css" />
+    <link href= {% static 'libs/@fullcalendar/timegrid/main.min.css' %} rel="stylesheet" type="text/css" />
+{% endblock head %}
+
+  <body>
+    <div id="layout-wrapper">
+      <header id="page-topbar">
+  <div class="navbar-header shadow">
+    <div class="d-flex">
+      <!-- LOGO -->
+      <div class="navbar-brand-box">
+        <a href="index.html" class="logo logo-dark">
+          <span class="logo-sm">
+            <img
+              src="assets/images/small-badge.png"
+              alt=""
+              style="border-radius: 50%"
+              height="24"
+            />
+          </span>
+          <span class="logo-lg">
+            <img
+              src="assets/images/small-badge.png"
+              alt=""
+              style="border-radius: 50%"
+              height=""
+            />
+          </span>
+        </a>
+
+        <a href="index.html" class="logo logo-light">
+          <span class="logo-sm">
+            <img src="assets/images/small-badge.png" alt="" style="border-radius: 50%" height="24"/>
+          </span>
+          <span class="logo-lg">
+            <img src="assets/images/small-badge.png" alt="" style="border-radius: 50%"  />
+          </span>
+        </a>
+      </div>
+
+      <button
+        type="button"
+        class="btn btn-sm px-3 font-size-16 header-item"
+        id="vertical-menu-btn"
+      >
+        <i class="fa fa-fw fa-bars"></i>
+      </button>
+    </div>
+    <h2 class="w-auto">Champaign County Sheriff's Office</h2>
+    <div class="d-flex">
+      <div class="dropdown d-none d-sm-inline-block">
+        <button type="button" class="btn header-item" id="mode-setting-btn">
+          <i data-feather="moon" class="icon-lg layout-mode-dark"></i>
+          <i data-feather="sun" class="icon-lg layout-mode-light"></i>
+        </button>
+      </div>
+
+        
+    </div>
+  </div>
+</header>
+ <!-- ========== Left Sidebar Start ========== -->
+<div class="vertical-menu">
+  <div data-simplebar class="h-100">
+    <!--- Sidemenu -->
+    <div id="sidebar-menu">
+      <!-- Left Menu Start -->
+      <ul class="metismenu list-unstyled" id="side-menu">
+        <li class="menu-title" data-key="t-menu">Menu</li>
+
+        <li>
+          <a href="javascript: void(0);" class="has-arrow">
+            <i class="fas fa-calendar-day"></i>
+            <span data-key="t-apps">Schedule</span>
+          </a>
+          <ul class="sub-menu" aria-expanded="false">
+            <li>
+              <a href="index.html">
+                <span data-key="t-calendar">Patrol Schedule</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span data-key="t-calendar">Investigations Schedule</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="javascript: void(0);" class="has-arrow">
+            <i class="fas fa-file-alt"></i>
+            <span data-key="t-authentication">Contract Sheets</span>
+          </a>
+          <ul class="sub-menu" aria-expanded="false">
+            <li>
+              <a href="ivesdale.html">
+                <span data-key="t-calendar">Ivesdale</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span data-key="t-calendar">Philo</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span data-key="t-calendar">Savoy</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span data-key="t-calendar">St. Joseph</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="field-training.html" class="">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <span data-key="t-pages">Field Training</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#" class="">
+            <i class="fas fa-check-double"></i>
+            <span data-key="t-pages">EHD</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="training-standards.html" class="">
+            <i class="fas fa-chart-bar"></i>
+            <span data-key="t-pages">Training Standards</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="settings.html" class="">
+            <i class="fas fa-cog"></i>
+            <span data-key="t-pages">Settings</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- Sidebar -->
+  </div>
+</div>
+<!-- Left Sidebar End -->
+
+
+      
+
+
+      <div class="main-content">
+        <div class="page-content">
+          <div class="container-fluid">
+            <div class="card shadow">
+              <div class="card-body">
+                <h3 class="text-center " id="village_title">Ivesdale</h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-xl-9 col-lg-8">
+                    <div class="card">
+                      <div class="card-body shadow-lg">
+                        <div id="calendar"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end col -->
+
+                  <div class="col-xl-3 col-lg-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body" id="monthly_totals">
+                            <div id="external-events" class=""></div>
+                        </div>
+                    </div>
+                  </div>
+                  <!-- end col-->
+                </div>
+                <!-- end row -->
+
+                <div style="clear: both"></div>
+
+                <!-- Contract Sheet Modal -->
+                <div class="modal fade" id="event-modal" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content" id="contract_sheet_modal"></div>
+                    </div>
+                </div>
+                <!-- end modal -->
+              </div>
+            </div>
+          </div>
+          <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+
+        <footer class="footer ">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-6"></div>
+              <div class="col-sm-6">
+                <div class="text-sm-end d-none d-sm-block"></div>
+              </div>
+            </div>
+          </div>
+        </footer>
+
+      </div>
+      <!-- end main content-->
+    </div>
+    <!-- END layout-wrapper -->
+
+  {% block scripts %}
+    <script src="{% static 'libs/@fullcalendar/core/main.min.js' %}"></script>
+    <script src="{% static 'libs/@fullcalendar/bootstrap/main.min.js' %}"></script>
+    <script src="{% static 'libs/@fullcalendar/daygrid/main.min.js' %}"></script>
+    <script src="{% static 'libs/@fullcalendar/timegrid/main.min.js' %}"></script>
+    <script src="{% static 'libs/@fullcalendar/interaction/main.min.js' %}"></script>
+
+    <script src="{% static 'js/pages/calendar.init.js' %}"></script>
+  
+  {% endblock scripts %} {% endcomment %}
