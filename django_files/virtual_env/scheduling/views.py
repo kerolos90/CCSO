@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404
 from datetime import date
 
-from .models import Employees
+from scheduling.models import Employees
 # Create your views here.
 
 test_dic = {
@@ -24,8 +24,5 @@ def investigation_schedule(request):
 
 
 def test(request):
-    
-    database = Employees.objects.all()
-    return render(request, "scheduling/test.html", {"data":database})
-    
-    
+    data = Employees.objects.all()
+    return render(request, "scheduling/test.html",{"data" : data})

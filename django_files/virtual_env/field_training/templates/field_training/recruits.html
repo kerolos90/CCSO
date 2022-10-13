@@ -1,0 +1,461 @@
+{% extends "layout.html" %} {% load static %} {% block head %}
+<link
+  href="{% static 'libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css'%}"
+  rel="stylesheet"
+  type="text/css"
+/>
+{% endblock head %} {% block content %}
+<div>
+  <div class="main-content">
+    <div class="page-content">
+      <div class="container-fluid" id="field-training-container">
+        <div class="card shadow">
+          <div class="card-body">
+            <h3 class="text-center">Field Training</h3>
+            <ul>
+                {% for emp in data  %}
+                <li>{{emp.title}} {{emp.l_name}}</li>
+                {% endfor %}
+             </ul>
+          </div>
+        </div>
+        <div id="r-resources">
+          <button
+            class="btn btn-light shadow"
+            data-bs-toggle="modal"
+            data-bs-target="#recruit-resources"
+          >
+            Recruit Resources
+          </button>
+          <div class="d-md-flex justify-content-md-end">
+            <button class="btn btn-success" type="button">
+              Add New Deputy
+            </button>
+          </div>
+        </div>
+
+        <br />
+
+        <div class="card shadow">
+          <div class="card-body">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                  aria-expanded="false"
+                  aria-controls="collapseOne"
+                >
+                  Deputy Test
+                </button>
+              </h2>
+              <div
+                id="collapseOne"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingOne"
+                data-bs-parent="#accordionFlushExample"
+              >
+                <div class="accordion-body">
+                  <!-- Chart -->
+                  <div class="card shadow">
+                    <div class="card-body">
+                      <div class="row">
+                        <div
+                          id="line_chart_dashed-1"
+                          class="apex-charts col"
+                          dir="ltr"
+                        ></div>
+                        <div
+                          id="line_chart_dashed-2"
+                          class="apex-charts col"
+                          dir="ltr"
+                        ></div>
+                        <div
+                          id="line_chart_dashed-3"
+                          class="apex-charts col"
+                          dir="ltr"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                      <button
+                        class="nav-link active"
+                        id="nav-phase-one"
+                        data-bs-toggle="tab"
+                        data-bs-target="#phase-one"
+                        type="button"
+                        role="tab"
+                        aria-controls="phase-one"
+                        aria-selected="true"
+                      >
+                        Phase #1
+                      </button>
+                      <button
+                        class="nav-link"
+                        id="nav-phase-two"
+                        data-bs-toggle="tab"
+                        data-bs-target="#phase-two"
+                        type="button"
+                        role="tab"
+                        aria-controls="phase-two"
+                        aria-selected="true"
+                      >
+                        Phase #2
+                      </button>
+                      <button
+                        class="nav-link"
+                        id="nav-phase-three"
+                        data-bs-toggle="tab"
+                        data-bs-target="#phase-three"
+                        type="button"
+                        role="tab"
+                        aria-controls="phase-three"
+                        aria-selected="true"
+                      >
+                        Phase #3
+                      </button>
+                      <button
+                        class="nav-link"
+                        id="nav-phase-four"
+                        data-bs-toggle="tab"
+                        data-bs-target="#phase-four"
+                        type="button"
+                        role="tab"
+                        aria-controls="phase-four"
+                        aria-selected="true"
+                      >
+                        Phase #4
+                      </button>
+                    </div>
+                  </nav>
+                  <div class="tab-content" id="nav-tabContent">
+                    <div
+                      class="tab-pane fade show active"
+                      id="phase-one"
+                      role="tabpanel"
+                      aria-labelledby="nav-phase-one"
+                    >
+                      <br />
+                      <h3>
+                        <a
+                          href="#"
+                          class="link-primary"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#working-days"
+                          >Working Days</a
+                        >
+                      </h3>
+                      <div id="working-days" class="collapse pt-3">
+                        <button
+                          type="button"
+                          class="btn btn-primary waves-effect waves-light"
+                          data-bs-toggle="modal"
+                          data-bs-target="#day-1"
+                        >
+                          Day #1
+                        </button>
+                        <div class="d-md-flex justify-content-md-end">
+                          <button class="btn btn-success" type="button">
+                            Add New Day
+                          </button>
+                        </div>
+                      </div>
+                      <br />
+                      <h3>
+                        <a
+                          href="#"
+                          class="link-primary"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#weekly-evals"
+                          >Weekly Evaluations</a
+                        >
+                      </h3>
+                      <div id="weekly-evals" class="collapse pt-3">
+                        <button
+                          type="button"
+                          class="btn btn-primary waves-effect waves-light"
+                          data-bs-toggle="modal"
+                          data-bs-target="#week-1"
+                        >
+                          Week #1
+                        </button>
+                        <div class="d-md-flex justify-content-md-end">
+                          <button class="btn btn-success" type="button">
+                            Add New Weekly
+                          </button>
+                        </div>
+                      </div>
+                      <br />
+                      <h3>
+                        <a
+                          href="#"
+                          class="link-primary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#policies-list"
+                          >Policies</a
+                        >
+                      </h3>
+                      <br />
+                      <h3>
+                        <a
+                          href="#"
+                          class="link-primary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#step-eval"
+                          >Step Evaluation</a
+                        >
+                      </h3>
+                    </div>
+
+                    <div
+                      class="tab-pane fade"
+                      id="phase-two"
+                      role="tabpanel"
+                      aria-labelledby="nav-phase-two"
+                    >
+                      Phase 2...
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="phase-three"
+                      role="tabpanel"
+                      aria-labelledby="nav-phase-three"
+                    >
+                      Phase 3...
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="phase-four"
+                      role="tabpanel"
+                      aria-labelledby="nav-phase-four"
+                    >
+                      Phase 4...
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Daily Modal -->
+        <div>
+          <div
+            id="day-1"
+            class="modal fade"
+            tabindex="-1"
+            aria-labelledby="day-1-ModalLabel"
+            aria-hidden="true"
+            data-bs-scroll="true"
+          >
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="text-center">Day #1</h3>
+                </div>
+                <div class="modal-body" id="day-modal-body"></div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary waves-effect"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary waves-effect waves-light"
+                  >
+                    Save changes
+                  </button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- /.modal -->
+        </div>
+        <!-- Weekly Modal -->
+        <div>
+          <div
+            id="week-1"
+            class="modal fade"
+            tabindex="-1"
+            aria-labelledby="eval-ModalLabel"
+            aria-hidden="true"
+            data-bs-scroll="true"
+          >
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="text-center">Week #1</h3>
+                </div>
+                <div class="modal-body" id="week-modal-body"></div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary waves-effect"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary waves-effect waves-light"
+                  >
+                    Save changes
+                  </button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- /.modal -->
+        </div>
+        <!-- Step Evaluation -->
+        <div>
+          <div
+            id="step-eval"
+            class="modal fade"
+            tabindex="-1"
+            aria-labelledby="step-eval-ModalLabel"
+            aria-hidden="true"
+            data-bs-scroll="true"
+          >
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                <div class="modal-header text-center">
+                  <h3 class="modal-title w-100">
+                    Probationary Officer Step Evaluation
+                  </h3>
+                </div>
+                <div class="modal-body" id="step-eval-modal-body"></div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary waves-effect"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary waves-effect waves-light"
+                  >
+                    Save changes
+                  </button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- /.modal -->
+        </div>
+
+        <!-- Policies -->
+        <div>
+          <div
+            id="policies-list"
+            class="modal fade"
+            tabindex="-1"
+            aria-labelledby="policies-list-ModalLabel"
+            aria-hidden="true"
+            data-bs-scroll="true"
+          >
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                <div class="modal-header text-center">
+                  <h3 class="modal-title w-100">Policies</h3>
+                </div>
+                <div class="modal-body" id="policies-modal-body"></div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary waves-effect"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary waves-effect waves-light"
+                  >
+                    Save changes
+                  </button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- /.modal -->
+        </div>
+
+        <!-- Resources -->
+        <div>
+          <div
+            id="recruit-resources"
+            class="modal fade"
+            tabindex="-1"
+            aria-labelledby="recruit-resources-ModalLabel"
+            aria-hidden="true"
+            data-bs-scroll="true"
+          >
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                <div class="modal-header text-center">
+                  <h3 class="modal-title w-100">Resources</h3>
+                </div>
+                <div class="modal-body" id="recruit-resources-modal-body"></div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary waves-effect"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- /.modal -->
+        </div>
+      </div>
+      <!--end card-->
+      <!-- container-fluid -->
+      <!-- End Page-content -->
+
+      <footer class="footer">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6">
+              <div class="text-sm-end d-none d-sm-block"></div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <!-- end main content-->
+  <!-- END layout-wrapper -->
+</div>
+{% endblock content %}
+
+{% block scripts %}
+    <script src="{% static 'libs/apexcharts/apexcharts.min.js' %}"></script>
+    <script src="{% static 'js/pages/apexcharts.init.js' %}"></script>
+    <script src="{% static 'js/pages/field-training.init.js' %}"></script>
+    <script src="{% static 'libs/dropzone/min/dropzone.min.js' %}"></script>
+{% endblock scripts %}
