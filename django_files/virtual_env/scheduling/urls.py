@@ -5,6 +5,4 @@ from scheduling import views
 urlpatterns = [
     path("patrol_schedule", views.patrol_schedule, name="patrol_schedule"),
     path("investigation_schedule", views.investigation_schedule),
-    path("test", views.test)
-
 ]

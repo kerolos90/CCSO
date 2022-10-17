@@ -1,13 +1,12 @@
 from django.contrib import admin
-from .models import Employees
+from .models import Patrol_Teams
 # Register your models here.
 
 
-class EmployeesAdmin(admin.ModelAdmin):
-    exclude = ("password",)
-    list_filter = ("title", "fto",)
-    list_display = ("id", "title", "f_name", "l_name",
-                    "email", "assignment", "fto", "admin")
+class TeamsAdmin(admin.ModelAdmin):
+    list_filter = ("team", )
+    list_display = ("team", )
 
 
-admin.site.register(Employees, EmployeesAdmin)
+
+admin.site.register(Patrol_Teams, TeamsAdmin)

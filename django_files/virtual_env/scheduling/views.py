@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404
 from datetime import date
+from home.models import Employees
 
-from scheduling.models import Employees
 # Create your views here.
 
 test_dic = {
@@ -14,15 +14,12 @@ test_dic = {
 
 def patrol_schedule(request):
     # try:
-    return render(request, "scheduling/patrol_schedule.html", {"test_dic": test_dic})
+    data = Employees.objects.all()
+
+    return render(request, "scheduling/patrol_schedule.html", {"data": data})
     # except:
     #      raise Http404()
 
 
 def investigation_schedule(request):
     return HttpResponse("Investigation schedule")
-
-
-def test(request):
-    data = Employees.objects.all()
-    return render(request, "scheduling/test.html",{"data" : data})
