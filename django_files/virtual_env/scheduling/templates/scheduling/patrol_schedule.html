@@ -300,6 +300,8 @@
           <div style="clear: both"></div>
 
           <!-- Time off Request Modal -->
+          <form method="POST">
+            {% csrf_token %}
           <div class="modal fade" id="timeOffModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
@@ -315,28 +317,32 @@
 
                 <div class="modal-body p-4">
                   <div>
-                    <label for="example-datetime-local-input" class="form-label"
+                    {{form}} 
+                    {% comment %} <label for="start-date-input" class="form-label"
                       >Start Date:</label
                     >
                     <input
                       class="form-control"
+                      name="start-date-input"
                       type="datetime-local"
-                      value="2019-08-19T13:45:00"
-                      id="example-datetime-local-input"
-                    />
+                      value=""
+                      id="start-date-input"
+                    /> {% endcomment %}
+
                   </div>
                   <br />
-                  <div>
-                    <label for="example-datetime-local-input" class="form-label"
+                  {% comment %} <div>
+                    <label for="end-date-input" class="form-label"
                       >End Date:</label
                     >
                     <input
+                      name="end-date-input"
                       class="form-control"
                       type="datetime-local"
                       value="2019-08-19T13:45:00"
-                      id="example-datetime-local-input"
+                      id="end-date-input"
                     />
-                  </div>
+                  </div> {% endcomment %}
                   <br />
                   <div class="text-center">
                     Benefit Time Used (check all that apply)
@@ -403,12 +409,13 @@
                   </div>
                   <br />
                   <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label"
+                    <label for="commentSection" class="form-label"
                       >Comments (Optional):</label
                     >
                     <textarea
+                      name="commentSection"
                       class="form-control"
-                      id="exampleFormControlTextarea1"
+                      id="commentSection"
                       rows="3"
                     ></textarea>
                   </div>
@@ -440,7 +447,7 @@
             <!-- end modal dialog-->
           </div>
           <!-- end modal -->
-
+        </form>
           <!-- Edit Schedule Modal -->
           <div class="modal fade" id="editScheduleModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
