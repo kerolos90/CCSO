@@ -83,8 +83,12 @@ WSGI_APPLICATION = 'CCSO_Site.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ugmduyxf',
+        'USER' :'ugmduyxf',
+        'PASSWORD' :'8IgiHLjG2j6H9I67Pq1BFxWa9o5dzU7b',
+        'HOST' : 'peanut.db.elephantsql.com',
+        'PORT' :'5432',
     }
 }
 

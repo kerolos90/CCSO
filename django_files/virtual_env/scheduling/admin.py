@@ -1,12 +1,12 @@
 from django.contrib import admin
-from .models import Patrol_Teams
+from .models import EmpAssignment
 # Register your models here.
 
 
 class TeamsAdmin(admin.ModelAdmin):
-    list_filter = ("team", )
-    list_display = ("team", )
+    list_filter = ("assignment", )
+    list_display = ("assignment", )
 
 
 
-admin.site.register(Patrol_Teams, TeamsAdmin)
+admin.site.register(EmpAssignment, TeamsAdmin)
