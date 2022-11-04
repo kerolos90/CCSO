@@ -8,7 +8,7 @@ class EmployeesAdmin(admin.ModelAdmin):
     exclude = ("password",)
     list_filter = ("title", "fto",)
     list_display = ("id", "title", "f_name", "l_name",
-                    "email", "assignment", "fto", "admin", )
+                    "email", "fto", "admin", )
 
 
 admin.site.register(Employees, EmployeesAdmin)

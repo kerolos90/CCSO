@@ -84,10 +84,10 @@ WSGI_APPLICATION = 'CCSO_Site.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ugmduyxf',
-        'USER' :'ugmduyxf',
-        'PASSWORD' :'8IgiHLjG2j6H9I67Pq1BFxWa9o5dzU7b',
-        'HOST' : 'peanut.db.elephantsql.com',
+        'NAME': 'ccso_site',
+        'USER': 'postgres',
+        'PASSWORD': '9XmRuHahJ2Z78r',
+        'HOST' : '',
         'PORT' :'5432',
     }
 }
