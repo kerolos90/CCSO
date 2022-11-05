@@ -81,16 +81,16 @@ WSGI_APPLICATION = 'CCSO_Site.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ccso_site',
-        'USER': 'postgres',
-        'PASSWORD': '9XmRuHahJ2Z78r',
-        'HOST' : '',
-        'PORT' :'5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'ccso_site',
+#         'USER': 'postgres',
+#         'PASSWORD': '9XmRuHahJ2Z78r',
+#         'HOST' : '',
+#         'PORT' :'5432',
+#     }
+# }
 
 
 # Password validation
