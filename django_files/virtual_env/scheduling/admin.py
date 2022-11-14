@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import EmpAssignment
+from .models import EmpAssignment, GoldDays
 # Register your models here.
 
 
@@ -12,3 +12,8 @@ class TeamsAdmin(admin.ModelAdmin):
 
 
 admin.site.register(EmpAssignment, TeamsAdmin)
+
+class GoldDaysAdmin(admin.ModelAdmin):
+    list_filter = ("date",)
+
+admin.site.register(GoldDays, GoldDaysAdmin)

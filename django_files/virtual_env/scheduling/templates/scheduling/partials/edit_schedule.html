@@ -1,5 +1,6 @@
 <!-- Edit Schedule Modal -->
-<form action="POST">
+{% load scheduling_extras %}
+<form method="POST">
   {% csrf_token %}
   <div class="modal fade" id="editScheduleModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
@@ -68,20 +69,49 @@
                   </tr>
                 </thead>
                 <tbody>
-                  {% for beat in beats %}
                   <tr>
-                    <th scope="row">{{beat}}</th>
-                    {% for i in "123" %}
-                    <td>
-                      <select class="form-select">
-                        {% for deputy in deputies %}
-                        <option>{{deputy}}</option>
-                        {% endfor %}
-                      </select>
-                    </td>
-                    {% endfor %}
+                    <th scope="row">Shift Commander #1</th>
+                    <td>{{editScheduleForm.commandOne_first_four}}</td>
+                    <td>{{editScheduleForm.commandOne_second_four}}</td>
+                    <td>{{editScheduleForm.commandOne_third_four}}</td>
                   </tr>
-                  {% endfor %}
+                  <tr>
+                    <th scope="row">Shift Commander #2</th>
+                    <td>{{editScheduleForm.commandTwo_first_four}}</td>
+                    <td>{{editScheduleForm.commandTwo_second_four}}</td>
+                    <td>{{editScheduleForm.commandTwo_third_four}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">North</th>
+                    <td>{{editScheduleForm.north_first_four}}</td>
+                    <td>{{editScheduleForm.north_second_four}}</td>
+                    <td>{{editScheduleForm.north_third_four}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">West</th>
+                    <td>{{editScheduleForm.west_first_four}}</td>
+                    <td>{{editScheduleForm.west_second_four}}</td>
+                    <td>{{editScheduleForm.west_third_four}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Cover</th>
+                    <td>{{editScheduleForm.cover_first_four}}</td>
+                    <td>{{editScheduleForm.cover_second_four}}</td>
+                    <td>{{editScheduleForm.cover_third_four}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">East</th>
+                    <td>{{editScheduleForm.east_first_four}}</td>
+                    <td>{{editScheduleForm.east_second_four}}</td>
+                    <td>{{editScheduleForm.east_third_four}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">South</th>
+                    <td>{{editScheduleForm.south_first_four}}</td>
+                    <td>{{editScheduleForm.south_second_four}}</td>
+                    <td>{{editScheduleForm.south_third_four}}</td>
+                  </tr>                  
+                  
                 </tbody>
               </table>
 
@@ -97,23 +127,11 @@
                 <tbody>
                   <tr>
                     <th scope="row">Savoy</th>
-                    {% for i in "123" %}
-                    <td>
-                      {{editScheduleForm.north}} 
-                    </td>
-                    {% endfor %}
+
                   </tr>
                   <tr>
                     <th scope="row">St. Joseph</th>
-                    {% for i in "123" %}
-                    <td>
-                      <select class="form-select">
-                        {% for deputy in deputies %}
-                        <option>{{deputy}}</option>
-                        {% endfor %}
-                      </select>
-                    </td>
-                    {% endfor %}
+                    
                   </tr>
                 </tbody>
               </table>
@@ -128,27 +146,11 @@
                 <tbody>
                   <tr>
                     <th scope="row">Civil Service (Urbana)</th>
-                    {% for i in "12" %}
-                    <td>
-                      <select class="form-select">
-                        {% for deputy in deputies %}
-                        <option>{{deputy}}</option>
-                        {% endfor %}
-                      </select>
-                    </td>
-                    {% endfor %}
+                    
                   </tr>
                   <tr>
                     <th scope="row">Civil Service (Champaign)</th>
-                    {% for i in "12" %}
-                    <td>
-                      <select class="form-select">
-                        {% for deputy in deputies %}
-                        <option>{{deputy}}</option>
-                        {% endfor %}
-                      </select>
-                    </td>
-                    {% endfor %}
+                    
                   </tr>
                 </tbody>
               </table>
@@ -223,7 +225,7 @@
             <div class="row mt-2">
               <div class="col-6">
                 <button
-                  type="button"
+                  type="cancel"
                   class="btn btn-danger"
                   id="btn-delete-event"
                 >
