@@ -12,3 +12,9 @@
     color: red !important;
   }
 
+
+  .btn.btn-light.editButton {
+        background-color: yellow !important;
+        border-color: black;
+        padding: 3%;
+  }
