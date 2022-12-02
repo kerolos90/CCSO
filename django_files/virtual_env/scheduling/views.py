@@ -9,16 +9,14 @@ from .forms import TimeOffRequestForm, EditScheduleForm
 
 beats = {
     "Shift Commander #1": "commandOne",
-    "Shift Commander #2": "commandtwo",
+    "Shift Commander #2": "commandTwo",
     "North (1/2)": "north",
     "West (3/4)": "west",
     "Cover (4/5)": "cover",
     "East (5/6)": "east", 
     "South (7/8)": "south"
 }
-beat_sections = (
-    "commandOne", "commandTwo", "north", "west", "cover", "east", "south"
-)
+
 deputies = ("501", "502", "503")
 
 
@@ -35,11 +33,11 @@ def patrol_schedule(request):
     form = TimeOffRequestForm()
     editScheduleForm = EditScheduleForm()
     return render(request, "scheduling/patrol_schedule.html", {
+        "test_date": test_date,
         "form": form,
         "beats": beats,
         "deputies": deputies,
         "editScheduleForm": editScheduleForm,
-        "beat_sections": beat_sections,
     })
     # except:
     #      raise Http404()

@@ -60,7 +60,7 @@
                   aria-hidden="true"
                 ></button>
               </div>
-              <h5 class="text-center" id="">Time Off Request</h5>
+              <h5 class="text-center">Time Off Request</h5>
 
               <div class="modal-body p-4">
                 <div>
@@ -199,7 +199,6 @@
         <!-- end modal dialog-->
         
       </div>
-                      {% include 'scheduling/partials/edit_schedule.html' %}
 
     </div>
   </div>
@@ -218,5 +217,7 @@
   <script src="{% static 'libs/@fullcalendar/interaction/main.min.js' %}"></script>
 
   <script src="{% static 'js/pages/calendar.init.js' %}"></script>
+  {% comment %} HTMX CDN {% endcomment %}
+  <script src="https://unpkg.com/htmx.org@1.8.4" integrity="sha384-wg5Y/JwF7VxGk4zLsJEcAojRtlVp1FKKdGy1qN+OMtdq72WRvX/EdRdqg/LOhYeV" crossorigin="anonymous"></script>
 
 {% endblock scripts %}

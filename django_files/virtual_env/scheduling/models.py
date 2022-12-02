@@ -8,8 +8,10 @@ from home.models import Employees
 EMPLOYEE_CHOICES = [ ("None", "None"),
 
 ]
-for deputies in Employees.objects.order_by('id').values_list('id', flat=True):
-     EMPLOYEE_CHOICES.append((str(deputies), str(deputies)))
+for deputies in Employees.objects.order_by('id').values_list('id', 'title', 'l_name'):
+    #deputies = f"{deputies[0]} {deputies[1]} {deputies[2]}"
+    EMPLOYEE_CHOICES.append(
+        (f"{deputies[1]} {deputies[2]} #{deputies[0]}", str(deputies[0])))
 
 
 class EmpAssignment(models.Model):

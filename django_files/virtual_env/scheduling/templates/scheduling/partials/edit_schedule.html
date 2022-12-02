@@ -13,52 +13,13 @@
             aria-hidden="true"
           ></button>
         </div>
-        <h5 class="text-center" id="">
+        <h5 class="text-center" >
           Date
           <br />
           Edit Schedule
         </h5>
-
         <div class="modal-body p-4">
-          <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link active"
-                id="edit_day-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#edit_day"
-                type="button"
-                role="tab"
-                aria-controls="edit_day-tab"
-                aria-selected="true"
-              >
-                Day Shift
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                id="edit_night-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#edit_night"
-                type="button"
-                role="tab"
-                aria-controls="edit_night-tab"
-                aria-selected="false"
-              >
-                Night Shift
-              </button>
-            </li>
-          </ul>
-
-          <div class="tab-content" id="myTabContent">
-            <div
-              class="tab-pane fade show active"
-              id="edit_day"
-              role="tabpanel"
-              aria-labelledby="edit_day-tab"
-            >
-              <br />
+          <div>
               <table class="table table-bordered shadow">
                 <thead>
                   <tr>
@@ -70,169 +31,14 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <th scope="row">Shift Commander #1</th>
-                    <td>{{editScheduleForm.commandOne_first_four}}</td>
-                    <td>{{editScheduleForm.commandOne_second_four}}</td>
-                    <td>{{editScheduleForm.commandOne_third_four}}</td>
+                    <td>test</td>
                   </tr>
-                  <tr>
-                    <th scope="row">Shift Commander #2</th>
-                    <td>{{editScheduleForm.commandTwo_first_four}}</td>
-                    <td>{{editScheduleForm.commandTwo_second_four}}</td>
-                    <td>{{editScheduleForm.commandTwo_third_four}}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">North</th>
-                    <td>{{editScheduleForm.north_first_four}}</td>
-                    <td>{{editScheduleForm.north_second_four}}</td>
-                    <td>{{editScheduleForm.north_third_four}}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">West</th>
-                    <td>{{editScheduleForm.west_first_four}}</td>
-                    <td>{{editScheduleForm.west_second_four}}</td>
-                    <td>{{editScheduleForm.west_third_four}}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Cover</th>
-                    <td>{{editScheduleForm.cover_first_four}}</td>
-                    <td>{{editScheduleForm.cover_second_four}}</td>
-                    <td>{{editScheduleForm.cover_third_four}}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">East</th>
-                    <td>{{editScheduleForm.east_first_four}}</td>
-                    <td>{{editScheduleForm.east_second_four}}</td>
-                    <td>{{editScheduleForm.east_third_four}}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">South</th>
-                    <td>{{editScheduleForm.south_first_four}}</td>
-                    <td>{{editScheduleForm.south_second_four}}</td>
-                    <td>{{editScheduleForm.south_third_four}}</td>
-                  </tr>                  
+             
                   
                 </tbody>
               </table>
-
-              <table class="table table-bordered shadow">
-                <thead>
-                  <tr>
-                    <th scope="col">Beat:</th>
-                    <th scope="col">0700-1100</th>
-                    <th scope="col">1100-1500</th>
-                    <th scope="col">1500-1900</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">Savoy</th>
-
-                  </tr>
-                  <tr>
-                    <th scope="row">St. Joseph</th>
-                    
-                  </tr>
-                </tbody>
-              </table>
-              <table class="table table-bordered shadow">
-                <thead>
-                  <tr>
-                    <th scope="col">Beat:</th>
-                    <th scope="col">0600-1100</th>
-                    <th scope="col">1100-1600</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">Civil Service (Urbana)</th>
-                    
-                  </tr>
-                  <tr>
-                    <th scope="row">Civil Service (Champaign)</th>
-                    
-                  </tr>
-                </tbody>
-              </table>
             </div>
-            <div class="tab-pane fade" id="edit_night" role="tabpanel">
-              aria-labelledby="edit_night-tab"
-              <br />
-              <table class="table table-bordered table-dark shadow">
-                <thead>
-                  <tr>
-                    <th scope="col">Beat:</th>
-                    <th scope="col">1800-2200</th>
-                    <th scope="col">2200-0200</th>
-                    <th scope="col">0200-0600</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for beat in beats %}
-                  <tr>
-                    <th scope="row">{{beat}}</th>
-                    {% for i in "123" %}
-                    <td>
-                      <select class="form-select">
-                        {% for deputy in deputies %}
-                        <option>{{deputy}}</option>
-                        {% endfor %}
-                      </select>
-                    </td>
-                    {% endfor %}
-                  </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
-
-              <table class="table table-bordered table-dark shadow">
-                <thead>
-                  <tr>
-                    <th scope="col">Beat:</th>
-                    <th scope="col">1500-1900</th>
-                    <th scope="col">1900-2300</th>
-                    <th scope="col">2300-0300</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">Savoy</th>
-                    {% for i in "123" %}
-                    <td>
-                      <select class="form-select">
-                        {% for deputy in deputies %}
-                        <option>{{deputy}}</option>
-                        {% endfor %}
-                      </select>
-                    </td>
-                    {% endfor %}
-                  </tr>
-                  <tr>
-                    <th scope="row">St. Joseph</th>
-                    {% for i in "123" %}
-                    <td>
-                      <select class="form-select">
-                        {% for deputy in deputies %}
-                        <option>{{deputy}}</option>
-                        {% endfor %}
-                      </select>
-                    </td>
-                    {% endfor %}
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="row mt-2">
-              <div class="col-6">
-                <button
-                  type="cancel"
-                  class="btn btn-danger"
-                  id="btn-delete-event"
-                >
-                  Cancel
-                </button>
-              </div>
-              <div class="col-6 text-end">
+              <div class="text-end">
                 <button
                   type="submit"
                   class="btn btn-success"
