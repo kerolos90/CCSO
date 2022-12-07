@@ -72,15 +72,16 @@
                   <th scope="col">1400-1800</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
+              <tbody >
                 {% for key, value in beats.items %}
+                <tr hx-target="this" hx-swap="outerHTML">
                   <td width="5%">
                     <button
                       type="submit"
                       class="btn btn-light"
-                      data-bs-toggle="modal"
-                      data-bs-target="#editScheduleModal"
+                      hx-post="{% url 'edit_schedule' key|slugify %}"
+                      {% comment %} data-bs-toggle="modal"
+                      data-bs-target="#editScheduleModal" {% endcomment %}
                     >
                       Edit
                     </button>
@@ -161,50 +162,19 @@
                   <th scope="col">0200-0600</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody >
                 <tr>
-                  <th scope="row">Shift Command</th>
-                  <td>Sgt. Good #550</td>
-                  <td>Sgt. Good #550</td>
-                  <td>None</td>
-                </tr>
-                <tr>
-                  <th scope="row">Shift Command</th>
-                  <td>Sgt. Darr #537</td>
-                  <td>Sgt. Darr #537</td>
-                  <td>Sgt. Darr #537</td>
-                </tr>
-                <tr>
-                  <th scope="row">1/2</th>
-                  <td>Dep. Gabra #503</td>
-                  <td>Dep. Gabra #503</td>
-                  <td>Dep. Gabra #503</td>
-                </tr>
-                <tr>
-                  <th scope="row">3/4</th>
-                  <td>Dep. Keyes #542</td>
-                  <td>Dep. Keyes #542</td>
-                  <td>Dep. Keyes #542</td>
-                </tr>
-                <tr>
-                  <th scope="row">4/5</th>
-                  <td>None</td>
-                  <td>None</td>
-                  <td>None</td>
-                </tr>
-                <tr>
-                  <th scope="row">5/6</th>
-                  <td>Dep. Hubbard #538</td>
-                  <td>Dep. Hubbard #538</td>
-                  <td>Dep. Hubbard #538</td>
-                </tr>
-                <tr>
-                  <th scope="row">7/8</th>
-                  <td>Dep. Plotner #539</td>
-                  <td>Dep. Plotner #539</td>
-                  <td>Dep. Plotner #539</td>
+                  <td>Test</td>
+                  <td>Test</td>
+                  <td>
+                    <button class="btn btn-danger"
+                            hx-get="{% url 'edit_schedule' %}"
+                      Edit
+                    </button>
+                  </td>
                 </tr>
               </tbody>
+
             </table>
 
             <table class="table table-bordered table-dark shadow">

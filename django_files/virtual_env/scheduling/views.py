@@ -17,11 +17,11 @@ beats = {
     "South (7/8)": "south"
 }
 
-deputies = ("501", "502", "503")
+#deputies = ("501", "502", "503")
 
 
 def patrol_schedule(request):
-    # try:
+     #try:
     test_date = GoldDays.objects.get(date="2022-11-10")
     if request.method == "POST":
         editForm = EditScheduleForm(request.POST, instance=test_date)
@@ -36,12 +36,16 @@ def patrol_schedule(request):
         "test_date": test_date,
         "form": form,
         "beats": beats,
-        "deputies": deputies,
         "editScheduleForm": editScheduleForm,
     })
     # except:
     #      raise Http404()
 
-
-def investigation_schedule(request):
-    return HttpResponse("Investigation schedule")
+def edit_schedule(request, selected_beat ):
+    test_date = GoldDays.objects.get(date="2022-11-10")
+    return render(request, "scheduling/partials/test_partial.html",{
+        "beats": beats,
+        "test_date": test_date,
+        "selected_beat": selected_beat,
+ 
+    })

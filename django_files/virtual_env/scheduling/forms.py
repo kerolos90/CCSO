@@ -18,10 +18,6 @@ EMPLOYEE_CHOICES = [
 ]
 
 
-# class EditScheduleForm(forms.Form):
-#     north = forms.ChoiceField(
-#         choices=EMPLOYEE_CHOICES, widget=forms.Select(attrs={'class': 'form-select'}))
-
 class EditScheduleForm(forms.ModelForm):
     class Meta:
         model = GoldDays
@@ -32,4 +28,3 @@ class EditScheduleForm(forms.ModelForm):
         for field in self.fields:
             self.fields[field].widget.attrs.update({'class': 'form-select'})
             self.fields[field].initial = self.fields[field]
-            print(self.fields[field])
