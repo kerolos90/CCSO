@@ -8,13 +8,13 @@ from .forms import TimeOffRequestForm, EditScheduleForm
 # Create your views here.
 
 beats = {
-    "Shift Commander #1": "commandOne",
-    "Shift Commander #2": "commandTwo",
-    "North (1/2)": "north",
-    "West (3/4)": "west",
-    "Cover (4/5)": "cover",
-    "East (5/6)": "east", 
-    "South (7/8)": "south"
+    "commandOne": "Shift Commander #1",
+    # "Shift Commander #2": "commandTwo",
+    # "North (1/2)": "north",
+    # "West (3/4)": "west",
+    # "Cover (4/5)": "cover",
+    # "East (5/6)": "east", 
+    # "South (7/8)": "south"
 }
 
 #deputies = ("501", "502", "503")
@@ -43,9 +43,11 @@ def patrol_schedule(request):
 
 def edit_schedule(request, selected_beat ):
     test_date = GoldDays.objects.get(date="2022-11-10")
+    editScheduleForm = EditScheduleForm(request.POST, instance=test_date)
     return render(request, "scheduling/partials/test_partial.html",{
         "beats": beats,
         "test_date": test_date,
         "selected_beat": selected_beat,
- 
+        "editScheduleForm": editScheduleForm,
+
     })

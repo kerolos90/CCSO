@@ -79,17 +79,17 @@
                     <button
                       type="submit"
                       class="btn btn-light"
-                      hx-post="{% url 'edit_schedule' key|slugify %}"
+                      hx-post="{% url 'edit_schedule' key %}"
                       {% comment %} data-bs-toggle="modal"
                       data-bs-target="#editScheduleModal" {% endcomment %}
                     >
                       Edit
                     </button>
                   </td>
-                  <th scope="row">{{key}}</th>
+                  <th scope="row">{{value}}</th>
                   {% with "_first_four _second_four _third_four" as blocks %}
                     {% for block in blocks.split  %}
-                      {% with value|addstr:block as block_attr %}
+                      {% with key|addstr:block as block_attr %}
                         <td>{{test_date|get_attribute:block_attr}}</td>
                       {% endwith %}     
                     {% endfor %}
