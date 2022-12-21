@@ -63,25 +63,23 @@
             aria-labelledby="day-tab"
           >
             <br />
-            <table class="table table-bordered shadow">
+            <table class="table table-bordered shadow" style="text-align: center" >
               <thead>
                 <tr>
-                  <th scope="col" colspan="2" style="text-align:center">Beat:</th>
-                  <th scope="col">0600-1000</th>
-                  <th scope="col">1000-1400</th>
-                  <th scope="col">1400-1800</th>
+                  <th width="30%" scope="col" colspan="2" style="text-align:center">Beat:</th>
+                  <th width="23%" scope="col">0600-1000</th>
+                  <th width="23%" scope="col">1000-1400</th>
+                  <th width="23%" scope="col">1400-1800</th>
                 </tr>
               </thead>
-              <tbody >
+              <tbody>
                 {% for key, value in beats.items %}
-                <tr hx-target="this" hx-swap="outerHTML">
+                <tr id="{{key}}" hx-target="this" hx-swap="outerHTML">
                   <td width="5%">
                     <button
                       type="submit"
                       class="btn btn-light"
                       hx-post="{% url 'edit_schedule' key %}"
-                      {% comment %} data-bs-toggle="modal"
-                      data-bs-target="#editScheduleModal" {% endcomment %}
                     >
                       Edit
                     </button>

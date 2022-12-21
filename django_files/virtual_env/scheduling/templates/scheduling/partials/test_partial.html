@@ -1,17 +1,11 @@
 {% load scheduling_extras %}
-{% comment %} 
-{% with "_first_four _second_four _third_four" as blocks %}
-{% for block in blocks.split  %}
-  {% with selected_beat|addstr:block as block_attr %}
-    <td>{{editScheduleForm.fields[commandOne_first_four]}}</td>
-  {% endwith %}     
-{% endfor %}
-{% endwith %} {% endcomment %}
-
-{% for field in editScheduleForm.commandOne_first_four  %}
-<td>{{field}}</td>
-
-{% endfor %}
-
-
-{% comment %} Create the variable in views then pass it to template as array {% endcomment %}
+<tr >
+  <td width="5%">
+    <button type="submit" class="btn btn-light" hx-put="{% url 'patrol_schedule' %}" >
+      Done
+    </button></td>
+  <th scope="row">{{beat}}</th>
+  {% for field in fields_to_edit %}
+  <td>{{field}}</td>
+  {% endfor %}
+</tr>
