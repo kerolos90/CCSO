@@ -1,6 +1,5 @@
 {% load scheduling_extras %}
 
-
 <div class="col-xl-6 col-lg-4">
   <div class="card shadow">
     <div class="card-body">
@@ -72,26 +71,26 @@
                   <th width="23%" scope="col">1400-1800</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody hx-target="closest tr" hx-swap="outerHTML">
                 {% for key, value in beats.items %}
-                <tr id="{{key}}" hx-target="this" hx-swap="outerHTML">
-                  <td width="5%">
-                    <button
-                      type="submit"
-                      class="btn btn-light"
-                      hx-post="{% url 'edit_schedule' key %}"
-                    >
-                      Edit
-                    </button>
-                  </td>
-                  <th scope="row">{{value}}</th>
-                  {% with "_first_four _second_four _third_four" as blocks %}
-                    {% for block in blocks.split  %}
-                      {% with key|addstr:block as block_attr %}
-                        <td>{{test_date|get_attribute:block_attr}}</td>
-                      {% endwith %}     
-                    {% endfor %}
-                  {% endwith %}
+                <tr id="{{key}}">
+                    <td width="5%" >
+                        <button
+                        type="submit"
+                        class="btn btn-light"
+                        hx-get="{% url 'edit_schedule' key %}"
+                        >
+                        Edit
+                        </button>
+                    </td>
+                    <th scope="row">{{value}}</th>
+                    {% with "_first_four _second_four _third_four" as blocks %}
+                        {% for block in blocks.split  %}
+                        {% with key|addstr:block as block_attr %}
+                            <td>{{test_date|get_attribute:block_attr}}</td>
+                        {% endwith %}     
+                        {% endfor %}
+                    {% endwith %}
                 </tr>
                 {% endfor %}
               </tbody>
@@ -204,7 +203,4 @@
       </div>
     </div>
   </div>
-    {% comment %} Edit Schedule Modal {% endcomment %}
-    {% include 'scheduling/partials/edit_schedule.html' %}
-
 </div>

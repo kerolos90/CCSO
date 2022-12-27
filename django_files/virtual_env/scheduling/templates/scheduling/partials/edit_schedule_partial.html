@@ -1,0 +1,18 @@
+{% load scheduling_extras %}
+<tr>
+  <td width="5%" >
+    <button
+      type="submit"
+      class="btn btn-light"
+      hx-get="{% url 'patrol_schedule_partial' selected_beat %}"
+      hx-swap="outerHTML"
+      hx-include="closest tr"
+    >
+      Done
+    </button>
+  </td>
+  <th scope="row">{{beat}}</th>
+    {% for field in fields_to_edit %}
+    <td>{{field}}</td>
+    {% endfor %}
+<tr>
