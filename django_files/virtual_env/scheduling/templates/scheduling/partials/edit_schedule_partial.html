@@ -1,10 +1,12 @@
 {% load scheduling_extras %}
 <tr>
+  <form >
+    {% csrf_token %}
   <td width="5%" >
     <button
       type="submit"
       class="btn btn-light"
-      hx-get="{% url 'patrol_schedule_partial' selected_beat %}"
+      hx-put="{% url 'patrol_schedule_partial' selected_beat %}"
       hx-swap="outerHTML"
       hx-include="closest tr"
     >
@@ -15,4 +17,5 @@
     {% for field in fields_to_edit %}
     <td>{{field}}</td>
     {% endfor %}
+  </form>
 <tr>

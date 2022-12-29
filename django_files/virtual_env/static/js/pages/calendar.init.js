@@ -1,4 +1,5 @@
 !(function ($) {
+
   "use strict";
 
   var CalendarPage = function () {};
@@ -7,7 +8,6 @@
     var addEvent = $("#event-modal");
     /* initialize the calendar */
     var calendarEl = document.getElementById("calendar");
-
     var calendar = new FullCalendar.Calendar(calendarEl, {
       plugins: ["bootstrap", "interaction", "dayGrid", "timeGrid"],
       defaultView: "dayGridMonth",
@@ -51,7 +51,7 @@
               rendering: 'background',
             },
             {
-              start: '2022-10-13',
+              start: '2022-12-13',
               rendering: 'background',
             }
           ],
@@ -61,11 +61,13 @@
       ],   
       dateClick: function (info) {
         addEvent.modal("show");
-
         console.log(info.dateStr);
       },
+      
     });
     calendar.render();
+    //document.querySelector("#date").append(info.dateStr);
+
   }),
     //init
      ($.CalendarPage = new CalendarPage()),

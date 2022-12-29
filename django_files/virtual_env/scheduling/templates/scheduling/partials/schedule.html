@@ -13,16 +13,8 @@
           >
             Time Off Request
           </button>
-          <button
-            type="submit"
-            class="btn btn-light"
-            data-bs-toggle="modal"
-            data-bs-target="#editScheduleModal"
-          >
-            Edit Schedule
-          </button>
         </div>
-        <h1 class="text-center">Date</h1>
+        <h1 id="date"class="text-center">{{current_day}}</h1>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
             <button
@@ -84,13 +76,11 @@
                         </button>
                     </td>
                     <th scope="row">{{value}}</th>
-                    {% with "_first_four _second_four _third_four" as blocks %}
-                        {% for block in blocks.split  %}
-                        {% with key|addstr:block as block_attr %}
-                            <td>{{test_date|get_attribute:block_attr}}</td>
-                        {% endwith %}     
+                        {% for block in hours  %}
+                          {% with key|addstr:block as block_attr %}
+                              <td>{{test_date|get_attribute:block_attr}}</td>
+                          {% endwith %}     
                         {% endfor %}
-                    {% endwith %}
                 </tr>
                 {% endfor %}
               </tbody>

@@ -5,18 +5,15 @@
         <button
         type="submit"
         class="btn btn-light"
-        hx-get="{% url 'edit_schedule' selected_beat %}"
+        hx-put="{% url 'edit_schedule' selected_beat %}"
         >
         Edit
         </button>
     </td>
     <th scope="row">{{beat}}</th>
-    <td>{{test_date}}</td>
-    {% with "_first_four _second_four _third_four" as blocks %}
-        {% for block in blocks.split  %}
+        {% for block in hours  %}
         {% with selected_beat|addstr:block as block_attr %}
-            {% comment %} <td>{{test_date|get_attribute:block_attr}}</td> {% endcomment %}
+            <td>{{test_date|get_attribute:block_attr}}</td>
         {% endwith %}     
-        {% endfor %}
-    {% endwith %}
+      {% endfor %}
 </tr>

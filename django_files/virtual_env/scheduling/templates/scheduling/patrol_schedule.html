@@ -16,12 +16,7 @@
     <div class="card shadow">
       <div class="card-body">
         <h3 class="text-center">Patrol Schedule
-          <ul>
-              {% for emp in data  %}
-              <li>{{emp}}</li>
-              {% endfor %}
-            </ul>
-
+          <button                   id="my-button"          >Test</button>
         </h3>
       </div>
     </div>
@@ -32,14 +27,11 @@
             <div class="card shadow">
               <div class="card-body">
                 <div id="calendar"></div>
-
               </div>
             </div>
           </div>
           <!-- end col -->
-      {% include 'scheduling/partials/schedule.html' %}
-
-          
+      {% include 'scheduling/partials/schedule.html' %}          
           <!-- end col-->
         </div>
         <!-- end row -->
@@ -48,7 +40,7 @@
 
         <!-- Time off Request Modal -->
         <form method="POST">
-          {% csrf_token %}
+          {% comment %} {% csrf_token %} {% endcomment %}
         <div class="modal fade" id="timeOffModal" tabindex="-1">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -219,5 +211,14 @@
   <script src="{% static 'js/pages/calendar.init.js' %}"></script>
   {% comment %} HTMX CDN {% endcomment %}
   <script src="https://unpkg.com/htmx.org@1.8.4" integrity="sha384-wg5Y/JwF7VxGk4zLsJEcAojRtlVp1FKKdGy1qN+OMtdq72WRvX/EdRdqg/LOhYeV" crossorigin="anonymous"></script>
-
+  <script>
+    document.body.addEventListener('htmx:configRequest', (event) => {
+      event.detail.headers['X-CSRF-Token'] = '{{ csrf_token }}';
+    })
+    $('#calendar').fullCalendar({ 
+      dayClick: function(date, jsEvent, view) { 
+          alert("Selected Date:"+date._d)
+       }
+   });
+  </script>
 {% endblock scripts %}
