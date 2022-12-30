@@ -2,10 +2,10 @@
 {% load static %}
 
 {% block head %}
-  <link href= {% static 'libs/@fullcalendar/core/main.min.css' %} rel="stylesheet" type="text/css" />
+  {% comment %} <link href= {% static 'libs/@fullcalendar/core/main.min.css' %} rel="stylesheet" type="text/css" />
   <link href= {% static 'libs/@fullcalendar/daygrid/main.min.css' %} rel="stylesheet" type="text/css" />
   <link href= {% static 'libs/@fullcalendar/bootstrap/main.min.css' %} rel="stylesheet" type="text/css" />
-  <link href= {% static 'libs/@fullcalendar/timegrid/main.min.css' %} rel="stylesheet" type="text/css" />
+  <link href= {% static 'libs/@fullcalendar/timegrid/main.min.css' %} rel="stylesheet" type="text/css" /> {% endcomment %}
 {% endblock head %}
 
 {% block content%}
@@ -202,23 +202,24 @@
 {% endblock%}
 
 {% block scripts %}
-  <script src="{% static 'libs/@fullcalendar/core/main.min.js' %}"></script>
+  {% comment %} <script src="{% static 'libs/@fullcalendar/core/main.min.js' %}"></script>
   <script src="{% static 'libs/@fullcalendar/bootstrap/main.min.js' %}"></script>
   <script src="{% static 'libs/@fullcalendar/daygrid/main.min.js' %}"></script>
   <script src="{% static 'libs/@fullcalendar/timegrid/main.min.js' %}"></script>
   <script src="{% static 'libs/@fullcalendar/interaction/main.min.js' %}"></script>
 
-  <script src="{% static 'js/pages/calendar.init.js' %}"></script>
+  <script src="{% static 'js/pages/calendar.init.js' %}"></script> {% endcomment %}
+
+
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.0.2/index.global.min.js"></script>
+  <script src="{% static 'scheduling/js/calendar.js' %}"></script> 
+
   {% comment %} HTMX CDN {% endcomment %}
   <script src="https://unpkg.com/htmx.org@1.8.4" integrity="sha384-wg5Y/JwF7VxGk4zLsJEcAojRtlVp1FKKdGy1qN+OMtdq72WRvX/EdRdqg/LOhYeV" crossorigin="anonymous"></script>
   <script>
     document.body.addEventListener('htmx:configRequest', (event) => {
       event.detail.headers['X-CSRF-Token'] = '{{ csrf_token }}';
     })
-    $('#calendar').fullCalendar({ 
-      dayClick: function(date, jsEvent, view) { 
-          alert("Selected Date:"+date._d)
-       }
-   });
+
   </script>
 {% endblock scripts %}

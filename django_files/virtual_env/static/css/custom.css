@@ -18,3 +18,12 @@
         border-color: black;
         padding: 3%;
   }
+  
+/* FullCalendar custom CSS */
+:root{
+    --fc-button-bg-color: rgb(233, 230, 174) !important;
+    --fc-event-text-color: #fff !important;
+    --bs-link-hover-color: rgb(0, 0, 0) !important;
+    --bs-link-color : rgb(0, 0, 0) !important;
+    --fc-button-text-color: rgb(3, 3, 3) !important;
+}
