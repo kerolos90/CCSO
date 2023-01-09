@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404, QueryDict
 from .models import GoldDays
 from .forms import TimeOffRequestForm, EditScheduleForm
@@ -18,19 +18,13 @@ beats = {
 
 hours = ["_first_four", "_second_four", "_third_four"]
 
-#Check for ajax
-
-
 
 def patrol_schedule(request):
-     #try:
+#      #try:
     current_day = datetime.datetime.now().strftime ("%B %d, %Y")
     form = TimeOffRequestForm()
-    ajax_date = '2022-11-10'
-    test_date = GoldDays.objects.get(date=ajax_date)
-    print(test_date)
     context = {
-        "test_date": test_date,
+        "test_date": GoldDays.objects.get(date='2022-11-10'),
         "form": form,
         "beats": beats,
         "hours": hours,
@@ -38,14 +32,9 @@ def patrol_schedule(request):
         
     }
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-        print("AJAX")
-        ajax_date="2022-11-11"        
-        test_date_ajax = GoldDays.objects.get(date=ajax_date)
-        context["test_date"] = test_date_ajax
-        print(context)
-        return render(request, "scheduling/patrol_schedule.html", context)
+        context["test_date"] = GoldDays.objects.get(date="2022-11-11")
+        return render(request, "scheduling/partials/load_full_schedule_partial.html", context)
 
-    print(request)
     return render(request, "scheduling/patrol_schedule.html", context)
     # except:
     #      raise Http404()

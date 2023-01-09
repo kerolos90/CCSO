@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 from random import choices
 from django.db import models
 from home.models import Employees

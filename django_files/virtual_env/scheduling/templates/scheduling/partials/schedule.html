@@ -1,5 +1,6 @@
 {% load scheduling_extras %}
 
+
 <div class="col-xl-6 col-lg-4">
   <div class="card shadow">
     <div class="card-body">
@@ -14,7 +15,7 @@
             Time Off Request
           </button>
         </div>
-        <h1 id="schedule_date"class="text-center">{{test_date}}</h1>
+        <h1 id="schedule_date"class="text-center">{{current_day}}</h1>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
             <button
@@ -53,38 +54,7 @@
             role="tabpanel"
             aria-labelledby="day-tab"
           >
-            <br />
-            <table class="table table-bordered shadow" style="text-align: center" >
-              <thead>
-                <tr>
-                  <th width="30%" scope="col" colspan="2" style="text-align:center">Beat:</th>
-                  <th width="23%" scope="col">0600-1000</th>
-                  <th width="23%" scope="col">1000-1400</th>
-                  <th width="23%" scope="col">1400-1800</th>
-                </tr>
-              </thead>
-              <tbody hx-target="closest tr" hx-swap="outerHTML">
-                {% for key, value in beats.items %}
-                <tr id="{{key}}">
-                    <td width="5%" >
-                        <button
-                        type="submit"
-                        class="btn btn-light"
-                        hx-get="{% url 'edit_schedule' key %}"
-                        >
-                        Edit
-                        </button>
-                    </td>
-                    <th scope="row">{{value}}</th>
-                        {% for block in hours  %}
-                          {% with key|addstr:block as block_attr %}
-                              <td>{{test_date|get_attribute:block_attr}}</td>
-                          {% endwith %}     
-                        {% endfor %}
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
+                {% include 'scheduling/partials/load_full_schedule_partial.html' %}          
 
             <table class="table table-bordered shadow">
               <thead>

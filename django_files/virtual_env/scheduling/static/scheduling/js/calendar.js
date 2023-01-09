@@ -7,27 +7,25 @@ $(function() {
       center: 'title',
       right: 'prev,next'
     },
-    dateClick: function(info) {
-      //$("#schedule_date").html(info.dateStr)
-      $.ajax(
-        {
-          type: "GET",
-          url: "/scheduling/patrol_schedule",
-          success: function(result){
-            $("#schedule_date").html('{{test_date}}')
-          }
-        }
-      )
+    dateClick: function(date) {
+      $("#schedule_date").html(date.dateStr)
+        // $.ajax(
+        //   {
+        //     type: "GET",
+        //     url: "/scheduling/patrol_schedule",
+        //     success: function(data){
+        //      $('#table-to-refresh').empty() 
+        //     $('#table-to-refresh').replaceWith(data)
+             
+        //     }
+            
+        //   }
+        // )
+      $("#table-to-refresh").load("/scheduling/patrol_schedule")
       // change the day's background color 
-      //info.dayEl.style.backgroundColor = 'red';
+    day.dayEl.style.backgroundColor = 'red';
     }
   });
   calendar.render();
-  $('#my-button').on('click',function() {
-    var date = calendar.getDate();
-    alert("The current date of the calendar is " + date.toString());
-    
-  });
-
   
 });
