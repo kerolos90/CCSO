@@ -1,11 +1,10 @@
+import datetime
+
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404, QueryDict
 from .models import GoldDays
 from .forms import TimeOffRequestForm, EditScheduleForm
-import datetime
-
-# Create your views here.
-
+from .set_date_events import colored_dates
 beats = {
     "commandOne": "Shift Commander #1",
     "commandTwo": "Shift Commander #2",
@@ -15,24 +14,23 @@ beats = {
     "east": "East (5/6)", 
     "south": "South (7/8)",
 }
-
 hours = ["_first_four", "_second_four", "_third_four"]
-
 
 def patrol_schedule(request):
 #      #try:
     current_day = datetime.datetime.now().strftime ("%B %d, %Y")
     form = TimeOffRequestForm()
     context = {
-        "test_date": GoldDays.objects.get(date='2022-11-10'),
+        "test_date": GoldDays.objects.get(date='2023-01-12'),
         "form": form,
         "beats": beats,
         "hours": hours,
         "current_day": current_day,
-        
+        "colored_dates" : colored_dates
+
     }
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-        context["test_date"] = GoldDays.objects.get(date="2022-11-11")
+        context["test_date"] = GoldDays.objects.get(date="2023-01-13")
         return render(request, "scheduling/partials/load_full_schedule_partial.html", context)
 
     return render(request, "scheduling/patrol_schedule.html", context)
@@ -40,7 +38,7 @@ def patrol_schedule(request):
     #      raise Http404()
 
 def edit_schedule(request, selected_beat):
-    test_date = GoldDays.objects.get(date="2022-11-10")
+    test_date = GoldDays.objects.get(date="2023-01-12")
     editScheduleForm = EditScheduleForm(instance=test_date)
     beat = beats[selected_beat]
     fields_to_edit = []
@@ -57,7 +55,7 @@ def edit_schedule(request, selected_beat):
     return render(request, "scheduling/partials/edit_schedule_partial.html", context)
 
 def patrol_schedule_partial(request, selected_beat):
-    test_date = GoldDays.objects.get(date="2022-11-10")
+    test_date = GoldDays.objects.get(date="2023-01-12")
     beat = beats[selected_beat]
     data = QueryDict(request.body).dict()
     form = EditScheduleForm(data,instance=test_date)

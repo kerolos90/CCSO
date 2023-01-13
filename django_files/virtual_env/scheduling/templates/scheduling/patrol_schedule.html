@@ -18,6 +18,7 @@
           <div class="col-xl-6 col-lg-8">
             <div class="card shadow">
               <div class="card-body">
+                <!-- Calendar -->
                 <div id="calendar"></div>
               </div>
             </div>
@@ -27,12 +28,8 @@
           <!-- end col-->
         </div>
         <!-- end row -->
-
-        <div style="clear: both"></div>
-
-        <!-- Time off Request Modal -->
+        <!-- Time off Request -->
         <form method="POST">
-          {% comment %} {% csrf_token %} {% endcomment %}
         <div class="modal fade" id="timeOffModal" tabindex="-1">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -195,14 +192,9 @@
 
 {% block scripts %}
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.0.2/index.global.min.js"></script>
-  <script src="{% static 'scheduling/js/calendar.js' %}"></script> 
-  <script src="{% static 'scheduling/js/schedule.js' %}"></script> 
+  {% include 'scheduling/partials/calendar_script.html' %}          
 
   {% comment %} HTMX CDN {% endcomment %}
   <script src="https://unpkg.com/htmx.org@1.8.4" integrity="sha384-wg5Y/JwF7VxGk4zLsJEcAojRtlVp1FKKdGy1qN+OMtdq72WRvX/EdRdqg/LOhYeV" crossorigin="anonymous"></script>
-  <script>
-    document.body.addEventListener('htmx:configRequest', (event) => {
-      event.detail.headers['X-CSRF-Token'] = '{{ csrf_token }}';
-    })
-  </script>
+
 {% endblock scripts %}

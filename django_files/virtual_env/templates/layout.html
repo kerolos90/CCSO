@@ -1,6 +1,4 @@
 {% load static %}
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,6 +22,10 @@
 
   <body
     hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+    {% comment %} 
+    Set layout color
+    data-layout-mode="dark" data-topbar="dark" data-sidebar="dark" 
+    {% endcomment %}
   >
     {% include "sidebar.html" %}
     {% include "topbar.html" %}

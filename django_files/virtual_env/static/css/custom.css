@@ -4,26 +4,24 @@
     border-color: rgb(102, 98, 98) !important;
     box-shadow: 0 2px 6px 0 rgb(200 162 80 / 50%) !important;
 }
-
+/* 
 
 
 .day-highlight {
     background-color: yellow !important;
     color: red !important;
-  }
+  } */
 
-
-  .btn.btn-light.editButton {
-        background-color: yellow !important;
-        border-color: black;
-        padding: 3%;
-  }
-  
 /* FullCalendar custom CSS */
 :root{
     --fc-button-bg-color: rgb(233, 230, 174) !important;
     --fc-event-text-color: #fff !important;
     --bs-link-hover-color: rgb(0, 0, 0) !important;
     --bs-link-color : rgb(0, 0, 0) !important;
-    --fc-button-text-color: rgb(3, 3, 3) !important;
+    --fc-button-text-color: rgb(3, 3, 3) !important;  
+    --fc-bg-event-opacity: 0.5 !important;
+    --fc-today-bg-color: rgb(255, 4, 4)!important;
+    --fc-button-hover-bg-color: #fff !important;
+    --fc-button-active-bg-color: #2a55f0 !important;
+
 }

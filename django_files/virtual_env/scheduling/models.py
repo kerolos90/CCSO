@@ -7,10 +7,12 @@ from home.models import Employees
 EMPLOYEE_CHOICES = [('None', 'None'),
 
                     ]
-for deputies in Employees.objects.order_by('id').values_list('id', 'title', 'l_name'):
-    EMPLOYEE_CHOICES.append(
-        (f"{deputies[1]} {deputies[2]} #{deputies[0]}", str(deputies[0])))
-
+try:
+    for deputies in Employees.objects.order_by('id').values_list('id', 'title', 'l_name'):
+        EMPLOYEE_CHOICES.append(
+            (f"{deputies[1]} {deputies[2]} #{deputies[0]}", str(deputies[0])))
+except:
+    print("No employees in model")
 
 class EmpAssignment(models.Model):
     ASSIGNMENT_CHOICES = [
