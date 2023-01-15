@@ -1,5 +1,4 @@
 import datetime
-
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404, QueryDict
 from .models import GoldDays
@@ -16,9 +15,11 @@ beats = {
 }
 hours = ["_first_four", "_second_four", "_third_four"]
 
+
 def patrol_schedule(request):
 #      #try:
     current_day = datetime.datetime.now().strftime ("%B %d, %Y")
+    
     form = TimeOffRequestForm()
     context = {
         "test_date": GoldDays.objects.get(date='2023-01-12'),
@@ -31,9 +32,12 @@ def patrol_schedule(request):
     }
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
         context["test_date"] = GoldDays.objects.get(date="2023-01-13")
+        # current_day = request.session['selected_date']
+        # print(current_day)
         return render(request, "scheduling/partials/load_full_schedule_partial.html", context)
-
-    return render(request, "scheduling/patrol_schedule.html", context)
+    response = render(request, "scheduling/patrol_schedule.html", context)
+    response.set_cookie('test_cookie', 'test')
+    return response
     # except:
     #      raise Http404()
 
