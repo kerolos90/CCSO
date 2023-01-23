@@ -1,5 +1,5 @@
 {% load scheduling_extras %}
-<tr>
+{% comment %} <tr>
   <form >
     {% csrf_token %}
   <td width="5%" >
@@ -18,4 +18,31 @@
     <td>{{field}}</td>
     {% endfor %}
   </form>
-<tr>
+<tr> {% endcomment %}
+
+
+<tbody hx-target="this" hx-swap="outerHTML">
+  <form method>
+  {% for key, value in beats.items %}
+    <tr >
+      <td width="5%">
+        <button
+          type="submit"
+          class="btn btn-light"
+          hx-post="{% url 'patrol_schedule_partial' %}"
+          hx-include="closest tbody"
+        >
+          Done
+        </button>
+      </td>
+      <th scope="row">{{value}}</th>
+      {% for section in hours %} 
+        {% with key|addstr:section as beat_section %}
+          <td>{{editScheduleForm|get_value:beat_section}}</td>
+        {% endwith %} 
+      {% endfor %}
+    </tr>
+  {% endfor %}
+  </form>
+</tbody>
+

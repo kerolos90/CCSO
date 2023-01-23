@@ -1,5 +1,43 @@
 {% load scheduling_extras %}
-<tr id="{{selected_beat}}">
+
+  <tbody hx-target="this" hx-swap="outerHTML">
+      {% for key, value in beats.items %}
+      <tr id="{{key}}" >
+        <td width="5%">
+          <button
+            type="submit"
+            class="btn btn-light"
+            hx-put="{% url 'edit_schedule' %}"
+          >
+            Edit
+          </button>
+        </td>
+        <th scope="row">{{value}}</th>
+        {% for block in hours %} {% with key|addstr:block as block_attr %}
+        <td>{{test_date|get_attribute:block_attr}}</td>
+        {% endwith %} {% endfor %}
+      </tr>
+      {% endfor %}
+  </tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} <tr id="{{selected_beat}}">
   <td width="5%">
     <button
       type="submit"
@@ -14,4 +52,4 @@
   <td>{{test_date|get_attribute:block_attr}}</td>
   {% endwith %} {% endfor %}
 </tr>
-
+ {% endcomment %}

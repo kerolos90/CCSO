@@ -4,7 +4,7 @@ from home.models import Employees
 # Create your models here.
 
 
-EMPLOYEE_CHOICES = [('None', 'None'),
+EMPLOYEE_CHOICES = [
 
                     ]
 try:
@@ -12,7 +12,7 @@ try:
         EMPLOYEE_CHOICES.append(
             (f"{deputies[1]} {deputies[2]} #{deputies[0]}", str(deputies[0])))
 except:
-    print("No employees in model")
+    print("No employees in database")
 
 class EmpAssignment(models.Model):
     ASSIGNMENT_CHOICES = [
@@ -55,91 +55,70 @@ class GoldDays(models.Model):
 
     commandOne_first_four = models.CharField(max_length=30,
                                              choices=EMPLOYEE_CHOICES,
-                                             default="None",
                                              blank=True)
     commandOne_second_four = models.CharField(max_length=30,
                                               choices=EMPLOYEE_CHOICES,
-                                              default="None",
                                               blank=True)
     commandOne_third_four = models.CharField(max_length=30,
                                              choices=EMPLOYEE_CHOICES,
-                                             default="None",
                                              blank=True)
-
+    
     commandTwo_first_four = models.CharField(max_length=30,
                                              choices=EMPLOYEE_CHOICES,
-                                             default="None",
                                              blank=True)
     commandTwo_second_four = models.CharField(max_length=30,
                                               choices=EMPLOYEE_CHOICES,
-                                              default="None",
                                               blank=True)
     commandTwo_third_four = models.CharField(max_length=30,
                                              choices=EMPLOYEE_CHOICES,
-                                             default="None",
                                              blank=True)
 
     north_first_four = models.CharField(max_length=30,
                                         choices=EMPLOYEE_CHOICES,
-                                        default="None",
                                         blank=True)
     north_second_four = models.CharField(max_length=30,
                                          choices=EMPLOYEE_CHOICES,
-                                         default="None",
                                          blank=True)
     north_third_four = models.CharField(max_length=30,
                                         choices=EMPLOYEE_CHOICES,
-                                        default="None",
                                         blank=True)
 
     west_first_four = models.CharField(max_length=30,
                                        choices=EMPLOYEE_CHOICES,
-                                       default="None",
                                        blank=True)
     west_second_four = models.CharField(max_length=30,
                                         choices=EMPLOYEE_CHOICES,
-                                        default="None",
                                         blank=True)
     west_third_four = models.CharField(max_length=30,
                                        choices=EMPLOYEE_CHOICES,
-                                       default="None",
                                        blank=True)
 
     cover_first_four = models.CharField(max_length=30,
                                         choices=EMPLOYEE_CHOICES,
-                                        default="None",
                                         blank=True)
     cover_second_four = models.CharField(max_length=30,
                                          choices=EMPLOYEE_CHOICES,
-                                         default="None",
                                          blank=True)
     cover_third_four = models.CharField(max_length=30,
                                         choices=EMPLOYEE_CHOICES,
-                                        default="None",
                                         blank=True)
 
     east_first_four = models.CharField(max_length=30,
                                        choices=EMPLOYEE_CHOICES,
-                                       default="None",
                                        blank=True)
     east_second_four = models.CharField(max_length=30,
                                         choices=EMPLOYEE_CHOICES,
-                                        default="None",
                                         blank=True)
     east_third_four = models.CharField(max_length=30,
                                        choices=EMPLOYEE_CHOICES,
-                                       default="None",
                                        blank=True)
 
     south_first_four = models.CharField(max_length=30,
                                         choices=EMPLOYEE_CHOICES,
-                                        default="None",
                                         blank=True)
     south_second_four = models.CharField(max_length=30,
                                          choices=EMPLOYEE_CHOICES,
-                                         default="None",
                                          blank=True)
     south_third_four = models.CharField(max_length=30,
                                         choices=EMPLOYEE_CHOICES,
-                                        default="None",
                                         blank=True)

@@ -1,11 +1,10 @@
 {% load scheduling_extras %}
-<div id="table-to-refresh">
 <table
   class="table table-bordered shadow"
   style="text-align: center"
   id="table-to-refresh"
 >
-  <thead >
+  <thead>
     <tr>
       <th width="30%" scope="col" colspan="2" style="text-align: center">
         Beat:
@@ -15,9 +14,31 @@
       <th width="23%" scope="col">1400-1800</th>
     </tr>
   </thead>
+  <tbody hx-target="this" hx-swap="outerHTML">
+      {% for key, value in beats.items %}
+      <tr id="{{key}}" >
+        <td width="5%">
+          <button
+            type="submit"
+            class="btn btn-light"
+            hx-get="{% url 'edit_schedule'  %}"
+          >
+            Edit
+          </button>
+        </td>
+        <th scope="row">{{value}}</th>
+        {% for block in hours %} {% with key|addstr:block as block_attr %}
+        <td>{{test_date|get_attribute:block_attr}}</td>
+        {% endwith %} {% endfor %}
+      </tr>
+      {% endfor %}
+  </tbody>
+  
+</table>
+
+{% comment %} 
 
   <tbody hx-target="closest tr" hx-swap="outerHTML">
-
       {% for key, value in beats.items %}
       <tr id="{{key}}">
         <td width="5%">
@@ -34,8 +55,4 @@
         <td>{{test_date|get_attribute:block_attr}}</td>
         {% endwith %} {% endfor %}
       </tr>
-      {% endfor %}
-    </td>
-  </tbody>
-</table>
-</div>
+      {% endfor %} {% endcomment %}

@@ -1,11 +1,17 @@
 {% load scheduling_extras %}
 
-
 <div class="col-xl-6 col-lg-4">
   <div class="card shadow">
     <div class="card-body">
-      <div id="external-events" class="">
+      <div>
         <div class="d-flex justify-content-between">
+          <button
+            type="submit"
+            class="btn btn-light shadow"
+            hx-put="{% url 'edit_schedule' %}"
+          >
+            Edit Schedule
+          </button>
           <button
             type="submit"
             class="btn btn-danger shadow"
@@ -15,7 +21,7 @@
             Time Off Request
           </button>
         </div>
-        <h1 id="schedule_date"class="text-center">{{current_day}}</h1>
+        <h1 id="schedule_date" class="text-center">{{current_day}}</h1>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
             <button
@@ -54,53 +60,40 @@
             role="tabpanel"
             aria-labelledby="day-tab"
           >
-                {% include 'scheduling/partials/load_full_schedule_partial.html' %}          
-
-            <table class="table table-bordered shadow">
-              <thead>
-                <tr>
-                  <th scope="col">Beat:</th>
-                  <th scope="col">0700-1100</th>
-                  <th scope="col">1100-1500</th>
-                  <th scope="col">1500-1900</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Savoy</th>
-                  <td>Dep. Pryor #521</td>
-                  <td>None</td>
-                  <td>None</td>
-                </tr>
-                <tr>
-                  <th scope="row">St. Joseph</th>
-                  <td>None</td>
-                  <td>None</td>
-                  <td>Dep. Metlzer #519</td>
-                </tr>
-              </tbody>
-            </table>
-            <table class="table table-bordered shadow">
-              <thead>
-                <tr>
-                  <th scope="col">Beat:</th>
-                  <th scope="col">0600-1100</th>
-                  <th scope="col">1100-1600</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Civil Service</th>
-                  <td>Dep. Bialescki #510</td>
-                  <td>Dep. Bialescki #510</td>
-                </tr>
-                <tr>
-                  <th scope="row">Civil Service</th>
-                  <td>Dep. Atwood #507</td>
-                  <td>Dep. Atwood #507</td>
-                </tr>
-              </tbody>
-            </table>
+            <table
+  class="table table-bordered shadow"
+  style="text-align: center"
+  id="table-to-refresh"
+>
+  <thead>
+    <tr>
+      <th width="23" style="text-align: center">
+                  <button
+            type="submit"
+            class="btn btn-light shadow"
+            hx-put="{% url 'edit_schedule' %}"
+          >
+            Edit Schedule
+          </button>
+        Beat:
+      </th>
+      <th width="23%" scope="col">0600-1000</th>
+      <th width="23%" scope="col">1000-1400</th>
+      <th width="23%" scope="col">1400-1800</th>
+    </tr>
+  </thead>
+  <tbody hx-target="this" hx-swap="outerHTML">
+      {% for key, value in beats.items %}
+      <tr id="{{key}}" >
+        <th scope="row">{{value}}</th>
+        {% for block in hours %} {% with key|addstr:block as block_attr %}
+        <td>{{test_date|get_attribute:block_attr}}</td>
+        {% endwith %} {% endfor %}
+      </tr>
+      {% endfor %}
+  </tbody>
+  
+</table>
           </div>
 
           <div
@@ -110,54 +103,6 @@
             aria-labelledby="night-tab"
           >
             <br />
-            <table class="table table-bordered table-dark shadow">
-              <thead>
-                <tr>
-                  <th scope="col">Beat:</th>
-                  <th scope="col">1800-2200</th>
-                  <th scope="col">2200-0200</th>
-                  <th scope="col">0200-0600</th>
-                </tr>
-              </thead>
-              <tbody >
-                <tr>
-                  <td>Test</td>
-                  <td>Test</td>
-                  <td>
-                    <button class="btn btn-danger"
-                            hx-get="{% url 'edit_schedule' %}"
-                      Edit
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-
-            </table>
-
-            <table class="table table-bordered table-dark shadow">
-              <thead>
-                <tr>
-                  <th scope="col">Beat:</th>
-                  <th scope="col">1500-1900</th>
-                  <th scope="col">1900-2300</th>
-                  <th scope="col">2300-0300</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Savoy</th>
-                  <td>Dep. Poor #521</td>
-                  <td>None</td>
-                  <td>None</td>
-                </tr>
-                <tr>
-                  <th scope="row">St. Joseph</th>
-                  <td>None</td>
-                  <td>None</td>
-                  <td>Dep. Metlzer #519</td>
-                </tr>
-              </tbody>
-            </table>
           </div>
         </div>
       </div>

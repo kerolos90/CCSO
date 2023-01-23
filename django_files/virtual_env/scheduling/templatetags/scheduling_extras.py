@@ -11,3 +11,8 @@ def addstr(arg1,arg2):
 @register.filter
 def get_attribute(obj,prop):
     return getattr(obj,prop)
+
+
+@register.filter
+def get_value(obj, prop):
+    return obj[prop]
