@@ -1,55 +1,41 @@
 {% load scheduling_extras %}
 
-  <tbody hx-target="this" hx-swap="outerHTML">
-      {% for key, value in beats.items %}
-      <tr id="{{key}}" >
-        <td width="5%">
-          <button
-            type="submit"
-            class="btn btn-light"
-            hx-put="{% url 'edit_schedule' %}"
-          >
-            Edit
-          </button>
-        </td>
-        <th scope="row">{{value}}</th>
-        {% for block in hours %} {% with key|addstr:block as block_attr %}
-        <td>{{test_date|get_attribute:block_attr}}</td>
-        {% endwith %} {% endfor %}
-      </tr>
-      {% endfor %}
+<table
+  class="table table-bordered shadow"
+  style="text-align: center"
+  id="table-to-refresh"
+  hx-target="this"
+  hx-swap="outerHTML"
+>
+  <thead>
+    <tr>
+      <th colspan="4">
+        <button
+          type="button"
+          class="btn btn-light shadow"
+          hx-put="{% url 'edit_schedule' %}"
+        >
+          Edit Schedule
+        </button>
+      </th>
+    </tr>
+    <tr>
+      <th width="23" style="text-align: center">Beat:</th>
+      <th width="23%" scope="col">0600-1000</th>
+      <th width="23%" scope="col">1000-1400</th>
+      <th width="23%" scope="col">1400-1800</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for key, value in beats.items %}
+    <tr id="{{key}}">
+      <th scope="row">{{value}}</th>
+      {% for block in hours %} {% with key|addstr:block as block_attr %}
+      <td>{{test_date|get_attribute:block_attr}}</td>
+      {% endwith %} {% endfor %}
+    </tr>
+    {% endfor %}
   </tbody>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{% comment %} <tr id="{{selected_beat}}">
-  <td width="5%">
-    <button
-      type="submit"
-      class="btn btn-light"
-      hx-put="{% url 'edit_schedule' selected_beat %}"
-    >
-      Edit
-    </button>
-  </td>
-  <th scope="row">{{beat}}</th>
-  {% for block in hours %} {% with selected_beat|addstr:block as block_attr %}
-  <td>{{test_date|get_attribute:block_attr}}</td>
-  {% endwith %} {% endfor %}
-</tr>
- {% endcomment %}
+</table>
+<br>
+{% include 'scheduling/partials/savoy_civil_partial.html' %}

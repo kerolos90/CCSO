@@ -31,12 +31,10 @@ def patrol_schedule(request):
         "colored_dates" : colored_dates
 
     }
-    if request.headers.get('X-Requested-With') == 'XMLHttpRequest' or request.headers.get('HX-Request'):
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
         context["test_date"] = GoldDays.objects.get(date="2023-01-13")
-        # current_day = request.session['date']
         print(request.POST.get('date'))
-    
-        return render(request, "scheduling/partials/load_full_schedule_partial.html", context)
+        return render(request, "scheduling/partials/patrol_schedule_partial.html", context)
     return render(request, "scheduling/patrol_schedule.html", context)
     # except:
     #      raise Http404()
@@ -50,7 +48,6 @@ def edit_schedule(request):
         "editScheduleForm": editScheduleForm,
         "hours": hours,
     }
-    print(request.POST)
 
     return render(request, "scheduling/partials/edit_schedule_partial.html", context)
 
@@ -59,11 +56,9 @@ def patrol_schedule_partial(request):
     test_date = GoldDays.objects.get(date="2023-01-12")
     data = QueryDict(request.body).dict()
     form = EditScheduleForm(data, instance=test_date)
-    print(data)
 
     if form.is_valid():
         form.save()
-
     context = {
         "test_date": test_date,
         "beats": beats,
@@ -71,39 +66,3 @@ def patrol_schedule_partial(request):
     }
 
     return render(request, "scheduling/partials/patrol_schedule_partial.html", context)
-
-# def edit_schedule(request, selected_beat):
-#     test_date = GoldDays.objects.get(date="2023-01-12")
-#     editScheduleForm = EditScheduleForm(instance=test_date)
-#     beat = beats[selected_beat]
-#     fields_to_edit = []
-#     for section in hours :
-#         fields_to_edit.append(editScheduleForm[selected_beat + section])
-    
-#     context = {
-#         "beat": beat,
-#         "test_date": test_date,
-#         "selected_beat": selected_beat,
-#         "editScheduleForm": editScheduleForm,
-#         "fields_to_edit": fields_to_edit,        
-#     }
-#     return render(request, "scheduling/partials/edit_schedule_partial.html", context)
-
-
-
-# def patrol_schedule_partial(request, selected_beat):
-#     test_date = GoldDays.objects.get(date="2023-01-12")
-#     beat = beats[selected_beat]
-#     data = QueryDict(request.body).dict()
-#     form = EditScheduleForm(data,instance=test_date)
-#     print(form)
-
-#     context = {
-#         "selected_beat":selected_beat,
-#         "test_date": test_date,
-#         "beat": beat,
-#         "hours": hours        
-#     }
-#     if form.is_valid():
-#         form.save()
-#     return render(request, "scheduling/partials/patrol_schedule_partial.html", context)

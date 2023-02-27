@@ -1,48 +1,42 @@
 {% load scheduling_extras %}
-{% comment %} <tr>
-  <form >
-    {% csrf_token %}
-  <td width="5%" >
-    <button
-      type="submit"
-      class="btn btn-light"
-      hx-put="{% url 'patrol_schedule_partial' selected_beat %}"
-      hx-swap="outerHTML"
-      hx-include="closest tr"
-    >
-      Done
-    </button>
-  </td>
-  <th scope="row">{{beat}}</th>
-    {% for field in fields_to_edit %}
-    <td>{{field}}</td>
-    {% endfor %}
-  </form>
-<tr> {% endcomment %}
 
-
-<tbody hx-target="this" hx-swap="outerHTML">
-  <form method>
-  {% for key, value in beats.items %}
-    <tr >
-      <td width="5%">
+<table
+  class="table table-bordered shadow"
+  style="text-align: center"
+  id="table-to-refresh"
+  hx-target="this"
+  hx-swap="outerHTML"
+>
+  <thead>
+    <tr>
+      <th colspan="4">
         <button
-          type="submit"
+          type="button"
           class="btn btn-light"
           hx-post="{% url 'patrol_schedule_partial' %}"
-          hx-include="closest tbody"
+          hx-include="closest table"
         >
           Done
         </button>
-      </td>
-      <th scope="row">{{value}}</th>
-      {% for section in hours %} 
-        {% with key|addstr:section as beat_section %}
-          <td>{{editScheduleForm|get_value:beat_section}}</td>
-        {% endwith %} 
-      {% endfor %}
+      </th>
     </tr>
-  {% endfor %}
-  </form>
-</tbody>
-
+    <tr>
+      <th width="23" style="text-align: center">Beat:</th>
+      <th width="23%" scope="col">0600-1000</th>
+      <th width="23%" scope="col">1000-1400</th>
+      <th width="23%" scope="col">1400-1800</th>
+    </tr>
+  </thead>
+  <tbody>
+    <form>
+      {% for key, value in beats.items %}
+      <tr>
+        <th scope="row">{{value}}</th>
+        {% for section in hours %} {% with key|addstr:section as beat_section %}
+        <td>{{editScheduleForm|get_value:beat_section}}</td>
+        {% endwith %} {% endfor %}
+      </tr>
+      {% endfor %}
+    </form>
+  </tbody>
+</table>
