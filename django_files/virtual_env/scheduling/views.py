@@ -1,8 +1,8 @@
 import datetime
 from django.shortcuts import render
 from django.http import HttpResponse, Http404, QueryDict
-from .models import GoldDays
-from .forms import TimeOffRequestForm, EditScheduleForm
+from .models import GoldDays, ShiftCommanderOne
+from .forms import EditScheduleForm, ShiftCommanderOneForm, TimeOffRequestForm
 from .set_date_events import colored_dates
 
 
@@ -24,6 +24,7 @@ def patrol_schedule(request):
     form = TimeOffRequestForm()
     context = {
         "test_date": GoldDays.objects.get(date='2023-01-12'),
+        "SC_testdate": ShiftCommanderOne.objects.get(date='2023-01-12'),
         "form": form,
         "beats": beats,
         "hours": hours,
@@ -42,11 +43,17 @@ def patrol_schedule(request):
 
 def edit_schedule(request):
     test_date = GoldDays.objects.get(date="2023-01-12")
+    SCtest_date = ShiftCommanderOne.objects.get(date="2023-01-12")
+
     editScheduleForm = EditScheduleForm(instance=test_date)
+    shiftCommanderOneForm = ShiftCommanderOneForm(instance=SCtest_date)
+
     context = {
         "beats": beats,
         "editScheduleForm": editScheduleForm,
         "hours": hours,
+        "shiftCommanderOneForm":shiftCommanderOneForm
+
     }
 
     return render(request, "scheduling/partials/edit_schedule_partial.html", context)
@@ -54,15 +61,23 @@ def edit_schedule(request):
 
 def patrol_schedule_partial(request):
     test_date = GoldDays.objects.get(date="2023-01-12")
+    SC_testdate = ShiftCommanderOne.objects.get(date="2023-01-12")
+
     data = QueryDict(request.body).dict()
     form = EditScheduleForm(data, instance=test_date)
+    SCform = ShiftCommanderOneForm(data, instance=SC_testdate)
+
+
+    if SCform.is_valid():
+        SCform.save()
 
     if form.is_valid():
         form.save()
     context = {
         "test_date": test_date,
         "beats": beats,
-        "hours": hours
+        "hours": hours,
+        "SC_testdate":SC_testdate
     }
 
     return render(request, "scheduling/partials/patrol_schedule_partial.html", context)
