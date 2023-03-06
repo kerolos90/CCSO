@@ -1,5 +1,12 @@
 from django import forms
+from django.forms import formset_factory, modelform_factory
 from .models import *
+
+
+model_list = [ShiftCommanderOne, ShiftCommanderTwo, North, West, 
+              East, South, Cover, SaintJoseph, SavoyOne, SavoyTwo, SavoyThree,
+              CivilServiceOne, CivilServiceTwo]
+form_list = []
 
 class TimeOffRequestForm(forms.Form):
     start_date = forms.DateField(widget=forms.DateTimeInput(
@@ -8,157 +15,90 @@ class TimeOffRequestForm(forms.Form):
         attrs={'type': 'datetime-local', 'class': 'form-control'}))
 
 
-class EditScheduleForm(forms.ModelForm):
+class BaseModelForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(BaseModelForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs.update({'class': 'form-select'})
+            self.fields[field].initial = self.fields[field]
+
+class EditScheduleForm(BaseModelForm):
     class Meta:
         model = GoldDays
         exclude = ['date']
-   
-    def __init__(self, *args, **kwargs):
-        super(EditScheduleForm, self).__init__(*args, **kwargs)
-        for field in self.fields:
-            self.fields[field].widget.attrs.update({'class': 'form-select'})
-            self.fields[field].initial = self.fields[field]
 
-class ShiftCommanderOneForm(forms.ModelForm):
-    class Meta:
-        model = ShiftCommanderOne
-        exclude = ['date']
-   
-    def __init__(self, *args, **kwargs):
-        super(ShiftCommanderOneForm, self).__init__(*args, **kwargs)
-        for field in self.fields:
-            self.fields[field].widget.attrs.update({'class': 'form-select'})
-            self.fields[field].initial = self.fields[field]
 
-class ShiftCommanderTwoForm(forms.ModelForm):
-    class Meta:
-        model = ShiftCommanderTwo
-        exclude = ['date']
-   
-    def __init__(self, *args, **kwargs):
-        super(ShiftCommanderTwoForm, self).__init__(*args, **kwargs)
-        for field in self.fields:
-            self.fields[field].widget.attrs.update({'class': 'form-select'})
-            self.fields[field].initial = self.fields[field]
 
-class ShiftCommanderOneForm(forms.ModelForm):
-    class Meta:
-        model = ShiftCommanderOne
-        exclude = ['date']
-   
-    def __init__(self, *args, **kwargs):
-        super(ShiftCommanderOneForm, self).__init__(*args, **kwargs)
-        for field in self.fields:
-            self.fields[field].widget.attrs.update({'class': 'form-select'})
-            self.fields[field].initial = self.fields[field]
+# class ShiftCommanderOneForm(BaseModelForm):
+#     class Meta:
+#         model = ShiftCommanderOne
+#         exclude = ['date']
 
-class ShiftCommanderOneForm(forms.ModelForm):
-    class Meta:
-        model = ShiftCommanderOne
-        exclude = ['date']
+# class ShiftCommanderTwoForm(BaseModelForm):
+#     class Meta:
+#         model = ShiftCommanderTwo
+#         exclude = ['date']
    
-    def __init__(self, *args, **kwargs):
-        super(ShiftCommanderOneForm, self).__init__(*args, **kwargs)
-        for field in self.fields:
-            self.fields[field].widget.attrs.update({'class': 'form-select'})
-            self.fields[field].initial = self.fields[field]
+# class NorthForm(BaseModelForm):
+#     class Meta:
+#         model = North
+#         exclude = ['date']
 
-class ShiftCommanderOneForm(forms.ModelForm):
-    class Meta:
-        model = ShiftCommanderOne
-        exclude = ['date']
-   
-    def __init__(self, *args, **kwargs):
-        super(ShiftCommanderOneForm, self).__init__(*args, **kwargs)
-        for field in self.fields:
-            self.fields[field].widget.attrs.update({'class': 'form-select'})
-            self.fields[field].initial = self.fields[field]
+# class WestForm(BaseModelForm):
+#     class Meta:
+#         model = West
+#         exclude = ['date']
 
-class ShiftCommanderOneForm(forms.ModelForm):
-    class Meta:
-        model = ShiftCommanderOne
-        exclude = ['date']
-   
-    def __init__(self, *args, **kwargs):
-        super(ShiftCommanderOneForm, self).__init__(*args, **kwargs)
-        for field in self.fields:
-            self.fields[field].widget.attrs.update({'class': 'form-select'})
-            self.fields[field].initial = self.fields[field]
+# class EastForm(BaseModelForm):
+#     class Meta:
+#         model = East
+#         exclude = ['date']
 
-class ShiftCommanderOneForm(forms.ModelForm):
-    class Meta:
-        model = ShiftCommanderOne
-        exclude = ['date']
-   
-    def __init__(self, *args, **kwargs):
-        super(ShiftCommanderOneForm, self).__init__(*args, **kwargs)
-        for field in self.fields:
-            self.fields[field].widget.attrs.update({'class': 'form-select'})
-            self.fields[field].initial = self.fields[field]
 
-class ShiftCommanderOneForm(forms.ModelForm):
-    class Meta:
-        model = ShiftCommanderOne
-        exclude = ['date']
-   
-    def __init__(self, *args, **kwargs):
-        super(ShiftCommanderOneForm, self).__init__(*args, **kwargs)
-        for field in self.fields:
-            self.fields[field].widget.attrs.update({'class': 'form-select'})
-            self.fields[field].initial = self.fields[field]
+# class CoverForm(BaseModelForm):
+#     class Meta:
+#         model = Cover
+#         exclude = ['date']
 
-class ShiftCommanderOneForm(forms.ModelForm):
-    class Meta:
-        model = ShiftCommanderOne
-        exclude = ['date']
-   
-    def __init__(self, *args, **kwargs):
-        super(ShiftCommanderOneForm, self).__init__(*args, **kwargs)
-        for field in self.fields:
-            self.fields[field].widget.attrs.update({'class': 'form-select'})
-            self.fields[field].initial = self.fields[field]
 
-class ShiftCommanderOneForm(forms.ModelForm):
-    class Meta:
-        model = ShiftCommanderOne
-        exclude = ['date']
-   
-    def __init__(self, *args, **kwargs):
-        super(ShiftCommanderOneForm, self).__init__(*args, **kwargs)
-        for field in self.fields:
-            self.fields[field].widget.attrs.update({'class': 'form-select'})
-            self.fields[field].initial = self.fields[field]
+# class SouthForm(BaseModelForm):
+#     class Meta:
+#         model = South
+#         exclude = ['date']
 
-class ShiftCommanderOneForm(forms.ModelForm):
-    class Meta:
-        model = ShiftCommanderOne
-        exclude = ['date']
-   
-    def __init__(self, *args, **kwargs):
-        super(ShiftCommanderOneForm, self).__init__(*args, **kwargs)
-        for field in self.fields:
-            self.fields[field].widget.attrs.update({'class': 'form-select'})
-            self.fields[field].initial = self.fields[field]
 
-class ShiftCommanderOneForm(forms.ModelForm):
-    class Meta:
-        model = ShiftCommanderOne
-        exclude = ['date']
-   
-    def __init__(self, *args, **kwargs):
-        super(ShiftCommanderOneForm, self).__init__(*args, **kwargs)
-        for field in self.fields:
-            self.fields[field].widget.attrs.update({'class': 'form-select'})
-            self.fields[field].initial = self.fields[field]
+# class SaintJosephForm(BaseModelForm):
+#     class Meta:
+#         model = SaintJoseph
+#         exclude = ['date']
 
-class ShiftCommanderOneForm(forms.ModelForm):
-    class Meta:
-        model = ShiftCommanderOne
-        exclude = ['date']
-   
-    def __init__(self, *args, **kwargs):
-        super(ShiftCommanderOneForm, self).__init__(*args, **kwargs)
-        for field in self.fields:
-            self.fields[field].widget.attrs.update({'class': 'form-select'})
-            self.fields[field].initial = self.fields[field]
+
+# class SavoyOneForm(BaseModelForm):
+#     class Meta:
+#         model = SavoyOne
+#         exclude = ['date']
+
+# class SavoyTwoForm(BaseModelForm):
+#     class Meta:
+#         model = SavoyTwo
+#         exclude = ['date']
+
+
+# class SavoyThreeForm(BaseModelForm):
+#     class Meta:
+#         model = SavoyThree
+#         exclude = ['date']
+
+
+# class CivilServiceOneForm(BaseModelForm):
+#     class Meta:
+#         model = CivilServiceOne
+#         exclude = ['date']
+
+
+# class CivilServiceTwoForm(BaseModelForm):
+#     class Meta:
+#         model = CivilServiceOne
+#         exclude = ['date']
+
  

@@ -1,8 +1,8 @@
 import datetime
 from django.shortcuts import render
 from django.http import HttpResponse, Http404, QueryDict
-from .models import GoldDays, ShiftCommanderOne
-from .forms import EditScheduleForm, ShiftCommanderOneForm, TimeOffRequestForm
+from .models import *
+from .forms import *
 from .set_date_events import colored_dates
 
 
@@ -20,6 +20,8 @@ hours = ["_first_four", "_second_four", "_third_four"]
 
 def patrol_schedule(request):
 #      #try:
+    formset=DynamicFormSet()
+    print(formset.as_ul())
     current_day = datetime.datetime.now().date()
     form = TimeOffRequestForm()
     context = {
