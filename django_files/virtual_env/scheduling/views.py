@@ -19,21 +19,18 @@ hours = ["_first_four", "_second_four", "_third_four"]
 
 
 def patrol_schedule(request):
-#      #try:
-    formset=DynamicFormSet()
-    print(formset.as_ul())
+   # try:
     current_day = datetime.datetime.now().date()
-    form = TimeOffRequestForm()
     context = {
         "test_date": GoldDays.objects.get(date='2023-01-12'),
         "SC_testdate": ShiftCommanderOne.objects.get(date='2023-01-12'),
-        "form": form,
         "beats": beats,
         "hours": hours,
         "current_day": current_day.strftime("%B %d, %Y"),
         "colored_dates" : colored_dates
 
     }
+
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
         context["test_date"] = GoldDays.objects.get(date="2023-01-13")
         print(request.POST.get('date'))

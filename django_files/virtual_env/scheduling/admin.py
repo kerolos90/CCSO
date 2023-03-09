@@ -22,10 +22,3 @@ class ShiftCommanderOneAdmin(admin.ModelAdmin):
     list_filter = ("date",)
 
 admin.site.register(ShiftCommanderOne, ShiftCommanderOneAdmin)
-
-
-class ShiftCommanderTwoAdmin(admin.ModelAdmin):
-    list_filter = ("date",)
-
-admin.site.register(ShiftCommanderTwo, ShiftCommanderTwoAdmin)
-

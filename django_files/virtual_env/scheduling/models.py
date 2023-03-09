@@ -54,102 +54,177 @@ def hour_blocks():
     return  models.CharField(max_length=30,choices=EMPLOYEE_CHOICES,blank=True)
 
 class ShiftCommanderOne(models.Model):
-    date = date
-    first_four = hour_blocks()
-    second_four = hour_blocks()
-    third_four = hour_blocks()
-    fourth_four = hour_blocks()
-    fifth_four = hour_blocks()
-    sixth_four = hour_blocks()
+    date = models.DateField(
+        auto_now_add=False, auto_now=False, primary_key=True, blank=False)
+    first_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    second_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    third_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    fourth_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    fifth_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    sixth_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
 
 class ShiftCommanderTwo(models.Model):
-    date = date
-    first_four = hour_blocks()
-    second_four = hour_blocks()
-    third_four = hour_blocks()
-    fourth_four = hour_blocks()
-    fifth_four = hour_blocks()
-    sixth_four = hour_blocks()
+    date = models.DateField(
+        auto_now_add=False, auto_now=False, primary_key=True, blank=False)
+    first_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    second_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    third_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    fourth_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    fifth_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    sixth_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+
 
 class North(models.Model):
-    date = date
-    first_four = hour_blocks()
-    second_four = hour_blocks()
-    third_four = hour_blocks()
-    fourth_four = hour_blocks()
-    fifth_four = hour_blocks()
-    sixth_four = hour_blocks()
+    date = models.DateField(
+        auto_now_add=False, auto_now=False, primary_key=True, blank=False)
+    first_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    second_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    third_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    fourth_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    fifth_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    sixth_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+
 
 class West(models.Model):
-    date = date
-    first_four = hour_blocks()
-    second_four = hour_blocks()
-    third_four = hour_blocks()
-    fourth_four = hour_blocks()
-    fifth_four = hour_blocks()
-    sixth_four = hour_blocks()
+    date = models.DateField(
+        auto_now_add=False, auto_now=False, primary_key=True, blank=False)
+    first_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    second_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    third_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    fourth_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    fifth_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    sixth_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+
 
 class East(models.Model):
-    date = date
-    first_four = hour_blocks()
-    second_four = hour_blocks()
-    third_four = hour_blocks()
-    fourth_four = hour_blocks()
-    fifth_four = hour_blocks()
-    sixth_four = hour_blocks()
+    date = models.DateField(
+        auto_now_add=False, auto_now=False, primary_key=True, blank=False)
+    first_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    second_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    third_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    fourth_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    fifth_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    sixth_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+
 
 class Cover(models.Model):
-    date = date
-    first_four = hour_blocks()
-    second_four = hour_blocks()
-    third_four = hour_blocks()
-    fourth_four = hour_blocks()
-    fifth_four = hour_blocks()
-    sixth_four = hour_blocks()
+    date = models.DateField(
+        auto_now_add=False, auto_now=False, primary_key=True, blank=False)
+    first_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    second_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    third_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    fourth_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    fifth_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    sixth_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
 
 class South(models.Model):
-    date = date
-    first_four = hour_blocks()
-    second_four = hour_blocks()
-    third_four = hour_blocks()
-    fourth_four = hour_blocks()
-    fifth_four = hour_blocks()
-    sixth_four = hour_blocks()
+    date = models.DateField(
+        auto_now_add=False, auto_now=False, primary_key=True, blank=False)
+    first_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    second_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    third_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    fourth_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    fifth_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    sixth_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+
 
 class SaintJoseph(models.Model):
-    date = date
-    first_four = hour_blocks()
-    second_four = hour_blocks()
+    date = models.DateField(
+        auto_now_add=False, auto_now=False, primary_key=True, blank=False)
+    first_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    second_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
 
 class SavoyOne(models.Model):
-    date = date
-    first_four = hour_blocks()
-    second_four = hour_blocks()
-
+    date = models.DateField(
+        auto_now_add=False, auto_now=False, primary_key=True, blank=False)
+    first_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    second_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    
 class SavoyTwo(models.Model):
-    date = date
-    first_four = hour_blocks()
-    second_four = hour_blocks()
+    date = models.DateField(
+        auto_now_add=False, auto_now=False, primary_key=True, blank=False)
+    first_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    second_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
 
 class SavoyThree(models.Model):
-    date = date
-    first_four = hour_blocks()
-    second_four = hour_blocks()
+    date = models.DateField(
+        auto_now_add=False, auto_now=False, primary_key=True, blank=False)
+    first_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    second_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
 
 class CivilServiceOne(models.Model):
-    date = date
-    first_four = hour_blocks()
-    second_four = hour_blocks()
+    date = models.DateField(
+        auto_now_add=False, auto_now=False, primary_key=True, blank=False)
+    first_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    second_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
 
 class CivilServiceTwo(models.Model):
-    date = date
-    first_four = hour_blocks()
-    second_four = hour_blocks()
+    date = models.DateField(
+        auto_now_add=False, auto_now=False, primary_key=True, blank=False)
+    first_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    second_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
 
 class Other(models.Model):
-    date = date
-    first_four = hour_blocks()
-    second_four = hour_blocks()
+    date = models.DateField(
+        auto_now_add=False, auto_now=False, primary_key=True, blank=False)
+    first_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    second_four = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
     
 class GoldDays(models.Model):
     date = models.DateField(

@@ -1,12 +1,5 @@
 from django import forms
-from django.forms import formset_factory, modelform_factory
 from .models import *
-
-
-model_list = [ShiftCommanderOne, ShiftCommanderTwo, North, West, 
-              East, South, Cover, SaintJoseph, SavoyOne, SavoyTwo, SavoyThree,
-              CivilServiceOne, CivilServiceTwo]
-form_list = []
 
 class TimeOffRequestForm(forms.Form):
     start_date = forms.DateField(widget=forms.DateTimeInput(
@@ -27,78 +20,69 @@ class EditScheduleForm(BaseModelForm):
         model = GoldDays
         exclude = ['date']
 
-
-
-# class ShiftCommanderOneForm(BaseModelForm):
-#     class Meta:
-#         model = ShiftCommanderOne
-#         exclude = ['date']
-
-# class ShiftCommanderTwoForm(BaseModelForm):
-#     class Meta:
-#         model = ShiftCommanderTwo
-#         exclude = ['date']
+class ShiftCommanderOneForm(BaseModelForm):
+    class Meta:
+        model = ShiftCommanderTwo
+        exclude = ['date']
+             
+class ShiftCommanderTwoForm(BaseModelForm):
+    class Meta:
+        model = ShiftCommanderTwo
+        exclude = ['date']
    
-# class NorthForm(BaseModelForm):
-#     class Meta:
-#         model = North
-#         exclude = ['date']
+class NorthForm(BaseModelForm):
+    class Meta:
+        model = North
+        exclude = ['date']
 
-# class WestForm(BaseModelForm):
-#     class Meta:
-#         model = West
-#         exclude = ['date']
+class WestForm(BaseModelForm):
+    class Meta:
+        model = West
+        exclude = ['date']
 
-# class EastForm(BaseModelForm):
-#     class Meta:
-#         model = East
-#         exclude = ['date']
+class EastForm(BaseModelForm):
+    class Meta:
+        model = East
+        exclude = ['date']
 
+class CoverForm(BaseModelForm):
+    class Meta:
+        model = Cover
+        exclude = ['date']
 
-# class CoverForm(BaseModelForm):
-#     class Meta:
-#         model = Cover
-#         exclude = ['date']
+class SouthForm(BaseModelForm):
+    class Meta:
+        model = South
+        exclude = ['date']
 
+class SaintJosephForm(BaseModelForm):
+    class Meta:
+        model = SaintJoseph
+        exclude = ['date']
 
-# class SouthForm(BaseModelForm):
-#     class Meta:
-#         model = South
-#         exclude = ['date']
+class SavoyOneForm(BaseModelForm):
+    class Meta:
+        model = SavoyOne
+        exclude = ['date']
 
+class SavoyTwoForm(BaseModelForm):
+    class Meta:
+        model = SavoyTwo
+        exclude = ['date']
 
-# class SaintJosephForm(BaseModelForm):
-#     class Meta:
-#         model = SaintJoseph
-#         exclude = ['date']
+class SavoyThreeForm(BaseModelForm):
+    class Meta:
+        model = SavoyThree
+        exclude = ['date']
 
+class CivilServiceOneForm(BaseModelForm):
+    class Meta:
+        model = CivilServiceOne
+        exclude = ['date']
 
-# class SavoyOneForm(BaseModelForm):
-#     class Meta:
-#         model = SavoyOne
-#         exclude = ['date']
-
-# class SavoyTwoForm(BaseModelForm):
-#     class Meta:
-#         model = SavoyTwo
-#         exclude = ['date']
-
-
-# class SavoyThreeForm(BaseModelForm):
-#     class Meta:
-#         model = SavoyThree
-#         exclude = ['date']
-
-
-# class CivilServiceOneForm(BaseModelForm):
-#     class Meta:
-#         model = CivilServiceOne
-#         exclude = ['date']
-
-
-# class CivilServiceTwoForm(BaseModelForm):
-#     class Meta:
-#         model = CivilServiceOne
-#         exclude = ['date']
+class CivilServiceTwoForm(BaseModelForm):
+    class Meta:
+        model = CivilServiceOne
+        exclude = ['date']
 
  
