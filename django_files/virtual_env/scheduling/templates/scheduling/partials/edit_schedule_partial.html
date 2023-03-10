@@ -10,14 +10,14 @@
   <thead>
     <tr>
       <th colspan="4">
-        <button
-          type="button"
-          class="btn btn-light"
-          hx-post="{% url 'patrol_schedule_partial' %}"
-          hx-include="closest table"
-        >
-          Done
-        </button>
+          <button
+            type="button"
+            class="btn btn-light"
+            hx-post="{% url 'patrol_schedule_partial' %}"
+            hx-include="closest table"
+          >
+            Done
+          </button>
       </th>
     </tr>
     <tr>
@@ -27,22 +27,16 @@
       <th width="23%" scope="col">1400-1800</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody >
     <form>
-      {% for key, value in beats.items %}
+      <input type="hidden" name="date" value="{{ date }}" />
+      {% for key, value in form_dic.items %}
       <tr>
-        <th scope="row">{{value}}</th>
-        {% for section in hours %} {% with key|addstr:section as beat_section %}
-        <td>{{editScheduleForm|get_value:beat_section}}</td>
-        {% endwith %} {% endfor %}
+        <th scope="row">{{key}}</th>
+        {% for section in hours %} 
+        {% endfor %}
       </tr>
-      {% endfor %}
-      <tr>
-        <th scope="row">Other</th>
-        <td>{{shiftCommanderOneForm.first_four}}</td>
-        <td>{{shiftCommanderOneForm.second_four}}</td>
-        <td>{{shiftCommanderOneForm.third_four}}</td>
-    </tr>
+      {% endfor %}     
     </form>
   </tbody>
 </table>

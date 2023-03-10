@@ -10,13 +10,16 @@
   <thead>
     <tr>
       <th colspan="4">
-        <button
-          type="button"
-          class="btn btn-light shadow"
-          hx-put="{% url 'edit_schedule' %}"
-        >
-          Edit Schedule
-        </button>
+        <form>
+          <button
+            type="button"
+            class="btn btn-light shadow"
+            hx-post="{% url 'edit_schedule'%}"
+          >
+            <input type="hidden" name="date" value="{{ current_day }}" />
+            Edit Schedule
+          </button>
+        </form>
       </th>
     </tr>
     <tr>
@@ -27,21 +30,72 @@
     </tr>
   </thead>
   <tbody>
-    {% for key, value in beats.items %}
-    <tr id="{{key}}">
+    {% for key, value in patrol_beats.items %}
+    <tr>
+      <th scope="row">{{value}}</th>
+      {% for block in hours %}
+      <td>{{key|get_attribute:block}}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %} {% comment %} {% for key, value in beats.items %}
+    <tr>
       <th scope="row">{{value}}</th>
       {% for block in hours %} {% with key|addstr:block as block_attr %}
       <td>{{test_date|get_attribute:block_attr}}</td>
       {% endwith %} {% endfor %}
     </tr>
-    {% endfor %}
+    {% endfor %} {% endcomment %}
+  </tbody>
+</table>
+
+<table class="table table-bordered shadow">
+  <thead>
     <tr>
-      <th scope="row">Other</th>
-      <td>{{SC_testdate.first_four}}</td>
-      <td>{{SC_testdate.second_four}}</td>
-      <td>{{SC_testdate.third_four}}</td>
+      <th scope="col">Beat:</th>
+      <th scope="col">0700-1100</th>
+      <th scope="col">1100-1500</th>
+      <th scope="col">1500-1900</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Savoy #1</th>
+      <td>Dep. Pryor #521</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th scope="row">Savoy #2</th>
+      <td>Dep. Pryor #521</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th scope="row">St. Joseph</th>
+      <td>None</td>
+      <td>None</td>
+      <td>Dep. Metlzer #519</td>
     </tr>
   </tbody>
 </table>
-<br>
-{% include 'scheduling/partials/savoy_civil_partial.html' %}
+<table class="table table-bordered shadow">
+  <thead>
+    <tr>
+      <th scope="col">Beat:</th>
+      <th scope="col">0600-1100</th>
+      <th scope="col">1100-1600</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Civil Service #1</th>
+      <td>Dep. Bialescki #510</td>
+      <td>Dep. Bialescki #510</td>
+    </tr>
+    <tr>
+      <th scope="row">Civil Service #2</th>
+      <td>Dep. Atwood #507</td>
+      <td>Dep. Atwood #507</td>
+    </tr>
+  </tbody>
+</table>

@@ -5,35 +5,33 @@ from .models import *
 from .forms import *
 from .set_date_events import colored_dates
 
-
-beats = {
-    "commandOne": "Shift Commander #1",
-    "commandTwo": "Shift Commander #2",
-    "north": "North (1/2)",
-    "west": "West (3/4)",
-    "cover": "Cover (4/5)",
-    "east": "East (5/6)", 
-    "south": "South (7/8)",
-}
-hours = ["_first_four", "_second_four", "_third_four"]
-
+hours = ["first_four", "second_four", "third_four"]
+def patrol_beats(date):
+    return {
+        ShiftCommanderOne.objects.get_or_create(date=date)[0]: "Shift Commander #1",
+        ShiftCommanderTwo.objects.get_or_create(date=date)[0]: "Shift Commander #2",
+        North.objects.get_or_create(date=date)[0]: "North (1/2)",
+        West.objects.get_or_create(date=date)[0]: "West (3/4)",
+        Cover.objects.get_or_create(date=date)[0]: "Cover (4/5)",
+        East.objects.get_or_create(date=date)[0]: "East (5/6)",
+        South.objects.get_or_create(date=date)[0]: "South (7/8)",
+    }
 
 def patrol_schedule(request):
    # try:
     current_day = datetime.datetime.now().date()
     context = {
-        "test_date": GoldDays.objects.get(date='2023-01-12'),
-        "SC_testdate": ShiftCommanderOne.objects.get(date='2023-01-12'),
-        "beats": beats,
         "hours": hours,
-        "current_day": current_day.strftime("%B %d, %Y"),
-        "colored_dates" : colored_dates
+        "current_day": '2023-03-12',
+        "colored_dates" : colored_dates,
+        "patrol_beats": patrol_beats(current_day)
 
     }
 
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-        context["test_date"] = GoldDays.objects.get(date="2023-01-13")
-        print(request.POST.get('date'))
+        selected_date = request.POST.get('date')
+        context["current_day"] = selected_date
+        context["patrol_beats"] = patrol_beats(selected_date)
         return render(request, "scheduling/partials/patrol_schedule_partial.html", context)
     return render(request, "scheduling/patrol_schedule.html", context)
     # except:
@@ -41,42 +39,43 @@ def patrol_schedule(request):
 
 
 def edit_schedule(request):
-    test_date = GoldDays.objects.get(date="2023-01-12")
-    SCtest_date = ShiftCommanderOne.objects.get(date="2023-01-12")
+    date = request.POST.get('date')
+    shiftCommanderOneForm = ShiftCommanderOneForm(instance=date)
+    shiftCommanderTwoForm = ShiftCommanderTwoForm(instance=date)
+    northForm = NorthForm(instance=date)
+    westForm = WestForm(instance=date)
+    coverForm = CoverForm(instance=date)
+    eastForm = EastForm(instance=date)
+    southForm = SouthForm(instance=date)
 
-    editScheduleForm = EditScheduleForm(instance=test_date)
-    shiftCommanderOneForm = ShiftCommanderOneForm(instance=SCtest_date)
-
-    context = {
-        "beats": beats,
-        "editScheduleForm": editScheduleForm,
-        "hours": hours,
-        "shiftCommanderOneForm":shiftCommanderOneForm
+    form_dic = {
+        "shiftCommanderOneForm": shiftCommanderOneForm,
+        "shiftCommanderTwoForm": shiftCommanderTwoForm,
+        "northForm": northForm,
+        "westForm": westForm,
+        "coverForm": coverForm,
+        "eastForm": eastForm,
+        "southForm": southForm,
 
     }
 
+    context = {
+        "form_dic": form_dic,
+        "date" : date,
+        "hours": hours
+    }
     return render(request, "scheduling/partials/edit_schedule_partial.html", context)
 
 
 def patrol_schedule_partial(request):
     test_date = GoldDays.objects.get(date="2023-01-12")
-    SC_testdate = ShiftCommanderOne.objects.get(date="2023-01-12")
-
     data = QueryDict(request.body).dict()
+    print(data)
     form = EditScheduleForm(data, instance=test_date)
-    SCform = ShiftCommanderOneForm(data, instance=SC_testdate)
-
-
-    if SCform.is_valid():
-        SCform.save()
-
     if form.is_valid():
         form.save()
     context = {
         "test_date": test_date,
-        "beats": beats,
         "hours": hours,
-        "SC_testdate":SC_testdate
     }
-
     return render(request, "scheduling/partials/patrol_schedule_partial.html", context)
