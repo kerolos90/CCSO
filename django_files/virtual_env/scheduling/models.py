@@ -169,7 +169,6 @@ class South(models.Model):
     sixth_four = models.CharField(
         max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
 
-
 class SaintJoseph(models.Model):
     date = models.DateField(
         auto_now_add=False, auto_now=False, primary_key=True, blank=False)

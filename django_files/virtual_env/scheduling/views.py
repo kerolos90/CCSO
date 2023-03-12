@@ -22,7 +22,7 @@ def patrol_schedule(request):
     current_day = datetime.datetime.now().date()
     context = {
         "hours": hours,
-        "current_day": '2023-03-12',
+        "current_day": current_day,
         "colored_dates" : colored_dates,
         "patrol_beats": patrol_beats(current_day)
 
@@ -40,42 +40,51 @@ def patrol_schedule(request):
 
 def edit_schedule(request):
     date = request.POST.get('date')
-    shiftCommanderOneForm = ShiftCommanderOneForm(instance=date)
-    shiftCommanderTwoForm = ShiftCommanderTwoForm(instance=date)
-    northForm = NorthForm(instance=date)
-    westForm = WestForm(instance=date)
-    coverForm = CoverForm(instance=date)
-    eastForm = EastForm(instance=date)
-    southForm = SouthForm(instance=date)
+    shiftCommanderOneForm = ShiftCommanderOneForm(instance=ShiftCommanderOne.objects.get(date=date))
+    shiftCommanderTwoForm = ShiftCommanderTwoForm(instance=ShiftCommanderTwo.objects.get(date=date))
+    northForm = NorthForm(instance=North.objects.get(date=date))
+    westForm = WestForm(instance=West.objects.get(date=date))
+    coverForm = CoverForm(instance=Cover.objects.get(date=date))
+    eastForm = EastForm(instance=East.objects.get(date=date))
+    southForm = SouthForm(instance=South.objects.get(date=date))
 
     form_dic = {
-        "shiftCommanderOneForm": shiftCommanderOneForm,
-        "shiftCommanderTwoForm": shiftCommanderTwoForm,
-        "northForm": northForm,
-        "westForm": westForm,
-        "coverForm": coverForm,
-        "eastForm": eastForm,
-        "southForm": southForm,
-
+        shiftCommanderOneForm : "Shift Commander #1",
+        shiftCommanderTwoForm: "Shift Commander #2",
+        northForm: "North (1/2)",
+        westForm: "West (3/4)",
+        coverForm: "Cover (4/5)",
+        eastForm: "East (5/6)",
+        southForm: "South (7/8)"
     }
 
     context = {
         "form_dic": form_dic,
         "date" : date,
-        "hours": hours
     }
     return render(request, "scheduling/partials/edit_schedule_partial.html", context)
 
 
 def patrol_schedule_partial(request):
-    test_date = GoldDays.objects.get(date="2023-01-12")
+    date = request.POST.get('date')
+    form_list =[
+        ShiftCommanderOneForm(instance=ShiftCommanderOne.objects.get(date=date)),
+        ShiftCommanderTwoForm(instance=ShiftCommanderTwo.objects.get(date=date)),
+        NorthForm(instance=North.objects.get(date=date)),
+        WestForm(instance=West.objects.get(date=date)),
+        CoverForm(instance=Cover.objects.get(date=date)),
+        EastForm(instance=East.objects.get(date=date)),
+        SouthForm(instance=South.objects.get(date=date))
+    ]
+
+    # test_date = GoldDays.objects.get(date="2023-01-12")
     data = QueryDict(request.body).dict()
     print(data)
-    form = EditScheduleForm(data, instance=test_date)
-    if form.is_valid():
-        form.save()
+    # form = EditScheduleForm(data, instance=test_date)
+    # if form.is_valid():
+    #     form.save()
     context = {
-        "test_date": test_date,
+        # "test_date": test_date,
         "hours": hours,
     }
     return render(request, "scheduling/partials/patrol_schedule_partial.html", context)

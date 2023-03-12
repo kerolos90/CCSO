@@ -30,13 +30,14 @@
   <tbody >
     <form>
       <input type="hidden" name="date" value="{{ date }}" />
-      {% for key, value in form_dic.items %}
-      <tr>
-        <th scope="row">{{key}}</th>
-        {% for section in hours %} 
-        {% endfor %}
-      </tr>
-      {% endfor %}     
+       {% for key, value in form_dic.items %}
+        <tr>
+          <th scope="row">{{value}}</th> 
+            <td>{{key.first_four}}</td>
+            <td>{{key.second_four}}</td>
+            <td>{{key.third_four}}</td>
+        </tr>
+       {% endfor %}  
     </form>
   </tbody>
 </table>

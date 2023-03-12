@@ -16,7 +16,7 @@
             class="btn btn-light shadow"
             hx-post="{% url 'edit_schedule'%}"
           >
-            <input type="hidden" name="date" value="{{ current_day }}" />
+            <input type="hidden" name="date" value="{{ current_day|date:"Y-m-d" }}" />
             Edit Schedule
           </button>
         </form>
