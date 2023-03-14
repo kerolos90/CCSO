@@ -1,25 +1,25 @@
 {% load scheduling_extras %}
-
+<form>
 <table
   class="table table-bordered shadow"
   style="text-align: center"
   id="table-to-refresh"
-  hx-target="this"
   hx-swap="outerHTML"
+  hx-post="{% url 'edit_schedule'%}"
 >
+  <input type="hidden" name="date" value="{{ date }}" />
+
+</form>
   <thead>
     <tr>
       <th colspan="4">
-        <form>
           <button
+            id="test"
             type="button"
             class="btn btn-light shadow"
-            hx-post="{% url 'edit_schedule'%}"
           >
-            <input type="hidden" name="date" value="{{ current_day|date:"Y-m-d" }}" />
             Edit Schedule
           </button>
-        </form>
       </th>
     </tr>
     <tr>
@@ -37,14 +37,7 @@
       <td>{{key|get_attribute:block}}</td>
       {% endfor %}
     </tr>
-    {% endfor %} {% comment %} {% for key, value in beats.items %}
-    <tr>
-      <th scope="row">{{value}}</th>
-      {% for block in hours %} {% with key|addstr:block as block_attr %}
-      <td>{{test_date|get_attribute:block_attr}}</td>
-      {% endwith %} {% endfor %}
-    </tr>
-    {% endfor %} {% endcomment %}
+    {% endfor %} 
   </tbody>
 </table>
 

@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpResponse, Http404, QueryDict
 from .models import *
@@ -19,34 +19,35 @@ def patrol_beats(date):
 
 def patrol_schedule(request):
    # try:
-    current_day = datetime.datetime.now().date()
+    date = datetime.today().strftime('%Y-%m-%d')
     context = {
         "hours": hours,
-        "current_day": current_day,
+        "date": date,
         "colored_dates" : colored_dates,
-        "patrol_beats": patrol_beats(current_day)
-
+        "patrol_beats": patrol_beats(date)
     }
-
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
         selected_date = request.POST.get('date')
-        context["current_day"] = selected_date
+        context["date"] = selected_date
         context["patrol_beats"] = patrol_beats(selected_date)
         return render(request, "scheduling/partials/patrol_schedule_partial.html", context)
+
     return render(request, "scheduling/patrol_schedule.html", context)
     # except:
     #      raise Http404()
 
 
+
 def edit_schedule(request):
     date = request.POST.get('date')
-    shiftCommanderOneForm = ShiftCommanderOneForm(instance=ShiftCommanderOne.objects.get(date=date))
-    shiftCommanderTwoForm = ShiftCommanderTwoForm(instance=ShiftCommanderTwo.objects.get(date=date))
-    northForm = NorthForm(instance=North.objects.get(date=date))
-    westForm = WestForm(instance=West.objects.get(date=date))
-    coverForm = CoverForm(instance=Cover.objects.get(date=date))
-    eastForm = EastForm(instance=East.objects.get(date=date))
-    southForm = SouthForm(instance=South.objects.get(date=date))
+
+    shiftCommanderOneForm = ShiftCommanderOneForm(prefix='SC1',instance=ShiftCommanderOne.objects.get(date=date))
+    shiftCommanderTwoForm = ShiftCommanderTwoForm(prefix='SC2',instance=ShiftCommanderTwo.objects.get(date=date))
+    northForm = NorthForm(prefix='North', instance=North.objects.get(date=date))
+    westForm = WestForm(prefix='West', instance=West.objects.get(date=date))
+    coverForm = CoverForm(prefix='Cover', instance=Cover.objects.get(date=date))
+    eastForm = EastForm(prefix='East', instance=East.objects.get(date=date))
+    southForm = SouthForm(prefix='South', instance=South.objects.get(date=date))
 
     form_dic = {
         shiftCommanderOneForm : "Shift Commander #1",
@@ -67,24 +68,20 @@ def edit_schedule(request):
 
 def patrol_schedule_partial(request):
     date = request.POST.get('date')
-    form_list =[
-        ShiftCommanderOneForm(instance=ShiftCommanderOne.objects.get(date=date)),
-        ShiftCommanderTwoForm(instance=ShiftCommanderTwo.objects.get(date=date)),
-        NorthForm(instance=North.objects.get(date=date)),
-        WestForm(instance=West.objects.get(date=date)),
-        CoverForm(instance=Cover.objects.get(date=date)),
-        EastForm(instance=East.objects.get(date=date)),
-        SouthForm(instance=South.objects.get(date=date))
-    ]
-
-    # test_date = GoldDays.objects.get(date="2023-01-12")
     data = QueryDict(request.body).dict()
-    print(data)
-    # form = EditScheduleForm(data, instance=test_date)
-    # if form.is_valid():
-    #     form.save()
+
+    ShiftCommanderOneForm(data, instance=ShiftCommanderOne.objects.get(date=date), prefix="SC1").save()
+    ShiftCommanderTwoForm(data, instance=ShiftCommanderTwo.objects.get(date=date), prefix="SC2").save()
+    NorthForm(data, instance=North.objects.get(date=date), prefix="North").save()
+    WestForm(data, instance=West.objects.get(date=date), prefix="West").save()
+    CoverForm(data, instance=Cover.objects.get(date=date), prefix="Cover").save()
+    EastForm(data, instance=East.objects.get(date=date), prefix="East").save()
+    SouthForm(data, instance=South.objects.get(date=date), prefix="South").save()
+
     context = {
-        # "test_date": test_date,
+        "patrol_beats": patrol_beats(date),
         "hours": hours,
+        "date": date
     }
     return render(request, "scheduling/partials/patrol_schedule_partial.html", context)
+
