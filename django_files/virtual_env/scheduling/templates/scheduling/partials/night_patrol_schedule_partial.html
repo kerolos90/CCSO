@@ -1,0 +1,58 @@
+{% load scheduling_extras %}
+<br>
+<table
+  class="table table-bordered shadow"
+  style="text-align: center"
+
+>
+  <thead>
+    <tr>
+      <th width="23" style="text-align: center">Beat:</th>
+      <th width="23%" scope="col">1800-2200</th>
+      <th width="23%" scope="col">2200-0200</th>
+      <th width="23%" scope="col">0200-0600</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for key, value in patrol_beats.items %}
+    <tr>
+      <th scope="row">{{value}}</th>
+      <td>{{key.fourth_four}}</td>
+      <td>{{key.fifth_four}}</td>
+      <td>{{key.sixth_four}}</td>
+    </tr>
+    {% endfor %} 
+  </tbody>
+</table>
+
+<table class="table table-bordered shadow">
+  <thead>
+    <tr>
+      <th scope="col">Beat:</th>
+      <th scope="col">1500-1900</th>
+      <th scope="col">1900-2300</th>
+      <th scope="col">2300-0300</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Savoy #2</th>
+      <td>{{savoyTwo.first_four}}</td>
+      <td>{{savoyTwo.second_four}}</td>
+      <td></td>
+    </tr>
+        <tr>
+      <th scope="row">Savoy #3</th>
+      <td></td>
+      <td>{{savoyThree.first_four}}</td>
+      <td>{{savoyThree.second_four}}</td>
+    </tr>
+    <tr>
+      <th scope="row">St. Joseph</th>
+      <td>{{stJoesph.first_four}}</td>
+      <td>{{stJoesph.second_four}}</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+

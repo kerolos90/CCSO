@@ -13,6 +13,19 @@ try:
 except:
     print("No employees in database")
 
+ACTIVITY_CHOICES = [
+    ("North (1/2)", "North (1/2)"),
+    ("West (3/4)", "West (3/4)"),
+    ("Cover (4/5)", "Cover (4/5)"),
+    ("East (5/6)", "East (5/6)"),
+    ("South (7/8)", "South (7/8)"),
+    ("Savoy (10)", "South (10)"),
+    ("St. Joseph (11)", "St. Joseph (11)"),
+    ("Field Training (FTO)", "Field Training (FTO)"),
+    ("Training", "Training"),
+]
+
+
 class EmpAssignment(models.Model):
     ASSIGNMENT_CHOICES = [
         ("None", "None"),
@@ -42,16 +55,26 @@ class EmpAssignment(models.Model):
     )
     short_day = models.CharField(
         max_length=20,
-        choices=SHORT_DAY_CHOICES
+        choices=SHORT_DAY_CHOICES,
+        blank=True
     )
     employee = models.ForeignKey(
         'home.Employees', on_delete=models.CASCADE)
 
 
-date = models.DateField(
-                        auto_now_add=False, auto_now=False, primary_key=True, blank=False)
-def hour_blocks(): 
-    return  models.CharField(max_length=30,choices=EMPLOYEE_CHOICES,blank=True)
+class Other(models.Model):
+    id = models.AutoField(primary_key=True)
+    date = models.DateField(
+        auto_now_add=False, auto_now=False, blank=False)
+    beat_assignment = models.CharField(
+        max_length=30, choices=ACTIVITY_CHOICES, blank=True)
+    employee = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    start_time = models.TimeField(
+        auto_now=False, auto_now_add=False)
+    end_time = models.TimeField(auto_now=False, auto_now_add=False)
+    comment = models.CharField(max_length=200, blank=True)
+
 
 class ShiftCommanderOne(models.Model):
     date = models.DateField(
@@ -68,6 +91,7 @@ class ShiftCommanderOne(models.Model):
         max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
     sixth_four = models.CharField(
         max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+
 
 class ShiftCommanderTwo(models.Model):
     date = models.DateField(
@@ -153,6 +177,7 @@ class Cover(models.Model):
     sixth_four = models.CharField(
         max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
 
+
 class South(models.Model):
     date = models.DateField(
         auto_now_add=False, auto_now=False, primary_key=True, blank=False)
@@ -169,6 +194,7 @@ class South(models.Model):
     sixth_four = models.CharField(
         max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
 
+
 class SaintJoseph(models.Model):
     date = models.DateField(
         auto_now_add=False, auto_now=False, primary_key=True, blank=False)
@@ -177,6 +203,7 @@ class SaintJoseph(models.Model):
     second_four = models.CharField(
         max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
 
+
 class SavoyOne(models.Model):
     date = models.DateField(
         auto_now_add=False, auto_now=False, primary_key=True, blank=False)
@@ -184,7 +211,8 @@ class SavoyOne(models.Model):
         max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
     second_four = models.CharField(
         max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
-    
+
+
 class SavoyTwo(models.Model):
     date = models.DateField(
         auto_now_add=False, auto_now=False, primary_key=True, blank=False)
@@ -192,6 +220,7 @@ class SavoyTwo(models.Model):
         max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
     second_four = models.CharField(
         max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+
 
 class SavoyThree(models.Model):
     date = models.DateField(
@@ -201,6 +230,7 @@ class SavoyThree(models.Model):
     second_four = models.CharField(
         max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
 
+
 class CivilServiceOne(models.Model):
     date = models.DateField(
         auto_now_add=False, auto_now=False, primary_key=True, blank=False)
@@ -209,6 +239,7 @@ class CivilServiceOne(models.Model):
     second_four = models.CharField(
         max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
 
+
 class CivilServiceTwo(models.Model):
     date = models.DateField(
         auto_now_add=False, auto_now=False, primary_key=True, blank=False)
@@ -216,85 +247,3 @@ class CivilServiceTwo(models.Model):
         max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
     second_four = models.CharField(
         max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
-
-class Other(models.Model):
-    date = models.DateField(
-        auto_now_add=False, auto_now=False, primary_key=True, blank=False)
-    first_four = models.CharField(
-        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
-    second_four = models.CharField(
-        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
-    
-class GoldDays(models.Model):
-    date = models.DateField(
-        auto_now_add=False, auto_now=False, primary_key=True, blank=False)
-
-    commandOne_first_four = models.CharField(max_length=30,
-                                             choices=EMPLOYEE_CHOICES,
-                                             blank=True)
-    commandOne_second_four = models.CharField(max_length=30,
-                                              choices=EMPLOYEE_CHOICES,
-                                              blank=True)
-    commandOne_third_four = models.CharField(max_length=30,
-                                             choices=EMPLOYEE_CHOICES,
-                                             blank=True)
-    
-    commandTwo_first_four = models.CharField(max_length=30,
-                                             choices=EMPLOYEE_CHOICES,
-                                             blank=True)
-    commandTwo_second_four = models.CharField(max_length=30,
-                                              choices=EMPLOYEE_CHOICES,
-                                              blank=True)
-    commandTwo_third_four = models.CharField(max_length=30,
-                                             choices=EMPLOYEE_CHOICES,
-                                             blank=True)
-
-    north_first_four = models.CharField(max_length=30,
-                                        choices=EMPLOYEE_CHOICES,
-                                        blank=True)
-    north_second_four = models.CharField(max_length=30,
-                                         choices=EMPLOYEE_CHOICES,
-                                         blank=True)
-    north_third_four = models.CharField(max_length=30,
-                                        choices=EMPLOYEE_CHOICES,
-                                        blank=True)
-
-    west_first_four = models.CharField(max_length=30,
-                                       choices=EMPLOYEE_CHOICES,
-                                       blank=True)
-    west_second_four = models.CharField(max_length=30,
-                                        choices=EMPLOYEE_CHOICES,
-                                        blank=True)
-    west_third_four = models.CharField(max_length=30,
-                                       choices=EMPLOYEE_CHOICES,
-                                       blank=True)
-
-    cover_first_four = models.CharField(max_length=30,
-                                        choices=EMPLOYEE_CHOICES,
-                                        blank=True)
-    cover_second_four = models.CharField(max_length=30,
-                                         choices=EMPLOYEE_CHOICES,
-                                         blank=True)
-    cover_third_four = models.CharField(max_length=30,
-                                        choices=EMPLOYEE_CHOICES,
-                                        blank=True)
-
-    east_first_four = models.CharField(max_length=30,
-                                       choices=EMPLOYEE_CHOICES,
-                                       blank=True)
-    east_second_four = models.CharField(max_length=30,
-                                        choices=EMPLOYEE_CHOICES,
-                                        blank=True)
-    east_third_four = models.CharField(max_length=30,
-                                       choices=EMPLOYEE_CHOICES,
-                                       blank=True)
-
-    south_first_four = models.CharField(max_length=30,
-                                        choices=EMPLOYEE_CHOICES,
-                                        blank=True)
-    south_second_four = models.CharField(max_length=30,
-                                         choices=EMPLOYEE_CHOICES,
-                                         blank=True)
-    south_third_four = models.CharField(max_length=30,
-                                        choices=EMPLOYEE_CHOICES,
-                                        blank=True)

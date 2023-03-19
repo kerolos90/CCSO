@@ -13,17 +13,12 @@ class TeamsAdmin(admin.ModelAdmin):
 
 admin.site.register(EmpAssignment, TeamsAdmin)
 
-class GoldDaysAdmin(admin.ModelAdmin):
-    list_filter = ("date",)
-
-admin.site.register(GoldDays, GoldDaysAdmin)
-
 class ShiftCommanderOneAdmin(admin.ModelAdmin):
     list_filter = ("date",)
 
 admin.site.register(ShiftCommanderOne, ShiftCommanderOneAdmin)
 
-class NorthAdmin(admin.ModelAdmin):
+class OtherAdmin(admin.ModelAdmin):
     list_filter = ("date",)
 
-admin.site.register(North, NorthAdmin)
+admin.site.register(Other, OtherAdmin)

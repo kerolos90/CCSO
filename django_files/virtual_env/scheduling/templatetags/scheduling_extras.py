@@ -1,5 +1,5 @@
 from django import template
-
+from datetime import datetime
 register = template.Library()
 
 
@@ -16,3 +16,9 @@ def get_attribute(obj,prop):
 @register.filter
 def get_value(obj, prop):
     return obj[prop]
+
+
+@register.filter(name="date_format")
+def date_format(arg):
+    arg = datetime.strptime(arg, '%Y-%m-%d').date()
+    return arg.strftime('%B %d, %Y')

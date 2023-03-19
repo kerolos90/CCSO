@@ -1,0 +1,49 @@
+<br>
+<table
+  class="table table-bordered shadow"
+  style="text-align: center"
+>
+  <thead>
+      <th width="23" style="text-align: center">Beat:</th>
+      <th width="23%" scope="col">0600-1000</th>
+      <th width="23%" scope="col">1000-1400</th>
+      <th width="23%" scope="col">1400-1800</th>
+    </tr>
+  </thead>
+  <tbody >     
+       {% for key, value in form_dic.items %}
+        <tr>
+            <th scope="row">{{value}}</th> 
+            <td>{{key.fourth_four}}</td>
+            <td>{{key.fifth_four}}</td>
+            <td>{{key.sixth_four}}</td>
+        </tr>
+       {% endfor %}  
+  </tbody>
+</table>
+
+<table class="table table-bordered shadow">
+  <thead>
+    <tr>
+      <th scope="col">Beat:</th>
+      <th scope="col">1500-1900</th>
+      <th scope="col">1900-2300</th>
+      <th scope="col">2300-0300</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Savoy #2</th>
+      <td>{{savoyTwoForm.first_four}}</td>
+      <td>{{savoyTwoForm.second_four}}</td>
+      <td></td>
+
+    </tr>
+    <tr>
+      <th scope="row">St. Joseph</th>
+      <td>{{stJosephForm.first_four}}</td>
+      <td>{{stJosephForm.second_four}}</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>

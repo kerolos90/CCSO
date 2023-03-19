@@ -24,13 +24,29 @@ def patrol_schedule(request):
         "hours": hours,
         "date": date,
         "colored_dates" : colored_dates,
-        "patrol_beats": patrol_beats(date)
+        "patrol_beats": patrol_beats(date),
+        "savoyOne": SavoyOne.objects.get_or_create(date=date)[0],
+        "savoyTwo": SavoyTwo.objects.get_or_create(date=date)[0],
+        "savoyThree": SavoyThree.objects.get_or_create(date=date)[0],
+        "civilOne": CivilServiceOne.objects.get_or_create(date=date)[0],
+        "civilTwo": CivilServiceTwo.objects.get_or_create(date=date)[0],
+        "stJoesph": SaintJoseph.objects.get_or_create(date=date)[0],
+        "other": Other.objects.filter(date=date)
     }
+
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
         selected_date = request.POST.get('date')
         context["date"] = selected_date
         context["patrol_beats"] = patrol_beats(selected_date)
-        return render(request, "scheduling/partials/patrol_schedule_partial.html", context)
+        context["savoyOne"] = SavoyOne.objects.get_or_create(date=selected_date)[0]
+        context["savoyTwo"] = SavoyTwo.objects.get_or_create(date=selected_date)[0]
+        context["savoyThree"] = SavoyThree.objects.get_or_create(date=selected_date)[0]
+        context["civilOne"] = CivilServiceOne.objects.get_or_create(date=selected_date)[0]
+        context["civilTwo"] = CivilServiceTwo.objects.get_or_create(date=selected_date)[0]
+        context["stJoesph"] = SaintJoseph.objects.get_or_create(date=selected_date)[0]
+        context["other"] = Other.objects.filter(date=selected_date)
+
+        return render(request, "scheduling/partials/schedule.html", context)
 
     return render(request, "scheduling/patrol_schedule.html", context)
     # except:
@@ -40,7 +56,6 @@ def patrol_schedule(request):
 
 def edit_schedule(request):
     date = request.POST.get('date')
-
     shiftCommanderOneForm = ShiftCommanderOneForm(prefix='SC1',instance=ShiftCommanderOne.objects.get(date=date))
     shiftCommanderTwoForm = ShiftCommanderTwoForm(prefix='SC2',instance=ShiftCommanderTwo.objects.get(date=date))
     northForm = NorthForm(prefix='North', instance=North.objects.get(date=date))
@@ -58,12 +73,24 @@ def edit_schedule(request):
         eastForm: "East (5/6)",
         southForm: "South (7/8)"
     }
-
+    otherForm  = []
+    for instance in Other.objects.filter(date=date):
+        form = OtherForm(prefix=instance.id, instance=instance)
+        otherForm.append(form)
+   
     context = {
         "form_dic": form_dic,
         "date" : date,
+        'savoyOneForm': SavoyOneForm(prefix='Savoy1', instance=SavoyOne.objects.get(date=date)),
+        'savoyTwoForm': SavoyTwoForm(prefix='Savoy2', instance=SavoyTwo.objects.get(date=date)),
+        'savoyThreeForm': SavoyThreeForm(prefix='Savoy3', instance=SavoyThree.objects.get(date=date)),
+        'civilOneForm': CivilServiceOneForm(prefix='Civil1', instance=CivilServiceOne.objects.get(date=date)),
+        'civilTwoForm': CivilServiceTwoForm(prefix='Civil2', instance=CivilServiceTwo.objects.get(date=date)),
+        'stJosephForm': SaintJosephForm(prefix='StJoe', instance=SaintJoseph.objects.get(date=date)),
+        'otherForm' : otherForm
     }
-    return render(request, "scheduling/partials/edit_schedule_partial.html", context)
+    print(otherForm)
+    return render(request, "scheduling/partials/edit_schedule.html", context)
 
 
 def patrol_schedule_partial(request):
@@ -78,10 +105,33 @@ def patrol_schedule_partial(request):
     EastForm(data, instance=East.objects.get(date=date), prefix="East").save()
     SouthForm(data, instance=South.objects.get(date=date), prefix="South").save()
 
+    SavoyOneForm(data, prefix='Savoy1', instance=SavoyOne.objects.get(date=date)).save()
+    SavoyTwoForm(data, prefix='Savoy2',instance=SavoyTwo.objects.get(date=date)).save()
+    SavoyThreeForm(data, prefix='Savoy3',instance=SavoyThree.objects.get(date=date)).save()
+    CivilServiceOneForm(data, prefix='Civil1',instance=CivilServiceOne.objects.get(date=date)).save()
+    CivilServiceTwoForm(data, prefix='Civil2',instance=CivilServiceTwo.objects.get(date=date)).save()
+    SaintJosephForm(data, prefix='StJoe', instance=SaintJoseph.objects.get(date=date)).save()
+
+    for instance in Other.objects.filter(date=date):
+        form = OtherForm(data, prefix=instance.id, instance=instance)
+        form.save()
+
+
     context = {
         "patrol_beats": patrol_beats(date),
         "hours": hours,
-        "date": date
+        "date": date,
+        "savoyOne": SavoyOne.objects.get_or_create(date=date)[0],
+        "savoyTwo": SavoyTwo.objects.get_or_create(date=date)[0],
+        "savoyThree": SavoyThree.objects.get_or_create(date=date)[0],
+        "civilOne": CivilServiceOne.objects.get_or_create(date=date)[0],
+        "civilTwo": CivilServiceTwo.objects.get_or_create(date=date)[0],
+        "stJoesph": SaintJoseph.objects.get_or_create(date=date)[0],
+        "other": Other.objects.filter(date=date)
     }
-    return render(request, "scheduling/partials/patrol_schedule_partial.html", context)
+    return render(request, "scheduling/partials/schedule.html", context)
 
+def delete_other_row(request):
+    id = list(QueryDict(request.body).keys())
+    Other.objects.get(id=id[0]).delete()
+    return HttpResponse('')

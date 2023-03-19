@@ -19,10 +19,5 @@ class Migration(migrations.Migration):
                 ('short_day', models.CharField(blank=True, max_length=20)),
             ],
         ),
-        migrations.CreateModel(
-            name='GoldDays',
-            fields=[
-                ('date', models.DateField(primary_key=True, serialize=False)),
-            ],
-        ),
+        
     ]

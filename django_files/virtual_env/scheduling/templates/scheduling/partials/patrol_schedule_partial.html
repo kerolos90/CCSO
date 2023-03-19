@@ -1,27 +1,11 @@
 {% load scheduling_extras %}
-<form>
+<br>
 <table
   class="table table-bordered shadow"
   style="text-align: center"
-  id="table-to-refresh"
-  hx-swap="outerHTML"
-  hx-post="{% url 'edit_schedule'%}"
->
-  <input type="hidden" name="date" value="{{ date }}" />
 
-</form>
+>
   <thead>
-    <tr>
-      <th colspan="4">
-          <button
-            id="test"
-            type="button"
-            class="btn btn-light shadow"
-          >
-            Edit Schedule
-          </button>
-      </th>
-    </tr>
     <tr>
       <th width="23" style="text-align: center">Beat:</th>
       <th width="23%" scope="col">0600-1000</th>
@@ -33,13 +17,41 @@
     {% for key, value in patrol_beats.items %}
     <tr>
       <th scope="row">{{value}}</th>
-      {% for block in hours %}
-      <td>{{key|get_attribute:block}}</td>
-      {% endfor %}
+      <td>{{key.first_four}}</td>
+      <td>{{key.second_four}}</td>
+      <td>{{key.third_four}}</td>
     </tr>
     {% endfor %} 
   </tbody>
 </table>
+
+<table
+  class="table table-bordered shadow"
+  style="text-align: center"
+>
+  <thead>
+      <th style="text-align: center">Assignment:</th>
+      <th scope="col">Employee</th>
+      <th scope="col">Start Time</th>
+      <th scope="col">End Time</th>
+      <th width='50%' scope="col">Comment:</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if other %}
+      {% for instance in other  %}
+      <tr>
+        <td>{{instance.beat_assignment}}</td>
+        <td>{{instance.employee}}</td>      
+        <td>{{instance.start_time}}</td>
+        <td>{{instance.end_time}}</td>
+        <td>{{instance.comment}}</td> 
+      </tr>
+      {% endfor %}
+    {% endif %}
+  </tbody>
+</table>
+
 
 <table class="table table-bordered shadow">
   <thead>
@@ -53,21 +65,22 @@
   <tbody>
     <tr>
       <th scope="row">Savoy #1</th>
-      <td>Dep. Pryor #521</td>
-      <td>None</td>
-      <td>None</td>
+      <td>{{savoyOne.first_four}}</td>
+      <td>{{savoyOne.second_four}}</td>
+      <td></td>
     </tr>
     <tr>
       <th scope="row">Savoy #2</th>
-      <td>Dep. Pryor #521</td>
-      <td>None</td>
-      <td>None</td>
+      <td></td>
+      <td></td>
+      <td>{{savoyTwo.first_four}}</td>
+
     </tr>
     <tr>
       <th scope="row">St. Joseph</th>
-      <td>None</td>
-      <td>None</td>
-      <td>Dep. Metlzer #519</td>
+      <td></td>
+      <td></td>
+      <td>{{stJoesph.first_four}}</td>
     </tr>
   </tbody>
 </table>
@@ -82,13 +95,13 @@
   <tbody>
     <tr>
       <th scope="row">Civil Service #1</th>
-      <td>Dep. Bialescki #510</td>
-      <td>Dep. Bialescki #510</td>
+      <td>{{civilOne.first_four}}</td>
+      <td>{{civilOne.second_four}}</td>
     </tr>
     <tr>
       <th scope="row">Civil Service #2</th>
-      <td>Dep. Atwood #507</td>
-      <td>Dep. Atwood #507</td>
+      <td>{{civilTwo.first_four}}</td>
+      <td>{{civilTwo.second_four}}</td>
     </tr>
   </tbody>
 </table>

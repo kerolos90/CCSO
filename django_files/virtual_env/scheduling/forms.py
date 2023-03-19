@@ -1,6 +1,6 @@
 from django import forms
 from .models import *
-
+from django.core.validators import RegexValidator
 class TimeOffRequestForm(forms.Form):
     start_date = forms.DateField(widget=forms.DateTimeInput(
         attrs={'type': 'datetime-local', 'class': 'form-control'}))
@@ -14,12 +14,6 @@ class BaseModelForm(forms.ModelForm):
         for field in self.fields:
             self.fields[field].widget.attrs.update({'class': 'form-select'})
             self.fields[field].initial = self.fields[field]
-
-class EditScheduleForm(BaseModelForm):
-    class Meta:
-        model = GoldDays
-        exclude = ['date']
-
 
 class ShiftCommanderOneForm(BaseModelForm):
     class Meta:
@@ -85,3 +79,13 @@ class CivilServiceTwoForm(BaseModelForm):
     class Meta:
         model = CivilServiceOne
         exclude = ['date']
+
+class OtherForm(forms.ModelForm):
+    class Meta:
+        model = Other
+        exclude = ['date']
+    id = forms.IntegerField(required=False, widget=forms.HiddenInput())
+    beat_assignment = forms.ChoiceField(choices=ACTIVITY_CHOICES, widget=forms.Select(attrs={'class': 'form-select'}))
+    employee = forms.ChoiceField(choices=EMPLOYEE_CHOICES, widget=forms.Select(attrs={'class': 'form-select'}))
+    start_time = forms.TimeField(required=False, widget=forms.TimeInput(format='%H:%M', attrs={'type': 'time'}))
+    end_time = forms.TimeField(required=False, widget=forms.TimeInput(format='%H:%M', attrs={'type': 'time'}))

@@ -1,35 +1,16 @@
-{% load scheduling_extras %}
-
+<br>
 <table
   class="table table-bordered shadow"
   style="text-align: center"
-  id="table-to-refresh"
-  hx-target="this"
-  hx-swap="outerHTML"
 >
   <thead>
-    <tr>
-      <th colspan="4">
-          <button
-            type="button"
-            class="btn btn-light"
-            hx-post="{% url 'patrol_schedule_partial' %}"
-            hx-include="closest table"
-          >
-            Done
-          </button>
-      </th>
-    </tr>
-    <tr>
-      <th width="23" style="text-align: center">Beat:</th>
+      <th width="23%" style="text-align: center">Beat:</th>
       <th width="23%" scope="col">0600-1000</th>
       <th width="23%" scope="col">1000-1400</th>
       <th width="23%" scope="col">1400-1800</th>
     </tr>
   </thead>
-  <tbody >
-    <form>
-      <input type="hidden" name="date" value="{{ date }}" />
+  <tbody >     
        {% for key, value in form_dic.items %}
         <tr>
           <th scope="row">{{value}}</th> 
@@ -38,6 +19,104 @@
             <td>{{key.third_four}}</td>
         </tr>
        {% endfor %}  
-    </form>
   </tbody>
 </table>
+
+<table
+  class="table table-bordered shadow"
+  style="text-align: center"
+>
+  <thead>
+      <th style="text-align: center">Assignment:</th>
+      <th scope="col">Employee</th>
+      <th scope="col">Start Time</th>
+      <th scope="col">End Time</th>
+      <th  scope="col">Comment(Optional):</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for instance in otherForm  %}
+    <tr hx-target="closest tr" >
+      <td>{{instance.beat_assignment}}</td>
+      <td>{{instance.employee}}</td>      
+      <td>{{instance.start_time}}</td>
+      <td>{{instance.end_time}}</td>
+      <td>
+        {{instance.comment}}
+        <button 
+          class="btn btn-danger btn-sm rounded-0" 
+          type="submit"
+          hx-delete="{% url 'delete_other_row'%}" 
+          hx-params="{{instance.id.value}}"
+          >
+          <i class="fa fa-trash"></i>
+        </button>
+      </td> 
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-center">
+  <button 
+  class="btn btn-success" 
+  type="submit"
+  hx-get="{% url 'edit_schedule'%}"
+  >Add Row 
+  </button>
+</div>
+<br>
+
+<table class="table table-bordered shadow">
+  <thead>
+    <tr>
+      <th scope="col">Beat:</th>
+      <th scope="col">0700-1100</th>
+      <th scope="col">1100-1500</th>
+      <th scope="col">1500-1900</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Savoy #1</th>
+      <td>{{savoyOneForm.first_four}}</td>
+      <td>{{savoyOneForm.second_four}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Savoy #2</th>
+      <td></td>
+      <td></td>
+      <td>{{savoyTwoForm.first_four}}</td>
+    </tr>
+    <tr>
+      <th scope="row">St. Joseph</th>
+      <td></td>
+      <td></td>
+      <td>{{stJosephForm.first_four}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered shadow">
+  <thead>
+    <tr>
+      <th scope="col">Beat:</th>
+      <th scope="col">0600-1100</th>
+      <th scope="col">1100-1600</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Civil Service #1</th>
+      <td>{{civilOneForm.first_four}}</td>
+      <td>{{civilOneForm.second_four}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Civil Service #2</th>
+      <td>{{civilTwoForm.first_four}}</td>
+      <td>{{civilTwoForm.second_four}}</td>
+    </tr>
+  </tbody>
+</table>
+
