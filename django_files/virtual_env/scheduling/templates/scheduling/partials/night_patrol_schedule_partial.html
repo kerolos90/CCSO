@@ -25,6 +25,33 @@
   </tbody>
 </table>
 
+<table
+  class="table table-bordered shadow"
+  style="text-align: center"
+>
+  <thead>
+      <th style="text-align: center">Assignment:</th>
+      <th scope="col">Employee</th>
+      <th scope="col">Start Time</th>
+      <th scope="col">End Time</th>
+      <th width='50%' scope="col">Comment:</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for instance in other  %}
+        {% if instance.start_time|time:"H" >= "18" or instance.start_time|time:"H" < "06" %}
+          <tr>
+            <td>{{instance.beat_assignment}}</td>
+            <td>{{instance.employee}}</td>      
+            <td>{{instance.start_time}}</td>
+            <td>{{instance.end_time}}</td>
+            <td>{{instance.comment}}</td> 
+          </tr>
+        {% endif %}
+      {% endfor %}
+  </tbody>
+</table>
+
 <table class="table table-bordered shadow">
   <thead>
     <tr>

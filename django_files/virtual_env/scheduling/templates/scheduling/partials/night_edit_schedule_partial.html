@@ -22,6 +22,55 @@
   </tbody>
 </table>
 
+
+<table
+  class="table table-bordered shadow"
+  style="text-align: center"
+>
+  <thead>
+      <th style="text-align: center">Assignment:</th>
+      <th scope="col">Employee</th>
+      <th scope="col">Start Time</th>
+      <th scope="col">End Time</th>
+      <th  scope="col">Comment(Optional):</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for instance in otherForm  %}
+    <tr hx-target="closest tr" >
+      {% if instance.start_time|time:"H" >= "18" or instance.start_time|time:"H" < "06" %}
+        <td>{{instance.beat_assignment}}</td>
+        <td>{{instance.employee}}</td>      
+        <td>{{instance.start_time}}</td>
+        <td>{{instance.end_time}}</td>
+        <td>
+          {{instance.comment}}
+          <button 
+            class="btn btn-danger btn-sm rounded-0" 
+            type="submit"
+            hx-delete="{% url 'delete_other_row'%}" 
+            hx-params="{{instance.id.value}}"
+            >
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+        {% endif %} 
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-center">
+  <button 
+  class="btn btn-success" 
+  type="submit"
+  hx-post="{% url 'add_other_row'%}"
+  >Add Row 
+  </button>
+</div>
+
+<br>
+
 <table class="table table-bordered shadow">
   <thead>
     <tr>

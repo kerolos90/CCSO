@@ -117,6 +117,7 @@ def patrol_schedule_partial(request):
         form.save()
 
 
+
     context = {
         "patrol_beats": patrol_beats(date),
         "hours": hours,
@@ -135,3 +136,7 @@ def delete_other_row(request):
     id = list(QueryDict(request.body).keys())
     Other.objects.get(id=id[0]).delete()
     return HttpResponse('')
+
+def add_other_row(request):
+    Other(date=request.POST.get('date')).save()
+    return edit_schedule(request)

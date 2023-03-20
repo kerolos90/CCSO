@@ -38,17 +38,17 @@
     </tr>
   </thead>
   <tbody>
-    {% if other %}
       {% for instance in other  %}
-      <tr>
-        <td>{{instance.beat_assignment}}</td>
-        <td>{{instance.employee}}</td>      
-        <td>{{instance.start_time}}</td>
-        <td>{{instance.end_time}}</td>
-        <td>{{instance.comment}}</td> 
-      </tr>
+        {% if instance.start_time|time:"H" >= "06" and instance.start_time|time:"H" < "18" %}
+          <tr>
+            <td>{{instance.beat_assignment}}</td>
+            <td>{{instance.employee}}</td>      
+            <td>{{instance.start_time}}</td>
+            <td>{{instance.end_time}}</td>
+            <td>{{instance.comment}}</td> 
+          </tr>
+        {% endif %}
       {% endfor %}
-    {% endif %}
   </tbody>
 </table>
 
