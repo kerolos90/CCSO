@@ -1,5 +1,5 @@
 from datetime import datetime
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse, Http404, QueryDict
 from .models import *
 from .forms import *
@@ -31,7 +31,9 @@ def patrol_schedule(request):
         "civilOne": CivilServiceOne.objects.get_or_create(date=date)[0],
         "civilTwo": CivilServiceTwo.objects.get_or_create(date=date)[0],
         "stJoesph": SaintJoseph.objects.get_or_create(date=date)[0],
-        "other": Other.objects.filter(date=date)
+        "other": Other.objects.filter(date=date),
+        "benefit_time": TimeOffRequest.objects.filter(date=date),
+        "time_off": TimeOffRequestForm(),
     }
 
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
@@ -89,7 +91,6 @@ def edit_schedule(request):
         'stJosephForm': SaintJosephForm(prefix='StJoe', instance=SaintJoseph.objects.get(date=date)),
         'otherForm' : otherForm
     }
-    print(otherForm)
     return render(request, "scheduling/partials/edit_schedule.html", context)
 
 
@@ -128,7 +129,8 @@ def patrol_schedule_partial(request):
         "civilOne": CivilServiceOne.objects.get_or_create(date=date)[0],
         "civilTwo": CivilServiceTwo.objects.get_or_create(date=date)[0],
         "stJoesph": SaintJoseph.objects.get_or_create(date=date)[0],
-        "other": Other.objects.filter(date=date)
+        "other": Other.objects.filter(date=date),
+        "time_off": TimeOffRequestForm()
     }
     return render(request, "scheduling/partials/schedule.html", context)
 
@@ -140,3 +142,8 @@ def delete_other_row(request):
 def add_other_row(request):
     Other(date=request.POST.get('date')).save()
     return edit_schedule(request)
+
+def time_off_request(request):
+    data = QueryDict(request.body).dict()
+    TimeOffRequest(**data).save()
+    return HttpResponse(status=204)

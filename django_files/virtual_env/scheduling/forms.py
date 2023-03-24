@@ -1,12 +1,5 @@
 from django import forms
 from .models import *
-from django.core.validators import RegexValidator
-class TimeOffRequestForm(forms.Form):
-    start_date = forms.DateField(widget=forms.DateTimeInput(
-        attrs={'type': 'datetime-local', 'class': 'form-control'}))
-    end_date = forms.DateField(widget=forms.DateTimeInput(
-        attrs={'type': 'datetime-local', 'class': 'form-control'}))
-
 
 class BaseModelForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -89,3 +82,24 @@ class OtherForm(forms.ModelForm):
     employee = forms.ChoiceField(choices=EMPLOYEE_CHOICES, widget=forms.Select(attrs={'class': 'form-select'}))
     start_time = forms.TimeField(required=False, widget=forms.TimeInput(format='%H:%M', attrs={'type': 'time'}))
     end_time = forms.TimeField(required=False, widget=forms.TimeInput(format='%H:%M', attrs={'type': 'time'}))
+
+class TimeOffRequestForm(forms.ModelForm):
+    class Meta:
+        model = TimeOffRequest
+        exclude = ['employee']
+    start_time = forms.TimeField(widget=forms.TimeInput(
+        attrs={'type': 'time', 'class': 'form-control', 'value': '00:00'}))
+    end_time = forms.TimeField(widget=forms.TimeInput(
+        attrs={'type': 'time', 'class': 'form-control', 'value': '00:00'}))
+    vacation_hours = forms.CharField(widget=forms.TextInput(
+        attrs={'class': 'number-only form-control'}))
+    comp_hours = forms.CharField(widget=forms.TextInput(
+        attrs={'class': 'number-only form-control'}))
+    holiday_hours = forms.CharField(widget=forms.TextInput(
+        attrs={'class': 'number-only form-control'}))
+    sick_hours = forms.CharField(widget=forms.TextInput(
+        attrs={'class': 'number-only form-control'}))
+    personal_hours = forms.CharField(widget=forms.TextInput(
+        attrs={'class': 'number-only form-control'}))
+    comment = forms.CharField(widget = forms.TextInput(
+        attrs={'class': 'form-control'}))

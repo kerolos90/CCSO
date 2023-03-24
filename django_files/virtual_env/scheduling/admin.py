@@ -18,7 +18,9 @@ class ShiftCommanderOneAdmin(admin.ModelAdmin):
 
 admin.site.register(ShiftCommanderOne, ShiftCommanderOneAdmin)
 
-class OtherAdmin(admin.ModelAdmin):
+
+class TimeOffRequestAdmin(admin.ModelAdmin):
     list_filter = ("date",)
 
-admin.site.register(Other, OtherAdmin)
+
+admin.site.register(TimeOffRequest, TimeOffRequestAdmin)

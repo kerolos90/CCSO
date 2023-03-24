@@ -1,151 +1,118 @@
 <!-- Time off Request -->
-        <form method="POST">
-        <div class="modal fade" id="timeOffModal" tabindex="-1">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header py-3 px-4 border-bottom-0">
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-hidden="true"
-                ></button>
-              </div>
-              <h5 class="text-center">Time Off Request</h5>
-
-              <div class="modal-body p-4">
-                <div>
-                  {{form}} 
-                  {% comment %} <label for="start-date-input" class="form-label"
-                    >Start Date:</label
-                  >
-                  <input
-                    class="form-control"
-                    name="start-date-input"
-                    type="datetime-local"
-                    value=""
-                    id="start-date-input"
-                  /> {% endcomment %}
-
-                </div>
-                <br />
-                {% comment %} <div>
-                  <label for="end-date-input" class="form-label"
-                    >End Date:</label
-                  >
-                  <input
-                    name="end-date-input"
-                    class="form-control"
-                    type="datetime-local"
-                    value="2019-08-19T13:45:00"
-                    id="end-date-input"
-                  />
-                </div> {% endcomment %}
-                <br />
-                <div class="text-center">
-                  Benefit Time Used (check all that apply)
-                </div>
-
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="flexCheckDefault"
-                  />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Vacation Time
-                  </label>
-                </div>
-
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="flexCheckChecked"
-                  />
-                  <label class="form-check-label" for="flexCheckChecked">
-                    Comp. Time
-                  </label>
-                </div>
-
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="flexCheckChecked"
-                  />
-                  <label class="form-check-label" for="flexCheckChecked">
-                    Personal Time
-                  </label>
-                </div>
-
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="flexCheckChecked"
-                  />
-                  <label class="form-check-label" for="flexCheckChecked">
-                    Holiday Time
-                  </label>
-                </div>
-
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="flexCheckChecked"
-                  />
-                  <label class="form-check-label" for="flexCheckChecked">
-                    Sick Time
-                  </label>
-                </div>
-                <br />
-                <div class="mb-3">
-                  <label for="commentSection" class="form-label"
-                    >Comments (Optional):</label
-                  >
-                  <textarea
-                    name="commentSection"
-                    class="form-control"
-                    id="commentSection"
-                    rows="3"
-                  ></textarea>
-                </div>
-                <!--Submit and Cancel buttons  -->
-                <div class="row mt-2">
-                  <div class="col-6">
-                    <button
-                      type="button"
-                      class="btn btn-danger"
-                      id="btn-delete-event"
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                  <div class="col-6 text-end">
-                    <button
-                      type="submit"
-                      class="btn btn-success"
-                      id="btn-save-event"
-                    >
-                      Submit
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- end modal-content-->
-          </div>
-          <!-- end modal dialog-->
-        </div>
-        <!-- end modal -->
-        </form>
+{% load scheduling_extras %}
+<div class="modal fade" id="timeOffModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered " >
+    <div class="modal-content" style='width:85%'>
+      <div class="modal-header py-3 px-4 border-bottom-0">
+        <button
+          type="reset"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-hidden="true"
+        ></button>
       </div>
-        <!-- end modal dialog-->
-        
+      <div class="modal-body p-4">
+        <h5 class="text-center">
+          Time Off Request:
+          <br>
+          {{date|date_format}}
+
+        </h5>
+          <div class="d-flex ">
+            <div class="p-2 flex-fill">Start Time: {{time_off.start_time}}
+                      {% if form.field_1.errors %}
+                        <ul class="errorlist">
+                        {% for error in form.field_1.errors %}
+                          <li>{{ error }}</li>
+                        {% endfor %}
+                        </ul>
+                      {% endif %}
+            </div> 
+            <div class="p-2 flex-fill">End Time: {{time_off.end_time}}</div>
+          </div>
+          <br>
+        <table
+          class="table table-bordered shadow"
+          style="text-align: center"
+        >
+          <thead>
+              <th style="text-align: center">Benefit Type:</th>
+              <th scope="col">
+                Hours 
+                <br>
+                (In quarter increments i.e:1.25):
+              </th>
+            </tr>
+          </thead>
+          <tbody >
+            <tr>
+              <td>Vacation Time:</td>
+              <td>{{time_off.vacation_hours}}</td>
+            </tr>
+            <tr>
+              <td>Comp. Time:</td>
+              <td>{{time_off.comp_hours}}</td>
+            </tr>
+            <tr>
+              <td>Holiday Time:</td>
+              <td>{{time_off.holiday_hours}}</td>
+            </tr>
+            <tr>
+              <td>Sick Time:</td>
+              <td>{{time_off.sick_hours}}</td>
+            </tr>
+            <tr>
+              <td>Personal Time:</td>
+              <td>{{time_off.personal_hours}}</td>
+            </tr>                                                
+          </tbody>
+        </table>
+      <div>
+          Comments(Optional):
+          {{time_off.comment}}
+      </div>
+        <!--Submit and Cancel buttons  -->
+        <div class="row mt-2">
+          <div class="col-6">
+            <button
+              type="reset"
+              class="btn btn-danger"
+            >
+              Clear
+            </button>
+          </div>
+          <div class="col-6 text-end">
+            <button
+              type="submit"
+              class="btn btn-success"
+              data-bs-dismiss="modal"
+              hx-post= "{% url 'time_off_request' %}"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end modal-content-->
+  </div>
+  <!-- end modal dialog-->
+</div>
+<!-- end modal -->
+</div>
+<!-- end modal dialog-->
+<script>
+$(function(){
+      
+  $('.number-only').keyup(function(e) {
+        if(this.value!='-')
+          while(isNaN(this.value))
+            this.value = this.value.split('').reverse().join('').replace(/[\D]/i,'')
+                                   .split('').reverse().join('');
+    })
+    .on("cut copy paste",function(e){
+    	e.preventDefault();
+    });
+
+});
+</script>

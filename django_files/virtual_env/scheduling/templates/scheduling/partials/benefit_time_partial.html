@@ -1,0 +1,22 @@
+<div id="benefit_time_table" class="container">
+    <h5 class="text-center">Benefit Time </h5>
+    <div class="row">
+        {% for result in benefit_time  %}
+        <div class="col-lg-5">
+            <div class="card shadow">
+                <div class="card-header text-center">
+                    <h5 class="card-title">Deputy {{result.employee}}</h5>
+                </div>
+                <div class="card-body pt-1 text-center">
+                    <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Time: {{result.start_time}}-{{result.end_time}}</li>
+                            <li class="list-group-item">Submitted: 03/23/23 3:00 PM</li> 
+                            <li class="list-group-item">Status: Pending</li>                        
+                                                                                         
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

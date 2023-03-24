@@ -23,6 +23,7 @@ ACTIVITY_CHOICES = [
     ("St. Joseph (11)", "St. Joseph (11)"),
     ("Field Training (FTO)", "Field Training (FTO)"),
     ("Training", "Training"),
+    ("Recruit", "Recruit")
 ]
 
 
@@ -60,20 +61,6 @@ class EmpAssignment(models.Model):
     )
     employee = models.ForeignKey(
         'home.Employees', on_delete=models.CASCADE)
-
-
-class Other(models.Model):
-    id = models.AutoField(primary_key=True)
-    date = models.DateField(
-        auto_now_add=False, auto_now=False, blank=False)
-    beat_assignment = models.CharField(
-        max_length=30, choices=ACTIVITY_CHOICES, blank=True)
-    employee = models.CharField(
-        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
-    start_time = models.TimeField(
-        auto_now=False, auto_now_add=False)
-    end_time = models.TimeField(auto_now=False, auto_now_add=False)
-    comment = models.CharField(max_length=200, blank=True)
 
 
 class ShiftCommanderOne(models.Model):
@@ -247,3 +234,30 @@ class CivilServiceTwo(models.Model):
         max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
     second_four = models.CharField(
         max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+
+class Other(models.Model):
+    id = models.AutoField(primary_key=True)
+    date = models.DateField(
+        auto_now_add=False, auto_now=False, blank=False)
+    beat_assignment = models.CharField(
+        max_length=30, choices=ACTIVITY_CHOICES, blank=True)
+    employee = models.CharField(
+        max_length=30, choices=EMPLOYEE_CHOICES, blank=True)
+    start_time = models.TimeField(
+        auto_now=False, auto_now_add=False, default='06:00:00')
+    end_time = models.TimeField(
+        auto_now=False, auto_now_add=False, default='06:00:00')
+    comment = models.CharField(max_length=200, blank=True)
+
+class TimeOffRequest(models.Model):
+    date = models.DateField(auto_now_add=False, auto_now=False, blank=False)
+    employee = models.CharField(max_length=30,default='TEST')
+    start_time = models.TimeField(default='00:00:00')
+    end_time = models.TimeField(default='00:00:00')
+    comment = models.CharField(max_length=200, blank=True)
+    vacation_hours = models.CharField(max_length=10,default=0)
+    comp_hours = models.CharField(max_length=10, default=0)
+    holiday_hours = models.CharField(max_length=10, default=0)
+    sick_hours = models.CharField(max_length=10, default=0)
+    personal_hours = models.CharField(max_length=10, default=0)
+    

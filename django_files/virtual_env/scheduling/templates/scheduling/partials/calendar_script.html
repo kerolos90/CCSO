@@ -16,9 +16,8 @@
             type: "POST",
             data: {date:date.dateStr, csrfmiddlewaretoken: '{{ csrf_token }}'},
             success: function(data){
-              $('#other_body').empty();
               $("#table-to-refresh").replaceWith(data)
-
+              $("#benefit_time_table").replaceWith(data)
               htmx.process(document.body);
             }
           })

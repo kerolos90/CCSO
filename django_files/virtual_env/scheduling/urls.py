@@ -8,4 +8,6 @@ urlpatterns = [
     path("patrol_schedule_partial/", views.patrol_schedule_partial, name="patrol_schedule_partial"),
     path("delete_other_row/", views.delete_other_row, name="delete_other_row"),
     path("add_other_row/", views.add_other_row, name="add_other_row"),
+    path("time_off_request/", views.time_off_request, name="time_off_request"),
+
 ]
