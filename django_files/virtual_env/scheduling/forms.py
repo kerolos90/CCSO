@@ -86,7 +86,7 @@ class OtherForm(forms.ModelForm):
 class TimeOffRequestForm(forms.ModelForm):
     class Meta:
         model = TimeOffRequest
-        exclude = ['employee']
+        exclude = ['employee', 'submitted', 'status', 'reviewed', 'supervisor_comment']
     start_time = forms.TimeField(widget=forms.TimeInput(
         attrs={'type': 'time', 'class': 'form-control', 'value': '00:00'}))
     end_time = forms.TimeField(widget=forms.TimeInput(
@@ -102,4 +102,14 @@ class TimeOffRequestForm(forms.ModelForm):
     personal_hours = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'number-only form-control'}))
     comment = forms.CharField(widget = forms.TextInput(
+        attrs={'class': 'form-control'}))
+
+class SupervisorTimeOffReview(forms.ModelForm):
+    class Meta:
+        model = TimeOffRequest
+        fields = ['status', 'supervisor_comment']
+    
+    status = forms.ChoiceField(choices=[('Approved','Approved'),('Denied','Denied')],
+                               widget=forms.Select(attrs={'class': 'form-select'}))
+    supervisor_comment = forms.CharField(widget = forms.TextInput(
         attrs={'class': 'form-control'}))

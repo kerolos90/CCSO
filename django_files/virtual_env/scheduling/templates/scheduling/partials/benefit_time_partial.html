@@ -1,4 +1,4 @@
-<div id="benefit_time_table" class="container">
+<div class="container">
     <h5 class="text-center">Benefit Time </h5>
     <div class="row">
         {% for result in benefit_time  %}
@@ -10,8 +10,13 @@
                 <div class="card-body pt-1 text-center">
                     <ul class="list-group list-group-flush">
                             <li class="list-group-item">Time: {{result.start_time}}-{{result.end_time}}</li>
-                            <li class="list-group-item">Submitted: 03/23/23 3:00 PM</li> 
-                            <li class="list-group-item">Status: Pending</li>                        
+                            <li class="list-group-item">Submitted: {{result.submitted}}</li> 
+                            <li class="list-group-item">Status: {{result.status}}
+                                <br>
+                                {% if result.status != "Pending" %}
+                                    on {{result.reviewed}}
+                                {% endif %}
+                            </li>                        
                                                                                          
                     </ul>
                 </div>

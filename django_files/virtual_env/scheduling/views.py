@@ -147,3 +147,25 @@ def time_off_request(request):
     data = QueryDict(request.body).dict()
     TimeOffRequest(**data).save()
     return HttpResponse(status=204)
+
+def benefit_time_table(request):
+    context = {
+        "benefit_time": TimeOffRequest.objects.filter(date=request.POST.get('date'))
+    }    
+    return render(request, "scheduling/partials/benefit_time_partial.html",context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

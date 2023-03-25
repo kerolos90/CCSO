@@ -260,4 +260,8 @@ class TimeOffRequest(models.Model):
     holiday_hours = models.CharField(max_length=10, default=0)
     sick_hours = models.CharField(max_length=10, default=0)
     personal_hours = models.CharField(max_length=10, default=0)
+    submitted = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=10, choices=[('Approved','Approved'),('Denied','Denied')], default="Pending")
+    reviewed = models.DateTimeField(auto_now=True)
+    supervisor_comment = models.CharField(max_length=200, blank=True)
     
