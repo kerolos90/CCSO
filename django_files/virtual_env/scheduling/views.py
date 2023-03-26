@@ -150,12 +150,20 @@ def time_off_request(request):
 
 def benefit_time_table(request):
     context = {
-        "benefit_time": TimeOffRequest.objects.filter(date=request.POST.get('date'))
+        "benefit_time": TimeOffRequest.objects.filter(date=request.POST.get('date')),
+        "date": request.POST.get('date')
     }    
     return render(request, "scheduling/partials/benefit_time_partial.html",context)
 
-
-
+def benefit_time_review(request):
+    id = list(QueryDict(request.body).keys())
+    time_off_request = TimeOffRequest.objects.get(id=id[0])
+    time_off_review = SupervisorTimeOffReview(instance=time_off_request)
+    context = {
+        "time_off_request": time_off_request,
+        "time_off_review" : time_off_review
+    }
+    return render(request, "scheduling/partials/benefit_time_review_partial.html", context)
 
 
 

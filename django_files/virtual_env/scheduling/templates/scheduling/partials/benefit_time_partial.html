@@ -4,24 +4,68 @@
         {% for result in benefit_time  %}
         <div class="col-lg-5">
             <div class="card shadow">
-                <div class="card-header text-center">
+            <a
+                href=""
+                hx-target="#dialog"
+                hx-post="{% url 'benefit_time_review'%}"
+                hx-params="{{result.id}}"
+            >
+
+                <div class="card-header text-center ">
                     <h5 class="card-title">Deputy {{result.employee}}</h5>
                 </div>
                 <div class="card-body pt-1 text-center">
                     <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Time: {{result.start_time}}-{{result.end_time}}</li>
+                            <li class="list-group-item ">Time: {{result.start_time}}-{{result.end_time}}</li>
                             <li class="list-group-item">Submitted: {{result.submitted}}</li> 
-                            <li class="list-group-item">Status: {{result.status}}
+                            <li {% if result.status == "Pending" %}
+                                    class="list-group-item bg-warning" 
+                                {% elif result.status == "Approved"%}
+                                    class="list-group-item bg-success"
+                                {% elif result.status == "Denied"%}
+                                    class="list-group-item bg-danger"
+                                {% endif %}
+                                > 
+                                Status: {{result.status}}
                                 <br>
                                 {% if result.status != "Pending" %}
                                     on {{result.reviewed}}
+                                    <br>
+                                    by Sgt. XXX
                                 {% endif %}
                             </li>                        
                                                                                          
                     </ul>
                 </div>
+            </a>
             </div>
         </div>
         {% endfor %}
     </div>
 </div>
+<div id="modal" class="modal fade">
+  <div id="dialog" class="modal-dialog modal-dialog-centered" hx-target="this">            
+  </div>
+</div>
+<script>
+    htmx.process(document.body);
+    const modal = new bootstrap.Modal(document.getElementById("modal"))
+    htmx.on("htmx:afterSwap", (e) => {
+    // Response targeting #dialog => show the modal
+        if (e.detail.target.id == "dialog") {
+            modal.show()
+        }else{
+        console.log("FAIL")
+        }
+    })
+    htmx.on("htmx:beforeSwap", (e) => {
+    // Empty response targeting #dialog => hide the modal
+        if (e.detail.target.id == "dialog" && !e.detail.xhr.response) {
+            modal.hide()
+            e.detail.shouldSwap = false
+        }
+    })
+
+</script>
+
+{% comment %} {% include 'scheduling/partials/benefit_time_review_partial.html' %} {% endcomment %}

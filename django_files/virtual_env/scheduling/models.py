@@ -263,5 +263,6 @@ class TimeOffRequest(models.Model):
     submitted = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=10, choices=[('Approved','Approved'),('Denied','Denied')], default="Pending")
     reviewed = models.DateTimeField(auto_now=True)
+    #supervisor = models.CharField(max_length=30,default='Sgt. TEST')
     supervisor_comment = models.CharField(max_length=200, blank=True)
     
