@@ -17,11 +17,10 @@
       >
         Time Off Request
       </button>
-      
       {% include 'scheduling/partials/time_off_request_partial.html' %}
     </div>
     <h1 id="schedule_date" class="text-center">{{date|date_format}}</h1>
-    <input type="hidden" name="date" value="{{ date}}" />
+    <input type="hidden" name="date" value="{{date}}" />
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
         <button

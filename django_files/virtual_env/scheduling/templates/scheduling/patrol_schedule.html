@@ -8,7 +8,6 @@
       <div class="card shadow">
         <div class="card-body">
           <h3 class="text-center">Patrol Schedule</h3>
-          
         </div>
       </div>
       <div class="row">
@@ -23,7 +22,6 @@
               </div>
               <div class="card shadow">
                 <div class="card-body">
-                  {% comment %} <div id="benefit_time_table"></div> {% endcomment %}
                   {% include 'scheduling/partials/benefit_time_partial.html' %}
                 </div>
               </div>
@@ -50,7 +48,6 @@
 
 {% block scripts %}
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.0.2/index.global.min.js"></script>
-{% include 'scheduling/partials/calendar_script.html' %} 
 <script src="{% static "scheduling/js/calendar.js"%}"></script>
 
 {% comment %} HTMX CDN {% endcomment %}
@@ -61,6 +58,7 @@
 ></script>
 
 <script>
+
   const modal = new bootstrap.Modal(document.getElementById("modal"))
 
     htmx.on("htmx:afterSwap", (e) => {
@@ -78,9 +76,54 @@
     }
     })
     htmx.on("hidden.bs.modal", () => {
-    $('#benefit_time_table').html('h')
+      console.log("CLOSED")
     })
-        
 </script>
+
+<script>
+  $(function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        headerToolbar: {
+          left: 'today',
+          center: 'title',
+          right: 'prev,next'
+        },
+        events : {{colored_dates|safe}},
+
+        dateClick: function(date) {
+          data = {date:date.dateStr, csrfmiddlewaretoken: '{{ csrf_token }}'}
+          $.ajax({
+            url: "{% url 'benefit_time_table'%}",
+            type: "POST",
+            data: data,
+            success: function(data){
+              $("#benefit_time_table").replaceWith(data)
+              htmx.process(document.body);
+            }
+          })
+          
+          $.ajax({
+            url: "{% url 'patrol_schedule' %}",
+            type: "POST",
+            data: data,
+            success: function(data){
+              $("#table-to-refresh").replaceWith(data)
+              htmx.process(document.body);
+            }
+          })      
+        
+          
+        }   
+    });
+    calendar.render();
+    data = {date: '{{date}}', csrfmiddlewaretoken: '{{ csrf_token }}'}
+
+    });
+</script>
+    {% comment %} $("#benefit_time_table").load("{% url 'benefit_time_table'%}", data, function(){
+      htmx.process(document.body);
+      }) {% endcomment %}
 
 {% endblock scripts %}

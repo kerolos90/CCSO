@@ -161,13 +161,7 @@ def benefit_time_review(request,id=None):
         time_off_request.status = request.POST.get('status')
         time_off_request.supervisor_comment= request.POST.get('supervisor_comment')
         time_off_request.save()
-        # context = {
-        #     'date': '2023-03-28',
-        #     "benefit_time": TimeOffRequest.objects.filter(date='2023-03-28')
-        # }
         return HttpResponse(status=204, headers={'HX-Trigger': 'benefitTableChanged'})
-        #return benefit_time_table(request)
-
     
     time_off_request = TimeOffRequest.objects.get(id=id)
     time_off_review = SupervisorTimeOffReviewForm(instance=time_off_request)
