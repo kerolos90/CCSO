@@ -33,7 +33,6 @@ def patrol_schedule(request):
         "civilTwo": CivilServiceTwo.objects.get_or_create(date=date)[0],
         "stJoesph": SaintJoseph.objects.get_or_create(date=date)[0],
         "other": Other.objects.filter(date=date),
-        "benefit_time": TimeOffRequest.objects.filter(date=date),
         "time_off": TimeOffRequestForm(),
         "benefit_type": benefit_type
     }
