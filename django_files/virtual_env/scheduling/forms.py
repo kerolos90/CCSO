@@ -91,25 +91,25 @@ class TimeOffRequestForm(forms.ModelForm):
         attrs={'type': 'time', 'class': 'form-control', 'value': '00:00'}))
     end_time = forms.TimeField(widget=forms.TimeInput(
         attrs={'type': 'time', 'class': 'form-control', 'value': '00:00'}))
-    vacation_hours = forms.CharField(widget=forms.TextInput(
+    vacation = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'number-only form-control'}))
-    comp_hours = forms.CharField(widget=forms.TextInput(
+    comp = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'number-only form-control'}))
-    holiday_hours = forms.CharField(widget=forms.TextInput(
+    holiday= forms.CharField(widget=forms.TextInput(
         attrs={'class': 'number-only form-control'}))
-    sick_hours = forms.CharField(widget=forms.TextInput(
+    sick = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'number-only form-control'}))
-    personal_hours = forms.CharField(widget=forms.TextInput(
+    personal = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'number-only form-control'}))
     comment = forms.CharField(widget = forms.TextInput(
         attrs={'class': 'form-control'}))
 
-class SupervisorTimeOffReview(forms.ModelForm):
+class SupervisorTimeOffReviewForm(forms.ModelForm):
     class Meta:
         model = TimeOffRequest
-        fields = ['status', 'supervisor_comment']
-    
-    status = forms.ChoiceField(choices=[('Approved','Approved'),('Denied','Denied')],
+        fields = ['id','status', 'supervisor_comment']
+    id = forms.IntegerField(required=False, widget=forms.HiddenInput())
+    status = forms.ChoiceField(choices=[('Approved', 'Approved'), ('Denied', 'Denied'), ('Pending', 'Pending')],
                                widget=forms.Select(attrs={'class': 'form-select'}))
     supervisor_comment = forms.CharField(widget = forms.TextInput(
         attrs={'class': 'form-control'}))

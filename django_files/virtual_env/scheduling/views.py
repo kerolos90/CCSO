@@ -4,8 +4,10 @@ from django.http import HttpResponse, Http404, QueryDict
 from .models import *
 from .forms import *
 from .set_date_events import colored_dates
+from django.urls import reverse
 
-hours = ["first_four", "second_four", "third_four"]
+benefit_type= ['vacation', 'comp', 'holiday', 'sick', 'personal']
+
 def patrol_beats(date):
     return {
         ShiftCommanderOne.objects.get_or_create(date=date)[0]: "Shift Commander #1",
@@ -21,7 +23,6 @@ def patrol_schedule(request):
    # try:
     date = datetime.today().strftime('%Y-%m-%d')
     context = {
-        "hours": hours,
         "date": date,
         "colored_dates" : colored_dates,
         "patrol_beats": patrol_beats(date),
@@ -34,6 +35,7 @@ def patrol_schedule(request):
         "other": Other.objects.filter(date=date),
         "benefit_time": TimeOffRequest.objects.filter(date=date),
         "time_off": TimeOffRequestForm(),
+        "benefit_type": benefit_type
     }
 
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
@@ -117,11 +119,8 @@ def patrol_schedule_partial(request):
         form = OtherForm(data, prefix=instance.id, instance=instance)
         form.save()
 
-
-
     context = {
         "patrol_beats": patrol_beats(date),
-        "hours": hours,
         "date": date,
         "savoyOne": SavoyOne.objects.get_or_create(date=date)[0],
         "savoyTwo": SavoyTwo.objects.get_or_create(date=date)[0],
@@ -149,20 +148,35 @@ def time_off_request(request):
     return HttpResponse(status=204)
 
 def benefit_time_table(request):
+    date = request.POST.get('date')
     context = {
-        "benefit_time": TimeOffRequest.objects.filter(date=request.POST.get('date')),
-        "date": request.POST.get('date')
+        "benefit_time": TimeOffRequest.objects.filter(date=date),
+        "date": date
     }    
     return render(request, "scheduling/partials/benefit_time_partial.html",context)
 
-def benefit_time_review(request):
-    id = list(QueryDict(request.body).keys())
-    time_off_request = TimeOffRequest.objects.get(id=id[0])
-    time_off_review = SupervisorTimeOffReview(instance=time_off_request)
+def benefit_time_review(request,id=None):
+    if request.method == 'POST':
+        time_off_request = TimeOffRequest.objects.get(id=request.POST.get('id'))
+        time_off_request.status = request.POST.get('status')
+        time_off_request.supervisor_comment= request.POST.get('supervisor_comment')
+        time_off_request.save()
+        # context = {
+        #     'date': '2023-03-28',
+        #     "benefit_time": TimeOffRequest.objects.filter(date='2023-03-28')
+        # }
+        return HttpResponse(status=204, headers={'HX-Trigger': 'benefitTableChanged'})
+        #return benefit_time_table(request)
+
+    
+    time_off_request = TimeOffRequest.objects.get(id=id)
+    time_off_review = SupervisorTimeOffReviewForm(instance=time_off_request)
     context = {
         "time_off_request": time_off_request,
-        "time_off_review" : time_off_review
+        "time_off_review" : time_off_review,
+        "benefit_type": benefit_type
     }
+
     return render(request, "scheduling/partials/benefit_time_review_partial.html", context)
 
 

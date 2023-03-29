@@ -17,6 +17,7 @@
       >
         Time Off Request
       </button>
+      
       {% include 'scheduling/partials/time_off_request_partial.html' %}
     </div>
     <h1 id="schedule_date" class="text-center">{{date|date_format}}</h1>
@@ -67,6 +68,7 @@
         role="tabpanel"
         aria-labelledby="night-tab"
       >
+
         {% include 'scheduling/partials/night_patrol_schedule_partial.html' %}
       </div>
     </div>

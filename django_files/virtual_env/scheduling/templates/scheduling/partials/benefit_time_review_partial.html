@@ -1,0 +1,84 @@
+{% load scheduling_extras %}
+<form >
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    </div>
+    <div class="modal-body">
+      <h5 class="text-center">{{time_off_request.date}}</h5>
+      {{time_off_review.id}}
+                          <h5 class="card-title">{{result.employee}}</h5>
+
+      <table class="table table-borderless" >
+        <tbody>
+          <tr>
+            
+            <th scope="row">Name:</th>
+            <td>Deputy {{time_off_request.employee}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Hours:</th>
+            <td>{{time_off_request.start_time}}-{{time_off_request.end_time}}</td>
+          </tr>
+          {% for type in benefit_type  %}
+              {% if time_off_request|get_attribute:type  %}
+                  <tr>
+                      <th scope="row">{{type|capfirst}} Time:</th>
+                      <td>{{time_off_request|get_attribute:type}} Hours</td>
+                  </tr>                     
+              {% endif %}
+          {% endfor %}
+          <tr>
+            <th scope="row">Comment:</th>
+            <td>{{time_off_request.comment}}</td>
+          </tr>
+            <tr>
+              <th scope="row">Status:</th>
+              <td>{{time_off_review.status}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Supervisor Comment:</th>
+              <td>{{time_off_review.supervisor_comment}}</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+        Close
+      </button>
+      <button 
+        data-bs-dismiss="modal"
+        type="submit" 
+        class="btn btn-success" 
+        hx-post="{% url 'benefit_time_review' %}"
+        id="save_button"
+      >Save
+      </button>
+    </div>
+  </div>
+</form>
+
+
+<script>
+
+  values = {
+    date:'2023-03-28',
+    id: '{{time_off_review.id.value}}',
+    status: '{{time_off_review.status.value}}',
+    supervisor_comment: '{{time_off_review.supervisor_comment.value}}',
+    csrfmiddlewaretoken: '{{ csrf_token }}'
+  }
+  {% comment %}
+  $( "#save_button" ).click(function() {
+    $("#benefit_time_table").replaceWith('')
+    $("#benefit_time_table").load("{% url 'benefit_time_table'%}", values)
+    $("#modal").modal('hide')
+
+  }); 
+  {% endcomment %}
+            
+        
+</script> 
+
+

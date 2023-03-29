@@ -8,6 +8,7 @@
       <div class="card shadow">
         <div class="card-body">
           <h3 class="text-center">Patrol Schedule</h3>
+          
         </div>
       </div>
       <div class="row">
@@ -22,7 +23,8 @@
               </div>
               <div class="card shadow">
                 <div class="card-body">
-                  <div id="benefit_time_table"></div>
+                  {% comment %} <div id="benefit_time_table"></div> {% endcomment %}
+                  {% include 'scheduling/partials/benefit_time_partial.html' %}
                 </div>
               </div>
             </div>
@@ -57,5 +59,28 @@
   integrity="sha384-wg5Y/JwF7VxGk4zLsJEcAojRtlVp1FKKdGy1qN+OMtdq72WRvX/EdRdqg/LOhYeV"
   crossorigin="anonymous"
 ></script>
+
+<script>
+  const modal = new bootstrap.Modal(document.getElementById("modal"))
+
+    htmx.on("htmx:afterSwap", (e) => {
+    // Response targeting #dialog => show the modal
+    if (e.detail.target.id == "dialog") {
+        modal.show()
+    }
+    })
+        
+    htmx.on("htmx:beforeSwap", (e) => {
+    // Empty response targeting #dialog => hide the modal
+    if (e.detail.target.id == "dialog" && !e.detail.xhr.response) {
+        modal.hide()
+        e.detail.shouldSwap = false
+    }
+    })
+    htmx.on("hidden.bs.modal", () => {
+    $('#benefit_time_table').html('h')
+    })
+        
+</script>
 
 {% endblock scripts %}

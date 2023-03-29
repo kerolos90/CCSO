@@ -44,26 +44,12 @@
             </tr>
           </thead>
           <tbody >
-            <tr>
-              <td>Vacation Time:</td>
-              <td>{{time_off.vacation_hours}}</td>
-            </tr>
-            <tr>
-              <td>Comp. Time:</td>
-              <td>{{time_off.comp_hours}}</td>
-            </tr>
-            <tr>
-              <td>Holiday Time:</td>
-              <td>{{time_off.holiday_hours}}</td>
-            </tr>
-            <tr>
-              <td>Sick Time:</td>
-              <td>{{time_off.sick_hours}}</td>
-            </tr>
-            <tr>
-              <td>Personal Time:</td>
-              <td>{{time_off.personal_hours}}</td>
-            </tr>                                                
+            {% for type in benefit_type  %}
+              <tr>
+                <td>{{type|capfirst}} Time:</td>
+                <td>{{time_off|get_value:type}}</td>
+              </tr>                     
+            {% endfor %}                    
           </tbody>
         </table>
       <div>

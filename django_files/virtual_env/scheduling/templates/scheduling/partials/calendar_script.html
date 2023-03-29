@@ -13,7 +13,7 @@
         dateClick: function(date) {
           data = {date:date.dateStr, csrfmiddlewaretoken: '{{ csrf_token }}'}
           $.ajax({
-            url: "{{patrol_schedule}}",
+            url: "{% url 'patrol_schedule' %}",
             type: "POST",
             data: data,
             success: function(data){
@@ -28,7 +28,9 @@
     });
     calendar.render();
     data = {date: '{{date}}', csrfmiddlewaretoken: '{{ csrf_token }}'}
-    $("#benefit_time_table").load("{% url 'benefit_time_table'%}", data)
 
     });
 </script>
+    {% comment %} $("#benefit_time_table").load("{% url 'benefit_time_table'%}", data, function(){
+      htmx.process(document.body);
+      }) {% endcomment %}

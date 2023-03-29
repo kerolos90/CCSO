@@ -11,5 +11,6 @@ urlpatterns = [
     path("time_off_request/", views.time_off_request, name="time_off_request"),
     path("benefit_time_table/", views.benefit_time_table, name="benefit_time_table"),
     path("benefit_time_review/", views.benefit_time_review, name="benefit_time_review"),
+    path("benefit_time_review/<int:id>", views.benefit_time_review, name="benefit_time_review"),
 
 ]

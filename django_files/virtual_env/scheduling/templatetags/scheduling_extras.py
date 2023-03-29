@@ -2,7 +2,6 @@ from django import template
 from datetime import datetime
 register = template.Library()
 
-
 @register.filter(name="addstr")
 def addstr(arg1,arg2):
     """concatenate arg1 & arg2"""
@@ -12,11 +11,9 @@ def addstr(arg1,arg2):
 def get_attribute(obj,prop):
     return getattr(obj,prop)
 
-
 @register.filter
 def get_value(obj, prop):
     return obj[prop]
-
 
 @register.filter(name="date_format")
 def date_format(arg):

@@ -16,10 +16,10 @@ twentyThree = {
 }
 
 
-for year in twentyThree.keys():
-    for team in twentyThree[year].keys():
-        for month in twentyThree[year][team]:
-            print(twentyThree[year][team][month])
+# for year in twentyThree.keys():
+#     for team in twentyThree[year].keys():
+#         for month in twentyThree[year][team]:
+#             print(twentyThree[year][team][month])
 
 #Append Dates to colored_dates array
 def append_events(dates, color):
