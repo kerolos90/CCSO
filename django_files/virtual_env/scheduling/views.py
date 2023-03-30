@@ -33,7 +33,6 @@ def patrol_schedule(request):
         "civilTwo": CivilServiceTwo.objects.get_or_create(date=date)[0],
         "stJoesph": SaintJoseph.objects.get_or_create(date=date)[0],
         "other": Other.objects.filter(date=date),
-        "benefit_time": TimeOffRequest.objects.filter(date=date),
         "time_off": TimeOffRequestForm(),
         "benefit_type": benefit_type
     }
@@ -129,7 +128,9 @@ def patrol_schedule_partial(request):
         "civilTwo": CivilServiceTwo.objects.get_or_create(date=date)[0],
         "stJoesph": SaintJoseph.objects.get_or_create(date=date)[0],
         "other": Other.objects.filter(date=date),
-        "time_off": TimeOffRequestForm()
+        "time_off": TimeOffRequestForm(),
+        "benefit_type": benefit_type
+
     }
     return render(request, "scheduling/partials/schedule.html", context)
 
@@ -161,13 +162,7 @@ def benefit_time_review(request,id=None):
         time_off_request.status = request.POST.get('status')
         time_off_request.supervisor_comment= request.POST.get('supervisor_comment')
         time_off_request.save()
-        # context = {
-        #     'date': '2023-03-28',
-        #     "benefit_time": TimeOffRequest.objects.filter(date='2023-03-28')
-        # }
-        return HttpResponse(status=204, headers={'HX-Trigger': 'benefitTableChanged'})
-        #return benefit_time_table(request)
-
+        return HttpResponse(status=204)
     
     time_off_request = TimeOffRequest.objects.get(id=id)
     time_off_review = SupervisorTimeOffReviewForm(instance=time_off_request)
