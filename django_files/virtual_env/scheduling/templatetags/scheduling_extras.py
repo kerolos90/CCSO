@@ -19,3 +19,9 @@ def get_value(obj, prop):
 def date_format(arg):
     arg = datetime.strptime(arg, '%Y-%m-%d').date()
     return arg.strftime('%B %d, %Y')
+
+
+@register.filter(name="monthYear_format")
+def date_format(arg):
+    arg = datetime.strptime(arg, '%Y-%m').date()
+    return arg.strftime('%B %Y')

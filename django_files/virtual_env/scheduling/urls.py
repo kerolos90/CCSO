@@ -12,5 +12,6 @@ urlpatterns = [
     path("benefit_time_table/", views.benefit_time_table, name="benefit_time_table"),
     path("benefit_time_review/", views.benefit_time_review, name="benefit_time_review"),
     path("benefit_time_review/<int:id>", views.benefit_time_review, name="benefit_time_review"),
+    path("benefit_requests/", views.benefit_requests, name="benefit_requests"),
 
 ]

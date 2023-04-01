@@ -1,15 +1,13 @@
 {% load scheduling_extras %}
 
-<div class="container text-center" id="benefit_time_table">
-    <h5>Benefit Time </h5>
+<div class="container" id="benefit_time_table">
     <div class="row" >
         {% for result in benefit_time  %}
-        <div class="col-lg-5">
+        <div class="col-lg-4">
             <div class="card shadow">
             <a
                 hx-target="#dialog"
                 hx-get="{% url 'benefit_time_review' result.id %}" 
-                id="time_off_card"
                 type="button"
             >
                 <div  class="card-header">
@@ -17,6 +15,7 @@
                 </div>
                 <div class="card-body pt-1">        
                     <ul class="list-group list-group-flush">
+                            <li class="list-group-item ">Date: {{result.date}}</li>
                             <li class="list-group-item ">Time: {{result.start_time}}-{{result.end_time}}</li>
                             <li class="list-group-item">Submitted: {{result.submitted}}</li> 
                             <li {% if result.status == "Pending" %}

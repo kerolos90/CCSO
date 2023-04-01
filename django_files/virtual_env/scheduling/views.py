@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, date
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, Http404, QueryDict
 from .models import *
@@ -55,8 +55,6 @@ def patrol_schedule(request):
     # except:
     #      raise Http404()
 
-
-
 def edit_schedule(request):
     date = request.POST.get('date')
     shiftCommanderOneForm = ShiftCommanderOneForm(prefix='SC1',instance=ShiftCommanderOne.objects.get(date=date))
@@ -93,7 +91,6 @@ def edit_schedule(request):
         'otherForm' : otherForm
     }
     return render(request, "scheduling/partials/edit_schedule.html", context)
-
 
 def patrol_schedule_partial(request):
     date = request.POST.get('date')
@@ -151,7 +148,7 @@ def time_off_request(request):
 def benefit_time_table(request):
     date = request.POST.get('date')
     context = {
-        "benefit_time": TimeOffRequest.objects.filter(date=date),
+        "benefit_time": TimeOffRequest.objects.filter(date__startswith=date),
         "date": date
     }    
     return render(request, "scheduling/partials/benefit_time_partial.html",context)
@@ -175,6 +172,13 @@ def benefit_time_review(request,id=None):
     return render(request, "scheduling/partials/benefit_time_review_partial.html", context)
 
 
+def benefit_requests(request):
+    month_year = (date.today().strftime('%Y-%m'))
+    context = {
+        "month_year": month_year,
+        "benefit_time": TimeOffRequest.objects.filter(date__startswith=month_year)
+    }
+    return render(request, "scheduling/benefit_requests.html", context)
 
 
 
