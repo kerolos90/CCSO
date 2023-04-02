@@ -10,14 +10,15 @@
             <div class="card-header d-flex">
                 <h4 class="p-2 flex-grow-1" >Time Off Requests</h4>
                 <div class="p-2 ">
-                    <form>
+                    <form id="month_yearForm" action="{% url 'benefit_time_table' %}" method="post">
+                        {% csrf_token %}
                         <div class='input-group'>
                             <input class="form-control" type="month" id="month_year" name="date" value="{{month_year}}">
                             <button 
                                 type="submit"
                                 class="btn btn-default"
-                                hx-post="{% url 'benefit_time_table' %}"
-                                hx-target="#benefit_time_table" 
+                                {% comment %} hx-post="{% url 'benefit_time_table' %}"
+                                hx-target="#benefit_time_table"  {% endcomment %}
                             >
                                 <i class="fa fa-search"></i>
                             </button>
@@ -27,6 +28,7 @@
             </div>
             <div class="card-body">
                         <h2 id="monthYearTitle" class="text-center">{{month_year|monthYear_format}}</h2>
+                        <br>
                     <div>
                         <div hx-swap="outerHTML"id="benefit_time_table"></div>
                         <div id="modal" class="modal fade">
@@ -42,8 +44,9 @@
 {% endblock content %}
 
 {% block scripts %}
+
 <script>
-    
+    //On load
     $.ajax({
       url: "{% url 'benefit_time_table'%}",
       type: "POST",
@@ -53,6 +56,17 @@
         htmx.process(document.body);
       }
     })  
+    //Form Submit
+    $('#month_yearForm').submit(function(event) {
+        event.preventDefault();
+        $.post($('#month_yearForm').attr('action'), $('#month_yearForm').serialize(), function(response) {
+            $("#benefit_time_table").replaceWith(response)
+            var month_yearObject = moment($('#month_year').val() + "-01", "YYYY-MM-DD");
+            $("#monthYearTitle").html(month_yearObject.format("MMMM YYYY"))
+            htmx.process(document.body);
+        });
+    });
+    //Modal submit
     htmx.on("hidden.bs.modal", () => {
       $.ajax({
         url: "{% url 'benefit_time_table'%}",
@@ -60,7 +74,6 @@
         data: {date: $('#month_year').val(), csrfmiddlewaretoken: '{{ csrf_token }}'},
         success: function(data){
             $("#benefit_time_table").replaceWith(data)
-            $("#monthYearTitle").html($('#month_year').val())
             htmx.process(document.body);
         }
       })

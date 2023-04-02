@@ -1,10 +1,9 @@
 from datetime import datetime, date
-from django.shortcuts import render,redirect
+from django.shortcuts import render
 from django.http import HttpResponse, Http404, QueryDict
 from .models import *
 from .forms import *
 from .set_date_events import colored_dates
-from django.urls import reverse
 
 benefit_type= ['vacation', 'comp', 'holiday', 'sick', 'personal']
 
