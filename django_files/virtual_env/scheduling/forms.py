@@ -113,3 +113,4 @@ class SupervisorTimeOffReviewForm(forms.ModelForm):
                                widget=forms.Select(attrs={'class': 'form-select'}))
     supervisor_comment = forms.CharField(widget = forms.TextInput(
         attrs={'class': 'form-control'}))
+        

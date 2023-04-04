@@ -14,13 +14,20 @@
           </a>
           <ul class="sub-menu" aria-expanded="false">
             <li>
-              <a href="{% url "patrol_schedule"%}">
+              <a href="{% url 'patrol_schedule' %}">
                 <span data-key="t-calendar">Patrol Schedule</span>
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="#" >
                 <span data-key="t-calendar">Investigations Schedule</span>
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'benefit_requests' %}">
+                <span data-key="t-calendar">Time Off Requests     
+                  <span class="badge rounded-pill badge-notification bg-danger">10</span>
+                </span>
               </a>
             </li>
           </ul>
@@ -72,7 +79,7 @@
         <li>
           <a href="{% url "settings" %}" class="">
             <i class="fas fa-chart-bar"></i>
-            <span data-key="t-pages">Training Standards</span>
+            <span data-key="t-pages">Forms</span>
           </a>
         </li>
 

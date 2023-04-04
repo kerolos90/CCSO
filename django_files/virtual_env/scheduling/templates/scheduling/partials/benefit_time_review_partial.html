@@ -1,5 +1,5 @@
 {% load scheduling_extras %}
-<form >
+<form>
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -7,8 +7,6 @@
     <div class="modal-body">
       <h5 class="text-center">{{time_off_request.date}}</h5>
       {{time_off_review.id}}
-                          <h5 class="card-title">{{result.employee}}</h5>
-
       <table class="table table-borderless" >
         <tbody>
           <tr>
@@ -58,27 +56,3 @@
     </div>
   </div>
 </form>
-
-
-<script>
-
-  values = {
-    date:'2023-03-28',
-    id: '{{time_off_review.id.value}}',
-    status: '{{time_off_review.status.value}}',
-    supervisor_comment: '{{time_off_review.supervisor_comment.value}}',
-    csrfmiddlewaretoken: '{{ csrf_token }}'
-  }
-  {% comment %}
-  $( "#save_button" ).click(function() {
-    $("#benefit_time_table").replaceWith('')
-    $("#benefit_time_table").load("{% url 'benefit_time_table'%}", values)
-    $("#modal").modal('hide')
-
-  }); 
-  {% endcomment %}
-            
-        
-</script> 
-
-

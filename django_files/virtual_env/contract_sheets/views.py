@@ -5,4 +5,11 @@ from django.http import HttpResponse, Http404
 
 
 def ivesdale(request):
-    return render(request, "contract_sheets/ivesdale.html")
+    context = {
+        "village" : "Ivesdale"
+    }
+    return render(request, "contract_sheets/contract_base.html", context)
+
+
+def add_contract_sheet(request):
+    return render(request, "contract_sheets/partials/add_contract_sheet.html")
