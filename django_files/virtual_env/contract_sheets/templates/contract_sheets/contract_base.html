@@ -1,4 +1,6 @@
-{% extends "layout.html" %} {% load static %}
+{% extends "layout.html" %} 
+{% load static %}
+{% load contract_extras %}
 
 {% block content %}
          <div class="main-content">
@@ -89,7 +91,7 @@
 
                 <!-- Contract Sheet Modal -->
                   <div id="modal" class="modal fade">
-                      <div id="dialog" class="modal-dialog  modal-lg" hx-target="this"></div>
+                      <div id="dialog" class="modal-dialog modal-lg" hx-target="this"></div>
                   </div>   
                 <!-- end modal -->
               </div>
@@ -120,5 +122,6 @@
          
     });
     calendar.render();
+
 </script>
 {% endblock scripts %}
