@@ -1,95 +1,57 @@
-<div class="modal-content">
-  <div class="modal-header">
+<form>
+<div class="modal-content ">
+  <div class="modal-header ">
       <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
   </div>
-  <div class="modal-body text-center">
+  <div class="text-center">
       <h1>Champaign County Sherrif's Office</h1>
-      <h2 class="card-subtitle mb-2 text-muted text-center fs-6">
+      <h2 class="card-subtitle mb-2 text-muted text-center fs-5">
         Village of {{village}}
         <br /><br />
         Contractual Police Services
         <br />
         Daily Activity Report
       </h2>
-      <div class="modal-body">
-        <div class="table-responsive">
-          <table class="table table-bordered" style="font-size: inherit">
+      <div class="modal-body ">
+        <div class="table-responsive ">
+          <table class="table table-bordered">
             <tbody>
               <tr>
                 <th>Date:</th>
                 <td>
-                  <input
-                    class="form-control"
-                    type="date"
-                    value="2019-08-19"
-                    id="example-date-input"
-                  />
+                  {{ivesdaleForm.date}}
                 </td>
-                <th>Deputy</th>
-                <td>
-                  <input
-                    class="form-control"
-                    list="datalistOptions"
-                    id="exampleDataList"
-                    placeholder="Type to search..."
-                  />
+                <td colspan="2">
+                  {{ivesdaleForm.employee}}
                 </td>
                 <th>Car#:</th>
                 <td>
-                  <input
-                    class="form-control"
-                    type="number"
-                    value="1"
-                    id="example-number-input"
-                  />
+                  {{ivesdaleForm.carNumber}}
                 </td>
               </tr>
               <tr>
                 <th>Miles:</th>
                 <td>
-                  <input
-                    class="form-control"
-                    type="number"
-                    value="1"
-                    id="example-number-input"
-                  />
-                  <input
-                    class="form-control"
-                    type="number"
-                    value="1"
-                    id="example-number-input"
-                  />
+                  {{ivesdaleForm.start_miles}}
+                  {{ivesdaleForm.end_miles}}
+
                 </td>
                 <td>Time Start:</td>
                 <td>
-                  <input
-                    class="form-control"
-                    type="time"
-                    value="13:45:00"
-                    id="example-time-input"
-                  />
-                  <input
-                    class="form-control"
-                    type="time"
-                    value="14:45:00"
-                    id="example-time-input"
-                  />
+                  {{ivesdaleForm.start_time}}
+                  {{ivesdaleForm.end_time}}
                 </td>
                 <th>Weather:</th>
                 <td>
-                  <select class="form-select">
-                    <option>Select</option>
-                    <option>Clear</option>
-                    <option>Rain</option>
-                    <option>Snow</option>
-                  </select>
+                  {{ivesdaleForm.weather}}
                 </td>
               </tr>
               <tr>
                 <th>Total Miles:</th>
-                <td>5 miles</td>
+                <td id="total_miles"></td>
                 <th>Total Time:</th>
-                <td>1 Hour</td>
+                <td id="total_timeSpent">
+                </td>
               </tr>
             </tbody>
           </table>
@@ -98,35 +60,64 @@
         <div class="table-responsive">
           <table
             class="table table-bordered"
-            id="activity_table"
-            style="font-size: inherit"
           >
             <thead>
               <tr>
-                <th scope="col" style="width: 15%">Activity</th>
-                <th colspan="2" style="width: 10%" scope="col">Time Spent</th>
+                <th scope="col">Activity</th>
+                <th scope="col" width="40%">Time Spent</th>
                 <th scope="col">Activity Log</th>
               </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+              {% for key, values in activity.items %}
+                <tr>
+                  <td>
+                  <b>{{key}}<b>
+                  </td>
+                <td>
+                  <label>Hours</label>
+                  {{ivesdaleForm.patrolCar_timeSpent}}
+                  <label>Minutes</label>
+                </td>
+                <td>
+                  {{ivesdaleForm.patrolCar_activityLog}}
+                </td>                  
+                </tr>
+              {% endfor %}
+              <tr>
+                <td>
+                  <b>Total Time Spent</b>
+                </td>
+                <td id="total_timeSpent_table"></td>                
+              </tr>
+            </tbody>
           </table>
           <table
             class="table table-bordered"
-            id="productivity_table"
-            style="font-size: inherit"
           >
             <thead>
               <tr>
                 <th scope="col">Productivity</th>
-                <th scope="col">Numbers</th>
-                <th style="width: 70%" scope="col">Activity Log</th>
+                <th scope="col" >Numbers</th>
+                <th scope="col" width="80%">Activity Log</th>
               </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+            {% for key, values in productivity.items  %}
+              <tr>
+                <td>
+                  <b>{{key}}<b>
+                </td>
+                <td>
+                  {{ivesdaleForm.arrestTraffic_count}}
+                </td>    
+                <td>
+                  {{ivesdaleForm.arrestTraffic_activityLog}}
+                </td>               
+              </tr>
+            {% endfor %}              
+            </tbody>
           </table>
-          <div class="container-fluid text-end">
-            Submitted by: Deputy Gabra #503
-          </div>
         </div>
       </div>
     </div>
@@ -143,3 +134,35 @@
   </div>
   </div>
 </div>
+</form>
+
+<script>
+
+  function calculateTotalTime() {
+    var hours =  $('#id_patrolCar_timeSpent_0').val();
+    var minutes = $('#id_patrolCar_timeSpent_1').val();
+    var totalTimeinMinutes =  parseInt(minutes) + parseInt(hours * 60)
+
+    var hour = Math.floor(totalTimeinMinutes / 60);
+    var minute = (totalTimeinMinutes % 60);
+    var totalTimeString = `${hour} Hour(s) ${minute} Minutes`;
+    $('#total_timeSpent').html(totalTimeString)
+    $('#total_timeSpent_table').html(totalTimeString)
+
+  }
+  $('#id_patrolCar_timeSpent_0').on('input', calculateTotalTime);
+  $('#id_patrolCar_timeSpent_1').on('input', calculateTotalTime);
+  
+  function calculateTotalMile(){
+    var start_miles = parseInt($('#start_miles').val());
+    var end_miles = parseInt($('#end_miles').val());
+    var totalMiles = end_miles - start_miles
+    if(totalMiles < 0){
+      totalMiles = "Invalid"
+    }
+    $('#total_miles').html(`${totalMiles} Miles`)
+  }
+  $('#start_miles').on('input', calculateTotalMile);
+  $('#end_miles').on('input', calculateTotalMile);
+
+</script>
