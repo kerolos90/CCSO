@@ -1,3 +1,5 @@
+{% load contract_extras %}
+
 <form>
 <div class="modal-content ">
   <div class="modal-header ">
@@ -69,18 +71,22 @@
               </tr>
             </thead>
             <tbody>
-              {% for key, values in activity.items %}
+              {% for key, value in activity.items %}
                 <tr>
                   <td>
                   <b>{{key}}<b>
                   </td>
                 <td>
                   <label>Hours</label>
-                  {{ivesdaleForm.patrolCar_timeSpent}}
+                  {% with value|addstr:"_timeSpent" as section %}
+                      {{ivesdaleForm|get_value:section}}
+                  {% endwith %}
                   <label>Minutes</label>
                 </td>
                 <td>
-                  {{ivesdaleForm.patrolCar_activityLog}}
+                  {% with value|addstr:"_activityLog" as section %}
+                      {{ivesdaleForm|get_value:section}}
+                  {% endwith %}
                 </td>                  
                 </tr>
               {% endfor %}
@@ -103,16 +109,20 @@
               </tr>
             </thead>
             <tbody>
-            {% for key, values in productivity.items  %}
+            {% for key, value in productivity.items  %}
               <tr>
                 <td>
                   <b>{{key}}<b>
                 </td>
                 <td>
-                  {{ivesdaleForm.arrestTraffic_count}}
+                  {% with value|addstr:"_count" as section %}
+                      {{ivesdaleForm|get_value:section}}
+                  {% endwith %}
                 </td>    
                 <td>
-                  {{ivesdaleForm.arrestTraffic_activityLog}}
+                  {% with value|addstr:"_activityLog" as section %}
+                      {{ivesdaleForm|get_value:section}}
+                  {% endwith %}
                 </td>               
               </tr>
             {% endfor %}              
@@ -165,4 +175,6 @@
   $('#start_miles').on('input', calculateTotalMile);
   $('#end_miles').on('input', calculateTotalMile);
 
+
+  $('#id_date').val("{{date}}")  
 </script>

@@ -7,11 +7,11 @@ def addstr(arg1,arg2):
     """concatenate arg1 & arg2"""
     return str(arg1) + str(arg2)
 
-@register.filter
+@register.filter(name="get_attribute")
 def get_attribute(obj,prop):
     return getattr(obj,prop)
 
-@register.filter
+@register.filter("get_value")
 def get_value(obj, prop):
     return obj[prop]
 

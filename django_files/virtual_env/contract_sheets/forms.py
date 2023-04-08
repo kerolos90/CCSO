@@ -10,15 +10,17 @@ class HourMinSelectorWidget(forms.MultiWidget):
                 attrs={'class': 'form-control', 'min': 0, 'max': 23}),
             forms.Select(attrs={'class': 'form-select'},choices=minutes_choices),
         ]
+        
         super().__init__(widgets, attrs)
 
     def decompress(self,value):
-        if value:
-            return [value.hours, value.minute]
+        
+        # if value:
+        #     return [value.hours, value.minute]
         return [None, None]
     
 class TimeSpentField(forms.MultiValueField):
-    widget= HourMinSelectorWidget
+    #widget= HourMinSelectorWidget
     def __init__(self, *args, **kwargs):
         fields = (
             forms.IntegerField(min_value=0, max_value=23),
@@ -33,24 +35,21 @@ class TimeSpentField(forms.MultiValueField):
         return None
 
 class BaseForm(forms.ModelForm):
-    hours = forms.IntegerField(min_value=0, max_value=24, required=True, 
-                               widget=forms.NumberInput(attrs={'class': 'form-control'}))
-    minutes = forms.ChoiceField(choices=[(0, '00'), (15, '15'), (30, '30'), (45, '45')], 
-                                widget=forms.Select(attrs={'class': 'form-select'}), required=True)
-    
+   
     class Meta:
         model = BaseModel
         exclude = ['id', 'submissionDate']
 
-    employee = forms.ChoiceField(choices=EMPLOYEE_CHOICES, widget=forms.Select(
+    employee = forms.ChoiceField(disabled=True, choices=EMPLOYEE_CHOICES, widget=forms.Select(
         attrs={'class': 'form-select'}))
-    date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date', 'class ': 'form-control'}))
-    carNumber = forms.IntegerField(widget=forms.NumberInput(
+    date = forms.DateField(disabled=True,widget=forms.DateInput(attrs={'type': 'date', 'class ': 'form-control'}))
+    carNumber = forms.IntegerField(min_value=1,widget=forms.NumberInput(
         attrs={'class': 'form-control', 'style': 'width:65%'}))
     start_miles = forms.IntegerField(min_value=0, widget=forms.NumberInput(
-        attrs={'id': 'start_miles', 'class': 'form-control' }))
+        attrs={'id': 'start_miles', 'class': 'form-control', 'value':0 }))
+        
     end_miles = forms.IntegerField(min_value=0, widget=forms.NumberInput(
-        attrs={'id': 'end_miles', 'class': 'form-control'}))
+        attrs={'id': 'end_miles', 'class': 'form-control', 'value':0}))
     total_miles = forms.IntegerField(
         disabled=True, required=False, widget=forms.NumberInput(attrs={'id': 'total_miles'}))
     start_time = forms.TimeField(widget=forms.TimeInput(
@@ -63,10 +62,26 @@ class BaseForm(forms.ModelForm):
         'Clear', 'Clear'), ('Rain', 'Rain'), ('Snow', 'Snow')],
         widget=forms.Select(attrs={'class': 'form-select'}))
     
-    patrolCar_timeSpent = TimeSpentField()
+   # patrolCar_timeSpent = TimeSpentField()
     patrolCar_activityLog = forms.CharField(widget=forms.Textarea(attrs={'rows':2}))
     arrestTraffic_count = forms.IntegerField(min_value=0, widget=forms.NumberInput(attrs={'class': 'form-control'}))
     arrestTraffic_activityLog = forms.CharField(widget=forms.Textarea(attrs={'rows': 2}))
+    patrolFoot_timeSpent = TimeSpentField()
+
+    field_names = [f.name for f in BaseModel._meta.get_fields()]
+    for field_name in field_names:
+        if field_name.endswith("_timeSpent"):
+            locals()[field_name] = TimeSpentField()
+
+
+    def __init__(self, *args, **kwargs):
+        super(BaseForm, self).__init__(*args, **kwargs)
+        for field_name in self.fields:
+            if field_name.endswith("_timeSpent"):
+                self.fields[field_name].widget.attrs.update({
+                    'class': 'count-field', 
+                    'placeholder': 'Enter a count'
+                })
 
 class IvesdaleForm(BaseForm):
     class Meta(BaseForm.Meta):

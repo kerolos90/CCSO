@@ -25,7 +25,6 @@ productivity = {
     "Vehicles Involved": "vehiclesInvolved",
     "Injuries": "injuries",
     "Fatalities": "fatalities",
-    "Investigate Other": "investigateOther",
     "Papers Served": "papersServed",
 }
 
@@ -38,7 +37,11 @@ def ivesdale(request):
 
 
 def add_contract_sheet(request):
+    date = request.POST.get('date')
+    village = request.POST.get('village')
     context = {
+        "date": date,
+        "village" : village,
         "ivesdaleForm" : IvesdaleForm(),
         "activity" : activity,
         "productivity" : productivity
