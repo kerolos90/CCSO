@@ -16,6 +16,7 @@ except:
 
 class BaseModel(models.Model):
     id = models.AutoField(primary_key=True)
+    village = employee = models.CharField(max_length=15)
     date = models.DateField(auto_now_add=False, auto_now=False, blank=False)
     employee = models.CharField(max_length=30, choices=EMPLOYEE_CHOICES)
     carNumber = models.IntegerField()
@@ -46,7 +47,6 @@ class BaseModel(models.Model):
     investigateCriminal_activityLog = models.TextField()
     investigateOther_timeSpent = models.IntegerField()
     investigateOther_activityLog = models.TextField()
-    totalTimeSpent = models.IntegerField()
 
     arrestTraffic_count = models.IntegerField()
     arrestTraffic_activityLog = models.TextField()

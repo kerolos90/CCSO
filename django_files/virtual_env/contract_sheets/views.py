@@ -1,5 +1,6 @@
+from datetime import datetime
 from django.shortcuts import render
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, QueryDict
 from .models import *
 from .forms import *
 # Create your views here.
@@ -38,6 +39,8 @@ def ivesdale(request):
 
 def add_contract_sheet(request):
     date = request.POST.get('date')
+    #date = datetime.strptime(date, "%Y-%m-%d").date()
+
     village = request.POST.get('village')
     context = {
         "date": date,
@@ -47,3 +50,7 @@ def add_contract_sheet(request):
         "productivity" : productivity
     }    
     return render(request, "contract_sheets/partials/add_contract_sheet.html", context)
+
+def save_contract_sheet(request):
+    data = QueryDict(request.body).dict()
+    return HttpResponse(status=204)

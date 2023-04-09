@@ -15,6 +15,10 @@
         Daily Activity Report
       </h2>
       <div class="modal-body ">
+        {% comment %} Hidden Inputs {% endcomment %}
+        {{ivesdaleForm.total_miles}}
+        {{ivesdaleForm.total_time}}
+        {{ivesdaleForm.village}}
         <div class="table-responsive ">
           <table class="table table-bordered">
             <tbody>
@@ -36,7 +40,6 @@
                 <td>
                   {{ivesdaleForm.start_miles}}
                   {{ivesdaleForm.end_miles}}
-
                 </td>
                 <td>Time Start:</td>
                 <td>
@@ -50,7 +53,7 @@
               </tr>
               <tr>
                 <th>Total Miles:</th>
-                <td id="total_miles"></td>
+                <td id="totalMiles"></td>
                 <th>Total Time:</th>
                 <td id="total_timeSpent">
                 </td>
@@ -139,6 +142,7 @@
       data-bs-dismiss="modal"
       type="submit" 
       class="btn btn-success" 
+      hx-post= "{% url 'save_contract_sheet' %}"
     >Save
     </button>
   </div>
@@ -152,7 +156,7 @@
     var hours =  $('#id_patrolCar_timeSpent_0').val();
     var minutes = $('#id_patrolCar_timeSpent_1').val();
     var totalTimeinMinutes =  parseInt(minutes) + parseInt(hours * 60)
-
+    $('#id_total_time').val(totalTimeinMinutes)
     var hour = Math.floor(totalTimeinMinutes / 60);
     var minute = (totalTimeinMinutes % 60);
     var totalTimeString = `${hour} Hour(s) ${minute} Minutes`;
@@ -169,12 +173,14 @@
     var totalMiles = end_miles - start_miles
     if(totalMiles < 0){
       totalMiles = "Invalid"
+    }else{
+      $('#id_total_miles').val(totalMiles)
     }
-    $('#total_miles').html(`${totalMiles} Miles`)
+    $('#totalMiles').html(`${totalMiles} Miles`)
   }
   $('#start_miles').on('input', calculateTotalMile);
   $('#end_miles').on('input', calculateTotalMile);
 
-
+  $('#id_village').val("{{village}}")
   $('#id_date').val("{{date}}")  
 </script>
