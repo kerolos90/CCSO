@@ -1,0 +1,186 @@
+{% load contract_extras %}
+
+<form>
+<div class="modal-content ">
+  <div class="modal-header ">
+      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+  </div>
+  <div class="text-center">
+      <h1>Champaign County Sherrif's Office</h1>
+      <h2 class="card-subtitle mb-2 text-muted text-center fs-5">
+        Village of {{village}}
+        <br /><br />
+        Contractual Police Services
+        <br />
+        Daily Activity Report
+      </h2>
+      <div class="modal-body ">
+        {% comment %} Hidden Inputs {% endcomment %}
+        {{ivesdaleForm.total_miles}}
+        {{ivesdaleForm.total_time}}
+        {{ivesdaleForm.village}}
+        <div class="table-responsive ">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th>Date:</th>
+                <td>
+                  {{ivesdaleForm.date}}
+                </td>
+                <td colspan="2">
+                  {{ivesdaleForm.employee}}
+                </td>
+                <th>Car#:</th>
+                <td>
+                  {{ivesdaleForm.carNumber}}
+                </td>
+              </tr>
+              <tr>
+                <th>Miles:</th>
+                <td>
+                  {{ivesdaleForm.start_miles}}
+                  {{ivesdaleForm.end_miles}}
+                </td>
+                <td>Time Start:</td>
+                <td>
+                  {{ivesdaleForm.start_time}}
+                  {{ivesdaleForm.end_time}}
+                </td>
+                <th>Weather:</th>
+                <td>
+                  {{ivesdaleForm.weather}}
+                </td>
+              </tr>
+              <tr>
+                <th>Total Miles:</th>
+                <td id="totalMiles"></td>
+                <th>Total Time:</th>
+                <td id="total_timeSpent">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <br />
+        <div class="table-responsive">
+          <table
+            class="table table-bordered"
+          >
+            <thead>
+              <tr>
+                <th scope="col">Activity</th>
+                <th scope="col" width="40%">Time Spent</th>
+                <th scope="col">Activity Log</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for key, value in activity.items %}
+                <tr>
+                  <td>
+                  <b>{{key}}<b>
+                  </td>
+                <td>
+                  <label>Hours</label>
+                  {% with value|addstr:"_timeSpent" as section %}
+                      {{ivesdaleForm|get_value:section}}
+                  {% endwith %}
+                  <label>Minutes</label>
+                </td>
+                <td>
+                  {% with value|addstr:"_activityLog" as section %}
+                      {{ivesdaleForm|get_value:section}}
+                  {% endwith %}
+                </td>                  
+                </tr>
+              {% endfor %}
+              <tr>
+                <td>
+                  <b>Total Time Spent</b>
+                </td>
+                <td id="total_timeSpent_table"></td>                
+              </tr>
+            </tbody>
+          </table>
+          <table
+            class="table table-bordered"
+          >
+            <thead>
+              <tr>
+                <th scope="col">Productivity</th>
+                <th scope="col" >Numbers</th>
+                <th scope="col" width="80%">Activity Log</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for key, value in productivity.items  %}
+              <tr>
+                <td>
+                  <b>{{key}}<b>
+                </td>
+                <td>
+                  {% with value|addstr:"_count" as section %}
+                      {{ivesdaleForm|get_value:section}}
+                  {% endwith %}
+                </td>    
+                <td>
+                  {% with value|addstr:"_activityLog" as section %}
+                      {{ivesdaleForm|get_value:section}}
+                  {% endwith %}
+                </td>               
+              </tr>
+            {% endfor %}              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+      Close
+    </button>
+    <button 
+      data-bs-dismiss="modal"
+      type="submit" 
+      class="btn btn-success" 
+      hx-post= "{% url 'save_contract_sheet' %}"
+    >Save
+    </button>
+  </div>
+  </div>
+</div>
+</form>
+
+<script>
+
+  function calculateTotalTime() {
+    var hours =  $('#id_patrolCar_timeSpent_0').val();
+    var minutes = $('#id_patrolCar_timeSpent_1').val();
+    var totalTimeinMinutes =  parseInt(minutes) + parseInt(hours * 60)
+    $('#id_total_time').val(totalTimeinMinutes)
+    var hour = Math.floor(totalTimeinMinutes / 60);
+    var minute = (totalTimeinMinutes % 60);
+    var totalTimeString = `${hour} Hour(s) ${minute} Minutes`;
+    $('#total_timeSpent').html(totalTimeString)
+    $('#total_timeSpent_table').html(totalTimeString)
+
+  }
+  $('#id_patrolCar_timeSpent_0').on('input', calculateTotalTime);
+  $('#id_patrolCar_timeSpent_1').on('input', calculateTotalTime);
+  
+  function calculateTotalMile(){
+    var start_miles = parseInt($('#start_miles').val());
+    var end_miles = parseInt($('#end_miles').val());
+    var totalMiles = end_miles - start_miles
+    if(totalMiles < 0){
+      totalMiles = "Invalid"
+    }else{
+      $('#id_total_miles').val(totalMiles)
+    }
+    $('#totalMiles').html(`${totalMiles} Miles`)
+  }
+  $('#start_miles').on('input', calculateTotalMile);
+  $('#end_miles').on('input', calculateTotalMile);
+
+  $('#id_village').val("{{village}}")
+  $('#id_date').val("{{date}}")  
+</script>
