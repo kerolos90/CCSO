@@ -1,9 +1,10 @@
 from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpResponse, Http404, QueryDict
+from django.db.models import Q
+
 from .models import *
 from .forms import *
-# Create your views here.
 
 activity = {
     "Patrol Car": "patrolCar",
@@ -29,28 +30,109 @@ productivity = {
     "Papers Served": "papersServed",
 }
 
-
 def ivesdale(request):
     context = {
-        "village" : "Ivesdale"
+        "village" : "Ivesdale",
+        "date" : datetime.today().strftime('%Y-%m-%d')
     }
     return render(request, "contract_sheets/contract_base.html", context)
 
+def philo(request):
+    context = {
+        "village": "Philo",
+        "date": datetime.today().strftime('%Y-%m-%d')
+    }
+    return render(request, "contract_sheets/contract_base.html", context)
+
+def savoy(request):
+    context = {
+        "village": "Savoy",
+        "date": datetime.today().strftime('%Y-%m-%d')
+    }
+    return render(request, "contract_sheets/contract_base.html", context)
+
+def st_joseph(request):
+    context = {
+        "village": "St.Joseph",
+        "date": datetime.today().strftime('%Y-%m-%d')
+    }
+    return render(request, "contract_sheets/contract_base.html", context)
+
+def ivesdale(request):
+    context = {
+        "village": "Ivesdale",
+        "date": datetime.today().strftime('%Y-%m-%d')
+    }
+    return render(request, "contract_sheets/contract_base.html", context)
+
+def monthly_totals(request):
+    date = request.POST.get('date')
+    village = request.POST.get('village')
+    totals = ContractSheet.objects.filter(Q(date__startswith=date[:7]) & Q(village=village))
+    miles=0
+    time_spent=0
+    criminal_arrests=0
+    traffic_citations=0
+    traffic_warnings=0
+    papers_served=0
+    for contract_sheet in totals:
+        miles += contract_sheet.total_miles
+        time_spent += contract_sheet.total_time
+        criminal_arrests += contract_sheet.arrestCriminal_count
+        traffic_citations += contract_sheet.arrestTraffic_count
+        traffic_warnings += contract_sheet.writtenWarnings_count
+        papers_served += contract_sheet.papersServed_count
+    context = {
+        "month": datetime.strptime(date, "%Y-%m-%d").strftime("%B"),
+        "miles": miles,
+        "time_spent" : time_spent,
+        "criminal_arrests" : criminal_arrests,
+        "traffic_citations" : traffic_citations,
+        "traffic_warnings" : traffic_warnings,
+        "papers_served" : papers_served
+    }
+    return render(request, "contract_sheets/partials/monthly_totals.html", context)
 
 def add_contract_sheet(request):
     date = request.POST.get('date')
-    #date = datetime.strptime(date, "%Y-%m-%d").date()
-
     village = request.POST.get('village')
     context = {
         "date": date,
         "village" : village,
-        "ivesdaleForm" : IvesdaleForm(),
+        "contract_sheetForm" : ContractSheetForm(),
         "activity" : activity,
         "productivity" : productivity
     }    
     return render(request, "contract_sheets/partials/add_contract_sheet.html", context)
 
 def save_contract_sheet(request):
-    data = QueryDict(request.body).dict()
+    form = ContractSheetForm(request.POST)
+    
+    if form.is_valid():
+        form.save()
+    else:
+        print(form.errors)
     return HttpResponse(status=204)
+
+
+def contract_sheets_card(request):
+    date = request.POST.get('date')
+    village = request.POST.get('village')
+    context = {
+        "date": date,
+        "village": village,
+        "day_contract_sheets": ContractSheet.objects.filter(Q(date=date) & Q(village=village))
+    }
+    return render(request, "contract_sheets/partials/contract_sheets_card.html", context)
+
+def view_contract_sheet(request, village, id):
+    context = {
+        "contract_sheet": ContractSheet.objects.get(Q(id=id) & Q(village=village)),
+        "activity": activity,
+        "productivity": productivity
+    }
+    return render(request, "contract_sheets/partials/view_contract_sheet.html", context)
+
+def delete_contract_sheet(request, id):
+    ContractSheet.objects.get(id=id).delete()
+    return HttpResponse(' ')

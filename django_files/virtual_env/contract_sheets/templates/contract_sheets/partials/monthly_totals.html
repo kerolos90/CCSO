@@ -1,0 +1,41 @@
+{% load contract_extras %}
+
+<div class="card shadow-sm" id="monthlyTotals">
+  <h4 class="card-header text-center">{{month}} Totals:</h4>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th colspan="2" scope="col">Category</th>
+          <th colspan="2" scope="col">Month Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th colspan="2" scope="row">Miles:</th>
+          <td colspan="2">{{miles}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Time Spent:</th>
+          <td colspan="2">{{time_spent|hours_minutes}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Criminal Arrests:</th>
+          <td colspan="2">{{criminal_arrests}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Traffic Citations:</th>
+          <td colspan="2">{{traffic_citations}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Traffic Warnings:</th>
+          <td colspan="2">{{traffic_warnings}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Papers Served:</th>
+          <td colspan="2">{{papers_served}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -24,4 +24,16 @@
                 e.detail.shouldSwap = false
             }
         })   
+
+        function ajaxFunction(url, data, table){
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: data,
+                success: function(data){
+                $(`#${table}`).replaceWith(data)
+                htmx.process(document.body);
+                }
+            })
+        }
     </script>

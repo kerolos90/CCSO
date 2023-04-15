@@ -1,6 +1,5 @@
 {% load contract_extras %}
 
-<form>
 <div class="modal-content ">
   <div class="modal-header ">
       <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -8,55 +7,53 @@
   <div class="text-center">
       <h1>Champaign County Sherrif's Office</h1>
       <h2 class="card-subtitle mb-2 text-muted text-center fs-5">
-        Village of {{village}}
+        Village of {{contract_sheet.village}}
         <br /><br />
         Contractual Police Services
         <br />
         Daily Activity Report
       </h2>
       <div class="modal-body ">
-        {% comment %} Hidden Inputs {% endcomment %}
-        {{contract_sheetForm.total_miles}}
-        {{contract_sheetForm.total_time}}
-        {{contract_sheetForm.village}}
-        {{contract_sheetForm.date}}
         <div class="table-responsive ">
           <table class="table table-bordered">
             <tbody>
               <tr>
                 <th>Date:</th>
                 <td>
-                  {{date|date_format}}
+                    {{contract_sheet.date}}
                 </td>
                 <td colspan="2">
-                  {{contract_sheetForm.employee}}
+                    {{contract_sheet.employee}}
                 </td>
                 <th>Car#:</th>
                 <td>
-                  {{contract_sheetForm.carNumber}}
+                    {{contract_sheet.carNumber}}
                 </td>
               </tr>
               <tr>
                 <th>Miles:</th>
                 <td>
-                  {{contract_sheetForm.start_miles}}
-                  {{contract_sheetForm.end_miles}}
+                    {{contract_sheet.start_miles}}-
+                    {{contract_sheet.end_miles}}
                 </td>
-                <td>Time Start:</td>
+                <th>Time Start:</th>
                 <td>
-                  {{contract_sheetForm.start_time}}
-                  {{contract_sheetForm.end_time}}
+                    {{contract_sheet.start_time}}-
+                    {{contract_sheet.end_time}}
                 </td>
                 <th>Weather:</th>
                 <td>
-                  {{contract_sheetForm.weather}}
+                    {{contract_sheet.weather}}
                 </td>
               </tr>
               <tr>
                 <th>Total Miles:</th>
-                <td id="totalMiles"></td>
+                <td>
+                    {{contract_sheet.total_miles}}
+                </td>
                 <th>Total Time:</th>
-                <td id="total_timeSpent">
+                <td>
+                    {{contract_sheet.total_time|hours_minutes}}
                 </td>
               </tr>
             </tbody>
@@ -70,8 +67,8 @@
             <thead>
               <tr>
                 <th scope="col">Activity</th>
-                <th scope="col" width="40%">Time Spent</th>
-                <th scope="col">Activity Log</th>
+                <th scope="col">Time Spent</th>
+                <th scope="col"width="55%">Activity Log</th>
               </tr>
             </thead>
             <tbody>
@@ -81,15 +78,15 @@
                   <b>{{key}}<b>
                   </td>
                 <td>
-                  <label>Hours</label>
                   {% with value|addstr:"_timeSpent" as section %}
-                      {{contract_sheetForm|get_value:section}}
+                    {% with contract_sheet|get_attribute:section as time_format %}
+                        {{time_format|hours_minutes}}
+                    {% endwith %}    
                   {% endwith %}
-                  <label>Minutes</label>
                 </td>
                 <td>
                   {% with value|addstr:"_activityLog" as section %}
-                      {{contract_sheetForm|get_value:section}}
+                      {{contract_sheet|get_attribute:section}}                   
                   {% endwith %}
                 </td>                  
                 </tr>
@@ -98,7 +95,9 @@
                 <td>
                   <b>Total Time Spent</b>
                 </td>
-                <td id="total_timeSpent_table"></td>                
+                <td>
+                    {{contract_sheet.total_time|hours_minutes}}
+                </td>                
               </tr>
             </tbody>
           </table>
@@ -120,12 +119,12 @@
                 </td>
                 <td>
                   {% with value|addstr:"_count" as section %}
-                      {{contract_sheetForm|get_value:section}}
+                      {{contract_sheet|get_attribute:section}}
                   {% endwith %}
                 </td>    
                 <td>
                   {% with value|addstr:"_activityLog" as section %}
-                      {{contract_sheetForm|get_value:section}}
+                      {{contract_sheet|get_attribute:section}}
                   {% endwith %}
                 </td>               
               </tr>
@@ -135,63 +134,13 @@
         </div>
       </div>
     </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
-      Close
-    </button>
-    <button 
-      data-bs-dismiss="modal"
-      type="submit" 
-      class="btn btn-success" 
-      hx-post= "{% url 'save_contract_sheet' %}"
-      id="saveContract_button"
-    >Save
-    </button>
+  <div class="row mt-4">
+    <div class="col-6"><b>Submitted on:</b> {{contract_sheet.submissionDate}}</div>
+    <div class="col-6 text-end">
+      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+        Close
+      </button>
+    </div>
   </div>
   </div>
 </div>
-</form>
-
-<script>
-  var activity_dic = {{activity|safe}}
-
-  function calculateTotalTime() {
-    var hours = 0
-    var minutes = 0
-    for(activity in activity_dic){
-      hours += parseInt($(`#id_${activity_dic[activity]}_timeSpent_0`).val())
-      minutes += parseInt($(`#id_${activity_dic[activity]}_timeSpent_1`).val())
-    }
-    var totalTimeinMinutes =  parseInt(minutes) + parseInt(hours * 60)
-    $('#id_total_time').val(totalTimeinMinutes)
-    var hour = Math.floor(totalTimeinMinutes / 60);
-    var minute = (totalTimeinMinutes % 60);
-    var totalTimeString = `${hour} Hour(s) ${minute} Minutes`;
-    $('#total_timeSpent').html(totalTimeString)
-    $('#total_timeSpent_table').html(totalTimeString)
-
-  }
-  for(activity in activity_dic){
-    $(`#id_${activity_dic[activity]}_timeSpent_0`).on('input', calculateTotalTime);
-    $(`#id_${activity_dic[activity]}_timeSpent_1`).on('input', calculateTotalTime);
-  }
-
-  
-  function calculateTotalMile(){
-    var start_miles = parseInt($('#id_start_miles').val());
-    var end_miles = parseInt($('#id_end_miles').val());
-    var totalMiles = end_miles - start_miles
-    if(totalMiles < 0){
-      totalMiles = "Invalid"
-    }else{
-      $('#id_total_miles').val(totalMiles)
-    }
-    $('#totalMiles').html(`${totalMiles} Miles`)
-  }
-  $('#id_start_miles').on('input', calculateTotalMile);
-  $('#id_end_miles').on('input', calculateTotalMile);
-
-  $('#id_village').val("{{village}}")
-  $('#id_date').val("{{date}}")  
-
-</script>

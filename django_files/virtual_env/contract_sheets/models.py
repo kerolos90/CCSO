@@ -14,7 +14,7 @@ except:
 
 
 
-class BaseModel(models.Model):
+class ContractSheet(models.Model):
     id = models.AutoField(primary_key=True)
     village = employee = models.CharField(max_length=15)
     date = models.DateField(auto_now_add=False, auto_now=False, blank=False)
@@ -30,47 +30,41 @@ class BaseModel(models.Model):
         'Clear', 'Clear'), ('Rain', 'Rain'), ('Snow', 'Snow')])
     
     patrolCar_timeSpent = models.IntegerField()
-    patrolCar_activityLog = models.TextField()
+    patrolCar_activityLog = models.TextField(blank=True)
     patrolFoot_timeSpent = models.IntegerField()
-    patrolFoot_activityLog = models.TextField()
+    patrolFoot_activityLog = models.TextField(blank=True)
     reportWriting_timeSpent = models.IntegerField()
-    reportWriting_activityLog = models.TextField()
+    reportWriting_activityLog = models.TextField(blank=True)
     court_timeSpent = models.IntegerField()
-    court_activityLog = models.TextField()
+    court_activityLog = models.TextField(blank=True)
     trafficDetail_timeSpent = models.IntegerField()
-    trafficDetail_activityLog = models.TextField()
+    trafficDetail_activityLog = models.TextField(blank=True)
     specialDetail_timeSpent = models.IntegerField()
-    specialDetail_activityLog = models.TextField()
+    specialDetail_activityLog = models.TextField(blank=True)
     investigateAccident_timeSpent = models.IntegerField()
-    investigateAccident_activityLog = models.TextField()
+    investigateAccident_activityLog = models.TextField(blank=True)
     investigateCriminal_timeSpent = models.IntegerField()
-    investigateCriminal_activityLog = models.TextField()
+    investigateCriminal_activityLog = models.TextField(blank=True)
     investigateOther_timeSpent = models.IntegerField()
-    investigateOther_activityLog = models.TextField()
+    investigateOther_activityLog = models.TextField(blank=True)
 
     arrestTraffic_count = models.IntegerField()
-    arrestTraffic_activityLog = models.TextField()
+    arrestTraffic_activityLog = models.TextField(blank=True)
     arrestCriminal_count = models.IntegerField()
-    arrestCriminal_activityLog = models.TextField()
+    arrestCriminal_activityLog = models.TextField(blank=True)
     writtenWarnings_count = models.IntegerField()
-    writtenWarnings_activityLog = models.TextField()
+    writtenWarnings_activityLog = models.TextField(blank=True)
     complaintsAnswered_count = models.IntegerField()
-    complaintsAnswered_activityLog = models.TextField()
+    complaintsAnswered_activityLog = models.TextField(blank=True)
     accidentsInvestigated_count = models.IntegerField()
-    accidentsInvestigated_activityLog = models.TextField()
+    accidentsInvestigated_activityLog = models.TextField(blank=True)
     vehiclesInvolved_count = models.IntegerField()
-    vehiclesInvolved_activityLog = models.TextField()
+    vehiclesInvolved_activityLog = models.TextField(blank=True)
     injuries_count = models.IntegerField()
-    injuries_activityLog = models.TextField()
+    injuries_activityLog = models.TextField(blank=True)
     fatalities_count = models.IntegerField()
-    fatalities_activityLog = models.TextField()
+    fatalities_activityLog = models.TextField(blank=True)
     papersServed_count = models.IntegerField()
-    papersServed_activityLog = models.TextField()
+    papersServed_activityLog = models.TextField(blank=True)
 
-    submissionDate = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        abstract = True
-
-class Ivesdale(BaseModel):
-    pass
+    submissionDate = models.DateTimeField(auto_now_add=True)

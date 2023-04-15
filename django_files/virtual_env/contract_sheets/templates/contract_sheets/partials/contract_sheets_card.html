@@ -1,0 +1,64 @@
+{% load contract_extras %}
+
+<div class="card shadow-sm" id="contractSheetsCard">
+  <h4 class="card-header text-center">{{date|date_format}}</h4>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th colspan="2" scope="col">Submitted By:</th>
+          <th colspan="3" scope="col">Hours:</th>
+          <th colspan="1" scope="col">Total Time:</th>
+          <th colspan="2" scope="col">Review:</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for sheet in day_contract_sheets %}
+        <tr hx-target="closest tr">
+          <td colspan="2">{{sheet.employee}}</td>
+          <td colspan="3">{{sheet.start_time}}-{{sheet.end_time}}</td>
+          <td colspan="1">{{sheet.total_time|hours_minutes}}</td>
+          <td colspan="1">
+              <a 
+                hx-target="#dialog"
+                hx-get="{% url 'view_contract_sheet' sheet.id sheet.village %}" 
+                type="button"
+                class="link-primary"
+              >
+                View
+              </a>        
+          </td>
+          <td colspan="1">
+            {% if sheet.employee == "Deputy Gabra #503" %}
+              <button 
+                hx-confirm="Are you sure you wish to delete this contract sheet?"
+                hx-delete="{% url 'delete_contract_sheet' sheet.id %}" 
+                type="submit"
+                class="btn btn-danger btn-sm rounded-1 deleteButton"
+              >
+                <i class="fa fa-trash"></i>
+              </button>            
+            {% endif %} 
+          </td> 
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+      <form>
+        <button
+          class="btn btn-success"
+          type="submit"
+          hx-target="#dialog"
+          hx-post="{% url 'add_contract_sheet'  %}"
+          type="button"
+        >
+          <input type="hidden" name="date" value="{{date}}" />
+          <input type="hidden" name="village" value="{{village}}" />
+          Add Contract
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

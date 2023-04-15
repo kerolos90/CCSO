@@ -18,3 +18,14 @@ def get_value(obj, prop):
     if obj[prop]:
         return obj[prop]
     print("FAIL")
+
+
+@register.filter(name="get_attribute")
+def get_attribute(obj, prop):
+    return getattr(obj, prop)
+
+@register.filter("hours_minutes")
+def hours_minutes(obj):
+    hours = obj // 60
+    minutes = obj % 60
+    return f"{hours} Hour(s) {minutes} Minutes"

@@ -170,7 +170,6 @@ def benefit_time_review(request,id=None):
 
     return render(request, "scheduling/partials/benefit_time_review_partial.html", context)
 
-
 def benefit_requests(request):
     month_year = (date.today().strftime('%Y-%m'))
     context = {
@@ -178,8 +177,6 @@ def benefit_requests(request):
         "benefit_time": TimeOffRequest.objects.filter(date__startswith=month_year)
     }
     return render(request, "scheduling/benefit_requests.html", context)
-
-
 
 
 

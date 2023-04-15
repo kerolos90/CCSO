@@ -63,68 +63,28 @@
           center: 'title',
           right: 'prev,next'
         },
+        selectable:true,
         events : {{colored_dates|safe}},
 
         dateClick: function(date) {
           data = {date:date.dateStr, csrfmiddlewaretoken: '{{ csrf_token }}'}
-          $.ajax({
-            url: "{% url 'patrol_schedule' %}",
-            type: "POST",
-            data: data,
-            success: function(data){
-              $("#table-to-refresh").replaceWith(data)
-              htmx.process(document.body);
-            }
-          }) 
-          $.ajax({
-            url: "{% url 'benefit_time_table'%}",
-            type: "POST",
-            data: data,
-            success: function(data){
-              $("#benefit_time_table").replaceWith(data)
-              htmx.process(document.body);
-            }
-          }) 
+          ajaxFunction("{% url 'patrol_schedule'%}",data,"table-to-refresh")
+          ajaxFunction("{% url 'benefit_time_table'%}",data,"benefit_time_table")
+
           htmx.on("hidden.bs.modal", () => {
-            $.ajax({
-              url: "{% url 'benefit_time_table'%}",
-              type: "POST",
-              data: data,
-              success: function(data){
-                $("#benefit_time_table").replaceWith(data)
-                htmx.process(document.body);
-              }
-            })
+            ajaxFunction("{% url 'benefit_time_table'%}",data,"benefit_time_table")
           })   
         }   
     });
     calendar.render();
     data = {date: '{{date}}', csrfmiddlewaretoken: '{{ csrf_token }}'}
-    $.ajax({
-      url: "{% url 'benefit_time_table'%}",
-      type: "POST",
-      data: data,
-      success: function(data){
-        $("#benefit_time_table").replaceWith(data)
-        htmx.process(document.body);
-      }
-    })
-    
+    ajaxFunction("{% url 'benefit_time_table'%}",data,"benefit_time_table")    
     });
 </script>
 
 <script>
     htmx.on("hidden.bs.modal", () => {
-      $.ajax({
-        url: "{% url 'benefit_time_table'%}",
-        type: "POST",
-        data: data,
-        success: function(data){
-          $("#benefit_time_table").replaceWith(data)
-          htmx.process(document.body);
-        }
-      })
-
+      ajaxFunction("{% url 'benefit_time_table'%}",data,"benefit_time_table")
       })   
 </script>
 

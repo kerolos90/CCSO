@@ -47,15 +47,7 @@
 
 <script>
     //On load
-    $.ajax({
-      url: "{% url 'benefit_time_table'%}",
-      type: "POST",
-      data: {date: $('#month_year').val(), csrfmiddlewaretoken: '{{ csrf_token }}'},
-      success: function(data){
-        $("#benefit_time_table").replaceWith(data)
-        htmx.process(document.body);
-      }
-    })  
+    ajaxFunction("{% url 'benefit_time_table'%}",{date: $('#month_year').val(), csrfmiddlewaretoken: '{{ csrf_token }}'},"benefit_time_table") 
     //Form Submit
     $('#month_yearForm').submit(function(event) {
         event.preventDefault();
