@@ -1,6 +1,7 @@
 from email.policy import default
 from random import choices
 from django.db import models
+from phone_field import PhoneField
 
 #from scheduling.models import EmpAssignment
 
@@ -32,7 +33,8 @@ class Employees(models.Model):
     password = models.CharField(max_length=20)
     fto = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)
-    #Phone number
+    phone_number = PhoneField(blank=True, help_text='Contact phone number')
+
     #start date
 
     def __str__(self) -> str:

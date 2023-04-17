@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'field_training',
     'contract_sheets',
     'settings',
+    'phone_field',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
