@@ -17,6 +17,7 @@
     --fc-today-bg-color: rgb(255, 4, 4)!important;
     --fc-button-hover-bg-color: #fff !important;
     --fc-button-active-bg-color: #2a55f0 !important;
+    --fc-highlight-color: rgb(0 114 255)!important;
 }
 .fc .fc-daygrid-day-frame {
     cursor: pointer;

@@ -2,6 +2,8 @@ from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpResponse, Http404, QueryDict
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, logout, authenticate
 
 from .models import *
 from .forms import *
@@ -30,6 +32,8 @@ productivity = {
     "Papers Served": "papersServed",
 }
 
+
+@login_required(login_url="/login")
 def ivesdale(request):
     context = {
         "village" : "Ivesdale",
@@ -37,6 +41,8 @@ def ivesdale(request):
     }
     return render(request, "contract_sheets/contract_base.html", context)
 
+
+@login_required(login_url="/login")
 def philo(request):
     context = {
         "village": "Philo",
@@ -44,6 +50,8 @@ def philo(request):
     }
     return render(request, "contract_sheets/contract_base.html", context)
 
+
+@login_required(login_url="/login")
 def savoy(request):
     context = {
         "village": "Savoy",
@@ -51,6 +59,8 @@ def savoy(request):
     }
     return render(request, "contract_sheets/contract_base.html", context)
 
+
+@login_required(login_url="/login")
 def st_joseph(request):
     context = {
         "village": "St.Joseph",
@@ -58,6 +68,8 @@ def st_joseph(request):
     }
     return render(request, "contract_sheets/contract_base.html", context)
 
+
+@login_required(login_url="/login")
 def ivesdale(request):
     context = {
         "village": "Ivesdale",
@@ -65,6 +77,8 @@ def ivesdale(request):
     }
     return render(request, "contract_sheets/contract_base.html", context)
 
+
+@login_required(login_url="/login")
 def monthly_totals(request):
     date = request.POST.get('date')
     village = request.POST.get('village')
@@ -93,6 +107,8 @@ def monthly_totals(request):
     }
     return render(request, "contract_sheets/partials/monthly_totals.html", context)
 
+
+@login_required(login_url="/login")
 def add_contract_sheet(request):
     date = request.POST.get('date')
     village = request.POST.get('village')
@@ -105,6 +121,8 @@ def add_contract_sheet(request):
     }    
     return render(request, "contract_sheets/partials/add_contract_sheet.html", context)
 
+
+@login_required(login_url="/login")
 def save_contract_sheet(request):
     form = ContractSheetForm(request.POST)
     
@@ -115,6 +133,7 @@ def save_contract_sheet(request):
     return HttpResponse(status=204)
 
 
+@login_required(login_url="/login")
 def contract_sheets_card(request):
     date = request.POST.get('date')
     village = request.POST.get('village')
@@ -125,6 +144,8 @@ def contract_sheets_card(request):
     }
     return render(request, "contract_sheets/partials/contract_sheets_card.html", context)
 
+
+@login_required(login_url="/login")
 def view_contract_sheet(request, village, id):
     context = {
         "contract_sheet": ContractSheet.objects.get(Q(id=id) & Q(village=village)),
@@ -133,6 +154,8 @@ def view_contract_sheet(request, village, id):
     }
     return render(request, "contract_sheets/partials/view_contract_sheet.html", context)
 
+
+@login_required(login_url="/login")
 def delete_contract_sheet(request, id):
     ContractSheet.objects.get(id=id).delete()
     return HttpResponse(' ')
