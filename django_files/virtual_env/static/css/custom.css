@@ -22,3 +22,11 @@
 .fc .fc-daygrid-day-frame {
     cursor: pointer;
 }
+
+ul.errorlist {
+    color: red;
+}
+
+.errornote{
+    color: red;
+}

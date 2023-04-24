@@ -4,6 +4,7 @@ from django.http import HttpResponse, Http404, QueryDict
 from .models import *
 from .forms import *
 from .set_date_events import colored_dates
+from django.contrib.auth.decorators import login_required
 
 benefit_type= ['vacation', 'comp', 'holiday', 'sick', 'personal']
 
@@ -18,6 +19,8 @@ def patrol_beats(date):
         South.objects.get_or_create(date=date)[0]: "South (7/8)",
     }
 
+
+@login_required(login_url="login")
 def patrol_schedule(request):
    # try:
     date = datetime.today().strftime('%Y-%m-%d')
@@ -54,6 +57,8 @@ def patrol_schedule(request):
     # except:
     #      raise Http404()
 
+
+@login_required(login_url="login")
 def edit_schedule(request):
     date = request.POST.get('date')
     shiftCommanderOneForm = ShiftCommanderOneForm(prefix='SC1',instance=ShiftCommanderOne.objects.get(date=date))
@@ -91,6 +96,8 @@ def edit_schedule(request):
     }
     return render(request, "scheduling/partials/edit_schedule.html", context)
 
+
+@login_required(login_url="login")
 def patrol_schedule_partial(request):
     date = request.POST.get('date')
     data = QueryDict(request.body).dict()
@@ -130,20 +137,28 @@ def patrol_schedule_partial(request):
     }
     return render(request, "scheduling/partials/schedule.html", context)
 
+
+@login_required(login_url="login")
 def delete_other_row(request):
     id = list(QueryDict(request.body).keys())
     Other.objects.get(id=id[0]).delete()
     return HttpResponse('')
 
+
+@login_required(login_url="login")
 def add_other_row(request):
     Other(date=request.POST.get('date')).save()
     return edit_schedule(request)
 
+
+@login_required(login_url="login")
 def time_off_request(request):
     data = QueryDict(request.body).dict()
     TimeOffRequest(**data).save()
     return HttpResponse(status=204)
 
+
+@login_required(login_url="login")
 def benefit_time_table(request):
     date = request.POST.get('date')
     context = {
@@ -152,7 +167,9 @@ def benefit_time_table(request):
     }    
     return render(request, "scheduling/partials/benefit_time_partial.html",context)
 
-def benefit_time_review(request,id=None):
+
+@login_required(login_url="login")
+def benefit_time_review(request, id=None):
     if request.method == 'POST':
         time_off_request = TimeOffRequest.objects.get(id=request.POST.get('id'))
         time_off_request.status = request.POST.get('status')
@@ -170,6 +187,8 @@ def benefit_time_review(request,id=None):
 
     return render(request, "scheduling/partials/benefit_time_review_partial.html", context)
 
+
+@login_required(login_url="login")
 def benefit_requests(request):
     month_year = (date.today().strftime('%Y-%m'))
     context = {

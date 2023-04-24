@@ -1,7 +1,7 @@
 {% load static %}
 
-<header id="page-topbar">
-  <div class="navbar-header shadow">
+<header id="page-topbar" class="shadow">
+  <div class="navbar-header">
     <div class="d-flex">
       <!-- LOGO -->
       <div class="navbar-brand-box">
@@ -40,15 +40,17 @@
       >
         <i class="fa fa-fw fa-bars"></i>
       </button>
-    </div>
-    <h2 class="w-auto">Champaign County Sheriff's Office</h2>
-    <div class="d-flex">
-      <a class="nav-link" href="/login">{{user.first_name}}Logout</a>
       <div class=" d-none d-sm-inline-block">
-        <button type="button" class="header-item btn btn-lg" id="mode-setting-btn">
+        <button type="button" class="btn btn-lg" id="mode-setting-btn">
           <i class="fa fa-fw fa-moon "></i> 
         </button>
       </div>
+    </div>
+    
+    <h2 class="w-auto">Champaign County Sheriff's Office</h2>
+    <div class="d-flex align-items-end flex-row">
+      <div class="p-2">Welcome, {{user.first_name}} {{user.last_name}}</div>
+      <a class="nav-link text-primary" href={% url 'logout' %}>Logout</a>
     </div>
   </div>
 </header>

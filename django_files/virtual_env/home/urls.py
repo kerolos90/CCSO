@@ -1,9 +1,10 @@
 from django.urls import path
 from home import views
+from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
     path("", views.home, name="home"),
-    path("login", views.login_user, name="login_user"),
-
+    path("change_password/", auth_views.PasswordChangeView.as_view(), name="change_password"),
+    path("forms", views.forms, name="forms"),
 ]
