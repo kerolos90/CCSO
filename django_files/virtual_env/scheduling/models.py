@@ -1,17 +1,9 @@
-from random import choices
 from django.db import models
-from home.models import Employees
+from home.models import EMPLOYEE_CHOICES
+from django.conf import settings  
+
 # Create your models here.
 
-
-EMPLOYEE_CHOICES = []
-
-try:
-    for deputies in Employees.objects.order_by('id').values_list('id', 'title', 'l_name'):
-        EMPLOYEE_CHOICES.append(
-            (f"{deputies[1]} {deputies[2]} #{deputies[0]}", str(deputies[0])))
-except:
-    print("No employees in database")
 
 ACTIVITY_CHOICES = [
     ("North (1/2)", "North (1/2)"),
@@ -25,43 +17,6 @@ ACTIVITY_CHOICES = [
     ("Training", "Training"),
     ("Recruit", "Recruit")
 ]
-
-
-class EmpAssignment(models.Model):
-    ASSIGNMENT_CHOICES = [
-        ("None", "None"),
-        ("Gold Days", "Gold Days"),
-        ("Gold Nights", "Gold Nights"),
-        ("Brown Days", "Brown Days"),
-        ("Brown Nights", "Brown Nights"),
-        ("St. Joseph", "St. Joseph"),
-        ("Savoy", "Savoy"),
-        ("Civil Process", "Civil Process"),
-        ("Investigations", "Investigations"),
-        ("Command Staff", "Command Staff"),
-    ]
-    SHORT_DAY_CHOICES = [
-        ("Monday", "Monday"),
-        ("Tuesday", "Tuesday"),
-        ("Wednesday", "Wednesday"),
-        ("Thursday", "Thursday"),
-        ("Friday", "Friday"),
-        ("Saturday", "Saturday"),
-        ("Sunday", "Sunday"),
-    ]
-    assignment = models.CharField(
-        max_length=20,
-        choices=ASSIGNMENT_CHOICES,
-        default="None"
-    )
-    short_day = models.CharField(
-        max_length=20,
-        choices=SHORT_DAY_CHOICES,
-        blank=True
-    )
-    employee = models.ForeignKey(
-        'home.Employees', on_delete=models.CASCADE)
-
 
 class ShiftCommanderOne(models.Model):
     date = models.DateField(
@@ -251,7 +206,7 @@ class Other(models.Model):
 
 class TimeOffRequest(models.Model):
     date = models.DateField(auto_now_add=False, auto_now=False, blank=False)
-    employee = models.CharField(max_length=30,default='Deputy TEST')
+    employee = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     start_time = models.TimeField(default='00:00:00')
     end_time = models.TimeField(default='00:00:00')
     comment = models.CharField(max_length=200, blank=True)
@@ -264,6 +219,6 @@ class TimeOffRequest(models.Model):
     status = models.CharField(max_length=10, choices=[(
         'Approved', 'Approved'), ('Denied', 'Denied'), ('Pending', 'Pending')], default="Pending")
     reviewed = models.DateTimeField(auto_now=True)
-    supervisor = models.CharField(max_length=30,default='Sgt. TEST')
+    supervisor = models.CharField(max_length=30)
     supervisor_comment = models.CharField(max_length=200, blank=True)
     

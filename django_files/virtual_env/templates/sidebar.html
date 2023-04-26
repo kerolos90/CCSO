@@ -25,8 +25,10 @@
             </li>
             <li>
               <a href="{% url 'benefit_requests' %}">
-                <span data-key="t-calendar">Time Off Requests     
-                  <span id="time_off_badge"class="badge rounded-pill badge-notification bg-danger">{{time_off_badge}}</span>
+                <span data-key="t-calendar">Time Off Requests
+                  {% if time_off_badge != 0 %}
+                  <span class="badge rounded-pill badge-notification bg-danger">{{time_off_badge}}</span>
+                  {% endif %}
                 </span>
               </a>
             </li>

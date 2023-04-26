@@ -154,7 +154,7 @@ def add_other_row(request):
 @login_required(login_url="login")
 def time_off_request(request):
     data = QueryDict(request.body).dict()
-    TimeOffRequest(**data).save()
+    TimeOffRequest(employee=request.user,**data).save()
     return HttpResponse(status=204)
 
 
@@ -174,6 +174,8 @@ def benefit_time_review(request, id=None):
         time_off_request = TimeOffRequest.objects.get(id=request.POST.get('id'))
         time_off_request.status = request.POST.get('status')
         time_off_request.supervisor_comment= request.POST.get('supervisor_comment')
+        time_off_request.supervisor= request.POST.get('supervisor')
+
         time_off_request.save()
         return HttpResponse(status=204)
     

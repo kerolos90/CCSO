@@ -86,28 +86,30 @@ class OtherForm(forms.ModelForm):
 class TimeOffRequestForm(forms.ModelForm):
     class Meta:
         model = TimeOffRequest
-        exclude = ['employee', 'submitted', 'status', 'reviewed', 'supervisor_comment']
+        exclude = ['submitted', 'status', 'reviewed', 'supervisor_comment']
+    employee = forms.CharField(required=False, widget=forms.HiddenInput())
     start_time = forms.TimeField(widget=forms.TimeInput(
         attrs={'type': 'time', 'class': 'form-control', 'value': '00:00'}))
     end_time = forms.TimeField(widget=forms.TimeInput(
         attrs={'type': 'time', 'class': 'form-control', 'value': '00:00'}))
     vacation = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'number-only form-control'}))
+        attrs={'class': 'number-only form-control', 'value': '0'}))
     comp = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'number-only form-control'}))
+        attrs={'class': 'number-only form-control', 'value': '0'}))
     holiday= forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'number-only form-control'}))
+        attrs={'class': 'number-only form-control', 'value': '0'}))
     sick = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'number-only form-control'}))
+        attrs={'class': 'number-only form-control', 'value': '0'}))
     personal = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'number-only form-control'}))
+        attrs={'class': 'number-only form-control', 'value': '0'}))
     comment = forms.CharField(widget = forms.TextInput(
         attrs={'class': 'form-control'}))
 
 class SupervisorTimeOffReviewForm(forms.ModelForm):
     class Meta:
         model = TimeOffRequest
-        fields = ['id','status', 'supervisor_comment']
+        fields = ['id','status', 'supervisor','supervisor_comment']
+    supervisor = forms.CharField(widget=forms.HiddenInput())
     id = forms.IntegerField(required=False, widget=forms.HiddenInput())
     status = forms.ChoiceField(choices=[('Approved', 'Approved'), ('Denied', 'Denied'), ('Pending', 'Pending')],
                                widget=forms.Select(attrs={'class': 'form-select'}))

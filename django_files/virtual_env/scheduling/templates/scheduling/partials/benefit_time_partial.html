@@ -11,7 +11,7 @@
                 type="button"
             >
                 <div  class="card-header">
-                    <h5 class="card-title">{{result.employee}}</h5>
+                    <h5 class="card-title">{{result.employee.title}} {{result.employee.last_name}} #{{result.employee.badge_number}}</h5>
                 </div>
                 <div class="card-body pt-1">        
                     <ul class="list-group list-group-flush">
@@ -31,7 +31,9 @@
                                 {% if result.status != "Pending" %}
                                     on {{result.reviewed}}
                                     <br>
-                                    by Sgt. XXX
+                                    by {{result.supervisor}}
+                                    <br>
+                                    Comments: {{result.supervisor_comment}}
                                 {% endif %}
                             </li>                                                                                                               
                     </ul>                   

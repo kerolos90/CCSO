@@ -1,18 +1,7 @@
 from django.db import models
-from home.models import Employees
+from home.models import EMPLOYEE_CHOICES
 
 # Create your models here.
-
-EMPLOYEE_CHOICES = []
-
-try:
-    for deputies in Employees.objects.order_by('id').values_list('id', 'title', 'l_name'):
-        EMPLOYEE_CHOICES.append(
-            (f"{deputies[1]} {deputies[2]} #{deputies[0]}", f"{deputies[1]} {deputies[2]} #{deputies[0]}"))
-except:
-    print("No employees in database")
-
-
 
 class ContractSheet(models.Model):
     id = models.AutoField(primary_key=True)
