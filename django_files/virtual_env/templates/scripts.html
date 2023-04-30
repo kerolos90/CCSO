@@ -36,4 +36,17 @@
                 }
             })
         }
+
+    document.body.setAttribute('data-layout-mode', 'light');
+    document.body.setAttribute('data-topbar', 'light');
+    document.body.setAttribute('data-sidebar', 'light');
+
+
+    $('#mode-setting-btn').on("click",function(){
+        if(localStorage["mode_value"] =="dark")
+        localStorage["mode_value"] = "light"
+
+        console.log(localStorage["mode_value"]);
+
+    }) 
     </script>

@@ -13,5 +13,8 @@ urlpatterns = [
     path("benefit_time_review/", views.benefit_time_review, name="benefit_time_review"),
     path("benefit_time_review/<int:id>", views.benefit_time_review, name="benefit_time_review"),
     path("benefit_requests/", views.benefit_requests, name="benefit_requests"),
+    path("my_benefit_requests/", views.my_benefit_requests, name="my_benefit_requests"),
+    path("my_benefit_time_table/", views.my_benefit_time_table, name="my_benefit_time_table"),
+    path("delete_my_request/<int:id>", views.delete_my_request, name="delete_my_request"),
 
 ]

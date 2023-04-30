@@ -4,19 +4,21 @@
     <div class="d-flex justify-content-between">
       <button
         type="button"
-        class="btn btn-light shadow"
-        hx-post="{% url 'edit_schedule'%}"
-      >
-      Edit Schedule
-      </button>
-      <button
-        type="button"
         class="btn btn-danger shadow"
         data-bs-toggle="modal"
         data-bs-target="#timeOffModal"
       >
         Time Off Request
       </button>
+      {% if can_modify %}
+        <button
+          type="button"
+          class="btn btn-light shadow"
+          hx-post="{% url 'edit_schedule'%}"
+        >
+        Edit Schedule
+        </button>
+      {% endif %}
       {% include 'scheduling/partials/time_off_request_partial.html' %}
     </div>
     <h1 id="schedule_date" class="text-center">{{date|date_format}}</h1>

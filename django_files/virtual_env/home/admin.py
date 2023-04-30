@@ -6,7 +6,7 @@ from .models import User
 
 class MyUserAdmin(UserAdmin):
     model = User
-    list_display = ('username', 'badge_number', 'title',
+    list_display = ('id','username', 'badge_number', 'title',
                     'first_name', 'last_name',)
     fieldsets = (
         (None, {'fields': ('username', 'password')}),

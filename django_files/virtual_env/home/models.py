@@ -67,7 +67,7 @@ EMPLOYEE_CHOICES = []
 
 try:
     for employee in User.objects.order_by('badge_number').values_list('badge_number', 'title', 'last_name'):
-        if (employee[2] != 'admin'):
+        if (employee[1] != 'admin'):
             EMPLOYEE_CHOICES.append(
                 (f"{employee[1]} {employee[2]} #{employee[0]}", f"#{employee[0]}"))
 except:

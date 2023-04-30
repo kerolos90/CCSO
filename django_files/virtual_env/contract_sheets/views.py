@@ -3,7 +3,6 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404, QueryDict
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login, logout, authenticate
 
 from .models import *
 from .forms import *
@@ -115,7 +114,7 @@ def add_contract_sheet(request):
     context = {
         "date": date,
         "village" : village,
-        "contract_sheetForm" : ContractSheetForm(),
+        "contract_sheetForm": ContractSheetForm(),
         "activity" : activity,
         "productivity" : productivity
     }    
@@ -125,9 +124,10 @@ def add_contract_sheet(request):
 @login_required(login_url="/login")
 def save_contract_sheet(request):
     form = ContractSheetForm(request.POST)
-    
     if form.is_valid():
-        form.save()
+        contract_sheet = ContractSheet.objects.get(id=form.save().id)
+        contract_sheet.employee=request.user
+        contract_sheet.save()
     else:
         print(form.errors)
     return HttpResponse(status=204)

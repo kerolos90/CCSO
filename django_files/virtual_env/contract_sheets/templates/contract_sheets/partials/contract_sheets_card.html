@@ -16,7 +16,7 @@
       <tbody>
         {% for sheet in day_contract_sheets %}
         <tr hx-target="closest tr">
-          <td colspan="2">{{sheet.employee}}</td>
+          <td colspan="2">{{sheet.employee.title}} {{sheet.employee.last_name}}</td>
           <td colspan="3">{{sheet.start_time}}-{{sheet.end_time}}</td>
           <td colspan="1">{{sheet.total_time|hours_minutes}}</td>
           <td colspan="1">
@@ -30,7 +30,7 @@
               </a>        
           </td>
           <td colspan="1">
-            {% if sheet.employee == "Deputy Gabra #503" %}
+            {% if sheet.employee == user %}
               <button 
                 hx-confirm="Are you sure you wish to delete this contract sheet?"
                 hx-delete="{% url 'delete_contract_sheet' sheet.id %}" 

@@ -206,7 +206,8 @@ class Other(models.Model):
 
 class TimeOffRequest(models.Model):
     date = models.DateField(auto_now_add=False, auto_now=False, blank=False)
-    employee = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    employee = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     start_time = models.TimeField(default='00:00:00')
     end_time = models.TimeField(default='00:00:00')
     comment = models.CharField(max_length=200, blank=True)

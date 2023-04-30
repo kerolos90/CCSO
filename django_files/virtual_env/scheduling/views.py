@@ -5,6 +5,7 @@ from .models import *
 from .forms import *
 from .set_date_events import colored_dates
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 benefit_type= ['vacation', 'comp', 'holiday', 'sick', 'personal']
 
@@ -36,7 +37,8 @@ def patrol_schedule(request):
         "stJoesph": SaintJoseph.objects.get_or_create(date=date)[0],
         "other": Other.objects.filter(date=date),
         "time_off": TimeOffRequestForm(),
-        "benefit_type": benefit_type
+        "benefit_type": benefit_type,
+        "can_modify": request.user.groups.filter(name='Employees').exists()
     }
 
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
@@ -132,8 +134,7 @@ def patrol_schedule_partial(request):
         "stJoesph": SaintJoseph.objects.get_or_create(date=date)[0],
         "other": Other.objects.filter(date=date),
         "time_off": TimeOffRequestForm(),
-        "benefit_type": benefit_type
-
+        "benefit_type": benefit_type,
     }
     return render(request, "scheduling/partials/schedule.html", context)
 
@@ -163,7 +164,7 @@ def benefit_time_table(request):
     date = request.POST.get('date')
     context = {
         "benefit_time": TimeOffRequest.objects.filter(date__startswith=date),
-        "date": date
+        "date": date,
     }    
     return render(request, "scheduling/partials/benefit_time_partial.html",context)
 
@@ -200,10 +201,31 @@ def benefit_requests(request):
     return render(request, "scheduling/benefit_requests.html", context)
 
 
+@login_required(login_url="login")
+def my_benefit_requests(request):
+    month_year = (date.today().strftime('%Y-%m'))
+    context = {
+        "month_year": month_year,
+        "benefit_time": TimeOffRequest.objects.filter(Q(date__startswith=month_year) & Q(employee=request.user))
+    }
+    return render(request, "scheduling/my_benefit_requests.html", context)
 
 
+@login_required(login_url="login")
+def my_benefit_time_table(request):
+    date = request.POST.get('date')
+    context = {
+        "benefit_time": TimeOffRequest.objects.filter(Q(date__startswith=date) & Q(employee=request.user)),
+        "date": date,
+        "benefit_type": benefit_type,
+    }
+    return render(request, "scheduling/partials/my_benefit_time_view_partial.html", context)
 
 
+@login_required(login_url="/login")
+def delete_my_request(request, id):
+    TimeOffRequest.objects.get(id=id).delete()
+    return HttpResponse(' ')
 
 
 

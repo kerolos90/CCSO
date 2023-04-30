@@ -194,28 +194,30 @@
     a(".right-bar-toggle").on("click", function (t) {
       a("body").toggleClass("right-bar-enabled");
     }),
-    a("#mode-setting-btn").on("click", function (t) {
-      n.hasAttribute("data-layout-mode") &&
-      "dark" == n.getAttribute("data-layout-mode")
-        ? (document.body.setAttribute("data-layout-mode", "light"),
-          document.body.setAttribute("data-topbar", "light"),
-          document.body.setAttribute("data-sidebar", "light"),
-          (n.hasAttribute("data-layout") &&
-            "horizontal" == n.getAttribute("data-layout")) ||
-            document.body.setAttribute("data-sidebar", "light"),
-          s("topbar-color-light"),
-          s("sidebar-color-light"),
-          s("topbar-color-light"))
-        : (document.body.setAttribute("data-layout-mode", "dark"),
-          document.body.setAttribute("data-topbar", "dark"),
-          document.body.setAttribute("data-sidebar", "dark"),
-          (n.hasAttribute("data-layout") &&
-            "horizontal" == n.getAttribute("data-layout")) ||
-            document.body.setAttribute("data-sidebar", "dark"),
-          s("layout-mode-dark"),
-          s("sidebar-color-dark"),
-          s("topbar-color-dark"));
-    }),
+    // a("#mode-setting-btn").on("click", function (t) {
+    //   n.hasAttribute("data-layout-mode") &&
+    //   "dark" == n.getAttribute("data-layout-mode")
+    //     ?
+    //       (document.body.setAttribute("data-layout-mode", "light"),
+    //       document.body.setAttribute("data-topbar", "light"),
+    //       document.body.setAttribute("data-sidebar", "light"),
+    //       (n.hasAttribute("data-layout") &&
+    //         "horizontal" == n.getAttribute("data-layout")) ||
+    //         document.body.setAttribute("data-sidebar", "light"),
+    //       s("topbar-color-light"),
+    //       s("sidebar-color-light"),
+    //       s("topbar-color-light"))
+    //     :
+    //       (document.body.setAttribute("data-layout-mode", "dark"),
+    //       document.body.setAttribute("data-topbar", "dark"),
+    //       document.body.setAttribute("data-sidebar", "dark"),
+    //       (n.hasAttribute("data-layout") &&
+    //         "horizontal" == n.getAttribute("data-layout")) ||
+    //         document.body.setAttribute("data-sidebar", "dark"),
+    //       s("layout-mode-dark"),
+    //       s("sidebar-color-dark"),
+    //       s("topbar-color-dark"));
+    // }),
     a(document).on("click", "body", function (t) {
       0 < a(t.target).closest(".right-bar-toggle, .right-bar").length ||
         a("body").removeClass("right-bar-enabled");

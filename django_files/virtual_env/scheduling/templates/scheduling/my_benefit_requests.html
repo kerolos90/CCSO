@@ -1,0 +1,66 @@
+{% extends "layout.html" %} 
+{% load scheduling_extras %}
+{% load static %} 
+
+{% block content %}
+<div class="main-content">
+  <div class="page-content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header d-flex">
+                <h4 class="p-2 flex-grow-1" >Time Off Requests</h4>
+                <div class="p-2 ">
+                    <form id="month_yearForm" action="{% url 'my_benefit_time_table' %}" method="post">
+                        {% csrf_token %}
+                        <div class='input-group'>
+                            <input class="form-control" type="month" id="month_year" name="date" value="{{month_year}}">
+                            <button 
+                                type="submit"
+                                class="btn btn-default"
+                            >
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="card-body">
+                        <h2 id="monthYearTitle" class="text-center">{{month_year|monthYear_format}}</h2>
+                        <br>
+                    <div>
+                        <div hx-swap="outerHTML"id="benefit_time_table"></div>
+                        <div id="modal" class="modal fade">
+                      <div id="dialog" class="modal-dialog" hx-target="this"></div>
+                  </div>  
+                    </div>
+                    
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+
+<script>
+    //On load
+    data = {date: $('#month_year').val(), csrfmiddlewaretoken: '{{ csrf_token }}'}
+    ajaxFunction("{% url 'my_benefit_time_table'%}",data,"benefit_time_table") 
+    //Form Submit
+    $('#month_yearForm').submit(function(event) {
+        event.preventDefault();
+        $.post($('#month_yearForm').attr('action'), $('#month_yearForm').serialize(), function(response) {
+            $("#my_benefit_time_table").replaceWith(response)
+            var month_yearObject = moment($('#month_year').val() + "-01", "YYYY-MM-DD");
+            $("#monthYearTitle").html(month_yearObject.format("MMMM YYYY"))
+            htmx.process(document.body);
+        });
+    });
+     htmx.on("htmx:afterSwap", () => {
+      ajaxFunction("{% url 'my_benefit_time_table'%}",data, "my_benefit_time_table")
+    }) 
+    
+</script>
+{% endblock scripts %}
+

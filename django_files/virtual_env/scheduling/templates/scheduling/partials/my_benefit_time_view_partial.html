@@ -1,19 +1,21 @@
 {% load scheduling_extras %}
 
-<div class="container" id="benefit_time_table">
+<div class="container" id="my_benefit_time_table">
     <div class="row" >
         {% for result in benefit_time  %}
         <div class="col-lg-4">
             <div class="card shadow">
-            <a
-                hx-target="#dialog"
-                type="button"
-                {% if can_modify %}
-                    hx-get="{% url 'benefit_time_review' result.id %}" 
-                {% else %}
-                    href="javascript:void(0)"
-                {% endif %}
-            >
+            {% if result.status == "Pending" %}
+                <div class="d-flex justify-content-end">
+                    <button 
+                    hx-confirm="Are you sure you wish to delete this time off request?"
+                    hx-delete="{% url 'delete_my_request' result.id %}" 
+                    type="submit"
+                    class="btn-close"
+                    >
+                    </button> 
+                </div>         
+            {% endif %}                
                 <div  class="card-header text-center">
                     <h5 class="card-title">{{result.employee.title}} {{result.employee.last_name}} #{{result.employee.badge_number}}</h5>
                 </div>
@@ -21,6 +23,17 @@
                     <ul class="list-group list-group-flush">
                             <li class="list-group-item ">Date: {{result.date}}</li>
                             <li class="list-group-item ">Time: {{result.start_time}}-{{result.end_time}}</li>
+                            <li class="list-group-item">
+                                Hours:
+                                {% for type in benefit_type  %}
+                                    {% if result|get_attribute:type != "0" %}
+                                <ul>
+                                            {{type|capfirst}} Time:
+                                            {{result|get_attribute:type}} Hour(s)
+                                </ul>
+                                    {% endif %}
+                                {% endfor %}
+                            </li>
                             <li class="list-group-item">Submitted: {{result.submitted}}</li> 
                             <li {% if result.status == "Pending" %}
                                     class="list-group-item bg-warning" 
@@ -42,10 +55,8 @@
                             </li>                                                                                                               
                     </ul>                   
                 </div>
-            </a>
             </div>
         </div>
         {% endfor %}
     </div>    
 </div>
-

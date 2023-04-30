@@ -36,10 +36,9 @@ class ContractSheetForm(forms.ModelForm):
 
     class Meta:
         model = ContractSheet
-        exclude = ['id', 'submissionDate']
+        exclude = ['id', 'submissionDate', 'employee']
     village = forms.CharField(widget=forms.HiddenInput())
     date = forms.DateField(widget=forms.HiddenInput())
-    employee = forms.ChoiceField(disabled=False, choices=EMPLOYEE_CHOICES, widget=forms.Select(attrs={'class': 'form-select'}))
     carNumber = forms.IntegerField(min_value=0,widget=forms.NumberInput(
         attrs={'class': 'form-control', 'style': 'width:65%', 'value':0}))
     start_miles = forms.IntegerField(min_value=0, widget=forms.NumberInput(
@@ -56,6 +55,8 @@ class ContractSheetForm(forms.ModelForm):
         'Clear', 'Clear'), ('Rain', 'Rain'), ('Snow', 'Snow')],
         widget=forms.Select(attrs={'class': 'form-select'}))
     
+
+
     patrolCar_timeSpent = TimeSpentField()
     patrolCar_activityLog = forms.CharField(required=False,widget=forms.Textarea(attrs={'rows':2}))
     patrolFoot_timeSpent = TimeSpentField()

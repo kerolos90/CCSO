@@ -24,6 +24,12 @@
               </a>
             </li>
             <li>
+              <a href="{% url 'my_benefit_requests' %}">
+                <span data-key="t-calendar">My Time Off Requests</span>
+              </a>
+            </li>
+            {% if can_modify %}
+            <li>
               <a href="{% url 'benefit_requests' %}">
                 <span data-key="t-calendar">Time Off Requests
                   {% if time_off_badge != 0 %}
@@ -32,6 +38,7 @@
                 </span>
               </a>
             </li>
+            {% endif %}
           </ul>
         </li>
 

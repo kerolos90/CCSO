@@ -12,17 +12,17 @@
           <tr>
             
             <th scope="row">Name:</th>
-            <td>Deputy {{time_off_request.employee}}</td>
+            <td>{{time_off_request.employee.title}} {{time_off_request.employee.last_name}} #{{time_off_request.employee.badge_number}}</td>
           </tr>
           <tr>
             <th scope="row">Hours:</th>
             <td>{{time_off_request.start_time}}-{{time_off_request.end_time}}</td>
           </tr>
           {% for type in benefit_type  %}
-              {% if time_off_request|get_attribute:type  %}
+              {% if time_off_request|get_attribute:type != "0" %}
                   <tr>
                       <th scope="row">{{type|capfirst}} Time:</th>
-                      <td>{{time_off_request|get_attribute:type}} Hours</td>
+                      <td>{{time_off_request|get_attribute:type}} Hour(s)</td>
                   </tr>                     
               {% endif %}
           {% endfor %}

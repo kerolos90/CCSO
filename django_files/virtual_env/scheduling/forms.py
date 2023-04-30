@@ -111,7 +111,7 @@ class SupervisorTimeOffReviewForm(forms.ModelForm):
         fields = ['id','status', 'supervisor','supervisor_comment']
     supervisor = forms.CharField(widget=forms.HiddenInput())
     id = forms.IntegerField(required=False, widget=forms.HiddenInput())
-    status = forms.ChoiceField(choices=[('Approved', 'Approved'), ('Denied', 'Denied'), ('Pending', 'Pending')],
+    status = forms.ChoiceField(choices=[('Approved', 'Approved'), ('Denied', 'Denied'),],
                                widget=forms.Select(attrs={'class': 'form-select'}))
     supervisor_comment = forms.CharField(widget = forms.TextInput(
         attrs={'class': 'form-control'}))

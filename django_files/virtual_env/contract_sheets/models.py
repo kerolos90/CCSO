@@ -1,13 +1,12 @@
 from django.db import models
-from home.models import EMPLOYEE_CHOICES
-
+from django.conf import settings
 # Create your models here.
 
 class ContractSheet(models.Model):
-    id = models.AutoField(primary_key=True)
-    village = employee = models.CharField(max_length=15)
+    village = models.CharField(max_length=15)
     date = models.DateField(auto_now_add=False, auto_now=False, blank=False)
-    employee = models.CharField(max_length=30, choices=EMPLOYEE_CHOICES)
+    employee = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     carNumber = models.IntegerField()
     start_miles = models.IntegerField()
     end_miles = models.IntegerField()
