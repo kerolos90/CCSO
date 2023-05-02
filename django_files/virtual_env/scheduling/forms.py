@@ -80,8 +80,8 @@ class OtherForm(forms.ModelForm):
     id = forms.IntegerField(required=False, widget=forms.HiddenInput())
     beat_assignment = forms.ChoiceField(choices=ACTIVITY_CHOICES, widget=forms.Select(attrs={'class': 'form-select'}))
     employee = forms.ChoiceField(choices=EMPLOYEE_CHOICES, widget=forms.Select(attrs={'class': 'form-select'}))
-    start_time = forms.TimeField(required=False, widget=forms.TimeInput(format='%H:%M', attrs={'type': 'time'}))
-    end_time = forms.TimeField(required=False, widget=forms.TimeInput(format='%H:%M', attrs={'type': 'time'}))
+    start_time = forms.TimeField(required=False, widget=forms.TimeInput(format='%H:%M', attrs={'type': 'time', 'class': 'form-select'}))
+    end_time = forms.TimeField(required=False, widget=forms.TimeInput(format='%H:%M', attrs={'type': 'time', 'class': 'form-select'}))
 
 class TimeOffRequestForm(forms.ModelForm):
     class Meta:

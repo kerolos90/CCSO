@@ -37,7 +37,6 @@
   <tbody>
     {% for instance in otherForm  %}
       <tr hx-target="closest tr" >
-        {% if instance.start_time|time:"H" < "18" %}
           <td>{{instance.beat_assignment}}</td>
           <td>{{instance.employee}}</td>      
           <td>{{instance.start_time}}</td>
@@ -53,7 +52,6 @@
               <i class="fa fa-trash"></i>
             </button>
           </td>
-        {% endif %}
         </tr>
       
       {% endfor %}
