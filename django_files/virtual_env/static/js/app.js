@@ -102,70 +102,6 @@
           "slow"
         ));
     }),
-    a(".navbar-nav a").each(function () {
-      var t = window.location.href.split(/[?#]/)[0];
-      this.href == t &&
-        (a(this).addClass("active"),
-        a(this).parent().addClass("active"),
-        a(this).parent().parent().addClass("active"),
-        a(this).parent().parent().parent().addClass("active"),
-        a(this).parent().parent().parent().parent().addClass("active"),
-        a(this).parent().parent().parent().parent().parent().addClass("active"),
-        a(this)
-          .parent()
-          .parent()
-          .parent()
-          .parent()
-          .parent()
-          .parent()
-          .addClass("active"));
-    }),
-    a('[data-toggle="fullscreen"]').on("click", function (t) {
-      t.preventDefault(),
-        a("body").toggleClass("fullscreen-enable"),
-        document.fullscreenElement ||
-        document.mozFullScreenElement ||
-        document.webkitFullscreenElement
-          ? document.cancelFullScreen
-            ? document.cancelFullScreen()
-            : document.mozCancelFullScreen
-            ? document.mozCancelFullScreen()
-            : document.webkitCancelFullScreen &&
-              document.webkitCancelFullScreen()
-          : document.documentElement.requestFullscreen
-          ? document.documentElement.requestFullscreen()
-          : document.documentElement.mozRequestFullScreen
-          ? document.documentElement.mozRequestFullScreen()
-          : document.documentElement.webkitRequestFullscreen &&
-            document.documentElement.webkitRequestFullscreen(
-              Element.ALLOW_KEYBOARD_INPUT
-            );
-    }),
-    document.addEventListener("fullscreenchange", c),
-    document.addEventListener("webkitfullscreenchange", c),
-    document.addEventListener("mozfullscreenchange", c),
-    (function () {
-      if (document.getElementById("topnav-menu-content")) {
-        for (
-          var t = document
-              .getElementById("topnav-menu-content")
-              .getElementsByTagName("a"),
-            e = 0,
-            a = t.length;
-          e < a;
-          e++
-        )
-          t[e].onclick = function (t) {
-            t &&
-              t.target &&
-              "#" === t.target.getAttribute("href") &&
-              (t.target.parentElement.classList.toggle("active"),
-              t.target.nextElementSibling &&
-                t.target.nextElementSibling.classList.toggle("show"));
-          };
-        window.addEventListener("resize", l);
-      }
-    })(),
     [].slice
       .call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
       .map(function (t) {
@@ -194,30 +130,6 @@
     a(".right-bar-toggle").on("click", function (t) {
       a("body").toggleClass("right-bar-enabled");
     }),
-    // a("#mode-setting-btn").on("click", function (t) {
-    //   n.hasAttribute("data-layout-mode") &&
-    //   "dark" == n.getAttribute("data-layout-mode")
-    //     ?
-    //       (document.body.setAttribute("data-layout-mode", "light"),
-    //       document.body.setAttribute("data-topbar", "light"),
-    //       document.body.setAttribute("data-sidebar", "light"),
-    //       (n.hasAttribute("data-layout") &&
-    //         "horizontal" == n.getAttribute("data-layout")) ||
-    //         document.body.setAttribute("data-sidebar", "light"),
-    //       s("topbar-color-light"),
-    //       s("sidebar-color-light"),
-    //       s("topbar-color-light"))
-    //     :
-    //       (document.body.setAttribute("data-layout-mode", "dark"),
-    //       document.body.setAttribute("data-topbar", "dark"),
-    //       document.body.setAttribute("data-sidebar", "dark"),
-    //       (n.hasAttribute("data-layout") &&
-    //         "horizontal" == n.getAttribute("data-layout")) ||
-    //         document.body.setAttribute("data-sidebar", "dark"),
-    //       s("layout-mode-dark"),
-    //       s("sidebar-color-dark"),
-    //       s("topbar-color-dark"));
-    // }),
     a(document).on("click", "body", function (t) {
       0 < a(t.target).closest(".right-bar-toggle, .right-bar").length ||
         a("body").removeClass("right-bar-enabled");

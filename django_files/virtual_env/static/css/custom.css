@@ -30,3 +30,8 @@ ul.errorlist {
 .errornote{
     color: red;
 }
+
+.topbar-header {
+    background-color: rgb(233, 230, 174);
+    background-image: linear-gradient(to top, #2e5f8a);
+}
