@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404, QueryDict
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
+from .set_date_events import Ivesdale_events,Philo_events,Savoy_events,Stjoseph_events
 
 from .models import *
 from .forms import *
@@ -36,16 +37,22 @@ productivity = {
 def ivesdale(request):
     context = {
         "village" : "Ivesdale",
-        "date" : datetime.today().strftime('%Y-%m-%d')
+        "date" : datetime.today().strftime('%Y-%m-%d'),
+        "colored_dates": Ivesdale_events,
+
     }
     return render(request, "contract_sheets/contract_base.html", context)
 
 
 @login_required(login_url="/login")
 def philo(request):
+    print("colored_dates")
+
     context = {
         "village": "Philo",
-        "date": datetime.today().strftime('%Y-%m-%d')
+        "date": datetime.today().strftime('%Y-%m-%d'),
+        "colored_dates": Philo_events,
+
     }
     return render(request, "contract_sheets/contract_base.html", context)
 
@@ -54,7 +61,8 @@ def philo(request):
 def savoy(request):
     context = {
         "village": "Savoy",
-        "date": datetime.today().strftime('%Y-%m-%d')
+        "date": datetime.today().strftime('%Y-%m-%d'),
+        "colored_dates": Savoy_events,
     }
     return render(request, "contract_sheets/contract_base.html", context)
 
@@ -63,18 +71,11 @@ def savoy(request):
 def st_joseph(request):
     context = {
         "village": "St.Joseph",
-        "date": datetime.today().strftime('%Y-%m-%d')
+        "date": datetime.today().strftime('%Y-%m-%d'),
+        "colored_dates": Stjoseph_events,
     }
     return render(request, "contract_sheets/contract_base.html", context)
 
-
-@login_required(login_url="/login")
-def ivesdale(request):
-    context = {
-        "village": "Ivesdale",
-        "date": datetime.today().strftime('%Y-%m-%d')
-    }
-    return render(request, "contract_sheets/contract_base.html", context)
 
 
 @login_required(login_url="/login")
@@ -128,6 +129,12 @@ def save_contract_sheet(request):
         contract_sheet = ContractSheet.objects.get(id=form.save().id)
         contract_sheet.employee=request.user
         contract_sheet.save()
+        eval(contract_sheet.village + "_events").append({
+            'start': (contract_sheet.date.strftime('%Y-%m-%d')),
+            'display': 'background',
+            'color': 'green'
+        })
+        print(eval(contract_sheet.village + "_events"))
     else:
         print(form.errors)
     return HttpResponse(status=204)
@@ -157,5 +164,7 @@ def view_contract_sheet(request, village, id):
 
 @login_required(login_url="/login")
 def delete_contract_sheet(request, id):
-    ContractSheet.objects.get(id=id).delete()
+    contract_sheet = ContractSheet.objects.get(id=id)
+    contract_sheet.date
+    contract_sheet.delete()
     return HttpResponse(' ')

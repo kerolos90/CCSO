@@ -54,8 +54,6 @@ class ContractSheetForm(forms.ModelForm):
     weather = forms.ChoiceField(choices=[(
         'Clear', 'Clear'), ('Rain', 'Rain'), ('Snow', 'Snow')],
         widget=forms.Select(attrs={'class': 'form-select'}))
-    
-
 
     patrolCar_timeSpent = TimeSpentField()
     patrolCar_activityLog = forms.CharField(required=False,widget=forms.Textarea(attrs={'rows':2}))

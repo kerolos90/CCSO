@@ -7,7 +7,6 @@ urlpatterns = [
     path("philo", views.philo, name="philo"),
     path("savoy", views.savoy, name="savoy"),
     path("st_joseph", views.st_joseph, name="st_joseph"),
-
     path("add_contract_sheet", views.add_contract_sheet, name="add_contract_sheet"),
     path("save_contract_sheet", views.save_contract_sheet, name="save_contract_sheet"),
     path("monthly_totals", views.monthly_totals, name="monthly_totals"),
