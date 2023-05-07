@@ -165,6 +165,10 @@ def view_contract_sheet(request, village, id):
 @login_required(login_url="/login")
 def delete_contract_sheet(request, id):
     contract_sheet = ContractSheet.objects.get(id=id)
-    contract_sheet.date
-    contract_sheet.delete()
+    for event in eval(contract_sheet.village + "_events"):
+        if event["start"] == contract_sheet.date:
+            eval(contract_sheet.village + "_events").remove(event)
+            break
+    print(eval(contract_sheet.village + "_events"))
+    #contract_sheet.delete()
     return HttpResponse(' ')
