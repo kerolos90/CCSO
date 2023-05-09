@@ -14,3 +14,8 @@ def home(request):
 @login_required(login_url="login")
 def forms(request):
     return render(request, "home/forms.html")
+
+
+@login_required(login_url="login")
+def ehd(request):
+    return render(request, "home/ehd.html")

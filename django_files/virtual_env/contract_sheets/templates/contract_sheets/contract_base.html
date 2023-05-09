@@ -62,7 +62,13 @@
           right: 'prev,next'
         },
         selectable: true,
-        events: {{colored_dates|safe}},
+        eventSources: [
+          {
+            url: "{% static completed_dates %}",
+            display: "background",
+            color: "green"
+          }
+        ] ,
         dateClick: function(date) {
             data = {date: date.dateStr, village: '{{village}}', csrfmiddlewaretoken: '{{ csrf_token }}'}
             $("#monthlyTotals").load("{% url 'monthly_totals'%}", data )

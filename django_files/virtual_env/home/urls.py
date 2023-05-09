@@ -7,4 +7,5 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("change_password/", auth_views.PasswordChangeView.as_view(), name="change_password"),
     path("forms", views.forms, name="forms"),
+    path("ehd", views.ehd, name="ehd"),
 ]

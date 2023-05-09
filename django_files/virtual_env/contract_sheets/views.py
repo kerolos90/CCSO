@@ -1,10 +1,11 @@
+import json
+
 from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpResponse, Http404, QueryDict
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from .set_date_events import Ivesdale_events,Philo_events,Savoy_events,Stjoseph_events
-
 from .models import *
 from .forms import *
 
@@ -38,7 +39,7 @@ def ivesdale(request):
     context = {
         "village" : "Ivesdale",
         "date" : datetime.today().strftime('%Y-%m-%d'),
-        "colored_dates": Ivesdale_events,
+        "completed_dates": 'ivesdale_completed_dates.json',
 
     }
     return render(request, "contract_sheets/contract_base.html", context)
@@ -46,12 +47,11 @@ def ivesdale(request):
 
 @login_required(login_url="/login")
 def philo(request):
-    print("colored_dates")
 
     context = {
         "village": "Philo",
         "date": datetime.today().strftime('%Y-%m-%d'),
-        "colored_dates": Philo_events,
+        "completed_dates": 'philo_completed_dates.json',
 
     }
     return render(request, "contract_sheets/contract_base.html", context)
@@ -62,7 +62,7 @@ def savoy(request):
     context = {
         "village": "Savoy",
         "date": datetime.today().strftime('%Y-%m-%d'),
-        "colored_dates": Savoy_events,
+        "completed_dates": 'savoy_completed_dates.json',
     }
     return render(request, "contract_sheets/contract_base.html", context)
 
@@ -70,9 +70,9 @@ def savoy(request):
 @login_required(login_url="/login")
 def st_joseph(request):
     context = {
-        "village": "St.Joseph",
+        "village": "SaintJoseph",
         "date": datetime.today().strftime('%Y-%m-%d'),
-        "colored_dates": Stjoseph_events,
+        "completed_dates": 'saintjoseph_completed_dates.json',
     }
     return render(request, "contract_sheets/contract_base.html", context)
 
@@ -129,12 +129,12 @@ def save_contract_sheet(request):
         contract_sheet = ContractSheet.objects.get(id=form.save().id)
         contract_sheet.employee=request.user
         contract_sheet.save()
-        eval(contract_sheet.village + "_events").append({
-            'start': (contract_sheet.date.strftime('%Y-%m-%d')),
-            'display': 'background',
-            'color': 'green'
-        })
-        print(eval(contract_sheet.village + "_events"))
+        with open(f'static/{contract_sheet.village}_completed_dates.json', 'r') as f:
+            data = json.load(f)
+        data.append({'start': str(contract_sheet.date)})
+        with open(f'static/{contract_sheet.village}_completed_dates.json', 'w') as f:
+            json.dump(data, f)
+
     else:
         print(form.errors)
     return HttpResponse(status=204)
@@ -165,10 +165,10 @@ def view_contract_sheet(request, village, id):
 @login_required(login_url="/login")
 def delete_contract_sheet(request, id):
     contract_sheet = ContractSheet.objects.get(id=id)
-    for event in eval(contract_sheet.village + "_events"):
-        if event["start"] == contract_sheet.date:
-            eval(contract_sheet.village + "_events").remove(event)
-            break
-    print(eval(contract_sheet.village + "_events"))
-    #contract_sheet.delete()
+    with open(f'static/{contract_sheet.village}_completed_dates.json', 'r') as f:
+        data = json.load(f)
+    data = [event for event in data if event['start'] != str(contract_sheet.date)]
+    with open(f'static/{contract_sheet.village}_completed_dates.json', 'w') as f:
+        json.dump(data, f)
+    contract_sheet.delete()
     return HttpResponse(' ')
