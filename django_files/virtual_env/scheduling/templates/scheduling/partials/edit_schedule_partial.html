@@ -1,4 +1,3 @@
-<br>
 <table
   class="table table-bordered shadow"
   style="text-align: center"
@@ -46,8 +45,7 @@
             <button 
               class="btn btn-danger btn-sm rounded-0" 
               type="submit"
-              hx-delete="{% url 'delete_other_row'%}" 
-              hx-params="{{instance.id.value}}"
+              hx-delete="{% url 'delete_other_row' instance.id.value %}" 
               >
               <i class="fa fa-trash"></i>
             </button>

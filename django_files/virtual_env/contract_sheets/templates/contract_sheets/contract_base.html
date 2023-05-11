@@ -17,36 +17,26 @@
                   <div class="col-xl-7 col-lg-7">
                     <div class="card">
                       <div class="card-body shadow-lg">
+                      <!-- Calendar -->
                         <div id="calendar"></div>
                       </div>
                     </div>
                   </div>
-                  <!-- end col -->
-
                   <div class="col-xl-5 col-lg-5">
                     <div id="monthlyTotals"></div>
                     <div id="contractSheetsCard"></div>
-                  </div>
-                  <!-- end col-->
-                  
+                  </div>                  
                 </div>
-                <!-- end row -->
-
                 <!-- Contract Sheet Modal -->
                   <div id="modal" class="modal fade">
                       <div id="dialog" class="modal-dialog modal-lg" hx-target="this"></div>
                   </div>   
-                <!-- end modal -->
               </div>
             </div>
           </div>
-          <!-- container-fluid -->
         </div>
-        <!-- End Page-content -->
       </div>
-      <!-- end main content-->
     </div>
-    <!-- END layout-wrapper -->
 {% endblock content %}
 
 {% block scripts %}
@@ -72,23 +62,23 @@
         dateClick: function(date) {
             data = {date: date.dateStr, village: '{{village}}', csrfmiddlewaretoken: '{{ csrf_token }}'}
             $("#monthlyTotals").load("{% url 'monthly_totals'%}", data )
-            ajaxFunction("{% url 'contract_sheets_card'%}",data,"contractSheetsCard")
+            ajaxFunction("{% url 'contract_sheets_card'%}", "POST", data,"contractSheetsCard")
         }
          
     });
     calendar.render();
     data = {date: '{{date}}', village: '{{village}}', csrfmiddlewaretoken: '{{ csrf_token }}'}
     $("#monthlyTotals").load("{% url 'monthly_totals'%}", data)
-    ajaxFunction("{% url 'contract_sheets_card'%}",data,"contractSheetsCard")
+    ajaxFunction("{% url 'contract_sheets_card'%}","POST",data,"contractSheetsCard")
 
     htmx.on("hidden.bs.modal", () => {
-      ajaxFunction("{% url 'contract_sheets_card'%}",data, "contractSheetsCard")
+      ajaxFunction("{% url 'contract_sheets_card'%}","POST", data, "contractSheetsCard")
       $("#monthlyTotals").load("{% url 'monthly_totals'%}", data)
     })
-    htmx.on("htmx:afterSwap", () => {
-      ajaxFunction("{% url 'contract_sheets_card'%}",data, "contractSheetsCard")
+    {% comment %} htmx.on("htmx:afterSwap", () => {
+      ajaxFunction("{% url 'contract_sheets_card'%}","POST", data, "contractSheetsCard")
       $("#monthlyTotals").load("{% url 'monthly_totals'%}", data)
-    })
+    }) {% endcomment %}
 
 
 </script>

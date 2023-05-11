@@ -43,10 +43,10 @@
             }
         })   
 
-        function ajaxFunction(url, data, table){
+        function ajaxFunction(url, type, data, table){
             $.ajax({
                 url: url,
-                type: "POST",
+                type: type,
                 data: data,
                 success: function(data){
                 $(`#${table}`).replaceWith(data)
