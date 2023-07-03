@@ -19,3 +19,7 @@ def forms(request):
 @login_required(login_url="login")
 def ehd(request):
     return render(request, "home/ehd.html")
+
+@login_required(login_url="login")
+def employee_assignments(request):
+    return render(request, "home/employee_assignments.html")
